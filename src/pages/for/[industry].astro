@@ -17,9 +17,11 @@ export function getStaticPaths() {
 const { industry: slug } = Astro.params;
 const ind = industryBySlug(slug);
 const display = ind.name.charAt(0).toUpperCase() + ind.name.slice(1);
+const seoName =
+  ({ landscapers: "Landscapers", "medical-clinics": "Medical Clinics" } as Record<string, string>)[ind.slug] ?? display;
 
-const title = `AI for ${display} in Arkansas | Arkansas Automated`;
-const description = `${ind.intent}. In-person AI workshops and done-for-you automation from Arkansas Automated, built for how a ${ind.singular} actually runs.`;
+const title = `AI for ${seoName} in Arkansas | Arkansas Automated`;
+const description = `${ind.intent}. Workshops and done-for-you automation for Arkansas ${ind.name.toLowerCase()}.`;
 
 const sharedFaqs = [
   {

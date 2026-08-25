@@ -1,0 +1,25 @@
+{
+  "branch": "seo/portfolio-2026-08-25",
+  "files_changed": [
+    "RECEIPT-CODEX.json",
+    "astro.config.mjs",
+    "src/pages/ai-workshops/[city].astro",
+    "src/pages/for/[industry].astro",
+    "src/pages/for/index.astro",
+    "src/pages/index.astro",
+    "src/pages/learn/ai-receptionist-cost.astro",
+    "src/pages/learn/ai-receptionist-vs-answering-service.astro",
+    "src/pages/learn/index.astro",
+    "src/pages/learn/what-is-an-ai-receptionist.astro",
+    "src/pages/learn/what-is-business-process-automation.astro",
+    "src/pages/services/[service].astro",
+    "src/pages/services/index.astro"
+  ],
+  "build_result": "PASS: npm run build exited 0; Astro built 83 static pages and generated sitemap-index.xml.",
+  "notes": [
+    "Validated 50 in-scope committed-page outputs: unique titles and descriptions within limits, canonical and OG/Twitter tags present, and JSON-LD parseable.",
+    "Homepage schema identifies Arkansas Automated as both Organization and ProfessionalService using existing repository facts.",
+    "Changed committed routes receive sitemap lastmod 2026-08-25.",
+    "public/llms.txt was already modified by the operator and was not touched. All other prohibited WIP paths were also left untouched."
+  ]
+}

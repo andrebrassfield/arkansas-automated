@@ -4,7 +4,7 @@ import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import LeadForm from "../components/LeadForm.astro";
 
-const title = "AI Workshops and Done-For-You Automation in Arkansas | Arkansas Automated";
+const title = "AI Workshops & Automation in Arkansas | Arkansas Automated";
 const description =
   "In-person AI workshops for Arkansas business owners. Build your AI receptionist in one afternoon, or have us build and run the automation for you.";
 
@@ -149,13 +149,13 @@ const properties = [
   },
 ];
 
-// Homepage schema: ProfessionalService + WebSite + FAQPage. The FAQPage
+// Homepage schema: Organization/ProfessionalService + WebSite + FAQPage. The FAQPage
 // mirrors the visible FAQ section exactly (schema must match page content).
 const homeSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": ["Organization", "ProfessionalService"],
       name: "Arkansas Automated",
       url: "https://arkansasautomated.com",
       description,
@@ -412,4 +412,3 @@ const homeSchema = {
 
   <SiteFooter />
 </Base>
-

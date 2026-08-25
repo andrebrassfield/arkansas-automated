@@ -15,6 +15,24 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://arkansasautomated.com",
   output: "static",
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      serialize(item) {
+        const path = new URL(item.url).pathname;
+        const refreshed =
+          path === "/" ||
+          path === "/for/" ||
+          path.startsWith("/for/") ||
+          path === "/learn/" ||
+          path.startsWith("/learn/") ||
+          path === "/services/" ||
+          path.startsWith("/services/") ||
+          path.startsWith("/ai-workshops/");
+
+        if (refreshed) item.lastmod = new Date("2026-08-25");
+        return item;
+      },
+    }),
+  ],
   build: { inlineStylesheets: "auto" },
 });

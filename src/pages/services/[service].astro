@@ -13,8 +13,8 @@ export function getStaticPaths() {
 const { service: slug } = Astro.params;
 const s = serviceBySlug(slug);
 
-const title = `${s.name} in Arkansas | Arkansas Automated`;
-const description = `${s.tagline} ${s.price}. Serving Fort Smith, Northwest Arkansas, and statewide.`;
+const title = `${s.name === "Embedded automation retainer" ? "Automation retainer" : s.name} in Arkansas | Arkansas Automated`;
+const description = `${s.tagline} ${s.price}.`;
 
 const site = "https://arkansasautomated.com";
 const pageUrl = `${site}/services/${s.slug}`;
