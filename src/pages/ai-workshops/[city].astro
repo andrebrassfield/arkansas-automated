@@ -21,8 +21,8 @@ const { city: slug } = Astro.params;
 const c = cityBySlug(slug);
 const nearby = c.nearby.map(cityBySlug);
 
-const title = `AI Workshops and Automation in ${c.name}, Arkansas | Arkansas Automated`;
-const description = `AI workshops and done-for-you automation for ${c.name} businesses. Build your AI receptionist in one afternoon, or have us build and run it for you.`;
+const title = `AI Workshops in ${c.name}, AR | Arkansas Automated`;
+const description = `AI workshops and done-for-you automation for ${c.name} businesses. Build an AI receptionist in one afternoon or have us build it for you.`;
 
 const ways = [
   {
