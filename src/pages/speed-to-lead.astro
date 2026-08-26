@@ -7,6 +7,9 @@ const title = "Speed to Lead — How Fast Response Times Win More Jobs | Arkansa
 const description =
   "Measure how quickly your business responds to new leads. Most contractors lose jobs to slower competitors. Free lead response audit.";
 
+const API = "https://speed-to-lead-five.vercel.app";
+const REPORT = `${API}/report`;
+
 const stats = [
   { n: "5 min", h: "Average response time", p: "The average response time for local service businesses. By then, the homeowner has already called two more." },
   { n: "78%", h: "First-responder wins", p: "Of customers go with the first responder. Speed isn't a nice-to-have — it's the deciding factor." },
@@ -25,19 +28,105 @@ const steps = [
   <SiteNav />
 
   <main>
-    {/* Hero */}
+    {/* Hero + Form */}
     <section class="hero">
-      <div class="container">
-        <p class="accent" style="font-size:0.85rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1rem;">Free lead response audit</p>
-        <h1 class="heading-xl">Speed to Lead</h1>
-        <p class="body-lg" style="margin-top:1rem; max-width:42rem;">
-          Most local businesses lose jobs before they even know a lead came in.
-          We measure your response time, grade it against your competitors,
-          and show you exactly what slow response costs.
-        </p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="https://speed-to-lead-five.vercel.app">Get your free audit</a>
-          <a class="btn btn-secondary" href="#how-it-works">See how it works</a>
+      <div class="container hero-grid">
+        <div>
+          <p class="accent" style="font-size:0.85rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1rem;">Free lead response audit</p>
+          <h1 class="heading-xl">Speed to Lead</h1>
+          <p class="body-lg" style="margin:1rem 0 0; max-width:34rem;">
+            Most local businesses lose jobs before they even know a lead came in.
+            We measure your response time, grade it against your competitors,
+            and show you exactly what slow response costs.
+          </p>
+        </div>
+
+        <div>
+          <form id="auditForm" class="enter rounded-2xl border border-[var(--line)] bg-[rgba(18,21,19,.94)] p-5 shadow-[0_28px_80px_rgba(3,8,5,.45)] md:p-7">
+            <div class="mb-5">
+              <label for="businessUrl" class="mb-2 block text-sm font-medium" style="color:var(--text-primary)">Business website</label>
+              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0 1rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <input required id="businessUrl" name="businessUrl" type="text" inputmode="url" placeholder="yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
+              </div>
+            </div>
+
+            <div style="margin-bottom:1.25rem;border-radius:0.75rem;border:1px solid var(--accent-line);background:var(--accent-soft);padding:0.75rem 1rem;font-size:0.875rem;color:var(--accent)">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-weight:600">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Web form test
+              </div>
+              <p style="margin-top:0.25rem;font-size:0.75rem;color:var(--text-muted)">
+                We submit a disclosed test lead through the business's contact form and measure response time.
+              </p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+              <label>
+                <span style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Industry</span>
+                <select name="industry" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0.75rem;color:var(--text-primary);font-size:0.875rem">
+                  <option value="general">General</option>
+                  <option value="plumbing">Plumbing</option>
+                  <option value="hvac">HVAC</option>
+                  <option value="roofing">Roofing</option>
+                </select>
+              </label>
+              <label>
+                <span style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Monthly leads</span>
+                <input type="number" min="1" max="10000" name="monthlyLeads" value="50" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0.75rem;color:var(--text-primary);font-size:0.875rem" />
+              </label>
+            </div>
+
+            <label style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.875rem;color:var(--text-muted);margin-bottom:1.25rem;cursor:pointer">
+              <input required type="checkbox" name="authorization" style="margin-top:0.25rem;width:1rem;height:1rem;accent-color:#7fc99a" />
+              <span>I own or represent this business and authorize one disclosed response-time test.</span>
+            </label>
+
+            <button type="submit" id="auditBtn" style="width:100%;display:flex;align-items:center;justify-content:center;gap:0.5rem;border-radius:0.75rem;background:var(--accent);color:var(--accent-ink);font-weight:600;padding:1rem;cursor:pointer;border:none;font-size:1rem;transition:filter 0.15s">
+              Start the audit
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+
+            <p id="auditError" style="margin-top:0.75rem;text-align:center;font-size:0.875rem;color:#ef4444;display:none"></p>
+
+            <p style="margin-top:1rem;text-align:center;font-size:0.75rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:0.5rem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+              One test per business every 7 days
+            </p>
+          </form>
+
+          <script define:vars={{ API, REPORT }}>
+            document.getElementById("auditForm").addEventListener("submit", async function(e) {
+              e.preventDefault();
+              var btn = document.getElementById("auditBtn");
+              var err = document.getElementById("auditError");
+              btn.disabled = true;
+              btn.textContent = "Starting audit...";
+              err.style.display = "none";
+              var fd = new FormData(e.target);
+              try {
+                var res = await fetch(API + "/api/test", {
+                  method: "POST",
+                  headers: { "content-type": "application/json" },
+                  body: JSON.stringify({
+                    businessUrl: fd.get("businessUrl"),
+                    testType: "web_form",
+                    industry: fd.get("industry"),
+                    monthlyLeads: Number(fd.get("monthlyLeads")),
+                    authorization: fd.get("authorization") === "on",
+                  }),
+                });
+                var body = await res.json();
+                if (!res.ok) throw new Error(body.error);
+                window.location.href = REPORT + "/" + body.id;
+              } catch (e2) {
+                err.textContent = e2.message || "Something went wrong.";
+                err.style.display = "block";
+                btn.disabled = false;
+                btn.innerHTML = 'Start the audit <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+              }
+            });
+          </script>
         </div>
       </div>
     </section>
@@ -93,7 +182,7 @@ const steps = [
           with your grade, revenue impact, and benchmarks.
         </p>
         <div style="margin-top:2.5rem;">
-          <a class="btn btn-primary" href="https://speed-to-lead-five.vercel.app">Run your free audit</a>
+          <a class="btn btn-primary" href="#top">Run your free audit</a>
         </div>
       </div>
     </section>
