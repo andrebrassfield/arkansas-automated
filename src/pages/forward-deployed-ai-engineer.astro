@@ -1,0 +1,295 @@
+---
+/*
+ * /forward-deployed-ai-engineer — the buzzword landing page.
+ *
+ * Deliberately ONE page, not a city cluster. "Forward deployed engineer" is a
+ * high-signal term in AI services and a term almost no Arkansas plumber types
+ * into a search bar, so it earns a positioning and credibility page that the
+ * retainer and how-we-work traffic lands on, not 25 geo variants that would
+ * rank for nothing and dilute the /ai-receptionist cluster.
+ *
+ * Every buzzword used here gets a plain-English translation in the same
+ * sentence. A page that explains the term is what gets cited; a page that
+ * performs the term is what gets skipped.
+ */
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import LeadForm from "../components/LeadForm.astro";
+import { serviceBySlug } from "../data/services";
+
+const s = serviceBySlug("automation-retainer");
+
+const title = "Forward Deployed AI Engineer for Arkansas Businesses | Arkansas Automated";
+const description =
+  "A forward deployed AI engineer works inside your business instead of shipping you software. On-site sessions, systems built in your tools, staff trained as we go. From $2,000 a month across Arkansas.";
+
+const answer =
+  "A forward deployed AI engineer is an engineer who works inside your business rather than at a software vendor. They watch how the work actually runs, build automation into the tools you already use, and train your staff on site. Arkansas Automated does this on an embedded retainer from $2,000 a month, based in Fort Smith and working statewide.";
+
+const translate = [
+  {
+    h: "Forward deployed engineer",
+    p: "An engineer who works at your location instead of at a software company. The term comes from firms that send builders to the customer rather than shipping a product and hoping it fits. In practice it means the person writing the automation is standing in your shop watching your team work.",
+  },
+  {
+    h: "Last-mile deployment",
+    p: "The gap between software that could work and software that does work in your business. Most automation projects die here: the tool was fine, but nobody wired it to your calendar, your pricing, or the way your dispatcher actually talks. Closing that gap is the whole job.",
+  },
+  {
+    h: "AI agents and agentic workflows",
+    p: "Software that carries out a multi-step task on its own instead of waiting for a click. Your AI receptionist is one: it answers, asks questions, decides, books, and texts, without a person driving each step. That is all the word means.",
+  },
+  {
+    h: "Human in the loop",
+    p: "The rule that a person approves or handles anything the system should not decide alone. Emergencies ring your phone. Pricing outside the range you approved stops and asks. You choose where the line sits, and you can move it.",
+  },
+];
+
+const how = [
+  {
+    h: "We start by watching, not building",
+    p: "The first sessions trace real jobs through your real process, from the first call to the paid invoice. Nothing gets automated before we have seen it happen, because the version in your head and the version on the floor are never quite the same.",
+  },
+  {
+    h: "We build in your stack, on site",
+    p: "The work happens in the tools you already pay for, at your location, alongside the people who will run it. No parallel system to migrate to later, and no handoff document standing in for a conversation.",
+  },
+  {
+    h: "We train as each piece ships",
+    p: "Every system goes live with the staff who use it trained on it. Automation that the team works around is worse than no automation, and that failure is always a training failure, not a software one.",
+  },
+  {
+    h: "We review the math every quarter",
+    p: "The roadmap is re-ranked against what the builds actually returned. If the retainer stops paying for itself, we tell you before you notice.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What does a forward deployed AI engineer actually do for a local business?",
+    a: "Three things: figures out which parts of your operation are worth automating, builds them into the software you already use, and trains your staff to run them. For an Arkansas service business that usually starts with the phone, then quote follow-up, then the retyping between scheduling and invoicing. The title just means the engineer does it at your place instead of from a product roadmap.",
+  },
+  {
+    q: "How is this different from hiring a consultant?",
+    a: "A consultant leaves you a document. This leaves you working systems, and the training to run them. The operations audit is the closest thing we sell to a consulting deliverable, and even that comes with the build priced and ready if you want it.",
+  },
+  {
+    q: "How is it different from just buying AI software?",
+    a: "Software assumes a business shaped like the average of its customers. Yours is not. The embedded model exists because the last mile, your pricing rules, your service area, your dispatcher's habits, is where off-the-shelf tools stop and the value starts.",
+  },
+  {
+    q: "What does the embedded retainer cost?",
+    a: "From $2,000 a month, with a three-month minimum because the first month is roadmap and foundation work. After that it runs month to month. Most engagements start with the $999 operations audit so the roadmap exists before the retainer does.",
+  },
+  {
+    q: "Do you only work in Fort Smith?",
+    a: "We are based in Fort Smith and run on-site sessions statewide. Northwest Arkansas and the River Valley are routine day trips. Central Arkansas, Jonesboro, and south Arkansas engagements schedule on-site time in blocks, and we price that travel honestly rather than burying it.",
+  },
+];
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/forward-deployed-ai-engineer`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Forward deployed AI engineering",
+      serviceType: "Embedded AI implementation and automation retainer",
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description: answer,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Forward deployed AI engineer", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/forward-deployed-ai-engineer" schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>Forward deployed AI engineer
+        </nav>
+        <span class="eyebrow">Embedded retainer · {s.price}</span>
+        <h1 class="heading-xl measure">A forward deployed AI engineer, in your business.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">{answer}</p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href="#contact">Talk about an embedded retainer</a>
+          <a class="btn btn-secondary" href="#plain">What the words mean</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg measure">Why the model exists.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          The AI industry keeps discovering the same thing: the software is rarely the hard part.
+          The hard part is that every business runs slightly differently, and a tool built for the
+          average customer fits none of them exactly. So the good firms stopped shipping products
+          into that gap and started sending engineers into it.
+        </p>
+        <p class="body-lg measure" style="margin-top:1.25rem">
+          That is what forward deployed means, and it describes how this business has worked since
+          before the term got popular. We are in the shop, at the desk, listening to your actual
+          calls. The systems get built around what is happening in the room, which is the only
+          place the details that break automation are visible.
+        </p>
+        <p class="body-lg measure" style="margin-top:1.25rem">
+          If you are hiring for this, be careful of anyone who uses the phrase and then does the
+          work remotely from a template. The whole point of the model is the part that costs the
+          most: showing up.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="plain">
+      <div class="container">
+        <h2 class="heading-lg measure">The words, in plain English.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          You will hear all of these in AI sales conversations. Here is what each one means for a
+          business with trucks, chairs, or a front counter.
+        </p>
+        <div class="rows">
+          {
+            translate.map((t) => (
+              <article class="row">
+                <div class="row-n">Term</div>
+                <h3>{t.h}</h3>
+                <p>{t.p}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg measure">How the embedded work runs.</h2>
+        <div class="rows">
+          {
+            how.map((h, idx) => (
+              <article class="row">
+                <div class="row-n">{String(idx + 1).padStart(2, "0")}</div>
+                <h3>{h.h}</h3>
+                <p>{h.p}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
+          {s.tagline} {s.price}.
+          {" "}<a class="text-link" href="/services/automation-retainer">Full retainer detail</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="heading-lg measure">Who this is for, and who it is not.</h2>
+        <div class="table-wrap" style="margin-top:2rem">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th scope="col">Situation</th>
+                <th scope="col">What we would tell you</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">One truck, missing calls</th>
+                <td>
+                  Do not hire an embedded engineer. Buy the AI front desk, $2,500 setup plus $497 a
+                  month, and get on with your day.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">You know something is broken, not what</th>
+                <td>
+                  Start with the $999 operations audit. You get the map and the ROI math, and the
+                  fee credits toward whatever you build next.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Multi-crew, multi-system, owner is the bottleneck</th>
+                <td>
+                  This is the retainer. The roadmap touches every department and one build will not
+                  fix it, so we work through it on site, month by month.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">You want to learn to build it yourself</th>
+                <td>
+                  Take the workshop seat instead. One Saturday afternoon, $497, and it credits
+                  toward a build if you change your mind inside 60 days.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Straight answers.</h2>
+        <div class="faq-list">
+          {
+            faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+        <div class="link-chips">
+          <a class="chip" href="/services/automation-retainer">Embedded retainer</a>
+          <a class="chip" href="/services/operations-audit">Operations audit</a>
+          <a class="chip" href="/ai-receptionist">AI receptionist by city</a>
+          <a class="chip" href="/fix">Problems we fix</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Start with the map.</h2>
+          <p class="body-lg" style="margin-top:1rem">
+            Almost every retainer starts with the operations audit, because a roadmap should exist
+            before a monthly fee does. Tell us what the business looks like and we will say
+            plainly whether embedded work is the right shape for it.
+          </p>
+          <p class="fine-print" style="margin-top:2rem">
+            Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+          </p>
+        </div>
+        <LeadForm
+          defaultIntent="Talk done-for-you or retainer"
+          detailsPlaceholder="Example: three crews, two systems that do not talk, and I am the bottleneck."
+        />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

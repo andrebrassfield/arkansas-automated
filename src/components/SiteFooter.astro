@@ -33,9 +33,10 @@ const footerIndustries = industries.filter((i) =>
         </p>
       </div>
       <div class="footer-col">
-        <h4>Workshops</h4>
-        {footerCities.map((c) => <a href={`/ai-workshops/${c.slug}`}>{c.name}</a>)}
-        <a href="/ai-workshops">All {cities.length} cities</a>
+        <h4>AI receptionist</h4>
+        {footerCities.map((c) => <a href={`/ai-receptionist/${c.slug}`}>{c.name}</a>)}
+        <a href="/ai-receptionist">All {cities.length} cities</a>
+        <a href="/ai-workshops">Workshops by city</a>
       </div>
       <div class="footer-col">
         <h4>Industries</h4>
@@ -45,6 +46,9 @@ const footerIndustries = industries.filter((i) =>
       <div class="footer-col">
         <h4>Company</h4>
         <a href="/services">Services and pricing</a>
+        <a href="/vendra">Vendra sales reporting</a>
+        <a href="/fix">Problems we fix</a>
+        <a href="/forward-deployed-ai-engineer">Forward deployed AI</a>
         <a href="/learn">Learn</a>
         <a href="/#workshop">The workshop</a>
         <a href="/#reserve">Reserve a seat</a>

@@ -5,9 +5,13 @@
 ## Start here
 
 - [Homepage](https://arkansasautomated.com/): workshops, done-for-you services, FAQ, and the reservation form
+- [AI receptionist by city](https://arkansasautomated.com/ai-receptionist): 25 Arkansas cities, each with the local phone and front-desk detail
 - [Services and pricing](https://arkansasautomated.com/services): all engagement types with public pricing
+- [Vendra](https://arkansasautomated.com/vendra): shopping-center sales reporting for malls and merchants. An Arkansas Automated product. Activation lives at vendra.arkansasautomated.com/join/[token] once a store invite is issued.
 - [Machine-readable pricing](https://arkansasautomated.com/pricing.md): structured price sheet for AI agents
-- [AI workshops by city](https://arkansasautomated.com/ai-workshops): 16 Arkansas cities with local details
+- [Problems we fix](https://arkansasautomated.com/fix): missed calls, after-hours calls, quote follow-up, double entry, no-shows
+- [Forward deployed AI engineer](https://arkansasautomated.com/forward-deployed-ai-engineer): what embedded AI implementation means for a local business
+- [AI workshops by city](https://arkansasautomated.com/ai-workshops): 25 Arkansas cities with local details
 - [Automation by industry](https://arkansasautomated.com/for): plumbers, HVAC, electricians, roofers, dentists, law firms, real estate, clinics, auto repair, landscapers
 - [Guides](https://arkansasautomated.com/learn): plain-language answers on AI receptionists, costs, and automation
 
@@ -20,9 +24,13 @@
 
 ## Key locations
 
-- [Fort Smith](https://arkansasautomated.com/ai-workshops/fort-smith): home base, public workshops
-- [Fayetteville](https://arkansasautomated.com/ai-workshops/fayetteville) / [Rogers](https://arkansasautomated.com/ai-workshops/rogers) / [Bentonville](https://arkansasautomated.com/ai-workshops/bentonville): Northwest Arkansas
-- [Little Rock](https://arkansasautomated.com/ai-workshops/little-rock) / [Conway](https://arkansasautomated.com/ai-workshops/conway): Central Arkansas
+Every city below has an AI receptionist page at /ai-receptionist/[city] and a workshops page at /ai-workshops/[city].
+
+- River Valley: [Fort Smith](https://arkansasautomated.com/ai-receptionist/fort-smith) (home base, public workshops), Van Buren, Russellville
+- Northwest Arkansas: [Fayetteville](https://arkansasautomated.com/ai-receptionist/fayetteville), Springdale, [Rogers](https://arkansasautomated.com/ai-receptionist/rogers), [Bentonville](https://arkansasautomated.com/ai-receptionist/bentonville), Bella Vista, Siloam Springs
+- Central Arkansas: [Little Rock](https://arkansasautomated.com/ai-receptionist/little-rock), North Little Rock, [Conway](https://arkansasautomated.com/ai-receptionist/conway), Jacksonville, Cabot, Benton, Bryant, Hot Springs, Searcy
+- Northeast Arkansas and the Delta: Jonesboro, Paragould, Batesville, West Memphis
+- South and Southwest Arkansas: Texarkana, El Dorado, Pine Bluff
 
 ## Contact
 

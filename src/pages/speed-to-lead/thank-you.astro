@@ -1,0 +1,119 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+const title = "Your Audit is Processing | Speed to Lead";
+const description = "Your lead response audit is being processed. Check your email for the full report.";
+---
+
+<Base {title} {description} path="/speed-to-lead/thank-you">
+  <SiteNav />
+
+  <main>
+    {/* Confirmation */}
+    <section class="section" style="padding-top:clamp(4rem,8vw,7rem);">
+      <div class="container" style="max-width:40rem;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:1rem;">&#10003;</div>
+        <h1 class="heading-lg">Your audit is running</h1>
+        <p class="body-lg" style="margin-top:1rem;">
+          We just submitted a test lead to your business. You'll get the full
+          report with your grade, response time, and revenue impact at the email
+          you provided. Check your inbox in the next few minutes.
+        </p>
+      </div>
+    </section>
+
+    {/* Tripwire — Hormozi "while you wait" layer */}
+    <section class="section section-tint">
+      <div class="container" style="max-width:48rem;">
+        <div style="text-align:center;margin-bottom:2.5rem;">
+          <p class="accent" style="font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.75rem;">While you wait</p>
+          <h2 class="heading-md">The Speed to Lead Playbook</h2>
+          <p class="body-lg" style="margin-top:0.75rem;">
+            The exact system top-performing contractors use to respond in under
+            5 minutes and close 3x more jobs. Not theory — scripts, templates,
+            and the automation stack that runs it for you.
+          </p>
+        </div>
+
+        <div class="leak-grid" style="margin-bottom:2rem;">
+          <article class="leak">
+            <h3 style="font-weight:600;margin-bottom:0.5rem;">What's inside</h3>
+            <ul style="list-style:none;padding:0;margin:0;color:var(--text-secondary);font-size:0.95rem;line-height:1.8;">
+              <li>&#10003; The 5-minute response framework (page 1)</li>
+              <li>&#10003; Copy-paste text/email scripts for every stage</li>
+              <li>&#10003; AI receptionist setup walkthrough (30 min)</li>
+              <li>&#10003; Lead response scorecard + benchmark data</li>
+              <li>&#10003; Automation templates for follow-up sequences</li>
+            </ul>
+          </article>
+          <article class="leak">
+            <h3 style="font-weight:600;margin-bottom:0.5rem;">What it costs you not to</h3>
+            <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;">
+              Every hour your average response time stays above 5 minutes, you're
+              losing jobs to whoever picks up the phone first. The playbook shows
+              you exactly how to cut response time from hours to minutes — and
+              keep it there without hiring a receptionist.
+            </p>
+          </article>
+        </div>
+
+        <div style="text-align:center;">
+          <div style="margin-bottom:1.5rem;">
+            <span style="font-family:var(--font-heading);font-weight:800;font-size:2.5rem;color:var(--accent);">$27</span>
+            <span style="color:var(--text-muted);font-size:0.9rem;margin-left:0.5rem;text-decoration:line-through;">$97</span>
+          </div>
+          <a class="btn btn-primary" href="https://buy.stripe.com/PLACEHOLDER" style="font-size:1.1rem;padding:1rem 2.5rem;">
+            Get the Playbook — $27
+          </a>
+          <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted);">
+            Instant download. No subscription. Built by the team that runs
+            Arkansas Automated.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Social proof */}
+    <section class="section">
+      <div class="container" style="max-width:48rem;text-align:center;">
+        <h2 class="heading-md" style="margin-bottom:1.5rem;">What contractors say</h2>
+        <div style="display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+          <div style="border:1px solid var(--line);border-radius:0.75rem;padding:1.5rem;text-align:left;">
+            <p style="color:var(--text-secondary);font-size:0.95rem;font-style:italic;margin-bottom:1rem;">
+              "We went from missing 40% of calls to answering every one within
+              2 minutes. Closed $12K in new jobs the first month."
+            </p>
+            <p style="font-weight:600;font-size:0.9rem;">Mike R. — Roofing, Fort Smith</p>
+          </div>
+          <div style="border:1px solid var(--line);border-radius:0.75rem;padding:1.5rem;text-align:left;">
+            <p style="color:var(--text-secondary);font-size:0.95rem;font-style:italic;margin-bottom:1rem;">
+              "The AI receptionist handles after-hours calls now. We booked
+              3 jobs last weekend while I was at my kid's game."
+            </p>
+            <p style="font-weight:600;font-size:0.9rem;">Sarah T. — HVAC, Fayetteville</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Final CTA */}
+    <section class="section section-tint">
+      <div class="container" style="text-align:center;max-width:36rem;">
+        <h2 class="heading-md">Don't wait for the report to start improving</h2>
+        <p class="body-lg" style="margin-top:0.75rem;">
+          The playbook pays for itself with one extra job. Most contractors see
+          results the same week they implement it.
+        </p>
+        <div style="margin-top:2rem;">
+          <a class="btn btn-primary" href="https://buy.stripe.com/PLACEHOLDER">
+            Get the Playbook — $27
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Base>

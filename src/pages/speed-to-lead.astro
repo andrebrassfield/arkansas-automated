@@ -8,7 +8,7 @@ const description =
   "Measure how quickly your business responds to new leads. Most contractors lose jobs to slower competitors. Free lead response audit.";
 
 const API = "https://speed-to-lead-five.vercel.app";
-const REPORT = `${API}/report`;
+const THANKYOU = "/speed-to-lead/thank-you";
 
 const stats = [
   { n: "5 min", h: "Average response time", p: "The average response time for local service businesses. By then, the homeowner has already called two more." },
@@ -48,6 +48,14 @@ const steps = [
               <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0 1rem;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 <input required id="businessUrl" name="businessUrl" type="text" inputmode="url" placeholder="yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
+              </div>
+            </div>
+
+            <div style="margin-bottom:1.25rem">
+              <label for="email" style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Email for your report</label>
+              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0 1rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <input required id="email" name="email" type="email" placeholder="you@yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
               </div>
             </div>
 
@@ -95,7 +103,7 @@ const steps = [
             </p>
           </form>
 
-          <script define:vars={{ API, REPORT }}>
+          <script define:vars={{ API, THANKYOU }}>
             document.getElementById("auditForm").addEventListener("submit", async function(e) {
               e.preventDefault();
               var btn = document.getElementById("auditBtn");
@@ -110,6 +118,7 @@ const steps = [
                   headers: { "content-type": "application/json" },
                   body: JSON.stringify({
                     businessUrl: fd.get("businessUrl"),
+                    email: fd.get("email"),
                     testType: "web_form",
                     industry: fd.get("industry"),
                     monthlyLeads: Number(fd.get("monthlyLeads")),
@@ -118,7 +127,7 @@ const steps = [
                 });
                 var body = await res.json();
                 if (!res.ok) throw new Error(body.error);
-                window.location.href = REPORT + "/" + body.id;
+                window.location.href = THANKYOU;
               } catch (e2) {
                 err.textContent = e2.message || "Something went wrong.";
                 err.style.display = "block";

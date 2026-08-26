@@ -1,0 +1,176 @@
+---
+/*
+ * /ai-receptionist — hub for the money cluster. Every city spoke is one click
+ * from here, grouped by region, with ItemList + FAQPage + BreadcrumbList.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import LeadForm from "../../components/LeadForm.astro";
+import { regions, cities } from "../../data/cities";
+import { serviceBySlug } from "../../data/services";
+
+const s = serviceBySlug("ai-front-desk");
+
+const title = "AI Receptionist in Arkansas | 24/7 Call Answering and Booking";
+const description =
+  "A 24/7 AI receptionist for Arkansas service businesses. Answers in your voice, qualifies the caller, books the job. $2,500 setup plus $497 a month, built and tuned by us in Fort Smith.";
+
+const answer =
+  "An AI receptionist answers your business phone 24 hours a day in your own business's voice, qualifies each caller by rules you write, books the job onto your real calendar, and sends SMS follow-up. Arkansas Automated builds and manages it for Arkansas businesses for $2,500 setup plus $497 a month, with call recordings and monthly tuning included.";
+
+const faqs = [
+  {
+    q: "What is an AI receptionist?",
+    a: answer,
+  },
+  {
+    q: "How much does an AI receptionist cost in Arkansas?",
+    a: "Ours is $2,500 to set up and $497 a month, flat. That covers hosting, call volume, recordings, transcripts, SMS follow-up, and a monthly tuning session where we review real calls with you. There are no per-minute charges, which is the main difference from a traditional answering service.",
+  },
+  {
+    q: "Which Arkansas cities do you serve?",
+    a: `All of them. The build is remote and the phone does not care where you are, so we serve every city listed on this page and the towns around them. On-site work runs out of Fort Smith, with private workshops and retainer sessions scheduled statewide.`,
+  },
+  {
+    q: "Can I hear it before I pay anything?",
+    a: "Yes, and you should. The free 15-minute assessment loads your business details and you listen to the receptionist answer as your company. Nothing is due at that call.",
+  },
+];
+
+const site = "https://arkansasautomated.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "AI receptionist in Arkansas",
+      serviceType: "AI receptionist and 24/7 call answering",
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description: answer,
+    },
+    {
+      "@type": "ItemList",
+      name: "Arkansas cities with AI receptionist service",
+      itemListElement: cities.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `AI receptionist in ${c.name}, Arkansas`,
+        url: `${site}/ai-receptionist/${c.slug}`,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "AI receptionist in Arkansas", item: `${site}/ai-receptionist` },
+      ],
+    },
+  ],
+};
+
+const byRegion = regions.map((r) => ({
+  ...r,
+  items: r.slugs.map((slug) => cities.find((c) => c.slug === slug)!),
+}));
+---
+
+<Base title={title} description={description} path="/ai-receptionist" schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>AI receptionist
+        </nav>
+        <span class="eyebrow">{s.price}</span>
+        <h1 class="heading-xl measure">AI receptionist, built for Arkansas businesses.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">{answer}</p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href="#contact">Hear it answer as your business</a>
+          <a class="btn btn-secondary" href="/services/ai-front-desk">Full pricing and detail</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg measure">What it does.</h2>
+        <ul class="included">
+          {s.includes.map((i) => <li>{i}</li>)}
+        </ul>
+        <div class="link-chips">
+          <a class="chip" href="/fix/missed-calls">Missed calls</a>
+          <a class="chip" href="/fix/after-hours-calls">After-hours calls</a>
+          <a class="chip" href="/fix/no-shows">No-shows</a>
+          <a class="chip" href="/learn/ai-receptionist-vs-answering-service">Versus an answering service</a>
+        </div>
+      </div>
+    </section>
+
+    {
+      byRegion.map((r, idx) => (
+        <section class:list={["section", idx % 2 === 1 && "section-tint"]}>
+          <div class="container">
+            <h2 class="heading-lg measure">{r.name}</h2>
+            <div class="city-grid">
+              {r.items.map((c) => (
+                <a class="city-card" href={`/ai-receptionist/${c.slug}`}>
+                  <span class="prop-name">{c.name}</span>
+                  <span class="prop-role">{c.region}</span>
+                  <span class="city-cta">AI receptionist in {c.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="section section-tint">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Straight answers.</h2>
+        <div class="faq-list">
+          {
+            faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Start with the free assessment.</h2>
+          <p class="body-lg" style="margin-top:1rem">
+            Fifteen minutes, your business details loaded, and you hear it answer as your company
+            before you spend anything. We reply from a real address, usually within one business
+            day.
+          </p>
+          <p class="fine-print" style="margin-top:2rem">
+            Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+          </p>
+        </div>
+        <LeadForm
+          defaultIntent="Talk done-for-you or retainer"
+          detailsPlaceholder="Example: we miss after-hours calls and want them answered, qualified, and booked."
+        />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

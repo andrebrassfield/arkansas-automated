@@ -1,0 +1,170 @@
+---
+/*
+ * /fix/[problem] — problem-first pages for owners who are searching the
+ * symptom, not the product. Statewide by design (see the note in
+ * src/data/problems.ts on why these are not crossed with cities), linking
+ * down into the /ai-receptionist city cluster for geo intent.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import LeadForm from "../../components/LeadForm.astro";
+import { problems, problemBySlug } from "../../data/problems";
+import { serviceBySlug } from "../../data/services";
+import { cityBySlug } from "../../data/cities";
+
+export function getStaticPaths() {
+  return problems.map((p) => ({ params: { problem: p.slug } }));
+}
+
+const { problem: slug } = Astro.params;
+const p = problemBySlug(slug);
+const s = serviceBySlug(p.service);
+const others = problems.filter((x) => x.slug !== p.slug);
+const topCities = ["fort-smith", "fayetteville", "rogers", "little-rock", "conway", "bentonville"].map(cityBySlug);
+
+const title = `${p.h1} | Arkansas Automated`;
+const description = `${p.intent}. What the leak costs, how to fix it, and what the fix runs. Built and managed for Arkansas businesses from Fort Smith.`;
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/fix/${p.slug}`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      mainEntity: p.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "HowTo",
+      name: p.h1,
+      description: p.answer,
+      step: p.fix.map((f, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: f.h,
+        text: f.p,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Common problems", item: `${site}/fix` },
+        { "@type": "ListItem", position: 3, name: p.label, item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path={`/fix/${p.slug}`} schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span><a href="/fix">Problems</a><span>/</span>{p.label}
+        </nav>
+        <span class="eyebrow">{p.label}</span>
+        <h1 class="heading-xl measure">{p.h1}.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">{p.answer}</p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href="#contact">Book the free assessment</a>
+          <a class="btn btn-secondary" href="#fix">Read the fix first</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg measure">How you know this is you.</h2>
+        <ul class="included">
+          {p.symptoms.map((sym) => <li>{sym}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="heading-lg measure">{p.cost.h}.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">{p.cost.p}</p>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="fix">
+      <div class="container">
+        <h2 class="heading-lg measure">How it gets fixed.</h2>
+        <div class="rows">
+          {
+            p.fix.map((f, idx) => (
+              <article class="row">
+                <div class="row-n">{String(idx + 1).padStart(2, "0")}</div>
+                <h3>{f.h}</h3>
+                <p>{f.p}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
+          This is the {s.name.toLowerCase()}, {s.price}.
+          {" "}<a class="text-link" href={`/services/${s.slug}`}>Full detail and pricing</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Straight answers.</h2>
+        <div class="faq-list">
+          {
+            p.faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-md">Fix it in your town</h2>
+        <div class="link-chips">
+          {topCities.map((c) => <a class="chip" href={`/ai-receptionist/${c.slug}`}>{c.name}</a>)}
+          <a class="chip chip-strong" href="/ai-receptionist">All Arkansas cities</a>
+        </div>
+        <h2 class="heading-md" style="margin-top:2.75rem">Other leaks we fix</h2>
+        <div class="link-chips">
+          {others.map((o) => <a class="chip" href={`/fix/${o.slug}`}>{o.label}</a>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Find out what it is costing you.</h2>
+          <p class="body-lg" style="margin-top:1rem">
+            Fifteen free minutes on your actual numbers. If the fix does not pay for itself in
+            your operation, we will say so on that call rather than sell you something.
+          </p>
+          <p class="fine-print" style="margin-top:2rem">
+            Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+          </p>
+        </div>
+        <LeadForm
+          defaultIntent="Talk done-for-you or retainer"
+          detailsPlaceholder={`Example: ${p.intent.toLowerCase()} at my business.`}
+        />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

@@ -1,0 +1,90 @@
+---
+/*
+ * /fix — hub for the problem cluster. One card per leak, no orphans.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { problems } from "../../data/problems";
+
+const title = "Where Arkansas Businesses Leak Work | Arkansas Automated";
+const description =
+  "The five leaks we fix most: missed calls, after-hours calls, quote follow-up, double entry, and no-shows. What each one costs and what the fix runs.";
+
+const site = "https://arkansasautomated.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Common operational leaks at Arkansas businesses",
+      itemListElement: problems.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: p.h1,
+        url: `${site}/fix/${p.slug}`,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Common problems", item: `${site}/fix` },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/fix" schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>Problems
+        </nav>
+        <h1 class="heading-xl measure">Start with the leak, not the software.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          Most owners do not wake up wanting AI. They wake up having lost a job to a phone that
+          rang out, a quote nobody chased, or an address typed in wrong for the third time. These
+          are the five leaks we get called about most, what each one actually costs, and how it
+          gets closed.
+        </p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href="/#reserve">Book the free assessment</a>
+          <a class="btn btn-secondary" href="/services">Services and pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <div class="city-grid">
+          {
+            problems.map((p) => (
+              <a class="city-card" href={`/fix/${p.slug}`}>
+                <span class="prop-name">{p.label}</span>
+                <span class="prop-role">{p.intent}</span>
+                <span class="city-cta">{p.h1}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="heading-md">Or start from your town</h2>
+        <div class="link-chips">
+          <a class="chip chip-strong" href="/ai-receptionist">AI receptionist by city</a>
+          <a class="chip" href="/for">Automation by industry</a>
+          <a class="chip" href="/ai-workshops">Workshops by city</a>
+          <a class="chip" href="/learn">Plain-language guides</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

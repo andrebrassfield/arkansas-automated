@@ -12,18 +12,22 @@ interface Props {
   defaultIntent?: string;
   /** Placeholder for the details textarea, tuned per page type. */
   detailsPlaceholder?: string;
+  /** Override the default workshop/assessment intents. */
+  intents?: string[];
+  /** Hide the workshop seat selector on non-workshop pages. */
+  showSeats?: boolean;
 }
 
 const {
   defaultIntent = "Book the free 15-minute assessment",
   detailsPlaceholder = "Example: after-hours calls, booking estimates, rescheduling.",
+  intents = [
+    "Reserve a workshop seat, $497 early bird",
+    "Book the free 15-minute assessment",
+    "Talk done-for-you or retainer",
+  ],
+  showSeats = true,
 } = Astro.props;
-
-const intents = [
-  "Reserve a workshop seat, $497 early bird",
-  "Book the free 15-minute assessment",
-  "Talk done-for-you or retainer",
-];
 ---
 
 <div class="form-card">
@@ -52,19 +56,26 @@ const intents = [
         <input id="email" name="email" type="email" required autocomplete="email" />
       </div>
     </div>
-    <div class="field-row">
+    {showSeats ? (
+      <div class="field-row">
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="seats">Seats (workshop only)</label>
+          <select id="seats" name="seats">
+            <option value="1">1</option>
+            <option value="2">2, partner rate</option>
+          </select>
+        </div>
+      </div>
+    ) : (
       <div class="field">
         <label for="phone">Phone</label>
         <input id="phone" name="phone" type="tel" autocomplete="tel" />
       </div>
-      <div class="field">
-        <label for="seats">Seats (workshop only)</label>
-        <select id="seats" name="seats">
-          <option value="1">1</option>
-          <option value="2">2, partner rate</option>
-        </select>
-      </div>
-    </div>
+    )}
     <div class="field">
       <label for="details">What is the first thing you would want handled?</label>
       <textarea id="details" name="details" rows="3" placeholder={detailsPlaceholder}></textarea>

@@ -1,0 +1,208 @@
+---
+/*
+ * /ai-receptionist/[city] — the money cluster.
+ *
+ * "AI receptionist [city]" is the highest-intent local term this business has,
+ * and it is the only service worth crossing with all 25 cities: an operations
+ * audit is not a thing anyone searches by town. Every page carries the
+ * city-specific `phones` paragraphs from cities.ts, so no two of these read the
+ * same. Cross-links go sideways to nearby cities, up to the hub, and across to
+ * the workshop page for the same town.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import LeadForm from "../../components/LeadForm.astro";
+import { cities, cityBySlug } from "../../data/cities";
+import { serviceBySlug } from "../../data/services";
+
+export function getStaticPaths() {
+  return cities.map((c) => ({ params: { city: c.slug } }));
+}
+
+const { city: slug } = Astro.params;
+const c = cityBySlug(slug);
+const s = serviceBySlug("ai-front-desk");
+const nearby = c.nearby.map(cityBySlug);
+
+const title = `AI Receptionist in ${c.name}, Arkansas | 24/7 Call Answering`;
+const description = `A 24/7 AI receptionist for ${c.name} businesses. Answers in your voice, qualifies the caller, books the job. $2,500 setup plus $497 a month, built and tuned by us.`;
+
+const answer = `An AI receptionist for a ${c.name}, Arkansas business answers every call around the clock in your business's voice, qualifies the caller by rules you write, books the job on your real calendar, and sends SMS follow-up. Arkansas Automated builds and manages it for $2,500 setup plus $497 a month, tuning included.`;
+
+const faqs = [
+  {
+    q: `Does the AI receptionist work for a small ${c.name} business?`,
+    a: `Yes, and small is where the arithmetic is clearest. A one or two truck operation in ${c.name} has nobody at a desk, so it misses the highest share of its calls. You will hear it answer as your business on the free 15-minute assessment before you commit a dollar.`,
+  },
+  {
+    q: "What happens when a caller needs a real person?",
+    a: s.faqs[1].a,
+  },
+  {
+    q: `How is this different from an answering service in ${c.name}?`,
+    a: "An answering service takes a message and hands the work back to you. The AI receptionist qualifies the caller against your rules and books the job on your calendar during the call, at any hour, for a flat monthly fee instead of per minute. We wrote a full side-by-side comparison in the guides.",
+  },
+  {
+    q: "What does the $497 a month cover?",
+    a: s.faqs[2].a,
+  },
+  {
+    q: `Do you come to ${c.name} in person?`,
+    a: c.workshopNote,
+  },
+];
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/ai-receptionist/${c.slug}`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: `AI receptionist in ${c.name}, Arkansas`,
+      serviceType: "AI receptionist and 24/7 call answering",
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      areaServed: { "@type": "City", name: `${c.name}, Arkansas` },
+      description: answer,
+      offers: {
+        "@type": "Offer",
+        price: "2500",
+        priceCurrency: "USD",
+        description: "$2,500 setup plus $497 per month managed service",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "AI receptionist in Arkansas", item: `${site}/ai-receptionist` },
+        { "@type": "ListItem", position: 3, name: c.name, item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path={`/ai-receptionist/${c.slug}`} schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span><a href="/ai-receptionist">AI receptionist</a><span>/</span>{c.name}
+        </nav>
+        <span class="eyebrow">{c.region} · {s.price}</span>
+        <h1 class="heading-xl measure">AI receptionist in {c.name}, Arkansas.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">{answer}</p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href="#contact">Hear it answer as your business</a>
+          <a class="btn btn-secondary" href="#how">How the build runs</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg measure">Why {c.name} businesses lose calls.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">{c.economy}</p>
+        {c.phones.map((p) => <p class="body-lg measure" style="margin-top:1.25rem">{p}</p>)}
+        <div class="link-chips">
+          <a class="chip" href="/fix/missed-calls">The missed-call arithmetic</a>
+          <a class="chip" href="/fix/after-hours-calls">After-hours coverage</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="heading-lg measure">What it does for you.</h2>
+        <ul class="included">
+          {s.includes.map((i) => <li>{i}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="how">
+      <div class="container">
+        <h2 class="heading-lg measure">How the build runs.</h2>
+        <div class="rows">
+          {
+            s.process.map((p, idx) => (
+              <article class="row">
+                <div class="row-n">{String(idx + 1).padStart(2, "0")}</div>
+                <h3>{p.h}</h3>
+                <p>{p.p}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
+          {s.price}. The same price sheet everywhere in Arkansas.
+          {" "}<a class="text-link" href="/services/ai-front-desk">Full service detail and pricing</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Questions {c.name} owners ask.</h2>
+        <div class="faq-list">
+          {
+            faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-md">AI receptionist service nearby</h2>
+        <div class="link-chips">
+          {nearby.map((n) => <a class="chip" href={`/ai-receptionist/${n.slug}`}>{n.name}</a>)}
+          <a class="chip chip-strong" href="/ai-receptionist">All {cities.length} Arkansas cities</a>
+        </div>
+        <h2 class="heading-md" style="margin-top:2.75rem">Rather build it yourself?</h2>
+        <div class="link-chips">
+          <a class="chip" href={`/ai-workshops/${c.slug}`}>Workshops in {c.name}</a>
+          <a class="chip" href="/learn/what-is-an-ai-receptionist">What is an AI receptionist</a>
+          <a class="chip" href="/learn/ai-receptionist-cost">What it costs</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Hear it before you buy it.</h2>
+          <p class="body-lg" style="margin-top:1rem">
+            The free 15-minute assessment loads your {c.name} business details and you listen to
+            the receptionist answer as your company. No payment due, and we reply from a real
+            address, usually within one business day.
+          </p>
+          <p class="fine-print" style="margin-top:2rem">
+            Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+          </p>
+        </div>
+        <LeadForm
+          defaultIntent="Talk done-for-you or retainer"
+          detailsPlaceholder={`Example: we miss after-hours calls at our ${c.name} shop and want them answered and booked.`}
+        />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
