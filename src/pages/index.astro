@@ -61,19 +61,14 @@ const included = [
 
 const paths = [
   {
-    k: "Learn",
-    h: "The workshop",
-    p: "$497 early bird. One afternoon, hands-on, and you leave with a working prototype. Best if you want to understand the system you are running.",
+    k: "Build with us",
+    h: "Leave the workshop with a working prototype",
+    p: "$497 early bird. Spend one Saturday building, testing, and understanding an AI front desk configured for your business.",
   },
   {
-    k: "Audit",
-    h: "AI operations audit",
-    p: "$999. We map your calls, quotes, scheduling, and invoicing, then hand you a prioritized automation plan with real ROI numbers.",
-  },
-  {
-    k: "Build",
-    h: "Done for you, plus retainer",
-    p: "From $2,500 setup plus monthly. We build it, launch it, and stay on to keep it working as your business changes.",
+    k: "Have us build it",
+    h: "Pay for the outcome, not the training",
+    p: "Start with a free 15-minute fit assessment. If the numbers work, we can audit, build, launch, and manage the system for you.",
   },
 ];
 
@@ -159,6 +154,10 @@ const homeSchema = {
       name: "Arkansas Automated",
       url: "https://arkansasautomated.com",
       description,
+      // Real alternative representations of the same operator (Brassfield
+      // Ventures), shown on this page in the "We run this playbook on our own
+      // properties" section. No invented social profiles (PROTOCOL 10).
+      sameAs: properties.map((p) => p.url),
       areaServed: [
         { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
         { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
@@ -196,15 +195,23 @@ const homeSchema = {
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <h1 class="heading-xl enter">Build your AI receptionist in one afternoon.</h1>
+          <p class="hero-kicker enter">Practical AI for Arkansas service businesses</p>
+          <h1 class="heading-xl enter">Every call answered. Every lead followed up.</h1>
           <p class="body-lg enter enter-2">
-            In-person workshop for Arkansas business owners. Walk in with your phone number, walk
-            out with a 24/7 AI front desk.
+            Build a working AI front desk in one Saturday workshop, or let our Arkansas team
+            implement and manage it for you.
           </p>
           <div class="hero-ctas enter enter-3">
-            <a class="btn btn-primary" href="#reserve">Reserve a seat</a>
-            <a class="btn btn-secondary" href="#done-for-you">We build it for you</a>
+            <div class="cta-choice">
+              <a class="btn btn-primary" href="#workshop-request">Build mine in the workshop</a>
+              <span>Fort Smith · Saturdays, 1–5 PM · $497 early bird</span>
+            </div>
+            <div class="cta-choice">
+              <a class="btn btn-secondary" href="#assessment-request">Book a 15-minute fit assessment</a>
+              <span>No payment today. We will tell you if the numbers do not make sense.</span>
+            </div>
           </div>
+          <a class="tool-link enter enter-3" href="/ai-opportunity-map/">Not sure which path fits? Map your next move <span>→</span></a>
         </div>
         <figure class="hero-figure enter enter-2">
           <img
@@ -216,6 +223,20 @@ const homeSchema = {
             decoding="async"
           />
         </figure>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-labelledby="proof-strip-title">
+      <div class="container proof-strip-grid">
+        <div>
+          <h2 id="proof-strip-title">See where automation stops before you buy it.</h2>
+          <p>We demonstrate the full call path: answer, qualify, book, follow up, and hand off to a person.</p>
+        </div>
+        <ul>
+          <li>Test the prototype live</li>
+          <li>Set your own escalation rules</li>
+          <li>Keep judgment and exceptions human</li>
+        </ul>
       </div>
     </section>
 
@@ -285,13 +306,13 @@ const homeSchema = {
           {included.map((i) => <li>{i}</li>)}
         </ul>
 
-        <a class="btn btn-primary" href="#reserve" style="margin-top:2.5rem">Reserve a seat</a>
+        <a class="btn btn-primary" href="#workshop-request" style="margin-top:2.5rem">Build mine in the workshop</a>
       </div>
     </section>
 
     <section class="section section-tint" id="paths">
       <div class="container">
-        <h2 class="heading-lg measure">Three ways to work with us.</h2>
+        <h2 class="heading-lg measure">Build it with us—or have us build it.</h2>
         <div class="phases">
           {
             paths.map((p) => (
@@ -304,7 +325,8 @@ const homeSchema = {
           }
         </div>
         <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
-          Workshop and audit fees credit toward a done-for-you build started within 60 days.
+          Need the workflow mapped before a build? The $999 operations audit is available inside
+          the done-for-you path. Workshop and audit fees credit toward a build started within 60 days.
         </p>
       </div>
     </section>
@@ -390,22 +412,29 @@ const homeSchema = {
     </section>
 
     <section class="section" id="reserve">
-      <div class="container split">
-        <div>
-          <h2 class="heading-lg">Reserve your seat.</h2>
-          <p class="body-lg" style="margin-top:1rem">
-            One form for everything: workshop seats, the free assessment, and done-for-you scoping.
-            Tell us which and we reply from a real address, usually within one business day.
-          </p>
-          <p class="body-lg" style="margin-top:1rem">
-            No payment due now. Your seat, the date, and the room address are confirmed by email.
-          </p>
+      <div class="container">
+        <h2 class="heading-lg measure">Choose the next step that fits how you work.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          The workshop and managed-build paths are separate, so you only answer questions relevant to your request.
+        </p>
+        <div class="intent-forms">
+          <section id="workshop-request" class="intent-form">
+            <div class="intent-form-copy">
+              <span class="phase-k">Build with us</span>
+              <h3>Request a workshop seat</h3>
+              <p>Fort Smith, Saturdays from 1–5 PM. We confirm availability, price, date, and the room address by email.</p>
+            </div>
+            <LeadForm variant="workshop" formId="workshop-form" detailsPlaceholder="Example: after-hours calls or booking estimates." />
+          </section>
+          <section id="assessment-request" class="intent-form">
+            <div class="intent-form-copy">
+              <span class="phase-k">Have us build it</span>
+              <h3>Request a 15-minute fit assessment</h3>
+              <p>Tell us what is breaking now. We will assess whether automation is practical before recommending a paid engagement.</p>
+            </div>
+            <LeadForm variant="assessment" formId="assessment-form" detailsPlaceholder="Example: missed calls, slow quote follow-up, or duplicate data entry." />
+          </section>
         </div>
-
-        <LeadForm
-          defaultIntent="Reserve a workshop seat, $497 early bird"
-          detailsPlaceholder="Example: after-hours calls, booking estimates, rescheduling."
-        />
       </div>
     </section>
   </main>

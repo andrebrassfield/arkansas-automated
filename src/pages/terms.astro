@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+const title = "Website Terms | Arkansas Automated";
+const description = "Terms for using the Arkansas Automated public website and submitting a service request.";
+---
+<Base title={title} description={description} path="/terms">
+  <SiteNav />
+  <main><section class="section"><div class="container article-body">
+    <p class="crumbs"><a href="/">Home</a><span>/</span><span>Terms</span></p>
+    <h1 class="heading-lg">Website terms</h1>
+    <p class="fine-print">Last updated August 15, 2026</p>
+    <p>This website provides general information about Arkansas Automated workshops and services. Submitting a form requests a conversation; it does not reserve a seat, create a client relationship, or require payment.</p>
+    <h2 class="heading-md">Pricing and availability</h2>
+    <p>Published prices describe current starting points or listed workshop prices and may change. Workshop availability, final scope, recurring costs, and payment terms are confirmed directly before purchase or in a written agreement.</p>
+    <h2 class="heading-md">Educational information</h2>
+    <p>Learning content, calculators, examples, and cost comparisons are general information. They are not legal, financial, medical, tax, or compliance advice, and they do not guarantee a particular business result.</p>
+    <h2 class="heading-md">Acceptable use</h2>
+    <p>Do not misuse the website, attempt to interfere with its operation, submit unlawful material, impersonate another person, or probe systems without authorization.</p>
+    <h2 class="heading-md">Questions</h2>
+    <p>Email <a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a> with questions about these website terms. Project-specific rights and obligations belong in the written agreement for that engagement.</p>
+  </div></section></main>
+  <SiteFooter />
+</Base>

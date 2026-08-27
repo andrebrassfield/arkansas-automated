@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+const title = "Automation Guardrails | Arkansas Automated";
+const description = "The practical boundaries Arkansas Automated uses when designing AI front desks and business workflows.";
+---
+<Base title={title} description={description} path="/automation-guardrails">
+  <SiteNav />
+  <main><section class="section"><div class="container article-body">
+    <p class="crumbs"><a href="/">Home</a><span>/</span><span>Automation guardrails</span></p>
+    <h1 class="heading-lg">Automation should make the human handoff obvious.</h1>
+    <p class="body-lg">We use automation for repeatable intake, routing, scheduling, reminders, and data movement. We do not treat it as a substitute for judgment.</p>
+    <h2 class="heading-md">What can be automated</h2>
+    <p>Common candidates include answering routine calls, collecting caller-provided details, identifying the requested service, offering approved appointment slots, sending confirmations, routing messages, and moving approved fields between business systems.</p>
+    <h2 class="heading-md">What stays human</h2>
+    <p>Negotiation, pricing exceptions, safety decisions, professional advice, disputes, unusual requests, and conversations where trust or judgment determines the outcome should reach an authorized person.</p>
+    <h2 class="heading-md">Before launch</h2>
+    <p>A production workflow should have approved source information, defined escalation conditions, authorized system access, test scenarios, failure notifications, and a named human owner. Call recording, automated-contact disclosures, retention, and industry-specific requirements must be reviewed for the actual workflow and jurisdictions involved.</p>
+    <h2 class="heading-md">Failure and correction</h2>
+    <p>No automated system is error-free. A useful implementation includes a fallback when a tool is unavailable, a way for a caller or employee to reach a person, and a process for reviewing and correcting errors.</p>
+    <h2 class="heading-md">Medical, legal, and financial workflows</h2>
+    <p>These workflows can involve sensitive information and professional duties. Public marketing pages do not establish compliance. The business and its qualified advisers must approve the specific data, vendors, disclosures, access controls, and human review process before launch.</p>
+    <div class="next-step"><a class="btn btn-primary" href="/#assessment-request">Discuss your workflow</a></div>
+  </div></section></main>
+  <SiteFooter />
+</Base>

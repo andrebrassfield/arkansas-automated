@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+const title = "Contact Arkansas Automated";
+const description = "Contact Arkansas Automated about an AI workshop, automation assessment, or done-for-you implementation.";
+---
+<Base title={title} description={description} path="/contact">
+  <SiteNav />
+  <main><section class="section"><div class="container article-body">
+    <p class="crumbs"><a href="/">Home</a><span>/</span><span>Contact</span></p>
+    <h1 class="heading-lg">Talk with Arkansas Automated.</h1>
+    <p class="body-lg">For workshop seats and implementation assessments, use the relevant request form so we receive the context needed to respond.</p>
+    <div class="link-chips"><a class="chip chip-strong" href="/#workshop-request">Request a workshop seat</a><a class="chip chip-strong" href="/#assessment-request">Request a fit assessment</a></div>
+    <h2 class="heading-md">Email</h2>
+    <p><a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a></p>
+    <p class="fine-print">We usually reply within one business day. Workshop room details are sent with confirmation rather than published publicly.</p>
+  </div></section></main>
+  <SiteFooter />
+</Base>

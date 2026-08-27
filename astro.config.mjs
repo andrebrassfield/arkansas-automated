@@ -15,6 +15,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://arkansasautomated.com",
   output: "static",
+  trailingSlash: "never",
   integrations: [
     sitemap({
       serialize(item) {

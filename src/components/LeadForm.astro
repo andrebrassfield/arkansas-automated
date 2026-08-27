@@ -1,282 +1,233 @@
 ---
-/*
- * Shared lead form. Posts to the hub's public lead endpoint as type
- * "automation_assessment", the same capture path the previous audit form
- * used. The workshop intent rides in `extra`, so no hub change is required.
- *
- * One instance per page (ids are page-unique). `sourcePath` tells the hub
- * which pSEO page the lead came from.
- */
 interface Props {
-  /** Preselected intent option. */
+  variant?: "workshop" | "assessment" | "merchant";
+  formId?: string;
   defaultIntent?: string;
-  /** Placeholder for the details textarea, tuned per page type. */
   detailsPlaceholder?: string;
-  /** Override the default workshop/assessment intents. */
-  intents?: string[];
-  /** Hide the workshop seat selector on non-workshop pages. */
-  showSeats?: boolean;
+  sourceCity?: string;
+  sourceIndustry?: string;
+  sourceService?: string;
+  submitLabel?: string;
 }
 
 const {
-  defaultIntent = "Book the free 15-minute assessment",
+  variant = "assessment",
+  formId = "lead",
+  defaultIntent,
   detailsPlaceholder = "Example: after-hours calls, booking estimates, rescheduling.",
-  intents = [
-    "Reserve a workshop seat, $497 early bird",
-    "Book the free 15-minute assessment",
-    "Talk done-for-you or retainer",
-  ],
-  showSeats = true,
+  sourceCity = "",
+  sourceIndustry = "",
+  sourceService = "",
+  submitLabel,
 } = Astro.props;
+const isWorkshop = variant === "workshop";
+const isMerchant = variant === "merchant";
+const intent = defaultIntent ??
+  (isWorkshop ? "Reserve a workshop seat, $497 early bird" : isMerchant ? "Merchant store activation" : "Book the free 15-minute assessment");
+const fieldId = (name: string) => `${formId}-${name}`;
 ---
 
 <div class="form-card">
-  <form id="reserve-form" novalidate>
+  <form id={formId} data-lead-form data-variant={variant} data-intent={intent}
+    data-city={sourceCity} data-industry={sourceIndustry} data-service={sourceService} novalidate>
+    <input type="hidden" name="intent" value={intent} />
     <div class="field">
-      <label for="intent">I want to</label>
-      <select id="intent" name="intent">
-        {
-          intents.map((i) => (
-            <option value={i} selected={i === defaultIntent}>{i}</option>
-          ))
-        }
-      </select>
-    </div>
-    <div class="field">
-      <label for="businessName">Business name</label>
-      <input id="businessName" name="businessName" type="text" required autocomplete="organization" />
+      <label for={fieldId("businessName")}>{isMerchant ? "Store name" : "Business name"}</label>
+      <input id={fieldId("businessName")} name="businessName" type="text" required autocomplete="organization" />
     </div>
     <div class="field-row">
       <div class="field">
-        <label for="contactName">Your name</label>
-        <input id="contactName" name="contactName" type="text" required autocomplete="name" />
+        <label for={fieldId("contactName")}>{isMerchant ? "Contact name" : "Your name"}</label>
+        <input id={fieldId("contactName")} name="contactName" type="text" required autocomplete="name" />
       </div>
       <div class="field">
-        <label for="email">Work email</label>
-        <input id="email" name="email" type="email" required autocomplete="email" />
+        <label for={fieldId("email")}>Work email</label>
+        <input id={fieldId("email")} name="email" type="email" required autocomplete="email" />
       </div>
     </div>
-    {showSeats ? (
-      <div class="field-row">
-        <div class="field">
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" />
-        </div>
-        <div class="field">
-          <label for="seats">Seats (workshop only)</label>
-          <select id="seats" name="seats">
-            <option value="1">1</option>
-            <option value="2">2, partner rate</option>
-          </select>
-        </div>
+    {isMerchant ? (
+      <div class="field">
+        <label for={fieldId("mall")}>Mall / property name</label>
+        <input id={fieldId("mall")} name="industry" type="text" placeholder="Example: Central Mall" />
       </div>
     ) : (
-      <div class="field">
-        <label for="phone">Phone</label>
-        <input id="phone" name="phone" type="tel" autocomplete="tel" />
+      <div class="field-row">
+        <div class="field">
+          <label for={fieldId("phone")}>Phone</label>
+          <input id={fieldId("phone")} name="phone" type="tel" autocomplete="tel" />
+        </div>
+        {isWorkshop ? (
+          <div class="field">
+            <label for={fieldId("seats")}>Seats</label>
+            <select id={fieldId("seats")} name="seats">
+              <option value="1">1 seat, $497 early bird</option>
+              <option value="2">2 seats, partner rate</option>
+            </select>
+          </div>
+        ) : (
+          <div class="field">
+            <label for={fieldId("industry")}>Industry</label>
+            <input id={fieldId("industry")} name="industry" type="text" placeholder="Example: HVAC" />
+          </div>
+        )}
       </div>
     )}
-    <div class="field">
-      <label for="details">What is the first thing you would want handled?</label>
-      <textarea id="details" name="details" rows="3" placeholder={detailsPlaceholder}></textarea>
-    </div>
-
-    <!-- Honeypot. Real people never see or fill this; the hub rejects
-         any submission that carries a value (server-side bot-field). -->
+    {isWorkshop ? (
+      <div class="field">
+        <label for={fieldId("session")}>Preferred session</label>
+        <input id={fieldId("session")} name="session" type="text" placeholder="Next available Saturday, or a date that works" />
+      </div>
+    ) : !isMerchant ? (
+      <div class="field">
+        <label for={fieldId("stack")}>Phone, calendar, or CRM tools <span class="optional">(optional)</span></label>
+        <input id={fieldId("stack")} name="stack" type="text" placeholder="Example: RingCentral, Google Calendar, Jobber" />
+      </div>
+    ) : null}
+    {!isMerchant && (
+      <div class="field">
+        <label for={fieldId("details")}>{isWorkshop ? "Biggest call-handling problem" : "What should work better?"} <span class="optional">(optional)</span></label>
+        <textarea id={fieldId("details")} name="details" rows="3" placeholder={detailsPlaceholder}></textarea>
+      </div>
+    )}
     <div class="hp" aria-hidden="true">
-      <label for="bot-field">Do not fill this in</label>
-      <input id="bot-field" name="bot-field" type="text" tabindex="-1" autocomplete="off" />
+      <label for={fieldId("bot-field")}>Do not fill this in</label>
+      <input id={fieldId("bot-field")} name="bot-field" type="text" tabindex="-1" autocomplete="off" />
     </div>
-
-    <button class="btn btn-primary" type="submit" style="width:100%" id="reserve-submit">
-      Send my request
+    <button class="btn btn-primary" type="submit" style="width:100%" data-lead-submit>
+      {submitLabel ?? (isWorkshop ? "Request my workshop seat" : "Request my 15-minute assessment")}
     </button>
-    <!-- Second conversion path. Until now this form was the only way to reach
-         the business from any page, and it sits roughly 84% of the way down
-         the homepage. No phone number is published for this brand, so email is
-         the only alternative that can be stated truthfully here. -->
-    <p class="form-note">
-      No payment due now. We reply from a real address. You can also email
-      <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.
-    </p>
-    <div id="reserve-msg" class="form-msg" hidden></div>
+    <p class="form-note">No payment today. We usually reply within one business day. You can also email <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.</p>
+    <p class="form-legal">By submitting, you agree that Arkansas Automated may contact you about this request. See our <a href="/privacy">privacy and data handling page</a>.</p>
+    <div class="form-msg" data-lead-message hidden></div>
   </form>
 </div>
 
 <script>
-  // APEX host, never www: www 308-redirects, and a redirected cross-origin
-  // fetch resends with Origin: null, which the hub allowlist rejects. That
-  // exact bug silently ate every submission from this domain until 2026-07-27.
-  //
-  // text/plain is deliberate: it is a CORS-safelisted content type, so the
-  // browser sends no preflight.
   const ENDPOINT = "https://fortsmithdirectory.com/api/public/leads";
-  const form = document.getElementById("reserve-form") as HTMLFormElement | null;
-  const msg = document.getElementById("reserve-msg") as HTMLElement | null;
-  const submit = document.getElementById("reserve-submit") as HTMLButtonElement | null;
 
-  function show(kind: "ok" | "error", text: string) {
-    if (!msg) return;
-    msg.hidden = false;
-    msg.dataset.kind = kind;
-    msg.textContent = text;
-  }
+  document.querySelectorAll<HTMLFormElement>("[data-lead-form]").forEach((form) => {
+    if (form.dataset.ready === "true") return;
+    form.dataset.ready = "true";
+    const msg = form.querySelector<HTMLElement>("[data-lead-message]");
+    const submit = form.querySelector<HTMLButtonElement>("[data-lead-submit]");
+    const pageLoadedAt = Date.now();
+    let firstInteractionAt: number | null = null;
+    let failedAttempts = 0;
+    let formEverVisible = false;
 
-  /*
-   * Failure recovery. Before 2026-08-08 a failed POST showed an address as
-   * plain text, so the only way to recover was to retype everything into a
-   * mail client. Anyone who had already filled the form was the most motivated
-   * visitor on the page, and that is exactly who was dropped. This rebuilds
-   * what they typed into a prefilled mailto so a transport failure costs one
-   * click instead of the lead.
-   */
-  function showRecoverable(text: string, mail: { subject: string; body: string }) {
-    if (!msg) return;
-    msg.hidden = false;
-    msg.dataset.kind = "error";
-    msg.textContent = "";
+    function show(kind: "ok" | "error", text: string) {
+      if (!msg) return;
+      msg.hidden = false;
+      msg.dataset.kind = kind;
+      msg.textContent = text;
+    }
 
-    const p = document.createElement("p");
-    p.textContent = text;
-    msg.appendChild(p);
+    function showRecoverable(text: string, mail: { subject: string; body: string }) {
+      if (!msg) return;
+      msg.hidden = false;
+      msg.dataset.kind = "error";
+      msg.textContent = "";
+      const p = document.createElement("p");
+      p.textContent = text;
+      msg.appendChild(p);
+      const a = document.createElement("a");
+      a.href = `mailto:dre@arkansasautomated.com?subject=${encodeURIComponent(mail.subject)}&body=${encodeURIComponent(mail.body)}`;
+      a.textContent = "Send this as an email instead";
+      a.style.textDecoration = "underline";
+      msg.appendChild(a);
+    }
 
-    const a = document.createElement("a");
-    a.href =
-      "mailto:dre@arkansasautomated.com?subject=" +
-      encodeURIComponent(mail.subject) +
-      "&body=" +
-      encodeURIComponent(mail.body);
-    a.textContent = "Send this as an email instead";
-    a.style.textDecoration = "underline";
-    msg.appendChild(a);
-  }
-
-  // Funnel context, recorded only on submissions that succeed. It rides in the
-  // lead's existing `extra` (jsonb `payload` on the hub) so it needs no schema
-  // or endpoint change. It cannot tell us about people who never submit; that
-  // needs an events endpoint the hub does not have yet.
-  const pageLoadedAt = Date.now();
-  let firstInteractionAt: number | null = null;
-  let failedAttempts = 0;
-  let formEverVisible = false;
-
-  form?.addEventListener(
-    "input",
-    () => {
+    form.addEventListener("input", () => {
       if (firstInteractionAt === null) firstInteractionAt = Date.now();
-    },
-    { once: false },
-  );
-
-  if (form && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            formEverVisible = true;
-            io.disconnect();
-          }
+    });
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          formEverVisible = true;
+          observer.disconnect();
         }
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(form);
-  }
-
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    if (!form || !submit) return;
-    const fd = new FormData(form);
-    const val = (k: string) => {
-      const v = fd.get(k);
-      return typeof v === "string" && v.trim() !== "" ? v.trim() : undefined;
-    };
-
-    const businessName = val("businessName");
-    const contactName = val("contactName");
-    const email = val("email");
-    if (!businessName || !contactName || !email) {
-      show("error", "Business name, your name, and a work email are required.");
-      return;
+      }, { threshold: 0.3 });
+      observer.observe(form);
     }
 
-    submit.disabled = true;
-    const original = submit.textContent;
-    submit.textContent = "Sending";
-
-    // `category` is deliberately omitted: leads.category is a foreign key to
-    // categories(slug) and automation is not a directory category, so sending
-    // one would fail the insert.
-    const payload: Record<string, unknown> = {
-      type: "automation_assessment",
-      businessName,
-      name: contactName,
-      email,
-      phone: val("phone"),
-      details: val("details"),
-      spokeDomain: "arkansasautomated.com",
-      sourcePath: location.pathname,
-      "bot-field": fd.get("bot-field") ?? "",
-      extra: {
-        intent: val("intent") ?? null,
-        seats: val("seats") ?? null,
-        // Funnel context. `msToSubmit` is time from page load; `msToFirstInput`
-        // separates "arrived ready to convert" from "read the page first".
-        // `formEverVisible` false means the form was submitted without ever
-        // scrolling into view, which is a bot tell worth keeping on the row.
-        msToSubmit: Date.now() - pageLoadedAt,
-        msToFirstInput: firstInteractionAt === null ? null : firstInteractionAt - pageLoadedAt,
-        failedAttempts,
-        formEverVisible,
-        referrer: document.referrer || null,
-      },
-    };
-
-    const mail = {
-      subject: `Arkansas Automated request from ${businessName}`,
-      body: [
-        `Business: ${businessName}`,
-        `Name: ${contactName}`,
-        `Email: ${email}`,
-        `Phone: ${val("phone") ?? ""}`,
-        `I want to: ${val("intent") ?? ""}`,
-        `Seats: ${val("seats") ?? ""}`,
-        "",
-        `${val("details") ?? ""}`,
-      ].join("\n"),
-    };
-
-    // One retry before giving up. A single transient network blip should not
-    // cost a lead that is already typed and submitted.
-    async function post(): Promise<boolean> {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(payload),
-      });
-      return res.ok;
-    }
-
-    let ok = false;
-    for (let attempt = 0; attempt < 2 && !ok; attempt++) {
-      try {
-        ok = await post();
-      } catch {
-        ok = false;
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!submit) return;
+      const fd = new FormData(form);
+      const val = (key: string) => {
+        const value = fd.get(key);
+        return typeof value === "string" && value.trim() ? value.trim() : undefined;
+      };
+      const businessName = val("businessName");
+      const contactName = val("contactName");
+      const email = val("email");
+      if (!businessName || !contactName || !email) {
+        show("error", "Business name, your name, and a work email are required.");
+        return;
       }
-      if (!ok && attempt === 0) await new Promise((r) => setTimeout(r, 800));
-    }
-
-    if (ok) {
-      form.reset();
-      show("ok", "Received. We will read this and reply from a real address, usually within one business day.");
-      submit.textContent = "Request received";
-      return;
-    }
-
-    failedAttempts++;
-    showRecoverable("That did not go through, and we do not want to lose your request. ", mail);
-    submit.disabled = false;
-    submit.textContent = original;
+      submit.disabled = true;
+      const original = submit.textContent;
+      submit.textContent = "Sending";
+      const params = new URLSearchParams(location.search);
+      const payload: Record<string, unknown> = {
+        type: "automation_assessment",
+        businessName,
+        name: contactName,
+        email,
+        phone: val("phone"),
+        details: val("details"),
+        spokeDomain: "arkansasautomated.com",
+        sourcePath: location.pathname,
+        "bot-field": fd.get("bot-field") ?? "",
+        extra: {
+          intent: val("intent") ?? form.dataset.intent ?? null,
+          seats: val("seats") ?? null,
+          session: val("session") ?? null,
+          industry: val("industry") ?? form.dataset.industry ?? null,
+          stack: val("stack") ?? null,
+          city: form.dataset.city || null,
+          service: form.dataset.service || null,
+          utmSource: params.get("utm_source"),
+          utmMedium: params.get("utm_medium"),
+          utmCampaign: params.get("utm_campaign"),
+          msToSubmit: Date.now() - pageLoadedAt,
+          msToFirstInput: firstInteractionAt === null ? null : firstInteractionAt - pageLoadedAt,
+          failedAttempts,
+          formEverVisible,
+          referrer: document.referrer || null,
+        },
+      };
+      const mail = {
+        subject: `Arkansas Automated request from ${businessName}`,
+        body: [`Business: ${businessName}`, `Name: ${contactName}`, `Email: ${email}`,
+          `Phone: ${val("phone") ?? ""}`, `Request: ${val("intent") ?? form.dataset.intent ?? ""}`,
+          `Seats: ${val("seats") ?? ""}`, `Preferred session: ${val("session") ?? ""}`,
+          `Industry: ${val("industry") ?? form.dataset.industry ?? ""}`, `Tools: ${val("stack") ?? ""}`,
+          "", val("details") ?? ""].join("\n"),
+      };
+      async function post() {
+        const response = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
+        return response.ok;
+      }
+      let ok = false;
+      for (let attempt = 0; attempt < 2 && !ok; attempt++) {
+        try { ok = await post(); } catch { ok = false; }
+        if (!ok && attempt === 0) await new Promise((resolve) => setTimeout(resolve, 800));
+      }
+      if (ok) {
+        form.reset();
+        show("ok", form.dataset.variant === "workshop"
+          ? "Request received. We will confirm availability, price, and the room details by email."
+          : form.dataset.variant === "merchant"
+            ? "Activation request received. We will confirm enrollment status within one business day."
+            : "Request received. We will reply from a real address, usually within one business day.");
+        submit.textContent = "Request received";
+        return;
+      }
+      failedAttempts++;
+      showRecoverable("That did not go through, and we do not want to lose your request.", mail);
+      submit.disabled = false;
+      submit.textContent = original;
+    });
   });
 </script>

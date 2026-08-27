@@ -7,7 +7,7 @@
 - [Homepage](https://arkansasautomated.com/): workshops, done-for-you services, FAQ, and the reservation form
 - [AI receptionist by city](https://arkansasautomated.com/ai-receptionist): 25 Arkansas cities, each with the local phone and front-desk detail
 - [Services and pricing](https://arkansasautomated.com/services): all engagement types with public pricing
-- [Vendra](https://arkansasautomated.com/vendra): shopping-center sales reporting for malls and merchants. An Arkansas Automated product. Activation lives at vendra.arkansasautomated.com/join/[token] once a store invite is issued.
+- [Vendra](https://arkansasautomated.com/vendra): shopping-center sales reporting for malls and merchants. An Arkansas Automated product. Activation uses a store-specific /join/[token] link issued by the mall team.
 - [Machine-readable pricing](https://arkansasautomated.com/pricing.md): structured price sheet for AI agents
 - [Problems we fix](https://arkansasautomated.com/fix): missed calls, after-hours calls, quote follow-up, double entry, no-shows
 - [Forward deployed AI engineer](https://arkansasautomated.com/forward-deployed-ai-engineer): what embedded AI implementation means for a local business

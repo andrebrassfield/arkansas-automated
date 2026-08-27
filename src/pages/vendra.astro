@@ -13,7 +13,7 @@ import LeadForm from "../components/LeadForm.astro";
 
 const title = "Vendra | Sales Reporting for Modern Shopping Centers";
 const description =
-  "Vendra is a merchant-paid monthly sales-reporting workflow for shopping centers. Stores pay $29/month and activate through a property-manager invite.";
+  "Merchants automate monthly sales reporting for $29/month through a property-manager invite. Stay compliant without changing payment processing.";
 
 const site = "https://arkansasautomated.com";
 const schema = {
@@ -34,7 +34,7 @@ const schema = {
       offers: {
         "@type": "Offer",
         availability: "https://schema.org/LimitedAvailability",
-        description: "Controlled shopping-center rollout. Merchants pay $29/month; property managers request a demo.",
+        description: "Controlled shopping-center rollout. Merchants pay $29/month and activate through a property-manager invite.",
       },
     },
     {
@@ -63,19 +63,8 @@ const steps = [
   {
     n: "03",
     h: "Review the month and certify when prompted",
-    p: "Once the store is in the workflow, monthly review and manager certification happen in one place.",
     t: "About 1-3 minutes",
-  },
-];
-
-const audiences = [
-  {
-    h: "For the mall team",
-    p: "A consistent view of reporting status, a cleaner follow-up path on exceptions, and an auditable record of the completed workflow. You coordinate the cohort without handling per-store billing.",
-  },
-  {
-    h: "For merchants",
-    p: "A 5-10 minute activation, then one monthly process. Your store pays <strong>$29/month</strong>. Payment-taking does not change. CSV remains available if a POS connection is the wrong fit.",
+    p: "Once the store is in the workflow, monthly review and manager certification happen in one place.",
   },
 ];
 
@@ -100,14 +89,17 @@ const bounds = [
           <nav class="crumbs" aria-label="Breadcrumb">
             <a href="/">Home</a><span>/</span>Vendra
           </nav>
-          <h1 class="heading-xl">Get stores reporting-ready in 5-10 minutes.</h1>
+          <h1 class="heading-xl">Automate your monthly sales report before the next deadline.</h1>
           <p class="body-lg">
-            Vendra is a <strong>$29/month merchant subscription</strong> that places stores into an auditable monthly sales-reporting workflow managed by the shopping center. The mall coordinates invites and status; the store pays.
+            Most shopping-center leases require monthly sales reporting. Missing deadlines can trigger penalties. Vendra keeps your store compliant for <strong>$29/month</strong> — no POS replacement, no change to how you accept payments.
           </p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#request">Discuss a rollout</a>
+            <a class="btn btn-primary" href="#activate">Get my store activated</a>
             <a class="btn btn-secondary" href="#how">How activation works</a>
           </div>
+          <p class="fine-print" style="margin-top:1rem">
+            No payment until your property is enrolled. Activation only happens after your property manager invites your store.
+          </p>
         </div>
         <figure class="hero-figure">
           <img
@@ -163,28 +155,12 @@ const bounds = [
       </div>
     </section>
 
-    <section class="section section-tint">
-      <div class="container split">
-        {
-          audiences.map((item) => (
-            <article>
-              <h2 class="heading-md">{item.h}</h2>
-              <p class="body-lg" style="margin-top:0.85rem">{item.p}</p>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="section" id="request">
+    <section class="section section-tint" id="activate">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Review a controlled first-property rollout.</h2>
+          <h2 class="heading-lg">Get your store activated.</h2>
           <p class="body-lg" style="margin-top:1.15rem">
-            The first Arkansas path is a coordinated shopping-center rollout, starting
-            with Central Mall. We bring the merchant announcement, QR materials, and
-            on-site activation support. Stores are invited individually. There is no
-            generic public join link.
+            Central Mall is the first coordinated Arkansas shopping-center rollout. Participating stores are being invited individually through property management. Submit your store info and we’ll confirm enrollment status within one business day.
           </p>
           <p class="body-lg" style="margin-top:1.15rem">
             Questions go to
@@ -193,15 +169,62 @@ const bounds = [
           </p>
         </div>
         <LeadForm
-          defaultIntent="Discuss a shopping-center rollout"
-          detailsPlaceholder="Example: Central Mall property-manager demo, a merchant cohort, or how this fits the current reporting process."
-          showSeats={false}
-          intents={[
-            "Discuss a shopping-center rollout",
-            "Activate my store on Vendra",
-            "Ask a question about monthly sales reporting",
-          ]}
+          variant="merchant"
+          formId="vendra-activate"
+          defaultIntent="Merchant store activation"
+          submitLabel="Check if my property participates"
+          detailsPlaceholder="Example: Central Mall store #104, or the mall/property where your store is located."
         />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="heading-md" style="margin:0">First-mover status</p>
+        <p class="body-lg" style="margin-top:0.45rem">
+          Central Mall is the first coordinated Arkansas shopping-center rollout. Square and Clover connections are supported. Live POS callback delivery is in active certification; CSV upload is available now for any register type.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg measure">FAQ</h2>
+        <div class="faq-list">
+          <article>
+            <h3>Does this change how I accept payments?</h3>
+            <p>No. Vendra is not a payment processor and does not require a POS replacement.</p>
+          </article>
+          <article>
+            <h3>Who pays?</h3>
+            <p>The store pays $29/month. There is no charge to the property.</p>
+          </article>
+          <article>
+            <h3>What if my POS isn’t supported?</h3>
+            <p>CSV upload is available for any register type.</p>
+          </article>
+          <article>
+            <h3>Is there a contract?</h3>
+            <p>Monthly subscription. Cancel when your property is no longer participating.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <article>
+          <h2 class="heading-md">For the mall team</h2>
+          <p class="body-lg" style="margin-top:0.85rem">
+            A consistent view of reporting status, a cleaner follow-up path on exceptions, and an auditable record of the completed workflow. Property managers receive activation materials, invite tokens, and exception-status summaries.
+          </p>
+        </article>
+        <article>
+          <h2 class="heading-md">For merchants</h2>
+          <p class="body-lg" style="margin-top:0.85rem">
+            A 5-10 minute activation, then one monthly process. Payment-taking does not change. CSV remains available if a POS connection is the wrong fit.
+          </p>
+        </article>
       </div>
     </section>
 

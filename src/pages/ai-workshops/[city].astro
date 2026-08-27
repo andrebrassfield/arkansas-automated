@@ -209,7 +209,9 @@ const schema = {
           </p>
         </div>
         <LeadForm
+          variant="workshop"
           defaultIntent="Reserve a workshop seat, $497 early bird"
+          sourceCity={c.name}
           detailsPlaceholder={`Example: after-hours calls at my ${c.name} shop, quote follow-up, scheduling.`}
         />
       </div>
