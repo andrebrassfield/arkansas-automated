@@ -23,8 +23,8 @@ const s = serviceBySlug(p.service);
 const others = problems.filter((x) => x.slug !== p.slug);
 const topCities = ["fort-smith", "fayetteville", "rogers", "little-rock", "conway", "bentonville"].map(cityBySlug);
 
-const title = `${p.h1} | Arkansas Automated`;
-const description = `${p.intent}. What the leak costs, how to fix it, and what the fix runs. Built and managed for Arkansas businesses from Fort Smith.`;
+const title = `Fix ${p.label.toLowerCase()} | Arkansas Automated`;
+const description = `${p.intent}. See what this leak costs your business and how AI fixes it permanently.`;
 
 const site = "https://arkansasautomated.com";
 const pageUrl = `${site}/fix/${p.slug}`;

@@ -1,0 +1,201 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const title = "Speed to Lead — Response Time Wins Jobs";
+const description =
+  "Measure how quickly your business responds to new leads. Most contractors lose jobs to slower competitors. Free lead response audit.";
+
+const API = "https://speed-to-lead-five.vercel.app";
+const THANKYOU = "/speed-to-lead/thank-you";
+
+const stats = [
+  { n: "5 min", h: "Average response time", p: "The average response time for local service businesses. By then, the homeowner has already called two more." },
+  { n: "78%", h: "First-responder wins", p: "Of customers go with the first responder. Speed isn't a nice-to-have — it's the deciding factor." },
+  { n: "$918K", h: "Revenue left on the table", p: "Annual revenue lost by a typical plumbing company to slow or missed lead response." },
+];
+
+const steps = [
+  { n: "1", h: "Lead submission", p: "We submit a realistic service request through your web form — same kind of lead a real customer would send." },
+  { n: "2", h: "Response detection", p: "We monitor your inbox for a reply. Automated or human, we catch it and timestamp it." },
+  { n: "3", h: "Grading", p: "Your response time gets graded A through F against industry benchmarks. A = under 5 minutes. F = never responded." },
+  { n: "4", h: "Revenue impact", p: "We calculate what slow response costs you annually, based on your average job value and close rate." },
+];
+---
+
+<Base {title} {description} path="/speed-to-lead">
+  <SiteNav />
+
+  <main>
+    {/* Hero + Form */}
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="accent" style="font-size:0.85rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1rem;">Free lead response audit</p>
+          <h1 class="heading-xl">Speed to Lead</h1>
+          <p class="body-lg" style="margin:1rem 0 0; max-width:34rem;">
+            Most local businesses lose jobs before they even know a lead came in.
+            We measure your response time, grade it against your competitors,
+            and show you exactly what slow response costs.
+          </p>
+        </div>
+
+        <div>
+          <form id="auditForm" class="enter rounded-2xl border border-[var(--line)] bg-[rgba(18,21,19,.94)] p-5 shadow-[0_28px_80px_rgba(3,8,5,.45)] md:p-7">
+            <div class="mb-5">
+              <label for="businessUrl" class="mb-2 block text-sm font-medium" style="color:var(--text-primary)">Business website</label>
+              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0 1rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <input required id="businessUrl" name="businessUrl" type="text" inputmode="url" placeholder="yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
+              </div>
+            </div>
+
+            <div style="margin-bottom:1.25rem">
+              <label for="email" style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Email for your report</label>
+              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0 1rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <input required id="email" name="email" type="email" placeholder="you@yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
+              </div>
+            </div>
+
+            <div style="margin-bottom:1.25rem;border-radius:0.75rem;border:1px solid var(--accent-line);background:var(--accent-soft);padding:0.75rem 1rem;font-size:0.875rem;color:var(--accent)">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-weight:600">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Web form test
+              </div>
+              <p style="margin-top:0.25rem;font-size:0.75rem;color:var(--text-muted)">
+                We submit a disclosed test lead through the business's contact form and measure response time.
+              </p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+              <label>
+                <span style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Industry</span>
+                <select name="industry" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0.75rem;color:var(--text-primary);font-size:0.875rem">
+                  <option value="general">General</option>
+                  <option value="plumbing">Plumbing</option>
+                  <option value="hvac">HVAC</option>
+                  <option value="roofing">Roofing</option>
+                </select>
+              </label>
+              <label>
+                <span style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Monthly leads</span>
+                <input type="number" min="1" max="10000" name="monthlyLeads" value="50" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0.75rem;color:var(--text-primary);font-size:0.875rem" />
+              </label>
+            </div>
+
+            <label style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.875rem;color:var(--text-muted);margin-bottom:1.25rem;cursor:pointer">
+              <input required type="checkbox" name="authorization" style="margin-top:0.25rem;width:1rem;height:1rem;accent-color:#7fc99a" />
+              <span>I own or represent this business and authorize one disclosed response-time test.</span>
+            </label>
+
+            <button type="submit" id="auditBtn" style="width:100%;display:flex;align-items:center;justify-content:center;gap:0.5rem;border-radius:0.75rem;background:var(--accent);color:var(--accent-ink);font-weight:600;padding:1rem;cursor:pointer;border:none;font-size:1rem;transition:filter 0.15s">
+              Start the audit
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+
+            <p id="auditError" style="margin-top:0.75rem;text-align:center;font-size:0.875rem;color:#ef4444;display:none"></p>
+
+            <p style="margin-top:1rem;text-align:center;font-size:0.75rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:0.5rem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+              One test per business every 7 days
+            </p>
+          </form>
+
+          <script define:vars={{ API, THANKYOU }}>
+            document.getElementById("auditForm").addEventListener("submit", async function(e) {
+              e.preventDefault();
+              var btn = document.getElementById("auditBtn");
+              var err = document.getElementById("auditError");
+              btn.disabled = true;
+              btn.textContent = "Starting audit...";
+              err.style.display = "none";
+              var fd = new FormData(e.target);
+              try {
+                var res = await fetch(API + "/api/test", {
+                  method: "POST",
+                  headers: { "content-type": "application/json" },
+                  body: JSON.stringify({
+                    businessUrl: fd.get("businessUrl"),
+                    email: fd.get("email"),
+                    testType: "web_form",
+                    industry: fd.get("industry"),
+                    monthlyLeads: Number(fd.get("monthlyLeads")),
+                    authorization: fd.get("authorization") === "on",
+                  }),
+                });
+                var body = await res.json();
+                if (!res.ok) throw new Error(body.error);
+                window.location.href = THANKYOU;
+              } catch (e2) {
+                err.textContent = e2.message || "Something went wrong.";
+                err.style.display = "block";
+                btn.disabled = false;
+                btn.innerHTML = 'Start the audit <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </section>
+
+    {/* The Problem */}
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg">The first contractor to respond wins</h2>
+        <p class="body-lg" style="margin-top:1rem; max-width:42rem;">
+          A homeowner calls three roofers. One answers. Two go to voicemail.
+          The one who answered books the job. The other two never know they lost it.
+        </p>
+        <div class="leak-grid" style="margin-top:3rem;">
+          {stats.map((s) => (
+            <article class="leak">
+              <h3 class="heading-md accent" style="margin-bottom:0.5rem;">{s.n}</h3>
+              <p style="font-weight:600; margin-bottom:0.5rem;">{s.h}</p>
+              <p>{s.p}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* What We Measure */}
+    <section id="how-it-works" class="section">
+      <div class="container">
+        <h2 class="heading-lg">What the audit measures</h2>
+        <p class="body-lg" style="margin-top:1rem; max-width:42rem;">
+          We submit a real lead through your website and measure every step
+          of your response pipeline.
+        </p>
+        <div class="rows">
+          {steps.map((s) => (
+            <div class="row" style="grid-template-columns: 2.5rem 1fr;">
+              <span class="row-n">{s.n}</span>
+              <div>
+                <h3>{s.h}</h3>
+                <p>{s.p}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section class="section section-tint">
+      <div class="container" style="text-align:center; max-width:42rem; margin:0 auto;">
+        <h2 class="heading-lg">Find out what slow response is costing you</h2>
+        <p class="body-lg" style="margin-top:1rem;">
+          Free, no-obligation audit. Takes two minutes. You get a full report
+          with your grade, revenue impact, and benchmarks.
+        </p>
+        <div style="margin-top:2.5rem;">
+          <a class="btn btn-primary" href="#top">Run your free audit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Base>
