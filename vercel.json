@@ -11,6 +11,12 @@
   ],
   "redirects": [
     {
+      "source": "/((?!sitemap\\.xml$|sitmap\\.xml$|sitemap-index\\.xml$|sitemap-0\\.xml$|robots\\.txt$).*)",
+      "has": [{ "type": "host", "value": "www.arkansasautomated.com" }],
+      "destination": "https://arkansasautomated.com/$1",
+      "permanent": true
+    },
+    {
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
