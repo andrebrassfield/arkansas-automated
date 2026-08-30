@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import LeadForm from "../components/LeadForm.astro";
+import { WORKSHOP_CAL_URL, WORKSHOP_WHOP_URL } from "../lib/booking";
 
 const title = "AI Workshops & Automation in Arkansas | Arkansas Automated";
 const description =
@@ -203,7 +204,7 @@ const homeSchema = {
           </p>
           <div class="hero-ctas enter enter-3">
             <div class="cta-choice">
-              <a class="btn btn-primary" href="#workshop-request">Build mine in the workshop</a>
+              <a class="btn btn-primary" href={WORKSHOP_WHOP_URL}>Build mine in the workshop</a>
               <span>Fort Smith · Saturdays, 1–5 PM · $497 early bird</span>
             </div>
             <div class="cta-choice">
@@ -296,7 +297,7 @@ const homeSchema = {
 
         <div class="facts">
           <div class="fact"><span class="fact-k">When</span> Saturdays, 1 to 5 PM</div>
-          <div class="fact"><span class="fact-k">Where</span> Fort Smith, address with confirmation</div>
+          <div class="fact"><span class="fact-k">Where</span> Central Mall, Fort Smith — upstairs event room</div>
           <div class="fact"><span class="fact-k">Room</span> Capped at 18 owners</div>
           <div class="fact"><span class="fact-k">Price</span> $497 early bird, $697 standard</div>
           <div class="fact"><span class="fact-k">Second seat</span> $297 for a partner or office manager</div>
@@ -306,7 +307,7 @@ const homeSchema = {
           {included.map((i) => <li>{i}</li>)}
         </ul>
 
-        <a class="btn btn-primary" href="#workshop-request" style="margin-top:2.5rem">Build mine in the workshop</a>
+        <a class="btn btn-primary" href={WORKSHOP_WHOP_URL} style="margin-top:2.5rem">Build mine in the workshop</a>
       </div>
     </section>
 
@@ -421,10 +422,13 @@ const homeSchema = {
           <section id="workshop-request" class="intent-form">
             <div class="intent-form-copy">
               <span class="phase-k">Build with us</span>
-              <h3>Request a workshop seat</h3>
-              <p>Fort Smith, Saturdays from 1–5 PM. We confirm availability, price, date, and the room address by email.</p>
+              <h3>Reserve a workshop seat</h3>
+              <p>Pay $497 on Whop, then pick your Saturday. Central Mall, Fort Smith, upstairs event room. Park in the garage, elevator all the way up; meeting room is directly to the right. Cap 18.</p>
             </div>
-            <LeadForm variant="workshop" formId="workshop-form" detailsPlaceholder="Example: after-hours calls or booking estimates." />
+            <div>
+              <a class="btn btn-primary" href={WORKSHOP_WHOP_URL}>Pay $497 and reserve a seat</a>
+              <p class="fine-print" style="margin-top:1rem">After payment, pick the date: <a class="text-link" href={WORKSHOP_CAL_URL}>Saturday 1–5 calendar</a>.</p>
+            </div>
           </section>
           <section id="assessment-request" class="intent-form">
             <div class="intent-form-copy">

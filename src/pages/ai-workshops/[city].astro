@@ -12,6 +12,7 @@ import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import LeadForm from "../../components/LeadForm.astro";
 import { cities, cityBySlug } from "../../data/cities";
+import { WORKSHOP_WHOP_URL } from "../../lib/booking";
 
 export function getStaticPaths() {
   return cities.map((c) => ({ params: { city: c.slug } }));
@@ -200,8 +201,11 @@ const schema = {
         <div>
           <h2 class="heading-lg">Start in {c.name}.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            One form for everything: workshop seats, the free assessment, and done-for-you
-            scoping. Tell us which and we reply from a real address, usually within one
+            Workshop seats are $497 on Whop, then you pick the Saturday. The form below is for the free assessment or a done-for-you conversation.
+          </p>
+          <p style="margin-top:1.25rem"><a class="btn btn-primary" href={WORKSHOP_WHOP_URL}>Pay $497 and reserve a seat</a></p>
+          <p class="body-lg" style="margin-top:1.5rem">
+            One form for the free assessment and done-for-you scoping. Tell us which and we reply from a real address, usually within one
             business day.
           </p>
           <p class="fine-print" style="margin-top:2rem">
