@@ -1,0 +1,278 @@
+---
+import { industries } from "../data/industries";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
+
+const trades = ["roofers", "hvac", "plumbers"]
+  .map((slug) => industries.find((i) => i.slug === slug))
+  .filter((i): i is NonNullable<typeof i> => Boolean(i));
+
+export const homeFaqs = [
+  {
+    q: "How much does it cost?",
+    a: "Three flat monthly plans: Missed-Call Text Back is $129/mo, After-Hours Answering is $299/mo, and the full Front Desk is $499/mo. One-time $199 setup on the answering plans, first 7 days of service free, no per-minute charges, no contract. The full price sheet is on the Prices page.",
+  },
+  {
+    q: "Will callers know it is an AI?",
+    a: "It answers as your shop's front desk, in your name, with your greeting. Most callers get their problem taken down and a tech dispatched and never think about it. If a caller asks directly, it does not lie about what it is.",
+  },
+  {
+    q: "Do I keep my existing phone number?",
+    a: "Yes. Everything rides on your current number. Your customers dial the same number they always have.",
+  },
+  {
+    q: "What happens on a real emergency at 2 AM?",
+    a: "Whatever you decide at setup. The standard rule: anything unsafe, water running, no heat with a baby or an elderly person in the house, goes straight to the on-call phone by call and text, immediately. Everything else is taken down for the morning.",
+  },
+  {
+    q: "How fast can it be live?",
+    a: "The missed-call test can happen tonight. Most shops are live within a few days of the setup visit, and the first 7 days of service are free on your real line.",
+  },
+  {
+    q: "Why not just use the $29 add-on in Jobber or Housecall Pro?",
+    a: "If the button in your software is set up, tuned, and checked, it is a fair option. Most shops never finish the setup, and the button does not sort emergencies, chase open estimates, or get watched by a person you can call. We set it up in your office and stand behind it in person.",
+  },
+  {
+    q: "Does it speak Spanish?",
+    a: "Yes. Every plan answers in English and Spanish. In the River Valley that is not a feature, it is half the phone calls some weeks.",
+  },
+  {
+    q: "Are you Arkansas Automated Security?",
+    a: "No. This company is Brassfield Ventures LLC, in Fort Smith. Arkansas Automated Security, LLC of Mayflower is a different business. We do not install alarms.",
+  },
+];
+
+const math = [
+  {
+    h: "About 4 in 10 weekend calls never get answered",
+    p: "Industry call data puts unanswered calls to home-service shops at roughly 41% on weekends and 18% on weekdays. Weekends are when the water heater quits.",
+  },
+  {
+    h: "Voicemail does not save them",
+    p: "About 8 in 10 callers who reach voicemail hang up without leaving a message. Most of the rest call the next shop on Google. The message you check Monday morning is the small remainder.",
+  },
+  {
+    h: "Run your own numbers",
+    p: "Two missed jobs a week at $1,200 a job is roughly $12,000 a month. Your numbers are your numbers. The missed-call test shows you the first one for free.",
+  },
+];
+
+const steps = [
+  {
+    n: "01",
+    name: "The test, tonight",
+    price: "Free",
+    p: "Send your business number and the hour you close. We call the line after hours and send you the recording of what a customer hears.",
+    href: "/missed-call-test",
+  },
+  {
+    n: "02",
+    name: "The setup visit",
+    price: "$199 one time",
+    p: "We come to your shop, write the greeting and the emergency rules in your words, and connect your existing number. No Zoom onboarding, no dashboard homework.",
+    href: "/services/after-hours-answering",
+  },
+  {
+    n: "03",
+    name: "The free week",
+    price: "7 days free",
+    p: "The service runs live on your real line. You hear the recordings and read the summaries. If it is not earning its keep, it comes off and the week cost you nothing.",
+    href: "/services/after-hours-answering",
+  },
+  {
+    n: "04",
+    name: "Flat monthly",
+    price: "From $129/mo",
+    p: "No per-minute meter, no contract. A slammed July costs the same as a slow February. Cancel with a call.",
+    href: "/services",
+  },
+];
+
+const plans = [
+  {
+    n: "01",
+    name: "Missed-Call Text Back",
+    price: "$129/mo",
+    p: "Every missed call gets a text back in under a minute, in your shop's name, with the job details captured and sent to you.",
+    href: "/services/missed-call-text-back",
+  },
+  {
+    n: "02",
+    name: "After-Hours Answering",
+    price: "$299/mo",
+    p: "Your phone answered from 5 PM to 7 AM and all weekend. Emergencies go straight to the on-call tech. Everything else is waiting for you in the morning, written down.",
+    href: "/services/after-hours-answering",
+  },
+  {
+    n: "03",
+    name: "Front Desk",
+    price: "$499/mo",
+    p: "The full front office: 24/7 answering, jobs booked into your calendar or software, estimate follow-up, and a review request after every finished job.",
+    href: "/services/ai-front-desk",
+  },
+];
+---
+
+<div class="hero-frame">
+  <div class="hero-stage-media" aria-hidden="true">
+    <img
+      class="hero-stage-bg"
+      src="/images/hero-network.webp"
+      alt=""
+      width="1122"
+      height="1402"
+      fetchpriority="high"
+    />
+    <div class="hero-stage-scrim"></div>
+    <div class="hero-stage-grain"></div>
+  </div>
+  <section class="hero-stage" id="start">
+    <div class="container hero-stage-grid">
+      <div class="hero-stage-copy">
+        <p class="eyebrow">Arkansas Automated. Fort Smith, Arkansas.</p>
+        <h1 class="heading-xl advisor-h1 enter">Your phone rings at 9 PM. It rings out. That job just called the next shop.</h1>
+        <p class="body-lg enter enter-2">
+          We answer it. Arkansas Automated puts an AI front desk on your existing line: calls answered in your
+          shop's name after hours and on weekends, emergencies straight to your on-call tech, every job written
+          down and texted to you. Set up in person, here in the River Valley.
+        </p>
+        <div class="hero-ctas enter enter-3">
+          <a class="btn btn-primary" href="/missed-call-test">Get the free missed-call test</a>
+          <a class="btn btn-secondary" href="/services">See flat monthly prices</a>
+        </div>
+      </div>
+      <aside class="audit-ticket" aria-label="How to start">
+        <p class="ask-bar">Start here</p>
+        <p class="audit-ticket-price">Free</p>
+        <ul>
+          <li>You send the number and the hour the office is closed</li>
+          <li>We call the line tonight, after hours</li>
+          <li>You get a short recording of what happened</li>
+          <li>No pitch on that call</li>
+        </ul>
+        <a class="text-link ticket-link" href={AA_PUBLIC_PHONE_HREF}>Or call {AA_PUBLIC_PHONE_DISPLAY}</a>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<section class="section" id="math">
+  <div class="container">
+    <p class="eyebrow">The problem, in numbers that are not ours</p>
+    <h2 class="heading-lg measure">A missed call is not a message. It is a job booking itself somewhere else.</h2>
+    <div class="leak-grid">
+      {math.map((row) => (
+        <article class="leak">
+          <h3>{row.h}</h3>
+          <p>{row.p}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint" id="how">
+  <div class="container">
+    <h2 class="heading-lg measure">Proof first. Money second. That order.</h2>
+    <p class="body-lg measure" style="margin-top:1rem">
+      National vendors hand you a dashboard and a free trial login. We hand you a recording of your own phone,
+      then set the service up in your office, then let it run a week free on your real line.
+    </p>
+    <div class="rows">
+      {steps.map((step) => (
+        <article class="row">
+          <div class="row-n">{step.n}</div>
+          <h3><a class="text-link-plain" href={step.href}>{step.name}</a></h3>
+          <p><strong>{step.price}.</strong> {step.p}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="plans">
+  <div class="container">
+    <h2 class="heading-lg measure">Three plans. Flat prices. No per-minute meter.</h2>
+    <p class="body-lg measure" style="margin-top:1rem">
+      Every plan is month to month and set up in person. Prices are the prices, here and on every page of this site.
+    </p>
+    <div class="rows">
+      {plans.map((plan) => (
+        <article class="row">
+          <div class="row-n">{plan.n}</div>
+          <h3><a class="text-link-plain" href={plan.href}>{plan.name}</a></h3>
+          <p><strong>{plan.price}.</strong> {plan.p}</p>
+        </article>
+      ))}
+    </div>
+    <p class="body-lg measure" style="margin-top:1.4rem">
+      Sitting on a pile of open estimates instead? <a class="text-link" href="/services/estimate-revival">Dead Estimate Revival</a> works
+      the list for $750 plus 15% of what it actually books. Bigger operation, messier problem?
+      The <a class="text-link" href="/audit">Front Desk Audit</a> maps it for $750, credited toward any plan or build.
+    </p>
+  </div>
+</section>
+
+<section class="section section-tint" id="trades">
+  <div class="container">
+    <h2 class="heading-lg measure">Built for the trades that run on a ringing phone.</h2>
+    <p class="body-lg measure" style="margin-top:1rem">
+      HVAC, plumbing, and roofing first, because that is where an after-hours call is worth the most money.
+      The intake questions, the emergency rules, and the booking flow are written per trade, with you.
+    </p>
+    <div class="city-grid">
+      {trades.map((t) => (
+        <a class="city-card" href={`/for/${t.slug}`}>
+          <span class="prop-name">{t.name.charAt(0).toUpperCase() + t.name.slice(1)}</span>
+          <span class="prop-role">{t.intent}</span>
+          <span class="city-cta">See your version</span>
+        </a>
+      ))}
+    </div>
+    <div class="link-chips">
+      <a class="chip" href="/hvac-answering-service-nwa">HVAC answering service</a>
+      <a class="chip" href="/roofing-answering-service-nwa">Roofing answering service</a>
+      <a class="chip" href="/missed-call-text-back-northwest-arkansas">Missed-call text back</a>
+      <a class="chip" href="/bilingual-answering-service-arkansas">English and Spanish answering</a>
+      <a class="chip" href="/for">Other trades</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="local">
+  <div class="container split">
+    <div>
+      <h2 class="heading-lg">Set up in your shop. Not on a Zoom call.</h2>
+    </div>
+    <div>
+      <p class="body-lg">
+        The national services are a website and a support queue. Arkansas Automated is one operator in Fort Smith
+        who drives to your shop, writes the greeting in your words, test-calls the line with you standing there,
+        and answers for it by name afterward. When the front desk books a job wrong at 9 PM, you call a person
+        whose number you have.
+      </p>
+      <p class="body-lg" style="margin-top:1.1rem">
+        Every plan answers in English and Spanish, keeps your existing number, and records every call so you can
+        hear exactly what your customers heard. What stays human stays human: pricing calls, safety calls, and
+        anything you mark human-only at setup goes straight to a person.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container faq-wrap">
+    <h2 class="heading-lg measure">Questions shop owners actually ask</h2>
+    <div class="faq-list">
+      {homeFaqs.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+    <p class="body-lg" style="margin-top:1.6rem">
+      Still deciding? The test is free and it happens tonight.
+      <a class="text-link" href="/missed-call-test">Send your number</a> or call {AA_PUBLIC_PHONE_DISPLAY}.
+    </p>
+  </div>
+</section>

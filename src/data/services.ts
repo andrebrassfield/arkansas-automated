@@ -1,6 +1,9 @@
 /*
  * Service data for /services/[service] pages. Prices and terms mirror the
  * homepage and pricing.md exactly: one public price sheet, everywhere.
+ * Rebuilt 2026-10-29: the answering ladder. Retired offers (Front Door,
+ * Front Door Wired, Visibility Install, the $1,500 audit) redirect to
+ * /services in vercel.json.
  */
 
 export interface Service {
@@ -17,364 +20,339 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    name: "Front Door",
-    slug: "front-door",
-    price: "$497",
+    name: "Missed-Call Text Back",
+    slug: "missed-call-text-back",
+    price: "$129/mo",
     tagline:
-      "A 5 to 8 page storefront on your domain, live in 7 days after we have your photos and copy, domain in your name.",
+      "Every missed call gets a text back in under a minute, in your shop's name, so the job stops at your shop instead of the next one on Google.",
     answer:
-      "The Front Door is a 5 to 8 page website for Arkansas service businesses, built on a domain you own and live 7 days after we have your complete intake packet. You approve the staging site before we point DNS. $497 total: $197 to start, $300 on approval. No booking calendar in this SKU.",
+      "Missed-Call Text Back watches your business line around the clock. When a call is missed, the caller gets a text in your shop's name in under a minute, with a short back-and-forth that captures the job details and sends them to you. $129 a month, flat. No per-text meter, no contract. Set up in person in the River Valley.",
     includes: [
-      "5 to 8 pages: Home, Services hub plus up to 5 service pages, Service areas, About, Contact, Privacy, Terms",
-      "Staging link you approve before DNS is pointed",
-      "GBP NAP kickoff so your hours, phone, and address match",
-      "30-day inquiry check: what happened to your last 10 inquiries",
-      "One written revision round in a 24-hour window",
-      "Domain, registrar, hosting access, and repo in your name",
+      "Automatic text to every missed caller in under a minute, 24/7",
+      "Short intake conversation: name, address, what broke, how urgent",
+      "Job details texted to you or your on-call tech as they land",
+      "Written in your shop's name and your words, not a template",
+      "Spam and robocalls filtered out, never texted",
+      "Set up in person at your shop, tested with you standing there",
     ],
     process: [
       {
-        h: "Intake packet",
-        p: "You send the questionnaire, logo, at least 10 real photos, service list, hours, license numbers, and registrar access. The 7-day clock starts when that packet is complete, not when you sign.",
+        h: "Test call",
+        p: "Start with the free missed-call test. We call your line after hours and send you the recording of what a customer hears today.",
       },
       {
-        h: "Staging site",
-        p: "We build the pages on a staging link with your photos and your words. No stock faces, no invented reviews.",
+        h: "Setup, in person",
+        p: "We sit down at your shop, write the greeting and intake questions in your words, and connect it to your existing number. You keep your number.",
       },
       {
-        h: "You approve",
-        p: "You review the staging site and send one written revision round. Nothing points at your domain until you say yes in writing.",
+        h: "Live this week",
+        p: "Most shops are live within a few days of the setup visit. We test-call it together before it counts.",
       },
       {
-        h: "DNS and handover",
-        p: "After your written approval we point DNS, then hand over the registrar, hosting, and repo credentials on one page. The 30-day inquiry check starts.",
+        h: "Monthly, flat",
+        p: "$129 a month. No per-text charges, no contract. Cancel with a call.",
       },
     ],
     faqs: [
       {
-        q: "Does the $497 site take online bookings?",
-        a: "No. This SKU has no booking calendar. The site carries a lead form and tap-to-call. If you want job requests landing on a calendar you own, that is Front Door Wired at $1,497.",
+        q: "Do I keep my existing phone number?",
+        a: "Yes. The text back rides on your current line and number. Nothing changes for your customers except that a missed call now answers back.",
       },
       {
-        q: "Will this get me to the top of Google?",
-        a: "We do not promise rankings, call volume, or revenue. You get a real storefront that matches your Google Business Profile and makes it easy for someone to request a job. We do not guarantee a position.",
+        q: "Is $129 really flat?",
+        a: "Yes. No per-text or per-call meter. A slammed July costs the same as a slow February.",
       },
       {
-        q: "Who owns the domain and the site?",
-        a: "You do. The domain stays in your registrar in your name, and you get the hosting access and the repo at handover. If you ever leave, the site leaves with you.",
-      },
-      {
-        q: "When does the 7 days start?",
-        a: "When your intake packet is complete: questionnaire, logo, at least 10 real photos or a written waiver, service list, hours, license numbers, and registrar access. It does not start at signature, and it does not run while we wait on your photos or copy.",
-      },
-      {
-        q: "How does payment work?",
-        a: "$197 to start and $300 when you approve the staging site, $497 total. The balance is due only after you say yes in writing. Nothing is charged for an approval you never gave.",
+        q: "What if I want a voice answering too, not just texts?",
+        a: "That is After-Hours Answering at $299/mo, or the full Front Desk at $499/mo. The text back is included in both.",
       },
     ],
   },
   {
-    name: "Front Door Wired",
-    slug: "front-door-wired",
-    price: "$1,497",
-    tagline: "The Front Door plus a request-to-book page on a shop calendar you own.",
+    name: "After-Hours Answering",
+    slug: "after-hours-answering",
+    price: "$299/mo",
+    tagline:
+      "Your phone answered in your shop's name from 5 PM to 7 AM and all weekend, with the job details texted to your on-call tech in under a minute.",
     answer:
-      "Front Door Wired is the Front Door plus a request-to-book page on a shop calendar you own. Requests land in a CRM you control, with an SMS confirmation when a request comes in. Voice is not included. $1,497 total: $497 to start, $1,000 on staging approval and a working book URL.",
+      "After-Hours Answering covers your line when the office is closed: evenings, nights, and weekends. An AI receptionist answers in your shop's name, takes the job details, sorts emergencies from morning work, and texts your on-call tech in under a minute. $299 a month flat, no per-minute meter, no contract. One-time $199 setup, done in person. First 7 days of service are free.",
     includes: [
-      "Everything in Front Door",
-      "A request-to-book page on a shop calendar you own",
-      "Your site's lead form wired into that CRM",
-      "SMS confirmation when a request comes in",
-      "Book URL proof before the balance is due",
-      "Qualify is set to request: nothing auto-books a job",
+      "Coverage 5 PM to 7 AM on weekdays, 24 hours on weekends",
+      "Answered in your shop's name, with your greeting and your words",
+      "Emergency sorting: true emergencies go straight to the on-call tech",
+      "Job name, address, and problem texted to the on-call tech in under a minute",
+      "Every call recorded and summarized; listen to any of them",
+      "English and Spanish answering",
+      "Missed-call text back included for any call that still slips through",
+      "Set up in person at your shop, tested together before it counts",
     ],
     process: [
       {
-        h: "Intake packet",
-        p: "The same packet as the Front Door, plus who receives new requests and what a good job looks like. The clock starts when the packet is complete.",
+        h: "Free missed-call test",
+        p: "We call your line after the office closes and send you the recording. That is what your customers hear tonight.",
       },
       {
-        h: "Staging site and shop book",
-        p: "We build the Front Door pages on a staging link and stand up your shop book alongside them.",
+        h: "Setup visit",
+        p: "One visit to your shop. We write the greeting, the intake questions, and the emergency rules with you, and connect your existing number. One-time $199.",
       },
       {
-        h: "You approve",
-        p: "You review the staging site and the book page. Qualify stays on request, so a request never becomes a booked job without you.",
+        h: "First 7 days free",
+        p: "The service runs live on your real line for a week. You hear the recordings and read the summaries. If it is not earning its keep, it comes off and you owe nothing for the week.",
       },
       {
-        h: "Book wired, DNS, handover",
-        p: "We confirm the live book URL, wire the form and the SMS confirmation, point DNS after your written approval, and hand over every credential.",
+        h: "Monthly, flat",
+        p: "$299 a month after the free week. No per-minute charges in a heat wave, no contract. Cancel with a call.",
       },
     ],
     faqs: [
       {
-        q: "Does the calendar answer the phone?",
-        a: "No. Voice is not included in this SKU. Requests arrive through the site, land in your CRM, and text you. Voice is a separate engagement and gets bound to a number only after a named go-ahead.",
+        q: "Will callers know it is an AI?",
+        a: "It answers as your shop's front desk and says what you would want said. Most callers just get their problem taken down and a tech dispatched. If a caller asks directly, it does not lie about what it is.",
       },
       {
-        q: "Does a request automatically become a booked job?",
-        a: "No. Qualify is set to request, so a submission creates a request you approve. Nothing auto-books a job, and no slot is held until you accept it.",
+        q: "What happens on a real emergency at 2 AM?",
+        a: "Whatever you decided at setup. The standard rule: water running, no heat with a baby or an elderly person in the house, gas smell, anything unsafe goes straight to the on-call phone by call and text, immediately. Everything else is taken down for the morning.",
       },
       {
-        q: "How does payment work on this SKU?",
-        a: "$497 to start and $1,000 on staging approval and book URL proof, $1,497 total. You see the book page working on your own calendar before the balance is due.",
+        q: "Why not just use the $29 add-on in my Jobber or Housecall Pro?",
+        a: "If the button in your software is set up, tuned, and checked, it is a fair option. Most shops never finish the setup, and the button does not sort emergencies, chase estimates, or get reviewed by a person you can call. This service is set up in your office and watched by a local operator.",
       },
       {
-        q: "Do I own the booking system?",
-        a: "Yes. The shop book runs on a calendar you own, handed over with the domain, hosting, and repo. This is not a rented seat in someone else's platform.",
+        q: "How fast can it be live?",
+        a: "Most shops are live within a few days of the setup visit. The free missed-call test can happen tonight.",
       },
     ],
   },
   {
-    name: "AI front desk",
+    name: "Front Desk",
     slug: "ai-front-desk",
-    price: "$2,500 setup + $497/mo",
-    tagline: "A 24/7 AI receptionist that answers in your business's voice, qualifies the caller, and books the job.",
-    answer:
-      "The AI front desk is a done-for-you AI receptionist for Arkansas service businesses. It answers every call around the clock in your business's voice, qualifies the caller by your rules, books straight onto your calendar, and sends SMS follow-up. Setup is $2,500 and the managed service is $497 a month, call recordings and monthly tuning included.",
-    includes: [
-      "24/7 call answering in your business's voice",
-      "Caller qualification and emergency triage by your rules",
-      "Booking directly onto your real calendar",
-      "SMS follow-up and confirmation chains",
-      "Call recordings and transcripts",
-      "Monthly tuning session with us",
-    ],
-    process: [
-      {
-        h: "Free 15-minute assessment",
-        p: "We load your business details and you hear the receptionist answer as your company before you spend a dollar.",
-      },
-      {
-        h: "Script and guardrails build",
-        p: "We write the greeting, qualification questions, pricing ranges you approve, and the escalation rules together.",
-      },
-      {
-        h: "Live testing with your number",
-        p: "You call it, break it, and adjust it. It does not take a real customer call until you sign off.",
-      },
-      {
-        h: "Launch and monthly tuning",
-        p: "We go live, listen to real calls with you, and tune the script every month as your business changes.",
-      },
-    ],
-    faqs: [
-      {
-        q: "Does the AI receptionist sound robotic?",
-        a: "You will hear it on your assessment call with your own business details loaded, before you commit to anything. It answers in your business's voice, follows your rules, and hands off to a human whenever you say so.",
-      },
-      {
-        q: "What happens when a caller needs a human?",
-        a: "The escalation rules are yours. Emergencies can ring your cell immediately, VIP customers can route to a specific person, and anything the system is unsure about takes a detailed message and texts it to you instantly.",
-      },
-      {
-        q: "What does the $497 a month cover?",
-        a: "The managed service: hosting, call volume, recordings, SMS follow-up, and a monthly tuning session where we review real calls and improve the script. No per-minute surprises.",
-      },
-    ],
-  },
-  {
-    name: "Visibility Install",
-    slug: "visibility-install",
-    price: "$2,500 setup + $497/mo",
+    price: "$499/mo",
     tagline:
-      "Five fixes on the website you already have, live in 14 days from access.",
+      "Your phone answered around the clock, jobs booked into your calendar, estimates followed up, and reviews requested. Run for you, by a local operator.",
     answer:
-      "Visibility Install puts five published fixes on the website you already have, in 14 days from access: one headline per page, your real business facts in a form Google and ChatGPT can read, your services listed the same way, one buyer guide on your domain, and junk pages taken out of search. $2,500 setup, then $497 a month. 90-day term. It does not answer the phone.",
+      "The Front Desk is the full front office for a shop that runs on the owner's phone. Calls answered 24/7 in your shop's name, jobs booked into your calendar or field-service software, missed calls texted back, open estimates followed up on a day 2, 5, and 10 rhythm, and a review request after every finished job. $499 a month flat, no per-minute meter, no contract. One-time $199 setup, done in person.",
     includes: [
-      "One headline per page that names the work and the town",
-      "Your real business facts (name, address, hours, license) in a form Google and ChatGPT can read",
-      "Your services listed the same way, so AI knows what you actually sell",
-      "One guide on your domain that answers the questions people ask before they call",
-      "Junk pages hidden from search, and one call-or-book button on every page",
-      "Screenshots on day 0 and day 14 of the same buyer questions asked of ChatGPT",
+      "Everything in After-Hours Answering, extended to 24/7",
+      "Jobs booked into your calendar, Jobber, Housecall Pro, or ServiceTitan",
+      "Missed-call text back on every line",
+      "Estimate follow-up: second and third touches on open quotes so they stop dying quietly",
+      "Review request sent after every completed job",
+      "English and Spanish answering",
+      "Weekly summary: calls answered, jobs booked, estimates touched",
+      "Set up in person, tuned with you in the first month",
     ],
     process: [
       {
-        h: "You pay",
-        p: "Card checkout for the $2,500 setup. We email the three access requests the same day. The 14-day clock does not start at payment.",
+        h: "Free missed-call test",
+        p: "We call your line after hours and send the recording. Proof before money, in that order.",
       },
       {
-        h: "You grant access",
-        p: "Website, Google Business Profile, and Search Console. The clock starts when those three are in.",
+        h: "Setup visit",
+        p: "We map how your shop actually takes work: who is on call, what counts as an emergency, where jobs get booked, what an estimate follow-up should say. One-time $199.",
       },
       {
-        h: "You approve copy",
-        p: "Nothing publishes until you say yes in writing. If we are waiting on you, the clock pauses.",
+        h: "First 7 days free",
+        p: "Live on your real line for a week. You see every recording, booking, and follow-up before the first invoice.",
       },
       {
-        h: "Five fixes live",
-        p: "Published inside 14 days of access. Then $497 a month keeps every new page titled, readable, and on one button. Cancel anytime after day 90.",
+        h: "Monthly, flat",
+        p: "$499 a month. No per-minute or per-call charges, no contract. The weekly summary shows exactly what it did.",
       },
     ],
     faqs: [
       {
-        q: "Is this the AI front desk?",
-        a: "No. Same price, different job. The AI front desk answers the phone. The Visibility Install makes the site you already have easier for AI and Google to name. It does not answer calls, send SMS, or book jobs.",
+        q: "How is this different from After-Hours Answering?",
+        a: "After-Hours covers the phone when you are closed. The Front Desk covers it around the clock and does the office work around the call: booking, estimate follow-up, and review requests.",
       },
       {
-        q: "Will this get me to the top of Google or ChatGPT?",
-        a: "We do not promise rankings, call volume, or revenue. You get five published fixes on your site. We do not guarantee a position.",
+        q: "Can it book into my software?",
+        a: "Yes: Jobber, Housecall Pro, ServiceTitan, or a plain shared calendar. The booking rules are set with you at the setup visit.",
       },
       {
-        q: "What does the $497 a month cover?",
-        a: "Every new page gets the right title, one H1, and markup before it publishes. Once a month we test the real service-and-city questions buyers ask, and we update business facts when they change.",
+        q: "What does it not do?",
+        a: "It does not quote prices beyond the ranges you approve, make safety calls, or handle anything you mark human-only at setup. Those go straight to a person, by your rule.",
       },
       {
-        q: "When does the 14 days start?",
-        a: "When website, Google Business Profile, and Search Console access are in. It does not start at payment, and it pauses while we wait on your copy approval.",
-      },
-      {
-        q: "Can I cancel?",
-        a: "90-day initial term, then month to month. Cancel anytime after day 90. The work stays on your site. We do not take it down.",
-      },
-      {
-        q: "What if the five items are not live in 14 days?",
-        a: "We keep working at no extra setup cost until they are, or we refund the $2,500. Live means published. It does not mean a ranking we cannot control.",
+        q: "Is there a contract?",
+        a: "No. Month to month. The weekly summary is the retention strategy.",
       },
     ],
   },
   {
-    name: "AI operations audit",
-    slug: "operations-audit",
-    price: "$1,500",
-    tagline: "A written map of the leaks, costed and ranked by payback, before anyone writes a bigger check.",
+    name: "Dead Estimate Revival",
+    slug: "estimate-revival",
+    price: "$750 + 15% of recovered gross",
+    tagline:
+      "Your open estimates from the last 90 days, worked one by one until they book, die honestly, or tell us when to call back.",
     answer:
-      "The leak audit is a fixed-price, $1,500 look at how your Arkansas business handles calls, quotes, scheduling, and invoicing. Ninety minutes with the people who touch the phones or the books. You get a written map, every leak costed, ranked by payback, and a straight list of what not to automate. The full fee comes off the first fix if you build it with us.",
+      "Dead Estimate Revival takes the estimates your shop already wrote and never closed, up to 90 days old, and works them with a day 2, 5, and 10 follow-up rhythm by text and call. You pay $750 to run the campaign and 15% of the gross on jobs it actually books. If it books nothing, the 15% is zero. The list, the scripts, and every reply are yours to see.",
     includes: [
-      "A full map of your intake, quoting, scheduling, and invoicing flow",
-      "Hour and dollar cost assigned to every leak",
-      "A prioritized build list: what to automate first and why",
-      "Honest verdicts on what not to automate",
-      "Tooling recommendations that use what you already pay for",
-      "Full $1,500 credit toward the first fix if you build it with us",
+      "Your open estimate list pulled and cleaned with you (up to 90 days back)",
+      "Follow-up rhythm on every live estimate: day 2, day 5, day 10",
+      "Texts and calls written in your shop's voice, approved by you first",
+      "Booked jobs handed to your calendar with the full thread attached",
+      "Dead ones marked dead, with the reason, so the list is clean afterward",
+      "A one-page report at the end: contacted, replied, booked, recovered gross",
     ],
     process: [
       {
-        h: "Working session",
-        p: "Ninety minutes with you and whoever touches the phones or the books. We trace real jobs through your current process.",
+        h: "The list",
+        p: "You export or hand over the open estimates. We sit down and cut the ones that should never be touched: competitors, dead numbers, your call.",
+      },
+      {
+        h: "The scripts",
+        p: "Short, plain, in your name. You approve every word before anything sends.",
+      },
+      {
+        h: "The campaign",
+        p: "Two to three weeks of touches. Replies come to you the same day with a suggested next step.",
+      },
+      {
+        h: "The report",
+        p: "Contacted, replied, booked, recovered gross, in one page. The 15% is calculated on booked and paid jobs only.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Why a percentage at all?",
+        a: "So the incentives point the same direction. The $750 covers the work of building and running the campaign. The 15% only exists if the campaign puts real gross back on your board.",
+      },
+      {
+        q: "Will this annoy my customers?",
+        a: "Three touches over ten days, written like a person from your shop checking in, and every script is approved by you first. Anyone who says no is marked dead and never touched again.",
+      },
+      {
+        q: "How old a list can it work?",
+        a: "Up to 90 days standard. Older lists can be run, priced after we see the count and the condition of the data.",
+      },
+    ],
+  },
+  {
+    name: "Front Desk Audit",
+    slug: "operations-audit",
+    price: "$750",
+    tagline:
+      "Ninety minutes in your operation and a written map back: every leak in how your shop handles calls, quotes, and follow-up, costed and ranked.",
+    answer:
+      "The Front Desk Audit is a fixed-price, $750 look at how your Arkansas business handles calls, quotes, scheduling, and follow-up. Ninety minutes with the people who touch the phones or the books. You get a written map, every leak costed, ranked by payback, and a straight list of what not to automate. The full fee comes off the setup of any monthly plan or build you start with us.",
+    includes: [
+      "Ninety minutes in the operation, with the people who touch the phones",
+      "Your last month of calls reviewed: answered, missed, after-hours, what each miss likely cost",
+      "Open estimate and follow-up process mapped as it actually runs",
+      "A written map: every leak costed, ranked by payback",
+      "A straight list of what not to automate, and why",
+      "Full $750 credited toward setup of any plan or build",
+    ],
+    process: [
+      {
+        h: "Free missed-call test first",
+        p: "The audit starts from evidence. We test-call your line after hours before the visit, and the recording opens the conversation.",
+      },
+      {
+        h: "Ninety minutes",
+        p: "At your shop or on a call. Owners, dispatchers, whoever touches the phone or the books.",
       },
       {
         h: "The map",
-        p: "We document every handoff, every retype, and every follow-up gap, with the hour and dollar cost attached.",
-      },
-      {
-        h: "The plan",
-        p: "A written, prioritized build list with ROI math per item, what to skip, and the order that pays for itself fastest.",
+        p: "Delivered in writing within a week: leaks costed, ranked, with the fix and the payback math for each.",
       },
       {
         h: "Your call",
-        p: "Build with us and the fee credits, build with someone else, or build nothing. The plan is yours either way.",
+        p: "Build it with us and the $750 comes off the setup. Build it with someone else, or not at all, and the map is still yours.",
       },
     ],
     faqs: [
       {
-        q: "Why pay for an audit instead of going straight to a build?",
-        a: "Because the audit is where we find out whether a fix pays. Some shops need the phone answered first. Some need the second touch on estimates. A few do not need a build yet. The $1,500 buys the map, with the numbers attached.",
+        q: "Why pay for an audit instead of just starting a plan?",
+        a: "Most shops should start a plan; the test and the free week prove more than a document. The audit is for shops with several people touching the phones, where the leak is not obvious and the wrong fix costs more than $750.",
+      },
+      {
+        q: "Does the fee really come off the plan?",
+        a: "Yes. Start any monthly plan or a custom build and the full $750 credits against setup. If you do not, you keep the map.",
       },
       {
         q: "What do I physically receive?",
-        a: "A written process map, a costed leak list, and a prioritized build plan with ROI math for each item. It is a document you can execute with us, with another vendor, or with your own team.",
-      },
-      {
-        q: "Does the fee really credit toward a build?",
-        a: "Yes. If you build the first fix with us, the full $1,500 comes off that price. If you do not build, you keep the map.",
+        a: "A written process map, a costed leak list, and a prioritized plan with payback math for each item. A document you can execute with us, another vendor, or your own team.",
       },
     ],
   },
   {
-    name: "Workflow automation",
+    name: "Custom builds",
     slug: "workflow-automation",
-    price: "$1,500 to $5,000 setup + monthly",
-    tagline: "Lead to quote to job to invoice, without the retyping and the follow-up gaps.",
+    price: "Scoped, from $2,500",
+    tagline:
+      "When the fix is not a plan on this page: one scoped build, priced in writing before anyone writes a check.",
     answer:
-      "Workflow automation connects the tools your Arkansas business already uses so information moves once: lead capture to quote, quote to job, job to invoice, and every follow-up in between. Builds run $1,500 to $5,000 depending on scope, plus a monthly managed tier, and we build on your existing stack rather than selling you a new one.",
+      "Some shops need a specific build rather than a monthly plan: a dispatch workflow, a follow-up system inside their own software, a handoff between tools that were never connected. Custom builds are scoped from the Front Desk Audit map and priced in writing before work begins, from $2,500. No open-ended billing, no hourly meter.",
     includes: [
-      "Lead capture that types itself into your CRM or inbox",
-      "Quote and estimate follow-up sequences",
-      "Scheduling and dispatch coordination without phone tag",
-      "Invoice and payment chasing that runs on time, not memory",
-      "Review requests triggered by completed jobs",
-      "Built on the tools you already pay for",
+      "Scope and price in writing before work begins",
+      "Built on the tools the shop already pays for, where that is possible",
+      "What stays human is written into the build, not left to the software",
+      "Handover session with the people who will run it",
+      "30 days of fixes on the delivered scope included",
     ],
     process: [
       {
         h: "Scope from the audit",
-        p: "Most builds start from the operations audit map, so scope and price are agreed before work begins. No open-ended billing.",
+        p: "Most builds start from the audit map, so scope and price are agreed before work begins. The audit fee credits toward the build.",
       },
       {
-        h: "Build in your stack",
-        p: "We wire the capture, routing, and follow-up into the calendar, CRM, and accounting tools you already run.",
+        h: "Build and test",
+        p: "Built against your real call flow, your real estimate list, your real calendar. Tested with sample jobs before it touches a customer.",
       },
       {
-        h: "Test with real jobs",
-        p: "We run live jobs through the system with you before it goes unattended. You see every message it sends.",
-      },
-      {
-        h: "Managed monthly",
-        p: "We monitor, fix, and improve the flows as your process evolves. You get a human to call when something needs changing.",
+        h: "Handover",
+        p: "A working session with your people, plus a written runbook of what it does and what it deliberately does not do.",
       },
     ],
     faqs: [
       {
-        q: "What tools do you build on?",
-        a: "Whatever you already pay for: Google Workspace, QuickBooks, Jobber, Housecall Pro, ServiceTitan, Follow Up Boss, and the usual Arkansas small-business stack. If a tool change would genuinely pay for itself, we will say so and explain the math.",
+        q: "Why the starting price instead of a flat number?",
+        a: "Because the scope decides the price. Every build is quoted in writing from the audit map before work begins. From $2,500 is the floor, not a teaser.",
       },
       {
-        q: "Why the price range?",
-        a: "Scope. A quote follow-up sequence is a $1,500 build. A full lead-to-invoice pipeline with dispatch coordination is closer to $5,000. The audit fixes the number before you commit to anything.",
-      },
-      {
-        q: "What if something breaks?",
-        a: "The monthly tier exists for exactly that. We monitor the flows, and you have a human to call. Automation that nobody maintains dies quietly; the retainer keeps it loud.",
+        q: "Do you sell websites?",
+        a: "No. If the map says the site is the problem, that gets scoped honestly, but a cheap storefront is not an offer here.",
       },
     ],
   },
   {
-    name: "Embedded automation retainer",
+    name: "Advisor retainer",
     slug: "automation-retainer",
     price: "From $2,000/mo",
-    tagline: "We come to you: on-site working sessions and a continuous build-out of custom workflows.",
+    tagline:
+      "For operations with 10 or more people: the map stays current, the next cut gets built each month, and the systems stay running.",
     answer:
-      "The embedded retainer is ongoing, on-site automation work for Arkansas businesses that want a builder, not a project. From $2,000 a month, you get scheduled working sessions at your location, a continuous build-out of custom workflows, priority turnaround, and staff training. It is how owners who are too busy for workshops get the whole roadmap done.",
+      "The advisor retainer is a continuous engagement for larger Arkansas operations. The leak map is kept current, the highest-payback fix is built each month, and the running systems are watched and tuned. From $2,000 a month. It starts from a Front Desk Audit, and the audit fee credits toward the first month.",
     includes: [
-      "Scheduled on-site working sessions at your location",
-      "A continuous build-out from your prioritized roadmap",
-      "Priority turnaround on changes and fixes",
-      "Staff training as each system goes live",
-      "Quarterly ROI review against the original map",
-      "Direct line to the person who built your systems",
+      "The leak map reviewed and re-ranked monthly",
+      "One scoped build or fix shipped each month from the top of the map",
+      "Answering and follow-up systems monitored and tuned",
+      "A monthly one-page report: what shipped, what it returned, what is next",
+      "Direct line to the operator, not a ticket queue",
     ],
     process: [
       {
-        h: "Roadmap first",
-        p: "The retainer starts from the operations audit map, so every month builds the next highest-ROI item, in order.",
+        h: "Audit first",
+        p: "The retainer starts from the audit map, so every month builds the next highest-payback item, in order.",
       },
       {
-        h: "On-site working sessions",
-        p: "We work at your location on a set cadence, building alongside the people who will run the systems.",
+        h: "Monthly cycle",
+        p: "Pick the top item, build it, measure it, report it. The map is re-ranked with the new numbers.",
       },
       {
-        h: "Train as we ship",
-        p: "Every system comes with staff training, so the team adopts it instead of working around it.",
-      },
-      {
-        h: "Review quarterly",
-        p: "We measure the build against the original ROI math and re-rank the roadmap. If the retainer stops paying, we say so.",
+        h: "Quarterly review",
+        p: "Every quarter we sit down with the full map and decide what the next quarter is for.",
       },
     ],
     faqs: [
       {
-        q: "How is this different from the one-time builds?",
-        a: "The builds ship one system. The retainer ships the whole roadmap over months, with us embedded: on-site sessions, staff training, and priority turnaround as the business changes. It is for owners who want the outcome without managing a project.",
+        q: "How is this different from the monthly answering plans?",
+        a: "The plans run your front desk. The retainer is for a larger operation that needs an ongoing builder: new systems each month, not just the phones covered.",
       },
       {
         q: "Is there a minimum term?",
-        a: "Three months, because the first month is roadmap and foundation work. After that it runs month to month. If we are not earning the fee by the quarterly review, we will tell you before you notice.",
-      },
-      {
-        q: "Who is this actually for?",
-        a: "Owners too busy for a workshop and past the point where one build fixes it: multi-crew trades, multi-provider clinics, and firms where the automation roadmap touches every department. Usually eight figures of operational chaos, occasionally seven.",
+        a: "Three months is the honest minimum to prove a build cycle. After that, month to month.",
       },
     ],
   },

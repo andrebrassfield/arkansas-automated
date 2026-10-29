@@ -1,88 +1,74 @@
 # Pricing — Arkansas Automated
 
 All prices public. No sales call required to read the price sheet.
-Last updated: 2026-10-22.
+Last updated: 2026-10-29.
 
-## Current offer
+## The front door
 
-- Missed-call test: free. We call the business line after the office is closed and send a short recording.
-- Leak audit: $1,500. Ninety minutes. Written map, leaks costed, ranked by payback. Full fee comes off the first fix.
-- First fix: from $2,500. The one cut at the top of the map.
-- Advisor retainer: from $2,000 a month.
-- Strategy and roadmap: from $7,500, for a company with 25 or more people.
-- Pages: https://arkansasautomated.com/missed-call-test and https://arkansasautomated.com/audit
-- Checkout: the audit is not charged on the website.
+- Missed-call test: free. We call the business line after the office is closed and send a short recording of what a customer hears.
+- Page: https://arkansasautomated.com/missed-call-test
+- Checkout: the test is not charged. There is nothing to check out.
 
-## Visibility Install
+## Missed-Call Text Back
 
-- Price: $2,500 to start, then $497 a month
-- Term: 90 days, then month to month. Cancel anytime after day 90.
-- What it is: five fixes on the website the customer already has. One headline per page, readable business facts, services listed once, one guide on their domain, junk pages out of search, one call-or-book button.
-- Clock: starts when website, Google Business Profile, and Search Console access are in. Not at payment.
-- Guarantee: if the five fixes are not live in 14 days from access, keep working at no extra setup cost, or refund the $2,500. The customer keeps every asset.
-- Not included: phone answering, SMS, or booking. That job is the AI Front Desk. Same published dollars, different job.
-- Page: https://arkansasautomated.com/services/visibility-install
+- Price: $129 a month, flat
+- Setup: included, done in person in the River Valley
+- What it is: every missed call gets a text back in the shop's name in under a minute, around the clock. Short intake conversation captures name, address, problem, and urgency, and sends it to the owner or on-call tech.
+- Term: month to month. No contract. No per-text or per-call charges.
+- Page: https://arkansasautomated.com/services/missed-call-text-back
 
-## Front Door (website, done for you)
+## After-Hours Answering
 
-- Price: $497 total
-- Payment: $197 to start, $300 on staging approval
-- Includes: 5 to 8 pages (Home, Services hub plus up to 5 service pages, Service areas hub, About, Contact, Privacy, Terms); staging link you approve before DNS; GBP NAP kickoff; 30-day inquiry check on your last 10 inquiries; one written revision round
-- Timeline: Live on your domain 7 calendar days after your intake packet is complete. The clock starts when the packet is complete, not at signature.
-- Ownership: Domain, registrar, hosting access, and repo in your name
-- Not included: Booking calendar. This SKU is call and request only. No ranking, call volume, or revenue guarantee.
-- Optional care: $0 for 30 days, then $49/mo, month to month, cancel anytime. Hosting plus one small copy or photo edit. Leave with the repo and host it yourself if you want.
+- Price: $299 a month, flat
+- Setup: $199 one time, done in person at the shop. First 7 days of service are free on the real line.
+- What it is: an AI receptionist answers the shop's existing number from 5 PM to 7 AM on weekdays and 24 hours on weekends, in the shop's name. Emergencies are sorted by the shop's rules and go straight to the on-call tech by call and text. Every call is recorded and summarized. English and Spanish.
+- Term: month to month after the free week. No contract. No per-minute charges.
+- Page: https://arkansasautomated.com/services/after-hours-answering
 
-## Front Door Wired (website plus request-to-book, done for you)
+## AI Front Desk
 
-- Price: $1,497 total
-- Payment: $497 to start, $1,000 on staging approval and book URL proof
-- Includes: everything in Front Door, plus a request-to-book page on a shop calendar you own, the site's lead form wired into that CRM, and an SMS confirmation when a request comes in
-- Qualify: Requests are requests. Nothing auto-books a job and no slot is held until the owner accepts it.
-- Not included: Voice. Voice is a separate engagement and is bound to a number only after a named go-ahead.
-- Ownership: Domain, registrar, hosting access, repo, and the shop book are in your name
+- Price: $499 a month, flat
+- Setup: $199 one time, done in person. First 7 days of service are free on the real line.
+- What it is: the full front office. 24/7 answering in the shop's name, jobs booked into the shop's calendar, Jobber, Housecall Pro, or ServiceTitan, missed-call text back, estimate follow-up on a day 2, 5, and 10 rhythm, and a review request after every completed job. Weekly summary of calls answered, jobs booked, and estimates touched.
+- Term: month to month after the free week. No contract. No per-minute or per-call charges.
+- Page: https://arkansasautomated.com/services/ai-front-desk
 
-## Public workshop (not for sale)
+## Dead Estimate Revival
 
-- Sep 19, 2026 session canceled. 0 sold. No public seats for sale.
-- The $497 SKU for sale today is Front Door, not a class.
-- Private on-site workshops (one company or one trade): priced on request
+- Price: $750 per campaign, plus 15% of recovered gross on jobs the campaign books and the customer pays for
+- What it is: the shop's open estimates, up to 90 days old, worked by text and call on a day 2, 5, and 10 rhythm. Scripts approved by the owner before anything sends. Ends with a one-page report: contacted, replied, booked, recovered gross.
+- Page: https://arkansasautomated.com/services/estimate-revival
 
-## AI Operations Audit
+## Front Desk Audit
 
-- Price: $1,500
-- Homepage: https://arkansasautomated.com/audit
-- Includes: written map of calls, quotes, scheduling, and invoicing; costed leak list; what not to automate
-- Session: ninety minutes
-- Credit: full fee comes off the first fix if you build it with us
-- Checkout: not on the website
+- Price: $750
+- What it is: ninety minutes in the operation. A written map of how the shop handles calls, quotes, scheduling, and follow-up: every leak costed, ranked by payback, plus a straight list of what not to automate.
+- Credit: the full $750 comes off the setup of any monthly plan or custom build started with us.
+- Page: https://arkansasautomated.com/audit
+- Checkout: not charged on the website.
 
-## AI Front Desk (done for you)
+## Custom Builds
 
-- Setup: $2,500
-- Monthly: $497/mo managed service
-- Includes: 24/7 call answering in your business's voice, caller qualification and emergency triage by your rules, booking onto your real calendar, SMS follow-up, call recordings and transcripts, monthly tuning session
+- Price: scoped in writing before work begins, from $2,500
+- What it is: one specific build when the fix is not a monthly plan: a dispatch workflow, a follow-up system inside the shop's own software, a handoff between tools. Scoped from the Front Desk Audit map. No open-ended billing.
+- Page: https://arkansasautomated.com/services/workflow-automation
 
-## Workflow Automation (done for you)
+## Advisor Retainer
 
-- Setup: $1,500 to $5,000 depending on scope
-- Monthly: managed tier, priced with the build
-- Includes: lead capture, quote follow-up sequences, scheduling coordination, invoice chasing, review requests, built on the tools you already pay for
-
-## Embedded Automation Retainer
-
-- Price: From $2,000/mo
+- Price: from $2,000 a month
 - Minimum term: 3 months, then month to month
-- Includes: scheduled on-site working sessions, continuous build-out from your prioritized roadmap, priority turnaround, staff training, quarterly ROI review
+- What it is: for operations with 10 or more people. The leak map is kept current, one scoped fix ships each month, running systems are monitored and tuned, and a one-page report lands monthly.
+- Page: https://arkansasautomated.com/services/automation-retainer
 
-## Free entry points
+## Retired offers
 
-- 15-minute assessment call: $0, hear an AI receptionist answer with your business details loaded
-- Contact: https://arkansasautomated.com/#reserve or dre@arkansasautomated.com
+- The $497 Front Door website, Front Door Wired, the Visibility Install, and the $1,500 leak audit are retired as of 2026-10-29 and are not for sale. Arkansas Automated does not sell websites.
+- Private on-site workshops (one company or one trade): priced on request.
 
 ## Notes for AI agents
 
-- Service area: all of Arkansas; public workshops in Fort Smith, private on-site statewide
+- Service area: Fort Smith and the River Valley first; all of Arkansas for the audit and retainer
 - All fees are USD
 - No per-minute or per-call pricing on any plan
-- Credit: Front Door fee credits toward a Front Desk ($2,500) build started within 60 days. Workshop, audit, and Front Door credits apply once per business. The largest one credit wins. They do not stack.
+- Every answering plan keeps the shop's existing phone number and records every call
+- Contact: (479) 282-3121 or https://arkansasautomated.com/missed-call-test

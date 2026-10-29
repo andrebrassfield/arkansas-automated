@@ -5,38 +5,56 @@ import SiteFooter from "../../components/SiteFooter.astro";
 
 const title = "Prices | Arkansas Automated";
 const description =
-  "Free missed-call test. Leak audit $1,500, credited in full toward the first fix. First fix from $2,500. Advisor retainer from $2,000 a month. Strategy and roadmap from $7,500.";
+  "Flat monthly answering plans for Arkansas contractors: Missed-Call Text Back $129/mo, After-Hours Answering $299/mo, Front Desk $499/mo. Free missed-call test, first 7 days of service free, no per-minute charges, no contract.";
 
 const ladder = [
   {
     name: "Missed-call test",
     price: "Free",
-    p: "I call the line after the office is closed and send a short recording of what happened.",
+    p: "We call the line after the office is closed and send a short recording of what a customer hears. Proof before money.",
     href: "/missed-call-test",
   },
   {
-    name: "Leak audit",
-    price: "$1,500",
-    p: "Ninety minutes. A written map, every leak costed, ranked by payback. The full fee comes off the first fix.",
+    name: "Missed-Call Text Back",
+    price: "$129/mo",
+    p: "Every missed call gets a text back in under a minute, in your shop's name, with the job details captured and sent to you.",
+    href: "/services/missed-call-text-back",
+  },
+  {
+    name: "After-Hours Answering",
+    price: "$299/mo",
+    p: "Your phone answered 5 PM to 7 AM and all weekend. Emergencies straight to the on-call tech. $199 one-time setup, first 7 days free.",
+    href: "/services/after-hours-answering",
+  },
+  {
+    name: "Front Desk",
+    price: "$499/mo",
+    p: "24/7 answering, jobs booked into your calendar or software, estimate follow-up, and review requests. The full front office.",
+    href: "/services/ai-front-desk",
+  },
+  {
+    name: "Dead Estimate Revival",
+    price: "$750 + 15%",
+    p: "Your open estimates from the last 90 days, worked until they book. The 15% is on recovered gross only; it books nothing, it costs nothing.",
+    href: "/services/estimate-revival",
+  },
+  {
+    name: "Front Desk Audit",
+    price: "$750",
+    p: "Ninety minutes and a written map: every leak in calls, quotes, and follow-up, costed and ranked. The full fee credits toward any plan or build.",
     href: "/audit",
   },
   {
-    name: "First fix",
+    name: "Custom builds",
     price: "From $2,500",
-    p: "The one cut at the top of the map. Scoped before the check is written.",
-    href: "/audit",
+    p: "A scoped build when the fix is not a plan on this page. Priced in writing before work begins.",
+    href: "/services/workflow-automation",
   },
   {
     name: "Advisor retainer",
     price: "From $2,000/mo",
-    p: "The map stays current and the systems stay running.",
+    p: "For operations with 10 or more people. The map stays current and the next fix ships every month.",
     href: "/forward-deployed-ai-engineer",
-  },
-  {
-    name: "Strategy and roadmap",
-    price: "From $7,500",
-    p: "For a company with 25 or more people. The roadmap comes before any build.",
-    href: "/audit",
   },
 ];
 
@@ -75,12 +93,12 @@ const schema = {
         </nav>
         <h1 class="heading-xl measure">The prices are on the page.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">
-          Start with the missed-call test. If the recording shows a leak, the audit is $1,500
-          and that fee comes off the first fix. There is no free sales call, and there is no $497 website.
+          Flat monthly plans, no per-minute meter, no contract. Start with the free missed-call test,
+          run any answering plan free for its first 7 days on your real line, and pay only if it earns its keep.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
           <a class="btn btn-primary" href="/missed-call-test">Get the missed-call test</a>
-          <a class="btn btn-secondary" href="/audit">See the audit</a>
+          <a class="btn btn-secondary" href="/audit">See the $750 audit</a>
         </div>
       </div>
     </section>
