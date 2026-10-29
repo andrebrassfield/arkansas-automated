@@ -49,7 +49,7 @@ export const cities: City[] = [
       "An AI receptionist changes the arithmetic for a Fort Smith shop because the owner is usually the one missing the call. You are in a crawl space, on a roof, or driving between Chaffee Crossing and Greenwood. The receptionist picks up in your business's voice, asks your qualification questions, and puts the job on your calendar before you are back in the truck.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Fort Smith owners start with a $497 Front Door site or the free 15-minute fit assessment. Private on-site sessions for a team are priced on request.",
+      "Public workshop seats are not for sale. Fort Smith owners start with the free missed-call test or the free 15-minute fit assessment. Private on-site sessions for a team are priced on request.",
     nearby: ["van-buren", "russellville", "siloam-springs", "fayetteville"],
   },
   {
@@ -68,7 +68,7 @@ export const cities: City[] = [
       "The fix is not a call center that answers as a stranger. It is a receptionist that answers as your business, knows your service area stops at the county line or does not, and texts you the details of anything it cannot handle. Van Buren owners tend to test it hardest on that last point, and it holds up.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497 or the free assessment. Private on-site sessions for a Van Buren team or trade group are available on request.",
+      "Public workshop seats are not for sale. Start with the free missed-call test or the free assessment. Private on-site sessions for a Van Buren team or trade group are available on request.",
     nearby: ["fort-smith", "siloam-springs", "russellville", "fayetteville"],
   },
   {
@@ -87,7 +87,7 @@ export const cities: City[] = [
       "An AI receptionist does not queue. It answers the fortieth call the way it answered the first, takes the unit number and the problem, and books the slot. For Fayetteville the useful setting is usually overflow: your office picks up when it can, and everything that would have rung out goes to the receptionist instead of to voicemail.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497 or the free assessment, or book a private on-site session for your team.",
+      "Public workshop seats are not for sale. Start with the free missed-call test or the free assessment, or book a private on-site session for your team.",
     nearby: ["springdale", "rogers", "bentonville", "siloam-springs"],
   },
   {
@@ -106,7 +106,7 @@ export const cities: City[] = [
       "A bilingual AI receptionist takes the language cue from the caller and runs your qualification script either way, then hands you one job card in English. Springdale contractors and trucking outfits get the second thing too: the after-hours dispatch call answered at 11 PM without paying somebody to sit up for it.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497, or book a private on-site session in Springdale for your team. Bilingual setups are covered in the build.",
+      "Public workshop seats are not for sale. Start with the free missed-call test, or book a private on-site session in Springdale for your team. Bilingual setups are covered in the build.",
     nearby: ["fayetteville", "rogers", "siloam-springs", "bentonville"],
   },
   {
@@ -125,7 +125,7 @@ export const cities: City[] = [
       "That is why the receptionist math is easy here. Answering every paid call, qualifying it against your service area and job minimum, and booking it on the spot recovers the spend you are already making. Rogers owners who track cost per booked job see it inside the first month.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497, or bring us on-site in Rogers for a private session built around your trade.",
+      "Public workshop seats are not for sale. Start with the free missed-call test, or bring us on-site in Rogers for a private session built around your trade.",
     nearby: ["bentonville", "springdale", "fayetteville", "siloam-springs"],
   },
   {
@@ -144,7 +144,7 @@ export const cities: City[] = [
       "An AI receptionist is how a four-person Bentonville business sounds like a company with a front desk, because functionally it has one. Consistent greeting, real qualification, a booked slot, and a confirmation text. The customer never files you under the second category.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497, or book a private on-site session in Bentonville for your team.",
+      "Public workshop seats are not for sale. Start with the free missed-call test, or book a private on-site session in Bentonville for your team.",
     nearby: ["rogers", "springdale", "fayetteville", "siloam-springs"],
   },
   {
@@ -163,7 +163,7 @@ export const cities: City[] = [
       "This is the setup where patience is the feature. The receptionist can take the whole description, quote the range you approved, confirm the address on a private drive, and book a window instead of a time. Bella Vista owners usually set it to offer a live callback option too, because some of this customer base wants a person and there is no reason to fight that.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497. Bella Vista and Bentonville teams can book a private on-site session.",
+      "Public workshop seats are not for sale. Start with the free missed-call test. Bella Vista and Bentonville teams can book a private on-site session.",
     nearby: ["bentonville", "rogers", "springdale", "siloam-springs"],
   },
   {
@@ -182,7 +182,7 @@ export const cities: City[] = [
       "You can encode it once. The receptionist asks for the address first, checks it against the service area you defined, and either books it or declines it politely with a referral. Siloam Springs owners get back the twenty minutes a day they spend on calls they were never going to take.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497. Siloam Springs teams can book a private on-site session.",
+      "Public workshop seats are not for sale. Start with the free missed-call test. Siloam Springs teams can book a private on-site session.",
     nearby: ["springdale", "fayetteville", "rogers", "fort-smith"],
   },
   {
@@ -201,7 +201,7 @@ export const cities: City[] = [
       "The receptionist takes the call you cannot take and gives it back to you as a job card with the address already in it. For Russellville the second win is routing: it can ask where the caller is and slot them into the day you are already driving, instead of sending you back across the county tomorrow.",
     ],
     workshopNote:
-      "Public workshop seats are not for sale. Start with Front Door $497. Private on-site sessions in Russellville are available for teams and trade groups.",
+      "Public workshop seats are not for sale. Start with the free missed-call test. Private on-site sessions in Russellville are available for teams and trade groups.",
     nearby: ["fort-smith", "conway", "searcy", "van-buren"],
   },
   {
@@ -239,7 +239,7 @@ export const cities: City[] = [
       "For firms and clinics the receptionist does more than answer. It runs intake: conflict-check questions for a law firm, insurance and reason-for-visit for a clinic, job type and address for a trade. The Little Rock version of this build is usually the one with the most qualification logic in it, because the volume justifies getting the screening right.",
     ],
     workshopNote:
-      "For Little Rock we lead with the $999 operations audit, Front Door $497, or a private on-site session for your firm. Public workshop seats are not for sale.",
+      "For Little Rock we lead with the $750 Front Desk Audit, the free missed-call test, or a private on-site session for your firm. Public workshop seats are not for sale.",
     nearby: ["north-little-rock", "benton", "conway", "searcy"],
   },
   {
@@ -429,7 +429,7 @@ export const cities: City[] = [
       "Answering every call is how a family shop keeps the proximity advantage it already earned. The receptionist does not need to be clever here. It needs to pick up, take the job, and text you, reliably, in a voice that does not sound like a call center in another state.",
     ],
     workshopNote:
-      "Start with the free assessment or the $999 operations audit. Private on-site workshops in Paragould are available, often combined with a Jonesboro session.",
+      "Start with the free assessment or the $750 Front Desk Audit. Private on-site workshops in Paragould are available, often combined with a Jonesboro session.",
     nearby: ["jonesboro", "batesville", "west-memphis", "searcy"],
   },
   {
@@ -448,7 +448,7 @@ export const cities: City[] = [
       "The 24 hour case makes itself here. What matters is the triage: the receptionist separates a stopped truck from a routine scheduling call, wakes somebody up for the first, and books the second for morning. West Memphis owners usually also want it to capture the DOT or unit number on the first call, and it can.",
     ],
     workshopNote:
-      "Start with the free assessment or the $999 operations audit. Private on-site workshops in West Memphis are available for teams and dispatch-heavy operations.",
+      "Start with the free assessment or the $750 Front Desk Audit. Private on-site workshops in West Memphis are available for teams and dispatch-heavy operations.",
     nearby: ["jonesboro", "paragould", "little-rock", "pine-bluff"],
   },
   {
@@ -467,7 +467,7 @@ export const cities: City[] = [
       "Which is why the voice and script work matters more here than the technology. The receptionist greets as your business, uses the names your customers expect, and hands off to a person on anything sensitive. For industrial and institutional accounts in Pine Bluff it also captures a PO or work order number up front, because those customers will ask for it later.",
     ],
     workshopNote:
-      "Start with the free assessment or the $999 operations audit. Private on-site workshops in Pine Bluff are available for teams and trade groups.",
+      "Start with the free assessment or the $750 Front Desk Audit. Private on-site workshops in Pine Bluff are available for teams and trade groups.",
     nearby: ["little-rock", "el-dorado", "west-memphis", "benton"],
   },
   {
@@ -486,7 +486,7 @@ export const cities: City[] = [
       "The industrial side of the market changes the build. Contractors serving plant and timber accounts need the receptionist to capture site, contact, and authorization details up front, and to know which callers get escalated immediately because a line is down. That is a different script than a residential front desk, and we write it that way.",
     ],
     workshopNote:
-      "Start with the free assessment or the $999 operations audit. Private on-site workshops in El Dorado are available for teams and trade groups.",
+      "Start with the free assessment or the $750 Front Desk Audit. Private on-site workshops in El Dorado are available for teams and trade groups.",
     nearby: ["pine-bluff", "texarkana", "hot-springs", "little-rock"],
   },
   {
@@ -505,7 +505,7 @@ export const cities: City[] = [
       "The receptionist asks for the address before anything else and branches from there, which sounds small and eliminates the single most common intake error in this market. Texarkana owners also use it to keep the two sides straight in the record, so the invoice and the tax treatment match what was actually promised on the phone.",
     ],
     workshopNote:
-      "Start with the free assessment or the $999 operations audit. Private on-site workshops in Texarkana are available for teams and trade groups.",
+      "Start with the free assessment or the $750 Front Desk Audit. Private on-site workshops in Texarkana are available for teams and trade groups.",
     nearby: ["el-dorado", "hot-springs", "fort-smith", "pine-bluff"],
   },
 ];

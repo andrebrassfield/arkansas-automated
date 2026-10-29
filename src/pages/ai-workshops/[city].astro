@@ -22,23 +22,23 @@ const c = cityBySlug(slug);
 const nearby = c.nearby.map(cityBySlug);
 
 const title = `AI automation in ${c.name}, AR | Arkansas Automated`;
-const description = `Front Door sites and done-for-you AI front desks for ${c.name} businesses. Start at $497 or have us build the desk.`;
+const description = `Done-for-you AI front desks for ${c.name} businesses. Start with the free missed-call test, or have us run the desk for a flat monthly price.`;
 
 const ways = [
   {
     n: "Start",
-    h: "Front Door site, $497",
-    p: "A 5 to 8 page storefront on your domain, live in 7 days after we have your photos and copy. Credits toward an AI front desk started within 60 days.",
+    h: "Missed-call test, free",
+    p: "We call your business line after you close and send a short recording of what a customer hears. Proof before money. If the leak is real, the answering plans start at $129 a month.",
   },
   {
     n: "Audit",
-    h: "AI operations audit, $999",
-    p: "We map your calls, quotes, scheduling, and invoicing, then hand you a prioritized automation plan with real ROI numbers for your business.",
+    h: "Front Desk Audit, $750",
+    p: "We map your calls, quotes, scheduling, and follow-up, then hand you a prioritized plan with real payback numbers for your business. The full fee credits toward setup of any plan or build.",
   },
   {
     n: "Build",
-    h: "Done for you, from $2,500 + $497/mo",
-    p: "The AI front desk, built and launched for you: 24/7 answering in your business's voice, qualification, booking, and SMS follow-up.",
+    h: "Done for you, $199 setup + $499/mo",
+    p: "The AI front desk, set up in person and run for you: 24/7 answering in your business's voice, qualification, booking, and SMS follow-up. First 7 days of service free.",
   },
   {
     n: "Retainer",
@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     q: "I am not technical. Is this for me?",
-    a: "Yes. We build it. Start with a $497 Front Door site or the free 15-minute fit assessment. You do not sit through a class.",
+    a: "Yes. We build it. Start with the free missed-call test or the free 15-minute fit assessment. You do not sit through a class.",
   },
   {
     q: "What if I would rather not sit through a workshop?",
@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "Front Door is $497. The AI front desk is $2,500 setup plus $497 a month. Larger workflow builds run $1,500 to $5,000 setup. Front Door and audit fees credit toward any build started within 60 days.",
+    a: "Answering plans run $129 to $499 a month flat, with a $199 one-time setup on the answering plans and the first 7 days of service free. The Front Desk Audit is $750, credited toward setup of any plan or build. Larger custom builds are scoped in writing, from $2,500.",
   },
 ];
 
@@ -75,10 +75,10 @@ const schema = {
       "@type": "ProfessionalService",
       name: "Arkansas Automated",
       url: site,
-      description: `AI front desks, Front Door sites, and workflow automation for ${c.name}, Arkansas businesses.`,
+      description: `AI front desks, answering plans, and workflow automation for ${c.name}, Arkansas businesses.`,
       areaServed: { "@type": "City", name: `${c.name}, Arkansas` },
       serviceType: ["AI front desk", "Workflow automation", "AI implementation"],
-      priceRange: "$497 - $5,000+",
+      priceRange: "$129 - $2,000+",
     },
     {
       "@type": "FAQPage",
@@ -111,12 +111,12 @@ const schema = {
         <span class="eyebrow">{c.region}</span>
         <h1 class="heading-xl measure">AI automation in {c.name}.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">
-          Arkansas Automated builds Front Door sites and done-for-you AI front desks for
+          Arkansas Automated runs done-for-you AI front desks for
           {" "}{c.name} business owners. Public workshop seats are not for sale. {c.drive}.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
           <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book a 15-minute fit assessment</a>
-          <a class="btn btn-secondary" href="/services/front-door">Front Door $497</a>
+          <a class="btn btn-secondary" href="/missed-call-test">Free missed-call test</a>
         </div>
       </div>
     </section>
@@ -146,7 +146,7 @@ const schema = {
           }
         </div>
         <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
-          Front Door and audit fees credit toward a done-for-you build started within 60 days.
+          The audit fee credits toward setup of any plan or build started within 60 days.
           {" "}<a class="text-link" href="/services">See full services and pricing</a>.
         </p>
       </div>
@@ -160,8 +160,8 @@ const schema = {
         <div>
           <p class="body-lg">{c.workshopNote}</p>
           <p class="body-lg" style="margin-top:1.1rem">
-            Public workshop seats are not for sale. Start with Front Door $497 or the free
-            fit assessment. {" "}<a class="text-link" href="/services/front-door">See Front Door</a>.
+            Public workshop seats are not for sale. Start with the free missed-call test or the free
+            fit assessment. {" "}<a class="text-link" href="/services">See the plans</a>.
           </p>
         </div>
       </div>
@@ -198,7 +198,7 @@ const schema = {
         <div>
           <h2 class="heading-lg">Start in {c.name}.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            One form for everything: Front Door, the free assessment, and done-for-you
+            One form for everything: the missed-call test, the free assessment, and done-for-you
             scoping. Tell us which and we reply from a real address, usually within one
             business day.
           </p>

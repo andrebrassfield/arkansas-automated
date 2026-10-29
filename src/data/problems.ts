@@ -83,7 +83,7 @@ export const problems: Problem[] = [
       },
       {
         q: "What does it cost?",
-        a: "The AI front desk is $2,500 to set up plus $497 a month, with call recordings and a monthly tuning session included. Against the missed-call arithmetic above, most Arkansas service businesses cover it with one or two recovered jobs a month.",
+        a: "The AI front desk is $199 to set up plus $499 a month, with call recordings and a monthly tuning session included. Against the missed-call arithmetic above, most Arkansas service businesses cover it with one or two recovered jobs a month.",
       },
     ],
     service: "ai-front-desk",
@@ -187,7 +187,7 @@ export const problems: Problem[] = [
       },
       {
         q: "What does a quote follow-up build cost?",
-        a: "A quote follow-up sequence on its own is at the bottom of the workflow automation range, around $1,500 setup plus a monthly managed tier. The $999 operations audit prices it exactly for your operation first, and the audit fee credits toward the build.",
+        a: "Custom builds are scoped in writing before work begins, from $2,500, plus a monthly managed tier when the build needs one. The $750 Front Desk Audit prices it exactly for your operation first, and the audit fee credits toward setup.",
       },
     ],
     service: "workflow-automation",
@@ -235,7 +235,7 @@ export const problems: Problem[] = [
       },
       {
         q: "How long does a workflow build take?",
-        a: "A single sequence is a couple of weeks. A full lead-to-invoice pipeline with dispatch coordination runs longer and lands in the $1,500 to $5,000 range depending on scope. The operations audit fixes the number before you commit.",
+        a: "A single sequence is a couple of weeks. A full lead-to-invoice pipeline with dispatch coordination runs longer and is scoped in writing before work begins, from $2,500. The Front Desk Audit fixes the number before you commit.",
       },
       {
         q: "What happens when it breaks?",
