@@ -14,12 +14,12 @@ import SiteFooter from "../components/SiteFooter.astro";
 const title =
   "Answering Service Cost in Arkansas — Published Prices, No Per-Minute Meter";
 const description =
-  "Answering service cost in Arkansas: published live plans at 300 calls run $1,380 to $2,100 a month. AI Front Desk is $2,500 setup and $497 a month flat. No per-minute meter.";
+  "Answering service cost in Arkansas: published live plans at 300 calls run $1,380 to $2,100 a month. AI Front Desk is $199 setup and $499 a month flat. No per-minute meter.";
 
 const faqs = [
   {
     q: "How much does an answering service cost in Arkansas?",
-    a: "It depends on the shape. At 300 calls a month averaging three minutes, about 900 minutes, published live answering plans run $1,380 to $2,100 a month: Abby Growth $1,380, the PATLive 1,000-minute plan $1,499, AnswerConnect Standard plus overage about $1,500, the Ruby 500-minute plan $1,725, and the Smith.ai 300-call Pro plan $2,100. Self-serve software publishes lower entry prices: Dialzara from $29 a month, Goodcall from $79 a month per agent. Arkansas Automated's AI Front Desk is $2,500 to set up and $497 a month, flat. No per-minute or per-call charge on any plan on the published price sheet.",
+    a: "It depends on the shape. At 300 calls a month averaging three minutes, about 900 minutes, published live answering plans run $1,380 to $2,100 a month: Abby Growth $1,380, the PATLive 1,000-minute plan $1,499, AnswerConnect Standard plus overage about $1,500, the Ruby 500-minute plan $1,725, and the Smith.ai 300-call Pro plan $2,100. Self-serve software publishes lower entry prices: Dialzara from $29 a month, Goodcall from $79 a month per agent. Arkansas Automated's AI Front Desk is $199 to set up and $499 a month, flat. No per-minute or per-call charge on any plan on the published price sheet.",
   },
   {
     q: "Is the flat fee always the cheaper buy?",
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "What is not included on the Arkansas Automated price sheet?",
-    a: "Front Door does not include a booking calendar. It is call and request only, and it does not include a ranking guarantee, a call-volume guarantee, or a revenue guarantee. Front Door Wired does not include voice. Voice is a separate engagement. No plan on the sheet charges per minute or per call. Credits apply once per business. The largest one wins. They do not stack.",
+    a: "The plans do not include judgment calls: pricing exceptions and safety calls escalate to a person by the rules you write. Missed-Call Text Back does not answer voice calls; it texts. No plan includes a ranking guarantee, a call-volume guarantee, or a revenue guarantee. No plan on the sheet charges per minute or per call. Credits apply once per business. The largest one wins. They do not stack.",
   },
   {
     q: "Do I have to pay to hear it answer as my business?",
@@ -218,32 +218,37 @@ const schema = {
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Front Door</th>
-                <td>$497 total</td>
-                <td>$197 to start, $300 on staging approval</td>
+                <th scope="row">Missed-Call Text Back</th>
+                <td>$129/mo flat</td>
+                <td>Monthly. Setup included. No per-text charges.</td>
               </tr>
               <tr>
-                <th scope="row">Front Door Wired</th>
-                <td>$1,497 total</td>
-                <td>$497 to start, $1,000 on staging approval and book URL proof</td>
-              </tr>
-              <tr>
-                <th scope="row">AI Operations Audit</th>
-                <td>$999 flat</td>
-                <td>Full fee credited toward any done-for-you build started within 60 days</td>
+                <th scope="row">After-Hours Answering</th>
+                <td>$299/mo flat</td>
+                <td>$199 setup once, then monthly. First 7 days of service free.</td>
               </tr>
               <tr>
                 <th scope="row">AI Front Desk</th>
-                <td>$2,500 setup + $497/mo managed</td>
-                <td>Setup once, then the monthly managed fee. No per-minute or per-call charge.</td>
+                <td>$199 setup + $499/mo</td>
+                <td>Setup once, then the monthly fee. First 7 days of service free. No per-minute or per-call charge.</td>
               </tr>
               <tr>
-                <th scope="row">Workflow Automation</th>
-                <td>$1,500 to $5,000 setup</td>
-                <td>Setup depending on scope. Monthly tier priced with the build.</td>
+                <th scope="row">Dead Estimate Revival</th>
+                <td>$750 + 15% of recovered gross</td>
+                <td>Per campaign. The 15% is charged only on jobs the campaign books and the customer pays for.</td>
               </tr>
               <tr>
-                <th scope="row">Embedded Automation Retainer</th>
+                <th scope="row">Front Desk Audit</th>
+                <td>$750 flat</td>
+                <td>Full fee credited toward setup of any plan or build started within 60 days</td>
+              </tr>
+              <tr>
+                <th scope="row">Custom Builds</th>
+                <td>Scoped, from $2,500</td>
+                <td>Price in writing before work begins.</td>
+              </tr>
+              <tr>
+                <th scope="row">Advisor Retainer</th>
                 <td>from $2,000/mo</td>
                 <td>3-month minimum, then month to month</td>
               </tr>
@@ -251,37 +256,32 @@ const schema = {
           </table>
         </div>
         <p>
-          <strong>Front Door</strong> is a done-for-you website. You approve staging before DNS.
-          Domain, registrar, hosting access, and the repo are in your name. It does not include
-          a booking calendar. It is call and request only. It does not include a ranking
-          guarantee, a call-volume guarantee, or a revenue guarantee.
+          <strong>Missed-Call Text Back</strong> is $129 a month. Every missed call gets a text
+          back in the shop's name in under a minute, and the job details land with the owner.
+          Setup is included. <strong>After-Hours Answering</strong> is $299 a month: the phone
+          answered evenings, nights, and weekends, with emergencies dispatched to the on-call
+          tech. Its setup is $199 once, and the first 7 days of service are free.
         </p>
         <p>
-          <strong>Front Door Wired</strong> is Front Door plus a request-to-book page on a shop
-          calendar you own, the site's lead form wired into that CRM, and an SMS confirmation
-          when a request comes in. Requests are requests. Nothing auto-books a job, and no slot
-          is held until the owner accepts it. Voice is not included. Voice is a separate
-          engagement, and it is bound to a number only after a named go-ahead. Domain, registrar,
-          hosting access, repo, and the shop book are in your name.
+          <strong>Front Desk Audit</strong> is $750 flat. It includes a full process map of
+          calls, quotes, scheduling, and follow-up; a costed leak list; a prioritized plan
+          with payback math; and honest verdicts on what not to automate. The full fee is credited
+          toward setup of any plan or build started within 60 days.
         </p>
         <p>
-          <strong>AI Operations Audit</strong> is $999 flat. It includes a full process map of
-          calls, quotes, scheduling, and invoicing; a costed leak list; a prioritized build plan
-          with ROI math; and honest verdicts on what not to automate. The full fee is credited
-          toward any done-for-you build started within 60 days.
-        </p>
-        <p>
-          <strong>AI Front Desk</strong> is the answering plan: $2,500 setup and $497 a month
-          managed. It includes 24/7 call answering in your business's voice, caller qualification
+          <strong>AI Front Desk</strong> is the full answering plan: $199 setup and $499 a month.
+          It includes 24/7 call answering in your business's voice, caller qualification
           and emergency triage by your rules, booking onto your real calendar, SMS follow-up,
-          call recordings and transcripts, and a monthly tuning session. Service detail is on
+          estimate follow-up, review requests, call recordings and transcripts, and a monthly
+          tuning session. The first 7 days of service are free. Service detail is on
           the <a class="text-link" href="/services/ai-front-desk">AI front desk page</a>.
         </p>
         <p>
-          <strong>Workflow Automation</strong> is $1,500 to $5,000 setup depending on scope.
-          The monthly tier is priced with the build, not published as one number. It covers
-          lead capture, quote follow-up sequences, scheduling coordination, invoice chasing,
-          and review requests, built on the tools you already pay for.
+          <strong>Dead Estimate Revival</strong> is $750 per campaign plus 15% of the gross on
+          jobs it books and the customer pays for. It works the shop's open estimates from the
+          last 90 days. <strong>Custom Builds</strong> are scoped in writing before work begins,
+          from $2,500. That covers lead capture, quote follow-up sequences, scheduling coordination,
+          invoice chasing, and review requests, built on the tools you already pay for.
         </p>
         <p>
           <strong>Embedded Automation Retainer</strong> starts at $2,000 a month, with a 3-month
@@ -290,10 +290,9 @@ const schema = {
           quarterly ROI review.
         </p>
         <p>
-          Credits apply once per business. The largest one wins. They do not stack. The Front
-          Door fee credits toward a Front Desk ($2,500) build started within 60 days. The audit
-          fee credits toward any done-for-you build started within 60 days. Workshop, audit, and
-          Front Door credits are the credits that rule covers. This page cites the price sheet
+          Credits apply once per business. The largest one wins. They do not stack. The audit
+          fee credits toward setup of any plan or build started within 60 days. That is the
+          credit that rule covers. This page cites the price sheet
           by name. It does not link the sheet as a separate HTML route.
         </p>
 
@@ -313,8 +312,8 @@ const schema = {
         </p>
         <p>
           <strong>You want the answering, the rules, the booking, and the monthly tuning done
-          for you, with no meter.</strong> The price sheet line is AI Front Desk: $2,500 setup
-          and $497 a month. Same number in Fayetteville, Fort Smith, and every other Arkansas
+          for you, with no meter.</strong> The price sheet line is AI Front Desk: $199 setup
+          and $499 a month. Same number in Fayetteville, Fort Smith, and every other Arkansas
           city. The
           <a class="text-link" href="/answering-service-fayetteville-ar/">Fayetteville answering service page</a>
           is the city page for what that setup does on a call. It is not a different rate.
@@ -331,8 +330,8 @@ const schema = {
         <p>The price sheet says what each plan refuses. Read that before the included list.</p>
         <ul>
           <li><strong>No meter, on any plan.</strong> No per-minute pricing and no per-call pricing. That is an exclusion of a meter. It is not a claim that every other task is included.</li>
-          <li><strong>Front Door refuses a booking calendar.</strong> Call and request only. It also refuses a ranking guarantee, a call-volume guarantee, and a revenue guarantee.</li>
-          <li><strong>Front Door Wired refuses voice.</strong> Voice is a separate engagement. A request is not a booked job until the owner accepts it.</li>
+          <li><strong>Missed-Call Text Back refuses voice.</strong> It texts the caller and captures the job details. It does not answer the call itself. Voice answering is the answering plans.</li>
+          <li><strong>No plan quotes beyond your ranges.</strong> Pricing exceptions, safety calls, and anything you mark human-only go straight to a person, by your rule.</li>
           <li><strong>No plan guarantees rankings, call volume, or revenue.</strong> A saved job is arithmetic you can run. It is not a promise that the job arrives.</li>
           <li><strong>Credits do not stack.</strong> They apply once per business. The largest one wins.</li>
           <li><strong>Rules you did not write are not included.</strong> Emergency triage follows the rules you approve. A call that does not fit those rules goes to a person you name. The setup does not invent a protocol, a price exception, or a judgment call.</li>
@@ -346,8 +345,8 @@ const schema = {
 
         <h2 class="heading-lg measure">The break-even math on one saved job</h2>
         <p>
-          The monthly managed fee on AI Front Desk is $497. One saved job covers that month
-          when the job is worth at least $497. The setup is $2,500, paid once, separate from
+          The monthly fee on AI Front Desk is $499. One saved job covers that month
+          when the job is worth at least $499. The setup is $199, paid once, separate from
           the monthly fee. That is the math. It is not a forecast of how many jobs you will
           save, and it is not a revenue guarantee. This page does not pick a job value for
           your trade, and it does not publish a savings percentage.
@@ -370,8 +369,8 @@ const schema = {
           when the leak is bigger than the missed calls.
         </p>
         <p>
-          Neither tool changes the price sheet. $497 is still the monthly fee. $2,500 is still
-          the setup. One job worth at least $497 still covers the month. Whether that job
+          Neither tool changes the price sheet. $499 is still the monthly fee. $199 is still
+          the setup. One job worth at least $499 still covers the month. Whether that job
           exists in your book is a number you enter, not a number this page invents.
         </p>
 
@@ -392,11 +391,11 @@ const schema = {
         </ol>
         <p>
           On our sheet the answers that are already published are these: flat fee, no meter,
-          AI Front Desk books onto your calendar, Front Door does not include a booking
-          calendar, Front Door Wired does not include voice, the audit credits in full toward
-          a done-for-you build started within 60 days, and credits do not stack. The ownership
-          lines the sheet publishes are the domain, registrar, hosting access, and repo on
-          Front Door, plus the shop book on Front Door Wired. Ask the rest on the assessment
+          AI Front Desk books onto your calendar, Missed-Call Text Back does not answer voice
+          calls, the audit credits in full toward
+          setup of any plan or build started within 60 days, and credits do not stack. The ownership
+          lines the sheet publishes are your phone number, your calendar, and your customer
+          data: they stay yours on every plan. Ask the rest on the assessment
           rather than treating a missing line as a yes.
         </p>
 

@@ -2,15 +2,17 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import AdvisorHome from "../components/AdvisorHome.astro";
+import FrontDeskHome, { homeFaqs } from "../components/FrontDeskHome.astro";
 import { AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
 import { serviceBySlug } from "../data/services";
 
-const audit = serviceBySlug("operations-audit");
+const afterHours = serviceBySlug("after-hours-answering");
+const frontDesk = serviceBySlug("ai-front-desk");
+const textBack = serviceBySlug("missed-call-text-back");
 
-const title = "AI Consultant in Fort Smith | Arkansas Automated";
+const title = "AI Receptionist & After-Hours Answering for Arkansas Contractors | Arkansas Automated";
 const description =
-  "Andre Brassfield finds the process bleeding money in Fort Smith and Northwest Arkansas businesses and fixes it with AI. Free missed-call test. Leak audit $1,500, credited in full toward the first fix. Call (479) 282-3121.";
+  "Your shop's phone answered after hours and on weekends, in your name, by an AI front desk set up in person in Fort Smith. Flat monthly plans from $129/mo, no per-minute charges, no contract. Free missed-call test tonight. Call (479) 282-3121.";
 
 const properties = [
   {
@@ -39,6 +41,15 @@ const properties = [
   },
 ];
 
+const offerSchema = (s: { name: string; answer: string }, price: string, url: string) => ({
+  "@type": "Service",
+  name: s.name,
+  provider: { "@id": "https://arkansasautomated.com/#organization" },
+  areaServed: { "@type": "State", name: "Arkansas" },
+  description: s.answer,
+  offers: { "@type": "Offer", price, priceCurrency: "USD", url },
+});
+
 const homeSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -51,18 +62,19 @@ const homeSchema = {
       telephone: AA_PUBLIC_PHONE_E164,
       description,
       disambiguatingDescription:
-        "AI consultant and business automation company operated by Brassfield Ventures LLC, serving Rogers and Fort Smith, Arkansas. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
+        "AI receptionist and after-hours answering service for Arkansas home-service contractors, operated by Brassfield Ventures LLC in Fort Smith. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
       founder: { "@id": "https://arkansasautomated.com/about#andre-brassfield" },
       sameAs: properties.map((p) => p.url),
       areaServed: [
-        { "@type": "City", name: "Rogers, Arkansas" },
         { "@type": "City", name: "Fort Smith, Arkansas" },
+        { "@type": "City", name: "Rogers, Arkansas" },
         { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
         { "@type": "State", name: "Arkansas" },
       ],
       serviceType: [
-        "AI consulting",
-        "AI operations audit",
+        "AI receptionist",
+        "After-hours answering service",
+        "Missed-call text back",
         "AI front desk",
       ],
     },
@@ -80,22 +92,12 @@ const homeSchema = {
       url: "https://arkansasautomated.com",
       publisher: { "@id": "https://arkansasautomated.com/#organization" },
     },
-    {
-      "@type": "Service",
-      name: audit.name,
-      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: "https://arkansasautomated.com" },
-      areaServed: { "@type": "State", name: "Arkansas" },
-      description: audit.answer,
-      offers: {
-        "@type": "Offer",
-        price: "1500",
-        priceCurrency: "USD",
-        url: "https://arkansasautomated.com/audit",
-      },
-    },
+    offerSchema(afterHours, "299", "https://arkansasautomated.com/services/after-hours-answering"),
+    offerSchema(frontDesk, "499", "https://arkansasautomated.com/services/ai-front-desk"),
+    offerSchema(textBack, "129", "https://arkansasautomated.com/services/missed-call-text-back"),
     {
       "@type": "FAQPage",
-      mainEntity: audit.faqs.map((f) => ({
+      mainEntity: homeFaqs.map((f) => ({
         "@type": "Question",
         name: f.q,
         acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -108,7 +110,7 @@ const homeSchema = {
 <Base title={title} description={description} path="/" schema={homeSchema}>
   <SiteNav overHero />
   <main id="main-content" tabindex="-1">
-    <AdvisorHome properties={properties} />
+    <FrontDeskHome />
   </main>
   <SiteFooter />
 </Base>

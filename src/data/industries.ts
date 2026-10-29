@@ -86,7 +86,7 @@ export const industries: Industry[] = [
       },
       {
         q: "What does this cost a one-truck shop?",
-        a: "The AI front desk is $2,500 to set up plus $497 a month, and it typically pays for itself with one or two booked jobs it would have missed. A Front Door site is $497 and credits toward the build if you start within 60 days.",
+        a: "The AI front desk is $199 to set up plus $499 a month, and it typically pays for itself with one or two booked jobs it would have missed. The missed-call test that starts it is free.",
       },
     ],
   },
@@ -202,7 +202,7 @@ export const industries: Industry[] = [
       },
       {
         q: "What is the cheapest way to try it?",
-        a: "A Front Door site is $497. Live in 7 days after we have your photos and copy, and the fee credits toward a done-for-you build started within 60 days. Or start with the free 15-minute assessment.",
+        a: "The free missed-call test. We call your line after you close and send you the recording. If the leak is real, the answering plans start at $129 a month. Or start with the free 15-minute assessment.",
       },
     ],
   },
@@ -434,7 +434,7 @@ export const industries: Industry[] = [
       },
       {
         q: "I am a solo agent, not a brokerage. Is this overkill?",
-        a: "Solo agents get the most from it, because there is no one else to answer. The front desk build starts at $2,500 plus $497 a month, typically one recovered closing a year to pay for itself several times over.",
+        a: "Solo agents get the most from it, because there is no one else to answer. The front desk is $199 to set up plus $499 a month, typically one recovered closing a year to pay for itself several times over.",
       },
     ],
   },
@@ -492,7 +492,7 @@ export const industries: Industry[] = [
       },
       {
         q: "We are a two-person office. Is this sized for us?",
-        a: "That is the exact practice it fits. The front desk build is $2,500 setup plus $497 a month, less than a part-time hire, and it covers the phones when your one desk person is with a patient or out sick.",
+        a: "That is the exact practice it fits. The front desk is $199 setup plus $499 a month, less than a part-time hire, and it covers the phones when your one desk person is with a patient or out sick.",
       },
     ],
   },
@@ -600,7 +600,7 @@ export const industries: Industry[] = [
     faqs: [
       {
         q: "It is just me and two crews. Is this too much system?",
-        a: "No. The whole point is that a two-crew operation can answer like a company with an office. The front desk build runs $2,500 setup plus $497 a month and typically pays for itself with a handful of weekly accounts.",
+        a: "No. The whole point is that a two-crew operation can answer like a company with an office. The front desk runs $199 setup plus $499 a month and typically pays for itself with a handful of weekly accounts.",
       },
       {
         q: "Can it handle quote requests that need a site visit?",
