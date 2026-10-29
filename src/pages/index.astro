@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import FrontDeskHome, { homeFaqs } from "../components/FrontDeskHome.astro";
-import { AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
 import { serviceBySlug } from "../data/services";
 
 const afterHours = serviceBySlug("after-hours-answering");
@@ -12,7 +12,7 @@ const textBack = serviceBySlug("missed-call-text-back");
 
 const title = "AI Receptionist & After-Hours Answering for Arkansas Contractors | Arkansas Automated";
 const description =
-  "Your shop's phone answered after hours and on weekends, in your name, by an AI front desk set up in person in Fort Smith. Flat monthly plans from $129/mo, no per-minute charges, no contract. Free missed-call test tonight. Call (479) 282-3121.";
+  `Your shop's phone answered after hours and on weekends, in your name, by an AI front desk set up in person in Fort Smith. Flat monthly plans from $129/mo, no per-minute charges, no contract. Free missed-call test tonight. Call ${AA_PUBLIC_PHONE_DISPLAY}.`;
 
 const properties = [
   {
