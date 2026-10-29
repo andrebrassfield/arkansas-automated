@@ -71,4 +71,4 @@ Last updated: 2026-10-29.
 - All fees are USD
 - No per-minute or per-call pricing on any plan
 - Every answering plan keeps the shop's existing phone number and records every call
-- Contact: (479) 282-3121 or https://arkansasautomated.com/missed-call-test
+- Contact: (479) 492-4232 or https://arkansasautomated.com/missed-call-test

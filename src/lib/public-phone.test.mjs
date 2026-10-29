@@ -7,10 +7,10 @@ import test from "node:test";
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const read = (rel) => readFileSync(join(root, rel), "utf8");
 
-test("canonical constant is (479) 282-3121 / +14792823121", () => {
+test("canonical constant is (479) 492-4232 / +14794924232", () => {
   const src = read("src/lib/public-phone.ts");
-  assert.match(src, /AA_PUBLIC_PHONE_DISPLAY = "\(479\) 282-3121"/);
-  assert.match(src, /AA_PUBLIC_PHONE_E164 = "\+14792823121"/);
+  assert.match(src, /AA_PUBLIC_PHONE_DISPLAY = "\(479\) 492-4232"/);
+  assert.match(src, /AA_PUBLIC_PHONE_E164 = "\+14794924232"/);
   assert.match(src, /AA_PUBLIC_PHONE_HREF = `tel:\$\{AA_PUBLIC_PHONE_E164\}`/);
 });
 
