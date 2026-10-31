@@ -24,9 +24,11 @@ export const HUB_PV_URL = publicUrl(
   `${HUB_ORIGIN}/api/public/pv`,
 );
 
+// Lead intake uses the approved stable production alias, independent of the
+// lapsed FSD custom domain. Pageview/onboarding defaults are unchanged.
 export const HUB_LEADS_URL = publicUrl(
   import.meta.env.PUBLIC_HUB_LEADS_URL,
-  `${HUB_ORIGIN}/api/public/leads`,
+  "https://fort-smith-pros.vercel.app/api/public/leads",
 );
 
 export const HUB_ONBOARD_URL = publicUrl(
