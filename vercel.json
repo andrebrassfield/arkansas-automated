@@ -75,6 +75,11 @@
       "source": "/services/visibility-install",
       "destination": "/services",
       "permanent": true
+    },
+    {
+      "source": "/google-business-profile-optimization-nwa",
+      "destination": "/services",
+      "permanent": true
     }
   ]
 }
