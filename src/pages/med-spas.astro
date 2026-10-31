@@ -1,0 +1,256 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import LeadForm from "../components/LeadForm.astro";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
+
+const title = "Med Spa Front Desk That Never Misses a Booking | Arkansas Automated";
+const description =
+  "We answer your med spa's phone 24/7, book every inquiry, cut no-shows, revive lapsed patients, and grow your Google Maps ranking. $997/mo flat. Free missed-call test on your real line.";
+
+const site = "https://arkansasautomated.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Med Spa Front Desk",
+  serviceType: "AI receptionist and answering service for medical spas",
+  provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+  areaServed: { "@type": "Country", name: "United States" },
+  description,
+  offers: {
+    "@type": "Offer",
+    price: "997",
+    priceCurrency: "USD",
+  },
+};
+
+const math = [
+  {
+    h: "About 8 in 10 callers who reach voicemail hang up",
+    p: "They do not leave a message and wait. They call the next spa on Google, the one whose ad yours just lost to. The consult you never knew about books somewhere else inside five minutes.",
+  },
+  {
+    h: "$527 is the average value of one med spa visit",
+    p: "That is the industry average per patient visit (AmSpa). Four lost bookings a week is $8,432 a month walking past your front desk, at a business doing a fraction of that in profit.",
+  },
+  {
+    h: "Your competition doubled. Your phone coverage did not.",
+    p: "The number of US med spas doubled in five years while visits per spa fell by roughly a third. Every spa in your city is bidding on the same patients. The one that answers wins the click.",
+  },
+];
+
+const services = [
+  {
+    h: "Answers every call, 24/7",
+    p: "In your spa's name, with your greeting and your rules. Nights, weekends, holidays, and the lunch rush when your desk is with the patient in the chair.",
+  },
+  {
+    h: "Books, not messages",
+    p: "Callers get a real appointment against your actual availability. Consults, injectables, laser, facials, booked, not promised a callback.",
+  },
+  {
+    h: "Chat and forms answered in a minute",
+    p: "Website chat and contact forms get a real reply in under 60 seconds, while the lead is still looking. Slow replies are how spas lose the Google click they already paid for.",
+  },
+  {
+    h: "No-show shield",
+    p: "Confirmations, reminders, and easy rescheduling, plus a waitlist that backfills cancellations instead of leaving chairs empty.",
+  },
+  {
+    h: "Lapsed patient revival",
+    p: "Botox and filler patients drift every 3 to 4 months. We work the lapsed list and rebook them before a competitor's ad does.",
+  },
+  {
+    h: "Maps and reviews engine",
+    p: "A review request after every visit and a Google profile that stays active, so \"med spa near me\" finds you first and better reviewed.",
+  },
+];
+
+const stack = [
+  {
+    name: "24/7 front desk answering and booking",
+    price: "$2,800/mo",
+    p: "A part-time receptionist runs about that and still goes home at 5. This covers every hour, in English and Spanish.",
+  },
+  {
+    name: "Missed-call text-back in under 60 seconds",
+    price: "$297/mo",
+    p: "Every missed call gets a text in your spa's name before the caller finishes dialing the next spa.",
+  },
+  {
+    name: "Chat and form response",
+    price: "$497/mo",
+    p: "Every web inquiry answered in under a minute, booked or followed up. Nothing rotting in an inbox.",
+  },
+  {
+    name: "No-show shield and waitlist backfill",
+    price: "$397/mo",
+    p: "One saved chair a week pays for the whole system at average visit value.",
+  },
+  {
+    name: "Lapsed patient reactivation",
+    price: "$750/qtr",
+    p: "Quarterly campaigns to the patients who already trust you and simply drifted.",
+  },
+  {
+    name: "Google Maps growth and review engine",
+    price: "$597/mo",
+    p: "Profile management, posts, photos, and a review request after every visit, done for you.",
+  },
+  {
+    name: "Monthly numbers report",
+    price: "$197/mo",
+    p: "Calls answered, bookings made, no-shows saved, revenue recovered. In plain numbers, every month.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Will my patients know it is automated?",
+    a: "It answers as your spa's front desk, in your name, with your greeting and your treatment menu. Most callers get booked and never think about it. If a patient asks directly, it does not lie about what it is.",
+  },
+  {
+    q: "What about patient privacy?",
+    a: "The system books appointments and answers business questions. It does not give medical advice and does not discuss treatment details, and it runs on vendors that sign BAAs. Anything clinical goes straight to your team.",
+  },
+  {
+    q: "Do I keep my phone number and booking software?",
+    a: "Yes to both. Everything rides on your existing number and books into the system you already use.",
+  },
+  {
+    q: "How fast is it live?",
+    a: "The missed-call test can run tonight. Most spas are live within a few days of the setup call, and the first 14 days of service are free on your real line.",
+  },
+  {
+    q: "Why not hire another receptionist?",
+    a: "A hire is one person, business hours, at roughly $2,800 a month before taxes and turnover. This is every hour, every channel, $997 flat, and it never calls in sick during your busiest week.",
+  },
+];
+---
+
+<Base title={title} description={description} path="/med-spas" schema={schema}>
+  <SiteNav />
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>Med spas
+        </nav>
+        <p class="eyebrow">For med spa owners</p>
+        <h1 class="heading-xl measure">Your front desk misses calls. Every missed call is a $527 visit booking somewhere else.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          We put a front desk on your existing line that answers in your spa's name 24/7, books every inquiry into
+          your calendar, kills no-shows with confirmations and reminders, and grows your Google Maps ranking while
+          you treat patients. Set up for you. First 14 days free on your real line.
+        </p>
+        <div class="hero-ctas" style="margin-top:1.6rem">
+          <a class="btn btn-primary" href="#test">Run the free missed-call test</a>
+          <a class="btn btn-secondary" href={AA_PUBLIC_PHONE_HREF}>Call {AA_PUBLIC_PHONE_DISPLAY}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="math">
+      <div class="container">
+        <p class="eyebrow">The problem, in numbers that are not ours</p>
+        <h2 class="heading-lg measure">The math your voicemail is doing to you</h2>
+        <div class="leak-grid">
+          {math.map((row) => (
+            <article class="leak">
+              <h3>{row.h}</h3>
+              <p>{row.p}</p>
+            </article>
+          ))}
+        </div>
+        <p class="body-lg measure" style="margin-top:1.4rem">
+          Four bookings a week lost to unanswered calls, at the $527 average visit, is <strong>$8,432 a month</strong>.
+          The front desk that catches all of them is $997 a month, flat. Your numbers are your numbers; the free test
+          shows you your first missed call, on your own line, before you pay anything.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="what">
+      <div class="container">
+        <h2 class="heading-lg measure">Everything a great front desk does. None of the payroll.</h2>
+        <div class="leak-grid">
+          {services.map((s) => (
+            <article class="leak">
+              <h3>{s.h}</h3>
+              <p>{s.p}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="container">
+        <h2 class="heading-lg measure">What it would cost to piece this together yourself</h2>
+        <div class="rows">
+          {stack.map((row, i) => (
+            <article class="row">
+              <div class="row-n">{String(i + 1).padStart(2, "0")}</div>
+              <h3>{row.name}</h3>
+              <p><strong><s>{row.price}</s>.</strong> {row.p}</p>
+            </article>
+          ))}
+        </div>
+        <p class="body-lg measure" style="margin-top:1.6rem">
+          All of it together: <strong>$997 a month, flat.</strong> No per-minute meter. No contract. First 14 days
+          free on your real line. $499 setup waived for the November founding cohort. Month to month after that,
+          cancel with a call.
+        </p>
+        <p class="body-lg measure" style="margin-top:1.1rem">
+          <strong>The pays-for-itself guarantee:</strong> if the system has not paid for itself in recovered and
+          reactivated bookings within your first 90 days, we keep working for free until it does. You see the same
+          monthly report we do, so there is nothing to take on faith.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Questions every spa owner asks</h2>
+        <div class="faq-list">
+          {faqs.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="test">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Start with the free test</h2>
+          <p class="body-lg" style="margin-top:1rem">
+            Send your spa's number and the hour you close. We call the line after hours and send you the recording
+            of what your patients hear today. If it is good, keep your current setup and pay nothing. If it is
+            voicemail, you just found the leak.
+          </p>
+          <p class="body-lg" style="margin-top:1.1rem">
+            November cohort: we onboard five spas this month, one at a time, so the setup gets done right. When the
+            five are gone, the setup fee and the waitlist come back.
+          </p>
+          <p class="body-lg" style="margin-top:1.1rem">
+            Prefer to talk first? Call <a class="text-link" href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>.
+          </p>
+        </div>
+        <LeadForm
+          formId="med-spa-test"
+          defaultIntent="Med spa missed-call test. Call the spa line after hours and send a short recording."
+          detailsPlaceholder="Your spa's number, and when you close. Example: (479) 555-0100, closed after 6."
+          submitLabel="Run my free test"
+          sourceIndustry="med-spa"
+          sourceService="med-spa-front-desk"
+        />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
