@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import FrontDeskHome, { homeFaqs } from "../components/FrontDeskHome.astro";
+import SetupHome, { homeFaqs } from "../components/SetupHome.astro";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
 import { serviceBySlug } from "../data/services";
 
@@ -10,9 +10,9 @@ const afterHours = serviceBySlug("after-hours-answering");
 const frontDesk = serviceBySlug("ai-front-desk");
 const textBack = serviceBySlug("missed-call-text-back");
 
-const title = "AI Receptionist & After-Hours Answering for Arkansas Contractors | Arkansas Automated";
+const title = "AI Setups & Business Automations in Arkansas | Arkansas Automated";
 const description =
-  `Your shop's phone answered after hours and on weekends, in your name, by an AI front desk set up in person in Fort Smith. Flat monthly plans from $129/mo, no per-minute charges, no contract. Free missed-call test tonight. Call ${AA_PUBLIC_PHONE_DISPLAY}.`;
+  `AI setups and business automations for Arkansas companies. Answering service, missed-call text back, follow-up, and connected workflows built in Fort Smith. Plans from $129/mo. Call ${AA_PUBLIC_PHONE_DISPLAY}.`;
 
 const properties = [
   {
@@ -62,7 +62,7 @@ const homeSchema = {
       telephone: AA_PUBLIC_PHONE_E164,
       description,
       disambiguatingDescription:
-        "AI receptionist and after-hours answering service for Arkansas home-service contractors, operated by Brassfield Ventures LLC in Fort Smith. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
+        "AI setups and business automations for Arkansas companies, operated by Brassfield Ventures LLC in Fort Smith. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
       founder: { "@id": "https://arkansasautomated.com/about#andre-brassfield" },
       sameAs: properties.map((p) => p.url),
       areaServed: [
@@ -76,6 +76,9 @@ const homeSchema = {
         "After-hours answering service",
         "Missed-call text back",
         "AI front desk",
+        "Business automation",
+        "Review request automation",
+        "Custom AI setup",
       ],
     },
     {
@@ -108,9 +111,9 @@ const homeSchema = {
 ---
 
 <Base title={title} description={description} path="/" schema={homeSchema}>
-  <SiteNav overHero />
+  <SiteNav />
   <main id="main-content" tabindex="-1">
-    <FrontDeskHome />
+    <SetupHome />
   </main>
   <SiteFooter />
 </Base>

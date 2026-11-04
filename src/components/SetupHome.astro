@@ -1,0 +1,79 @@
+---
+import BookCall from "./BookCall.astro";
+
+const systems = [
+  { no: "01", name: "Calls answered", detail: "An AI answering service for missed calls, after-hours jobs, and busy front desks. Route emergencies to a person, capture the rest, and make the handoff clear.", href: "/services/ai-front-desk", tag: "AI front desk" },
+  { no: "02", name: "Leads followed up", detail: "Missed-call text back, estimate follow-up, and booking reminders. A lead should not disappear just because your team is on a job.", href: "/services/missed-call-text-back", tag: "Lead automation" },
+  { no: "03", name: "Work connected", detail: "Move the right information between your phone, inbox, calendar, and field software. We scope custom AI setups around your actual process.", href: "/services/workflow-automation", tag: "Custom builds" },
+  { no: "04", name: "Reviews requested", detail: "Review request automation after a completed job, with human checks and a simple path for customer feedback.", href: "/review-request-automation-nwa", tag: "Reputation" },
+];
+const steps = [
+  { n: "01 / FIND", h: "Show us the handoff that breaks.", p: "Missed calls, lost estimates, slow scheduling, or duplicate entry. We start with the workflow, not a tool pitch." },
+  { n: "02 / BUILD", h: "Get a setup you can inspect.", p: "We map the rules, connect the tools, test the exceptions, and give your team a clear escalation path." },
+  { n: "03 / RUN", h: "Keep people in control.", p: "Your team owns the relationship. We watch the system, adjust the workflow, and hand off what needs human judgment." },
+];
+export const homeFaqs = [
+  { q: "What does Arkansas Automated actually sell?", a: "We design and set up AI front desks and business automations for Arkansas companies. You can start with a listed answering plan or scope a custom workflow build." },
+  { q: "Can you set up an answering service for an HVAC company?", a: "Yes. We can set up missed-call text back, after-hours answering, and an AI front desk with on-call escalation for HVAC and other service businesses. The scope depends on your line, schedule, and dispatch rules." },
+  { q: "Do I have to replace my current software?", a: "Not necessarily. We start with the phone, calendar, and job tools you already use, then confirm which connections are practical before proposing a build." },
+  { q: "What does a setup cost?", a: "Published answering plans start at $129 per month, with a one-time setup fee shown on the service pages. Custom builds start at $2,500 and are scoped in writing. The $750 audit is an optional paid starting point." },
+];
+---
+<section class="setup-hero" aria-labelledby="home-title">
+  <div class="container setup-hero-grid">
+    <div>
+      <p class="setup-kicker">ARKANSAS AUTOMATED <span aria-hidden="true">/</span> BUILT FOR THE WAY YOU WORK</p>
+      <h1 id="home-title">AI setups that <em>take work off your plate.</em></h1>
+      <p class="setup-lede">We build and run practical automations for Arkansas businesses: answering service, missed-call text back, follow-up, booking, and connected workflows. No new job title required for your team.</p>
+      <div class="setup-actions"><a class="btn btn-primary" href="/services">Explore services & pricing</a><a class="btn btn-secondary" href="https://book.arkansasautomated.com/book/discovery-call">Talk through a setup</a></div>
+      <p class="setup-location">Based in Fort Smith. Serving the River Valley, Northwest Arkansas, and beyond.</p>
+    </div>
+    <aside class="setup-visual" aria-label="Example of a connected front desk workflow">
+      <p class="setup-visual-label">A FRONT DESK THAT MOVES THE JOB FORWARD</p>
+      <div class="setup-flow"><span>Incoming call</span><strong>Missed while your crew is working</strong></div>
+      <div class="setup-flow"><span>Immediate response</span><strong>Customer gets a text back</strong></div>
+      <div class="setup-flow"><span>Useful handoff</span><strong>Job details reach your team</strong></div>
+      <div class="setup-flow"><span>Next step</span><strong>Booking or human follow-up</strong></div>
+      <p class="setup-visual-note">Illustrative workflow. Your setup follows your rules and tools.</p>
+    </aside>
+  </div>
+</section>
+<section class="setup-strip" aria-label="What we build"><div class="container setup-strip-inner"><span>NOT A SOFTWARE LOGIN</span><span>NOT A ONE-SIZE-FITS-ALL BOT</span><strong>YOUR PROCESS, BUILT TO RUN</strong></div></section>
+<section class="section" id="systems"><div class="container">
+  <div class="setup-section-head"><div><p class="setup-kicker">WHAT WE SET UP</p><h2 class="heading-lg">Four places to get time back.</h2></div><p>Start with the leak you can see. We will tell you if a smaller fix does the job.</p></div>
+  <div class="setup-system-grid">{systems.map((s) => <article class="setup-system"><span class="setup-system-no">{s.no} / {s.tag}</span><h3>{s.name}</h3><p>{s.detail}</p><a href={s.href}>See the setup <span aria-hidden="true">↗</span></a></article>)}</div>
+</div></section>
+<section class="section section-tint"><div class="container setup-feature">
+  <div><p class="setup-kicker">A GOOD FIRST FIX</p><h2 class="heading-lg">A missed call should not be the end of the conversation.</h2><p class="body-lg">When an HVAC customer calls after hours in Fort Smith, or a plumber cannot pick up on a job, your answering rules should already be in place. We set up the response, the escalation, and the record of what happened.</p><a class="btn btn-primary" href="/services/after-hours-answering">See after-hours answering</a></div>
+  <div class="setup-quote"><span>AFTER THE BEEP</span><p>Call answered.<br/>Need captured.<br/>Right person notified.</p><small>AI handles the repeatable part. Your team handles the judgment.</small></div>
+</div></section>
+<section class="section"><div class="container"><div class="setup-section-head"><div><p class="setup-kicker">HOW WE WORK</p><h2 class="heading-lg">From messy handoff to working system.</h2></div><a class="text-link" href="/automation-guardrails">Read the operating guardrails ↗</a></div><div class="setup-steps">{steps.map((s) => <article><span>{s.n}</span><h3>{s.h}</h3><p>{s.p}</p></article>)}</div></div></section>
+<section class="section section-tint"><div class="container setup-pricing"><div><p class="setup-kicker">CLEAR STARTING POINTS</p><h2 class="heading-lg">Start with one problem. Add only what earns its place.</h2></div><div class="setup-price-lines"><a href="/services/missed-call-text-back"><span>Missed-call text back</span><strong>$129/mo ↗</strong></a><a href="/services/after-hours-answering"><span>After-hours answering</span><strong>$299/mo ↗</strong></a><a href="/services/ai-front-desk"><span>AI front desk</span><strong>$499/mo ↗</strong></a><p class="setup-review-line"><strong>Get more Google reviews:</strong> a review request goes out after every finished job, with your Google review link where customers actually tap it.</p><a href="/services/workflow-automation"><span>Custom AI setup & automation</span><strong>From $2,500 ↗</strong></a><p>Setup fees and full scope are shown on the service pages. Custom work is quoted in writing.</p></div></div></section>
+<section class="section"><div class="container setup-feature"><div><p class="setup-kicker">LOCAL, NOT GENERIC</p><h2 class="heading-lg">Built in Arkansas. Set up for your business.</h2><p class="body-lg">Arkansas Automated is operated by Brassfield Ventures LLC in Fort Smith. We work with owners who need a usable system, a real escalation path, and a straight answer about what to automate.</p><a class="text-link" href="/locations">Where we work ↗</a></div><div class="setup-local-card"><span>FORT SMITH / ARKANSAS</span><p>River Valley<br/>Northwest Arkansas<br/>Statewide by scope</p><a href="/about">Meet the company ↗</a></div></div></section>
+<section class="section section-tint"><div class="container setup-faq"><div><p class="setup-kicker">BEFORE YOU BOOK</p><h2 class="heading-lg">Good questions.</h2></div><div>{homeFaqs.map((f) => <details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
+<section class="section"><div class="container setup-feature"><div><p class="setup-kicker">LET'S FIND THE FIRST FIX</p><h2 class="heading-lg">Tell us what keeps slipping.</h2><p class="body-lg">We will look at your current process, identify the bottleneck, and say whether a listed plan or a custom build fits. No checkout on this page.</p><p><a class="text-link" href="/contact">Prefer email or a phone call? Contact us ↗</a></p></div><BookCall heading="Talk through your setup" body="Pick a real time. Bring one process you want to make less painful." ctaLabel="Book a 15-minute call" /></div></section>
+<style>
+  .setup-hero { background:#e8eeeb; padding:clamp(4rem,8vw,8rem) 0; border-bottom:1px solid var(--line); }
+  .setup-hero-grid,.setup-feature,.setup-pricing,.setup-faq { display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,6rem);align-items:center }
+  .setup-kicker { font-size:.75rem;font-weight:800;letter-spacing:.15em;color:var(--accent);margin-bottom:1.2rem }
+  .setup-kicker span { padding:0 .5rem;color:#73817b }
+  .setup-hero h1 { max-width:12ch;font-size:clamp(3rem,6.5vw,6.5rem);line-height:.99;letter-spacing:-.055em }
+  .setup-hero h1 em { font-style:normal;color:var(--accent) }
+  .setup-lede {max-width:56ch;font-size:clamp(1.12rem,1.8vw,1.35rem);line-height:1.58;margin:2rem 0;color:var(--text-secondary)}
+  .setup-actions {display:flex;flex-wrap:wrap;gap:.75rem}.setup-location {margin-top:2rem;font-size:.9rem;color:var(--text-muted)}
+  .setup-visual {background:#1c302e;color:#f1f5f1;border-radius:20px;padding:clamp(1.5rem,3vw,3rem);box-shadow:0 24px 55px #19342c24}
+  .setup-visual-label {font-size:.72rem;letter-spacing:.16em;color:#9bc7be;font-weight:800;margin-bottom:2rem}
+  .setup-flow {border-top:1px solid #ffffff30;padding:1.1rem 0;display:grid;grid-template-columns:1fr 1.25fr;gap:1rem;line-height:1.3}.setup-flow span {color:#a8bbb5;font-size:.86rem}.setup-flow strong {font-weight:600}
+  .setup-visual-note {font-size:.75rem;color:#a8bbb5;margin-top:1rem}
+  .setup-strip {background:#1c302e;color:#ecf3ed;padding:1.1rem 0}.setup-strip-inner {display:flex;justify-content:space-between;gap:1rem;font-size:.73rem;letter-spacing:.11em;font-weight:800}
+  .setup-section-head {display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2rem}.setup-section-head>p {max-width:35ch;color:var(--text-secondary)}
+  .setup-system-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.setup-system {border:1px solid var(--line);background:var(--bg-secondary);border-radius:14px;padding:2rem;display:flex;flex-direction:column;min-height:20rem}
+  .setup-system-no {font-size:.72rem;letter-spacing:.1em;color:var(--accent);font-weight:800}.setup-system h3 {font-size:1.55rem;margin:1.65rem 0 .85rem}.setup-system p {color:var(--text-secondary);font-size:.95rem;line-height:1.55}.setup-system a {color:var(--accent);font-weight:800;margin-top:auto;padding-top:1.5rem}
+  .setup-feature h2 {max-width:16ch}.setup-feature .body-lg {margin:1.5rem 0;max-width:55ch}.setup-quote {padding:3rem;background:#dce7e1;border-radius:20px;min-height:20rem;display:flex;flex-direction:column;justify-content:space-between}.setup-quote span,.setup-local-card span {font-size:.75rem;font-weight:800;letter-spacing:.14em;color:var(--accent)}.setup-quote p {font-size:clamp(2rem,3.3vw,3.4rem);font-weight:800;line-height:1.17;letter-spacing:-.03em}.setup-quote small {color:var(--text-secondary)}
+  .setup-steps {display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.setup-steps article {padding:2rem 2rem 1rem 0;border-right:1px solid var(--line)}.setup-steps article+article {padding-left:2rem}.setup-steps article:last-child {border:0}.setup-steps span {font-size:.75rem;color:var(--accent);font-weight:800}.setup-steps h3 {font-size:1.45rem;margin:1.5rem 0 .8rem}.setup-steps p {color:var(--text-secondary)}
+  .setup-price-lines a {border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;font-size:1.05rem}.setup-price-lines a:first-child {border-top:1px solid var(--line)}.setup-price-lines strong {white-space:nowrap;color:var(--accent)}.setup-price-lines p {font-size:.84rem;color:var(--text-muted);margin-top:1rem}.setup-price-lines .setup-review-line {margin:0;padding:.65rem 0 1rem;border-bottom:1px solid var(--line);line-height:1.5}.setup-review-line strong {white-space:normal;color:var(--text)}
+  .setup-local-card {background:#1c302e;color:#fff;border-radius:20px;padding:3rem}.setup-local-card span {color:#9bc7be}.setup-local-card p {font-size:clamp(1.5rem,3vw,2.6rem);font-weight:800;line-height:1.3;margin:1.5rem 0}.setup-local-card a {text-decoration:underline;text-underline-offset:4px}
+  .setup-faq {align-items:start}.setup-faq .faq-item {border-top:1px solid var(--line)}
+  @media(max-width:900px){.setup-system-grid {grid-template-columns:repeat(2,1fr)}.setup-hero-grid,.setup-feature,.setup-pricing,.setup-faq {grid-template-columns:1fr}.setup-visual {max-width:650px}.setup-strip-inner {flex-wrap:wrap}}
+  @media(max-width:600px){.setup-hero {padding:4rem 0}.setup-hero h1 {font-size:clamp(3rem,12vw,4.6rem)}.setup-system-grid,.setup-steps {grid-template-columns:1fr}.setup-system {min-height:auto}.setup-steps article,.setup-steps article+article {padding:1.5rem 0;border-right:0;border-bottom:1px solid var(--line)}.setup-section-head {display:block}.setup-section-head>p {margin-top:1rem}.setup-actions .btn {width:100%}.setup-strip-inner {font-size:.64rem}.setup-flow {grid-template-columns:1fr;gap:.35rem}}
+</style>

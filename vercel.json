@@ -1,12 +1,13 @@
 {
   "framework": "astro",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "functions": {
-    "api/workshop-seats.js": {
-      "maxDuration": 10
+  "git": {
+    "deploymentEnabled": {
+      "feat/ai-setups-redesign": false
     }
   },
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+
   "cleanUrls": true,
   "rewrites": [
     {
@@ -15,6 +16,21 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/workshop",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workshops",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workshops/:city",
+      "destination": "/locations/:city",
+      "permanent": true
+    },
     {
       "source": "/((?!sitemap\\.xml$|sitemap-index\\.xml$|sitemap-0\\.xml$|robots\\.txt$).*)",
       "has": [

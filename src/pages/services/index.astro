@@ -3,17 +3,11 @@ import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 
-const title = "Prices | Arkansas Automated";
+const title = "AI Setups, Automations & Pricing | Arkansas Automated";
 const description =
-  "Flat monthly answering plans for Arkansas contractors: Missed-Call Text Back $129/mo, After-Hours Answering $299/mo, Front Desk $499/mo. Free missed-call test, first 7 days of service free, no per-minute charges, no contract.";
+  "AI setups and business automation in Arkansas. Answering service from $299/mo, missed-call text back from $129/mo, AI front desk from $499/mo, and custom builds from $2,500.";
 
 const ladder = [
-  {
-    name: "Missed-call test",
-    price: "Free",
-    p: "We call the line after the office is closed and send a short recording of what a customer hears. Proof before money.",
-    href: "/missed-call-test",
-  },
   {
     name: "Missed-Call Text Back",
     price: "$129/mo",
@@ -56,6 +50,12 @@ const ladder = [
     p: "For operations with 10 or more people. The map stays current and the next fix ships every month.",
     href: "/forward-deployed-ai-engineer",
   },
+  {
+    name: "Missed-call test",
+    price: "Free",
+    p: "We call the line after the office is closed and send a short recording of what a customer hears. Proof before money.",
+    href: "/missed-call-test",
+  },
 ];
 
 const site = "https://arkansasautomated.com";
@@ -64,7 +64,7 @@ const schema = {
   "@graph": [
     {
       "@type": "ItemList",
-      name: "Arkansas Automated prices",
+      name: "Arkansas Automated AI setups, automation services, and prices",
       itemListElement: ladder.map((s, i) => ({
         "@type": "ListItem",
         position: i + 1,
@@ -76,7 +76,7 @@ const schema = {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
-        { "@type": "ListItem", position: 2, name: "Prices", item: `${site}/services` },
+        { "@type": "ListItem", position: 2, name: "Services and pricing", item: `${site}/services` },
       ],
     },
   ],
@@ -89,16 +89,16 @@ const schema = {
     <section class="hero">
       <div class="container">
         <nav class="crumbs" aria-label="Breadcrumb">
-          <a href="/">Home</a><span>/</span>Prices
+          <a href="/">Home</a><span>/</span>Services & pricing
         </nav>
-        <h1 class="heading-xl measure">The prices are on the page.</h1>
+        <span class="eyebrow">AI setups / business automation</span>
+        <h1 class="heading-xl measure">Systems that do the follow-through.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">
-          Flat monthly plans, no per-minute meter, no contract. Start with the free missed-call test,
-          run any answering plan free for its first 7 days on your real line, and pay only if it earns its keep.
+          Start with the work that slips: missed calls, after-hours answering, booking, estimates, or disconnected tools. Choose a listed plan or scope a custom build. Prices and next steps are below.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="/missed-call-test">Get the missed-call test</a>
-          <a class="btn btn-secondary" href="/audit">See the $750 audit</a>
+          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Talk through a setup</a>
+          <a class="btn btn-secondary" href="/services/workflow-automation">Explore custom builds</a>
         </div>
       </div>
     </section>

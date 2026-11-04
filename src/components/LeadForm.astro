@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: "workshop" | "waitlist" | "merchant" | "general";
+  variant?: "waitlist" | "merchant" | "general";
   formId?: string;
   defaultIntent?: string;
   detailsPlaceholder?: string;
@@ -20,14 +20,11 @@ const {
   sourceService = "",
   submitLabel,
 } = Astro.props;
-const isWorkshop = variant === "workshop";
 const isWaitlist = variant === "waitlist";
 const isMerchant = variant === "merchant";
 const intent = defaultIntent ??
-  (isWorkshop
-    ? "Fit assessment. No public workshop seats through October"
-    : isWaitlist
-      ? "Workshop wait-list"
+  (isWaitlist
+      ? "AI setup interest list"
       : isMerchant
         ? "Merchant store activation"
         : "General question about automation");
@@ -63,28 +60,13 @@ const fieldId = (name: string) => `${formId}-${name}`;
           <label for={fieldId("phone")}>Phone</label>
           <input id={fieldId("phone")} name="phone" type="tel" autocomplete="tel" />
         </div>
-        {isWorkshop ? (
-          <div class="field">
-            <label for={fieldId("seats")}>Seats</label>
-            <select id={fieldId("seats")} name="seats">
-              <option value="1">Fit assessment</option>
-              <option value="2">Missed-call test</option>
-            </select>
-          </div>
-        ) : (
           <div class="field">
             <label for={fieldId("industry")}>Industry</label>
             <input id={fieldId("industry")} name="industry" type="text" placeholder="Example: HVAC" />
           </div>
-        )}
       </div>
     )}
-    {isWorkshop ? (
-      <div class="field">
-        <label for={fieldId("session")}>Preferred session</label>
-        <input id={fieldId("session")} name="session" type="text" placeholder="Next available Saturday, or a date that works" />
-      </div>
-    ) : isWaitlist ? (
+    {isWaitlist ? (
       <div class="field">
         <label for={fieldId("city")}>City <span class="optional">(optional)</span></label>
         <input id={fieldId("city")} name="city" type="text" placeholder="Fort Smith, Fayetteville, Rogers" />
@@ -97,7 +79,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
     ) : null}
     {!isMerchant && (
       <div class="field">
-        <label for={fieldId("details")}>{isWorkshop ? "Biggest call-handling problem" : isWaitlist ? "What are you hoping to fix first?" : "What should work better?"} <span class="optional">(optional)</span></label>
+        <label for={fieldId("details")}>{isWaitlist ? "What are you hoping to fix first?" : "What should work better?"} <span class="optional">(optional)</span></label>
         <textarea id={fieldId("details")} name="details" rows="3" placeholder={detailsPlaceholder}></textarea>
       </div>
     )}
@@ -106,7 +88,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
       <input id={fieldId("bot-field")} name="bot-field" type="text" tabindex="-1" autocomplete="off" />
     </div>
     <button class="btn btn-primary" type="submit" style="width:100%" data-lead-submit>
-      {submitLabel ?? (isWorkshop ? "Request a fit assessment" : isWaitlist ? "Join the workshop wait-list" : isMerchant ? "Send my activation request" : "Send my request")}
+      {submitLabel ?? (isWaitlist ? "Join the interest list" : isMerchant ? "Send my activation request" : "Send my request")}
     </button>
     <p class="form-note">No payment today. We usually reply within one business day. You can also email <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.</p>
     <p class="form-legal">By submitting, you agree that Arkansas Automated may contact you about this request. See our <a href="/privacy">privacy and data handling page</a>.</p>
@@ -244,9 +226,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
       if (ok) {
         form.reset();
         show("ok", form.dataset.variant === "waitlist"
-          ? "You are on the wait-list. The next date reaches you before it opens to the public."
-          : form.dataset.variant === "workshop"
-          ? "Request received. We will reply from a real address, usually within one business day."
+          ? "You are on the interest list. We will reach out about your setup request."
           : form.dataset.variant === "merchant"
             ? "Activation request received. We will confirm enrollment status within one business day."
             : "Request received. We will reply from a real address, usually within one business day.");
