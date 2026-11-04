@@ -96,6 +96,31 @@ const fieldId = (name: string) => `${formId}-${name}`;
   </form>
 </div>
 
+<!-- Catch a submit before Astro's deferred module has attached its listener. -->
+<script is:inline>
+  document.querySelectorAll('[data-lead-form]').forEach((form) => {
+    if (form.dataset.prepared) return;
+    form.dataset.prepared = 'true';
+    form.addEventListener('submit', (event) => {
+      if (form.dataset.ready === 'true') return;
+      event.preventDefault();
+      if (form.dataset.pendingSubmit === 'true') return;
+      form.dataset.pendingSubmit = 'true';
+      const button = form.querySelector('[data-lead-submit]');
+      const message = form.querySelector('[data-lead-message]');
+      if (button) {
+        button.dataset.originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Preparing request…';
+      }
+      if (message) {
+        message.hidden = false;
+        message.textContent = 'Preparing request…';
+      }
+    });
+  });
+</script>
+
 <script>
   import { HUB_LEADS_URL } from "../lib/hub";
   const ENDPOINT = HUB_LEADS_URL;
@@ -109,6 +134,8 @@ const fieldId = (name: string) => `${formId}-${name}`;
     let firstInteractionAt: number | null = null;
     let failedAttempts = 0;
     let formEverVisible = false;
+    let inFlight = false;
+    let submitted = false;
 
     function show(kind: "ok" | "error", text: string) {
       if (!msg) return;
@@ -149,7 +176,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (!submit) return;
+      if (!submit || inFlight || submitted) return;
       const fd = new FormData(form);
       const val = (key: string) => {
         const value = fd.get(key);
@@ -162,18 +189,20 @@ const fieldId = (name: string) => `${formId}-${name}`;
       for (const name of ["businessName", "contactName", "email"] as const) {
         const input = form.querySelector<HTMLInputElement>(`[name="${name}"]`);
         if (!input) continue;
-        const empty = !val(name);
-        input.setAttribute("aria-invalid", empty ? "true" : "false");
-        if (empty && !firstInvalid) firstInvalid = input;
+        const invalid = !val(name) || !input.validity.valid;
+        input.setAttribute("aria-invalid", invalid ? "true" : "false");
+        if (invalid && !firstInvalid) firstInvalid = input;
       }
-      if (!businessName || !contactName || !email) {
-        show("error", "Business name, your name, and a work email are required.");
+      if (firstInvalid || !businessName || !contactName || !email) {
+        show("error", "Business name, your name, and a valid work email are required.");
         firstInvalid?.focus();
         return;
       }
+      inFlight = true;
       submit.disabled = true;
       const original = submit.textContent;
-      submit.textContent = "Sending";
+      submit.textContent = "Sending…";
+      show("ok", "Sending your request…");
       const params = new URLSearchParams(location.search);
       const payload: Record<string, unknown> = {
         type: "automation_assessment",
@@ -214,16 +243,16 @@ const fieldId = (name: string) => `${formId}-${name}`;
           `Industry: ${val("industry") ?? form.dataset.industry ?? ""}`, `Tools: ${val("stack") ?? ""}`,
           "", val("details") ?? ""].join("\n"),
       };
-      async function post() {
-        const response = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
-        return response.ok;
+      let response: Response | undefined;
+      try {
+        response = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
+      } catch {
+        // A rejected fetch does not tell us whether the receiver stored the lead.
+        // Without a server-side idempotency key, a second POST can create a duplicate.
       }
-      let ok = false;
-      for (let attempt = 0; attempt < 2 && !ok; attempt++) {
-        try { ok = await post(); } catch { ok = false; }
-        if (!ok && attempt === 0) await new Promise((resolve) => setTimeout(resolve, 800));
-      }
-      if (ok) {
+      inFlight = false;
+      if (response?.ok) {
+        submitted = true;
         form.reset();
         show("ok", form.dataset.variant === "waitlist"
           ? "You are on the interest list. We will reach out about your setup request."
@@ -234,9 +263,24 @@ const fieldId = (name: string) => `${formId}-${name}`;
         return;
       }
       failedAttempts++;
-      showRecoverable("That did not go through, and we do not want to lose your request.", mail);
-      submit.disabled = false;
-      submit.textContent = original;
+      if (response?.status === 400 || response?.status === 422) {
+        show("error", "Please check the request details and try again.");
+        submit.disabled = false;
+        submit.textContent = original;
+      } else {
+        submitted = true;
+        showRecoverable("We cannot confirm whether your request arrived. Do not submit it again; email us to check.", mail);
+        submit.textContent = "Please email to check";
+      }
     });
+    form.dataset.ready = "true";
+    if (form.dataset.pendingSubmit === "true") {
+      delete form.dataset.pendingSubmit;
+      if (submit) {
+        submit.disabled = false;
+        submit.textContent = submit.dataset.originalText ?? submit.textContent;
+      }
+      form.requestSubmit();
+    }
   });
 </script>
