@@ -7,7 +7,7 @@
  * audit is not a thing anyone searches by town. Every page carries the
  * city-specific `phones` paragraphs from cities.ts, so no two of these read the
  * same. Cross-links go sideways to nearby cities, up to the hub, and across to
- * the workshop page for the same town.
+ * the locations page for the same town.
  *
  * GEO prompt-matching pass (teardown fix #4): the title keeps the indexed head
  * phrase "AI receptionist in {city}, AR" verbatim as the prefix, then carries
@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     q: `Do you work with ${c.name} businesses in person?`,
-    a: c.workshopNote,
+    a: `We can scope your ${c.name} setup remotely. For on-site work, ask about availability during your discovery call.`,
   },
 ];
 

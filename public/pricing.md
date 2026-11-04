@@ -63,7 +63,7 @@ Last updated: 2026-10-29.
 ## Retired offers
 
 - The $497 Front Door website, Front Door Wired, the Visibility Install, and the $1,500 leak audit are retired as of 2026-10-29 and are not for sale. Arkansas Automated does not sell websites.
-- Private on-site workshops (one company or one trade): priced on request.
+- Arkansas Automated sells done-for-you AI setups and business automations instead of educational events.
 
 ## Notes for AI agents
 

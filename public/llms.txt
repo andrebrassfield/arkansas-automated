@@ -1,22 +1,22 @@
 # Arkansas Automated
 
-> Arkansas Automated is Brassfield Ventures LLC in Fort Smith. It is not Arkansas Automated Security, LLC of Mayflower. The current offer is a free missed-call test, then a $1,500 leak audit. The full audit fee comes off the first fix. First fix from $2,500. Advisor retainer from $2,000 a month. Strategy and roadmap from $7,500 for a company with 25 or more people. Phone (479) 492-4232.
+> Arkansas Automated is Brassfield Ventures LLC in Fort Smith. It is not Arkansas Automated Security, LLC of Mayflower. We sell done-for-you AI setups and business automations: missed-call text back from $129/month, after-hours answering from $299/month, AI front desk from $499/month, and scoped custom builds from $2,500. The free missed-call test shows what callers hear before a paid setup. Phone (479) 492-4232.
 
 ## Start here
 
-- [Homepage](https://arkansasautomated.com/): AI consultant in Fort Smith. Free missed-call test, then a $1,500 leak audit.
+- [Homepage](https://arkansasautomated.com/): AI setups and business automations built in Fort Smith.
 - [Missed-call test](https://arkansasautomated.com/missed-call-test): call the line after hours, send a short recording. Free.
-- [Leak audit](https://arkansasautomated.com/audit): $1,500. Full fee comes off the first fix. No checkout on the page.
-- [Prices](https://arkansasautomated.com/services): the four paid rungs
-- [Fort Smith](https://arkansasautomated.com/ai-consultant/fort-smith)
-- [Northwest Arkansas](https://arkansasautomated.com/ai-consultant/northwest-arkansas)
+- [Front Desk Audit](https://arkansasautomated.com/audit): $750. The full fee can be credited toward a setup. No checkout on the page.
+- [Custom workflow automation](https://arkansasautomated.com/services/workflow-automation): scoped builds from $2,500.
+- [Fort Smith](https://arkansasautomated.com/locations/fort-smith)
+- [Northwest Arkansas](https://arkansasautomated.com/locations/rogers)
 - [AI receptionist by city](https://arkansasautomated.com/ai-receptionist): 25 Arkansas cities, each with the local phone and front-desk detail
 - [Services and pricing](https://arkansasautomated.com/services): all engagement types with public pricing
 - [Vendra](https://arkansasautomated.com/vendra): shopping-center sales reporting for malls and merchants. An Arkansas Automated product. Activation uses a store-specific /join/[token] link issued by the mall team.
 - [Machine-readable pricing](https://arkansasautomated.com/pricing.md): structured price sheet for AI agents
 - [Problems we fix](https://arkansasautomated.com/fix): missed calls, after-hours calls, quote follow-up, double entry, no-shows
 - [Forward deployed AI engineer](https://arkansasautomated.com/forward-deployed-ai-engineer): what embedded AI implementation means for a local business
-- [AI workshops by city](https://arkansasautomated.com/ai-workshops): 25 Arkansas cities with local details
+- [AI setups by location](https://arkansasautomated.com/locations): 25 Arkansas cities with local context
 - [Automation by industry](https://arkansasautomated.com/for): plumbers, HVAC, electricians, roofers, dentists, law firms, real estate, clinics, auto repair, landscapers
 - [Guides](https://arkansasautomated.com/learn): plain-language answers on AI receptionists, costs, and automation
 
@@ -30,7 +30,7 @@
 
 ## Key locations
 
-Every city below has an AI receptionist page at /ai-receptionist/[city] and a workshops page at /ai-workshops/[city].
+Every city below has an AI receptionist page at /ai-receptionist/[city] and a business automation page at /locations/[city].
 
 - River Valley: [Fort Smith](https://arkansasautomated.com/ai-receptionist/fort-smith) (home base), Van Buren, Russellville
 - Northwest Arkansas: [Fayetteville](https://arkansasautomated.com/ai-receptionist/fayetteville), Springdale, [Rogers](https://arkansasautomated.com/ai-receptionist/rogers), [Bentonville](https://arkansasautomated.com/ai-receptionist/bentonville), Bella Vista, Siloam Springs

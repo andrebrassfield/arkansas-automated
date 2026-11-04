@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import BookCall from "../../components/BookCall.astro";
+import { cities } from "../../data/cities";
+export function getStaticPaths() { return cities.map((c) => ({params:{city:c.slug},props:{c}})); }
+const { c } = Astro.props;
+const site = "https://arkansasautomated.com";
+const schema = {
+  "@context": "https://schema.org", "@graph": [
+    { "@type": "Service", name: `AI setups and business automation in ${c.name}, Arkansas`, description: `AI answering, missed-call text back, follow-up and custom automation for ${c.name} businesses.`, provider: { "@type": "Organization", name: "Arkansas Automated", url: site }, areaServed: { "@type": "City", name: c.name } },
+    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position:1,name:"Home",item:`${site}/` },{ "@type": "ListItem",position:2,name:"Locations",item:`${site}/locations` },{ "@type": "ListItem",position:3,name:c.name,item:`${site}/locations/${c.slug}` }] }
+  ]
+};
+const nearby = c.nearby.map((slug) => cities.find((city) => city.slug===slug)).filter(Boolean);
+---
+<Base title={`AI Setups & Automations in ${c.name}, AR | Arkansas Automated`} description={`AI answering service, missed-call text back, and business automation setups for ${c.name}, Arkansas. ${c.economy}`} path={`/locations/${c.slug}`} schema={schema}>
+  <SiteNav />
+  <main id="main-content" tabindex="-1">
+    <section class="hero"><div class="container"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/locations">Locations</a><span>/</span>{c.name}</nav><span class="eyebrow">{c.region} / {c.drive}</span><h1 class="heading-xl measure">AI setups and automations for {c.name} businesses.</h1><p class="body-lg measure" style="margin-top:1.2rem">Answer the calls you miss. Follow up on work already in your pipeline. Connect the tools that should talk to each other.</p><div class="hero-ctas"><a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Discuss a setup</a><a class="btn btn-secondary" href="/services">See services & pricing</a></div></div></section>
+    <section class="section section-tint"><div class="container split"><div><span class="eyebrow">Local context</span><h2 class="heading-lg">Work in {c.name} has its own rhythm.</h2><p class="body-lg">{c.economy}</p></div><div class="flow">{c.angle.map((p) => <p>{p}</p>)}</div></div></section>
+    <section class="section"><div class="container"><span class="eyebrow">A practical first setup</span><h2 class="heading-lg">Make the next call count.</h2><div class="split"><div class="flow">{c.phones.map((p) => <p>{p}</p>)}</div><div class="form-card"><h3>What we can set up</h3><ul><li>Missed-call text back</li><li>After-hours answering service</li><li>AI front desk with human escalation</li><li>Estimate follow-up, booking, and custom workflow automation</li></ul><a class="btn btn-primary" href="/services" style="margin-top:1rem">Explore the services</a></div></div></div></section>
+    <section class="section section-tint"><div class="container split"><div><h2 class="heading-lg">Start with your process.</h2><p class="body-lg">Tell us what your team handles manually today and what happens when nobody can pick up. We will propose a setup only after we know the handoffs and exceptions.</p><p><a class="text-link" href="/locations">See all Arkansas locations ↗</a></p></div><BookCall heading={`Talk about a ${c.name} setup`} body="Pick a time for a direct conversation about the work you want off your plate." /></div></section>
+    <section class="section"><div class="container"><h2 class="heading-md">Nearby areas</h2><div class="city-grid">{nearby.map((n) => <a class="city-card" href={`/locations/${n.slug}`}><span class="prop-name">{n.name}</span><span class="city-cta">Explore setups ↗</span></a>)}</div></div></section>
+  </main><SiteFooter />
+</Base>
