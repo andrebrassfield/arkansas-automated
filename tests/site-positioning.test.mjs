@@ -17,6 +17,17 @@ test('home presents setup and automation offers with direct local buyer language
   assert.match(page(''), /href="\/services\/ai-front-desk"/);
 });
 
+test('the existing homepage, reviews page and Fort Smith page carry approved phrases', () => {
+  const home = text(page(''));
+  assert.match(home, /Get more Google reviews: a review request goes out after every finished job, with your Google review link where customers actually tap it\./);
+  const reviews = text(page('review-request-automation-nwa'));
+  assert.match(reviews, /Get more Google reviews without begging for them/i);
+  const fortSmith = page('locations/fort-smith');
+  assert.match(fortSmith, /<h[1-6][^>]*>Answering service in Fort Smith for shops that cannot afford a missed call<\/h[1-6]>/i);
+  assert.match(text(fortSmith), /Arkansas Automated is a Fort Smith business\. Our missed call text back and after-hours answering service covers your phones/);
+  assert.equal((home.match(/\$499\/mo/g) || []).length, 1, 'Front Desk price unchanged');
+});
+
 test('core routes lead to services, locations, about, contact and working booking path', () => {
   for (const p of ['services', 'locations', 'about', 'contact', 'services/workflow-automation', 'locations/fort-smith']) {
     assert.ok(existsSync(new URL(`dist/${p}/index.html`, root)), p);
@@ -24,6 +35,11 @@ test('core routes lead to services, locations, about, contact and working bookin
   }
   const nav = page('');
   for (const href of ['/services', '/locations', '/about', '/contact']) assert.ok(nav.includes(`href="${href}"`), href);
+});
+
+test('PR branch does not trigger Vercel automatic deployments before separate GO', () => {
+  const config = JSON.parse(read('vercel.json'));
+  assert.equal(config.git.deploymentEnabled['feat/ai-setups-redesign'], false);
 });
 
 test('retired workshop routes redirect rather than remain indexed', () => {
