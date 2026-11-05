@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<title>Free Missed-Call Test | Arkansas Automated</title>
+<meta name="description" content="Find out what your callers hear after you close. Send your number. We call your line after hours, record what happens, and text you the recording. Free, no card.">
+<style>/* Layout: one bright column, 390 first, reading order = Hormozi order. Tokens below are the whole system. */
+:root{
+  /* color: bright ground, navy ink, one signal accent for the single CTA, one river blue for links/focus */
+  --paper:#FFFFFF; --panel:#EEF3FA; --ink:#14213D; --ink-2:#2E3A55;
+  --river:#1F5FAD; --signal:#FFC93C; --signal-press:#F0B415;
+  --leak:#A82710; --leak-bg:#FFF4F0; --ok:#17663A; --ok-bg:#EEF8F1; --rule:#C3CFE2;
+  /* type: one family, role scale (major third on a 21px body; 17px floor) */
+  --font:"Avenir Next","Avenir","Segoe UI",system-ui,-apple-system,sans-serif;
+  --t-small:1.0625rem; --t-body:1.3125rem; --t-lede:1.4375rem; --t-h3:1.4375rem;
+  --t-h2:clamp(2rem,1.6rem + 1.6vw,2.5rem); --t-h1:clamp(2.625rem,2rem + 2.8vw,3.75rem);
+  --t-num:clamp(2.5rem,2rem + 2vw,3.25rem);
+  /* space: 4-unit scale */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px;
+  --gutter:max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(20px, env(safe-area-inset-right, 0px));
+  --measure:34em; --r-btn:14px; --r-box:12px; --tap:48px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-bottom:112px;scroll-padding-top:var(--s5)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:var(--t-body);
+  line-height:1.5;padding-bottom:104px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;caret-color:var(--river);accent-color:var(--river)}
+::selection{background:var(--signal);color:var(--ink)}
+img,video{max-width:100%;height:auto;display:block}
+a{color:var(--river);text-underline-offset:3px;text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--river);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:var(--gutter);top:-80px;background:var(--ink);color:#fff;padding:var(--s3) var(--s4);border-radius:8px;z-index:50;font-weight:700}
+.skip:focus{top:var(--s2)}
+.wrap{max-width:680px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+section{padding-block:var(--s7)}
+section.tint{background:var(--panel)}
+.flow > * + *{margin-top:var(--s4)}
+.flow > :first-child{margin-top:0}
+/* lists keep the .flow gap: their own rules set only inline and bottom margins (specificity trap noted in the survey) */
+.flow > * + h2,.flow > * + h3{margin-top:var(--s6)}
+h1,h2,h3{margin:0;line-height:1.12;text-wrap:balance;font-weight:800}
+h1{font-size:var(--t-h1);letter-spacing:-.02em}
+h2{font-size:var(--t-h2);letter-spacing:-.015em}
+h3{font-size:var(--t-h3);font-weight:700;line-height:1.25}
+p{margin:0;max-width:var(--measure);text-wrap:pretty}
+.lede{font-size:var(--t-lede);color:var(--ink-2)}
+.small{font-size:var(--t-small);color:var(--ink-2)}
+strong,b{font-weight:700}
+
+/* top bar */
+.top{border-bottom:2px solid var(--ink);background:var(--paper)}
+.top .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;min-height:64px;column-gap:var(--s3);row-gap:0}
+.brand{font-weight:800;font-size:1.125rem;color:var(--ink);text-decoration:none;white-space:nowrap;line-height:1.2;padding-block:var(--s2)}
+.brand span{display:block;font-weight:600;font-size:.875rem;color:var(--ink-2)}
+.tel{font-weight:700;font-size:1.125rem;white-space:nowrap;color:var(--ink);min-height:var(--tap);display:inline-flex;align-items:center}
+
+/* the one CTA: solid signal fill, real soft shadow, pressed = darker fill */
+.cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:64px;padding:var(--s3) var(--s5);
+  border-radius:var(--r-btn);background:var(--signal);color:var(--ink);font:inherit;font-weight:800;font-size:1.25rem;
+  letter-spacing:-.01em;text-decoration:none;border:2px solid var(--ink);box-shadow:0 2px 8px rgba(20,33,61,.22);
+  cursor:pointer;text-align:center;transition:background-color .12s ease,transform .12s ease}
+.cta:hover{background:var(--signal-press)}
+.cta:active{transform:translateY(1px);background:var(--signal-press)}
+.cta-note{font-size:var(--t-small);color:var(--ink-2);text-align:center;margin-inline:auto}
+.alt{display:flex;justify-content:center;align-items:center;min-height:var(--tap);font-weight:700;font-size:1.1875rem}
+
+/* repeat bar, phone only, appears after the first CTA scrolls off */
+.sticky{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:2px solid var(--ink);
+  padding:var(--s3) var(--gutter-r) calc(var(--s3) + env(safe-area-inset-bottom, 0px)) var(--gutter);z-index:20;
+  transform:translateY(110%);transition:transform .2s ease;visibility:hidden}
+.sticky.on{transform:none;visibility:visible}
+.sticky .cta{min-height:56px;max-width:640px;margin:0 auto}
+@media (prefers-reduced-motion:reduce){.sticky,.cta{transition:none}}
+
+/* lists: stack lines, checks. Icon is authored SVG, one stroke. */
+.ledger{list-style:none;margin-inline:0;margin-bottom:0;padding:0;border-top:2px solid var(--ink)}
+.ledger li{padding:var(--s4) 0 var(--s4) 44px;border-bottom:1px solid var(--rule);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317663A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E") 2px 20px/24px 24px no-repeat}
+.ledger li b{display:block;font-size:1.375rem;line-height:1.25}
+.ledger li span{display:block;font-size:1.1875rem;color:var(--ink-2);margin-top:var(--s1)}
+
+ol.steps{list-style:none;counter-reset:s;margin-inline:0;margin-bottom:0;padding:0;display:grid;gap:var(--s5)}
+ol.steps li{counter-increment:s;position:relative;padding-left:60px;min-height:44px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;
+  background:var(--ink);color:#fff;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+ol.steps b{display:block;font-size:1.375rem;line-height:1.3;margin-bottom:var(--s1)}
+
+/* price block: the anchor */
+.price{border:3px solid var(--ink);border-radius:var(--r-box);padding:var(--s5);background:var(--paper)}
+.price h3{margin-bottom:var(--s1)}
+.price .amt{font-size:var(--t-num);font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.price .per{font-size:1.375rem;font-weight:700}
+.price .terms{margin-top:var(--s3);font-size:1.1875rem;color:var(--ink-2)}
+.stack-gap{display:grid;gap:var(--s4)}
+.pending{display:inline-block;border:2px dashed var(--leak);color:var(--leak);font-weight:800;padding:var(--s1) var(--s3);border-radius:8px;font-size:1.125rem;background:var(--paper)}
+
+/* own-numbers box and forms */
+.box{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r-box);padding:var(--s5)}
+.field{display:grid;gap:var(--s2);margin-bottom:var(--s5)}
+.field label{font-weight:700;font-size:1.25rem;line-height:1.3}
+.field .hint{display:block;font-weight:500;font-size:var(--t-small);color:var(--ink-2)}
+.field input,.field textarea{width:100%;font:inherit;font-size:1.375rem;padding:var(--s3) var(--s4);border:2px solid var(--ink-2);
+  border-radius:10px;background:var(--paper);color:var(--ink);min-height:58px}
+.field textarea{min-height:104px}
+.field input::placeholder{color:#5A6680}
+.unit{position:relative}
+.unit[data-pre] input{padding-left:36px}
+.unit[data-suf] input{padding-right:44px}
+.unit::before,.unit::after{position:absolute;top:50%;transform:translateY(-50%);font-size:1.375rem;font-weight:700;color:var(--ink-2);pointer-events:none}
+.unit[data-pre]::before{content:attr(data-pre);left:var(--s4)}
+.unit[data-suf]::after{content:attr(data-suf);right:var(--s4)}
+.err{color:var(--leak);font-weight:700;font-size:var(--t-small)}
+.submit-note{font-size:var(--t-small);color:var(--ink);background:var(--panel);border-radius:10px;padding:var(--s3) var(--s4);margin-bottom:var(--s4)}
+.done{border:3px solid var(--ok);border-radius:10px;padding:var(--s4);margin-top:var(--s4);background:var(--ok-bg)}
+.out{border-top:2px solid var(--ink);padding-top:var(--s4);display:grid;gap:var(--s3)}
+.big{font-size:var(--t-num);font-weight:800;line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.big.loss{color:var(--leak)} .big.win{color:var(--ok)}
+.formula{font-size:var(--t-small);color:var(--ink-2);background:var(--panel);border-radius:8px;padding:var(--s3) var(--s4);line-height:1.55;font-variant-numeric:tabular-nums}
+
+/* risk reversal: icon-led rows, no side rails */
+.promises{display:grid;gap:var(--s5)}
+.promise{padding-left:44px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317663A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z'/%3E%3Cpath d='M8.5 12l2.5 2.5 4.5-5'/%3E%3C/svg%3E") 0 2px/28px 28px no-repeat}
+.promise b{display:block;font-size:1.375rem;line-height:1.25;margin-bottom:var(--s1)}
+
+/* honest scarcity */
+.cap{border:3px solid var(--ink);border-radius:var(--r-box);padding:var(--s5);background:var(--signal)}
+
+/* proof slots: empty until real */
+.proof{border:3px dashed var(--leak);border-radius:var(--r-box);padding:var(--s4) var(--s5);background:var(--leak-bg)}
+.proof .tag{font-weight:800;color:var(--leak);font-size:var(--t-small)}
+.proof p{font-size:var(--t-small);color:var(--ink-2)}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--rule)}
+.faq details:first-of-type{border-top:2px solid var(--ink)}
+.faq summary{list-style:none;cursor:pointer;padding:var(--s4) 44px var(--s4) 0;min-height:var(--tap);font-weight:700;font-size:1.3125rem;line-height:1.3;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:var(--s2);top:50%;width:18px;height:18px;margin-top:-9px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F5FAD' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 4v16M4 12h16'/%3E%3C/svg%3E") center/contain no-repeat}
+.faq details[open] summary::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F5FAD' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M4 12h16'/%3E%3C/svg%3E")}
+.faq details > div{padding-bottom:var(--s4);font-size:1.25rem;max-width:var(--measure)}
+
+/* media slot (demo loops) */
+.media{margin:0;background:var(--ink);aspect-ratio:16/9;max-width:100%;position:relative;overflow:hidden}
+.media video{width:100%;height:100%;object-fit:cover}
+.media .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:var(--s5);color:#fff;border:3px dashed var(--signal)}
+.media.empty video,.media.empty .vt{display:none}
+.media.empty .ph{display:flex}
+.media .ph b{display:block;font-size:1.375rem;color:var(--signal)}
+.vt{position:absolute;right:var(--s3);bottom:var(--s3);min-height:var(--tap);min-width:var(--tap);padding:var(--s2) var(--s4);
+  border-radius:999px;border:2px solid #fff;background:rgba(20,33,61,.82);color:#fff;font:inherit;font-weight:700;font-size:1rem;cursor:pointer}
+
+footer{border-top:2px solid var(--ink);padding-block:var(--s6) var(--s5);font-size:var(--t-small);color:var(--ink-2)}
+footer p + p{margin-top:var(--s2)}
+footer a{display:inline-flex;align-items:center;min-height:var(--tap)}
+.review{background:var(--ink);color:#fff;font-size:.9375rem;padding:var(--s2) var(--gutter);text-align:center}
+
+@media (min-width:720px){
+  section{padding-block:var(--s8)}
+  .sticky{display:none}
+  body{padding-bottom:0}
+  html{scroll-padding-bottom:var(--s5)}
+  .cta{font-size:1.375rem}
+}
+
+.note-from{background:var(--signal);border:2px solid var(--ink);border-radius:10px;padding:var(--s3) var(--s4);margin-bottom:var(--s4);font-size:var(--t-small)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/">Arkansas Automated<span>Fort Smith, Arkansas</span></a>
+  <a class="tel" href="tel:+14794924232">(479) 492-4232</a>
+</div></header>
+<main id="main">
+
+<section class="hero" data-role="hero" data-lever="dream-outcome effort cta">
+  <div class="wrap flow">
+    <h1>Hear what your callers hear after you close.</h1>
+    <p class="lede">Send your number. After you close, Dre calls your line, records what happens, and texts you the recording. It's free, and there's no card.</p>
+    <form class="box" id="test-form" data-sticky-after novalidate>
+            <p class="note-from" id="note-from" hidden></p>
+      <div class="field">
+        <label for="f-biz">Business name</label>
+        <input id="f-biz" name="business" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="f-line">The number your customers call</label>
+        <input id="f-line" name="line" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="e-line">
+        <p class="err" id="e-line" role="alert" hidden>Add the number your customers call. That's the one we test.</p>
+      </div>
+      <div class="field">
+        <label for="f-close">What time you close <span class="hint">So we call after hours, not during.</span></label>
+        <input id="f-close" name="close" autocomplete="off" placeholder="Example: 5 PM weekdays">
+      </div>
+      <div class="field">
+        <label for="f-cell">Where to text the recording <span class="hint">Your cell. Leave blank to use the number above.</span></label>
+        <input id="f-cell" name="cell" type="tel" inputmode="tel" autocomplete="tel">
+      </div>
+      <div class="field">
+        <label for="f-note">Anything else? <span class="hint">Optional.</span></label>
+        <textarea id="f-note" name="note" autocomplete="off"></textarea>
+      </div>
+      <p class="submit-note" data-submit-note>When you tap Run my free test, we send one request to our lead intake and email Dre at andrebrassfield@gmail.com. If the form cannot confirm it went through, it says so; do not tap again, email dre@arkansasautomated.com.</p>
+      <button class="cta" type="submit">Run my free test</button>
+      <div class="done" id="sent" role="status" hidden><strong>Request sent.</strong><p>Dre gets an email alert with your request. If this page ever cannot confirm delivery, do not submit again; email dre@arkansasautomated.com.</p></div>
+    </form>
+    <p class="cta-note">Rather talk? Call Dre at <a href="tel:+14794924232">(479) 492-4232</a>.</p>
+  </div>
+</section>
+
+<section class="tint" data-role="how" data-lever="effort time">
+  <div class="wrap flow">
+    <h2>What happens after you send it.</h2>
+    <ol class="steps">
+      <li><b>Dre texts you to confirm.</b>He checks the number and your closing time. That's the only question.</li>
+      <li><b>After you close, he calls your line.</b>From a number your phone doesn't know, the way a new customer would.</li>
+      <li><b>He listens like a customer.</b>He counts the rings and records what a caller hears: a person, a voicemail, a full mailbox, or nothing.</li>
+      <li><b>He waits one hour.</b>Does anyone call back? Does a text come in? That hour is part of the test.</li>
+      <li><b>You get the recording by text.</b>The same day, by the next business morning at the latest. Plus a short note on the four things below. You listen on your own time.</li>
+    </ol>
+  </div>
+</section>
+
+<section data-role="stack" data-lever="value-stack">
+  <div class="wrap flow">
+    <h2>What the recording shows you.</h2>
+    <ul class="ledger">
+      <li><b>How many rings before anything happens</b><span>Every extra ring is a caller deciding whether to hang up.</span></li>
+      <li><b>Who or what answers</b><span>A person, your voicemail, your carrier's default greeting, or a full mailbox.</span></li>
+      <li><b>Whether the greeting says what happens next</b><span>Your name, when you will call back, and how to book. Check yours for all three.</span></li>
+      <li><b>Whether anything came back within the hour</b><span>A call or a text. If nothing did, that caller is already talking to someone else.</span></li>
+    </ul>
+    <p>That's the whole report. No score, no pitch deck. Your line, your recording.</p>
+  </div>
+</section>
+
+<section class="tint" data-role="price" data-lever="anchor">
+  <div class="wrap flow">
+    <h2>What it costs.</h2>
+    <div class="price">
+      <span class="amt">$0</span>
+      <p class="terms">No card. No contract. No sales sequence. You keep the recording either way.</p>
+    </div>
+    <a class="cta" href="#test-form">Run my free test</a>
+  </div>
+</section>
+
+<section data-role="plans" data-lever="value-stack anchor">
+  <div class="wrap flow">
+    <h2>If the recording bugs you.</h2>
+    <p>Pick the fix that matches what you heard. Every price is on the page.</p>
+    <div class="stack-gap">
+      <div class="price">
+        <h3>Missed-Call Text Back</h3>
+        <span class="amt">$129</span> <span class="per">a month</span>
+        <p class="terms">Every missed call gets a text with your name and a way to book. For shops that answer most calls and just need the gaps covered.</p>
+      </div>
+      <div class="price">
+        <h3>After-Hours Answering</h3>
+        <span class="amt">$299</span> <span class="per">a month</span>
+        <p class="terms">+ $199 one-time setup, in person. Answers your line after you close, books the job, sends urgent calls to the person you name.</p>
+      </div>
+      <div class="price">
+        <h3>Front Desk</h3>
+        <span class="amt">$499</span> <span class="per">a month</span>
+        <p class="terms">+ $199 one-time setup, in person. Answers 24/7, books, texts back, follows up on estimates, asks for reviews.</p>
+      </div>
+    </div>
+    <p class="small">Med spas: <a href="/med-spa-front-desk/">Med Spa Front Desk, $997 a month</a>.</p>
+    <p class="small">Also on the ladder: Dead Estimate Revival, $750 per campaign + 15% of what's recovered. Front Desk Audit, $750. Custom builds from $2,500, quoted in writing.</p>
+  </div>
+</section>
+
+<section class="tint" data-role="risk" data-lever="risk-reversal">
+  <div class="wrap flow">
+    <h2>What you risk: nothing.</h2>
+    <div class="promises">
+      <div class="promise"><b>The test is free.</b>No card, no contract. You keep the recording either way.</div>
+      <div class="promise"><b>Answering plans start with 7 days free.</b>On your real line, before you pay for a month.</div>
+      <div class="promise"><b>Month to month. Cancel with a call.</b>Set up in person. You keep your number.</div>
+    </div>
+  </div>
+</section>
+
+<section data-role="teach" data-lever="teach">
+  <div class="wrap flow">
+    <h2>If it doesn't bug you.</h2>
+    <p>Then your phone is in good shape and you keep the recording. If it's close, here are three fixes you can make tonight for free:</p>
+    <ul class="ledger">
+      <li><b>Fix the greeting</b><span>Say your business name, when you'll call back, and how to book without waiting.</span></li>
+      <li><b>Call back first thing</b><span>Before the first job of the day, return every after-hours call.</span></li>
+      <li><b>Text back yourself</b><span>Who you are, that a person is calling back, and a way to book now. Three lines.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="tint" data-role="diy" data-lever="teach effort">
+  <div class="wrap flow">
+    <h2>Rather run it yourself?</h2>
+    <p>Here's the same test. It takes about a minute.</p>
+    <ol class="steps">
+      <li><b>Tonight after close, call your business line</b>From a phone it doesn't know.</li>
+      <li><b>Count the rings before voicemail</b></li>
+      <li><b>Listen to what the caller hears</b>Would you leave a message?</li>
+      <li><b>Wait one hour</b>Did anyone call or text back?</li>
+      <li><b>Do it again Saturday at 2 PM</b></li>
+    </ol>
+    <p>If any answer bugs you, that's a job going to the next shop on Google. Want it run for you, with the recording? That's the form at the top.</p>
+  </div>
+</section>
+
+<section data-role="proof" data-lever="proof likelihood">
+  <div class="wrap flow">
+    <h2>What owners heard on their own line.</h2>
+    <div class="proof" data-proof-slot="test-1"><p class="tag">PROOF SLOT 1</p><p>A real test recording, shared with the owner's OK, with the four-point note. Empty until real.</p></div>
+    <div class="proof" data-proof-slot="test-2"><p class="tag">PROOF SLOT 2</p><p>Founding Five owner, in their words, on what they heard and what they changed. Empty until real.</p></div>
+  </div>
+</section>
+
+<section class="tint faq" data-role="faq" data-lever="objections">
+  <div class="wrap flow">
+    <h2>Questions owners ask.</h2>
+    <div>
+      <details data-objection="price"><summary>Is it really free?</summary><div>Yes. No card, no contract. You get the recording whether you buy anything or not. If you want the fix, plans start at $129 a month and every price is on this page.</div></details>
+      <details data-objection="staff"><summary>Will my staff know it's a test?</summary><div>The call comes after you close, so usually nobody's there. If someone does answer, Dre tells them who he is.</div></details>
+      <details data-objection="recording"><summary>Do you record my customers?</summary><div>No. We record only our own test call to your line.</div></details>
+      <details data-objection="ai-disclosure"><summary>If I buy a plan, will callers know it's AI?</summary><div>It answers in your business name. If a caller asks whether they're talking to a person, it tells the truth.</div></details>
+      <details data-objection="keep-number"><summary>Do I keep my phone number?</summary><div>Yes. The test uses your number as it is. Every plan keeps your number too.</div></details>
+      <details data-objection="emergencies"><summary>What about emergencies?</summary><div>On the answering plans, emergencies go to a person: whoever you name, by call or text. Everything else gets captured and handed off.</div></details>
+      <details data-objection="spanish"><summary>Do you handle Spanish-speaking callers?</summary><div>On an answering plan, your free week includes a Spanish test call on your own line. Billing starts only if that test passes.</div></details>
+      <details data-objection="speed"><summary>How fast does this happen?</summary><div>The test runs the first night after Dre confirms your closing time. The recording comes back the same day, by the next business morning at the latest. If you buy a plan, going live takes one in-person setup visit.</div></details>
+    </div>
+  </div>
+</section>
+
+<section data-role="close" data-lever="cta time">
+  <div class="wrap flow">
+    <h2>Find out tonight.</h2>
+    <p>Thirty seconds to send. One recording back. Then you decide.</p>
+    <a class="cta" href="#test-form">Run my free test</a>
+    <a class="alt" href="tel:+14794924232">Or call Dre: (479) 492-4232</a>
+  </div>
+</section>
+
+</main>
+<footer><div class="wrap">
+  <p><strong>Arkansas Automated</strong>, a Brassfield Ventures LLC company. Fort Smith, Arkansas.</p>
+  <p><a href="tel:+14794924232">(479) 492-4232</a> &nbsp; <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a></p>
+</div></footer>
+<div class="sticky" aria-hidden="true"><a class="cta" href="#test-form">Run my free test</a></div>
+<script type="module">
+import { wireLeadForm } from '/assets/aa-intake.js';
+/* dre-landing-page base runtime. Small on purpose. */
+function money(v){v=Math.round(v||0);return '$'+v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+function fmt(v,d){d=d||0;var p=Math.pow(10,d);v=Math.round((v||0)*p)/p;return v.toLocaleString('en-US',{maximumFractionDigits:d})}
+/* Review-build intake: opens the visitor's text app pre-filled to Dre. Hermes replaces this with the live intake on port. */
+/* Phone repeat bar: shows once the anchor (first CTA or the form) has scrolled above the viewport. */
+(function(){
+  var s=document.querySelector('.sticky'), h=document.querySelector('[data-sticky-after]')||document.querySelector('.cta');
+  if(!s||!h||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(e){var on=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;s.classList.toggle('on',on);s.setAttribute('aria-hidden',on?'false':'true')}).observe(h);
+})();
+/* Media slot: shows the marked placeholder until the loop file exists; never autoplays under reduced motion; pause control. */
+(function(){
+  document.querySelectorAll('.media').forEach(function(f){
+    var v=f.querySelector('video'), b=f.querySelector('.vt'); if(!v) return;
+    function empty(){f.classList.add('empty')}
+    v.addEventListener('error',empty,true);
+    setTimeout(function(){if(v.readyState===0&&v.networkState===3)empty()},1500);
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function label(){if(b)b.textContent=v.paused?'Play loop':'Pause loop'}
+    if(!rm){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    v.addEventListener('play',label);v.addEventListener('pause',label);label();
+    if(b)b.addEventListener('click',function(){v.paused?v.play():v.pause()});
+  });
+})();
+
+(function(){
+  var q=new URLSearchParams(location.search), from=q.get('from')||'';
+  var nf=document.getElementById('note-from'), note=document.getElementById('f-note');
+  var msgs={
+    'screens':'Booking a screens walkthrough? Use this form. Dre texts you to set a time and brings a demo loop to play on your own TV.',
+    'med-spa':'Med spa? Same test. Dre calls your front desk line after you close.',
+    'calculator':'Your calculator numbers are in the note below. Dre sees them with your request.'
+  };
+  if(msgs[from]){nf.textContent=msgs[from];nf.hidden=false}
+  if(from==='screens') note.value='Screens walkthrough. Screens I have: ';
+  if(from==='calculator'){
+    var parts=[];
+    if(q.get('calls')) parts.push(q.get('calls')+' missed calls/week');
+    if(q.get('new')) parts.push(q.get('new')+'% new business');
+    if(q.get('value')) parts.push('$'+q.get('value')+' first job');
+    if(q.get('win')) parts.push(q.get('win')+'% won back');
+    if(parts.length) note.value='My numbers: '+parts.join(', ')+'.';
+  }
+  var f=document.getElementById('test-form');
+  wireLeadForm(f, function(){
+    var g=function(id){return document.getElementById(id).value.trim()};
+    var line=g('f-line'), el=document.getElementById('e-line'), li=document.getElementById('f-line');
+    if(line.replace(/\D/g,'').length<10){el.hidden=false;li.setAttribute('aria-invalid','true');li.focus();return null}
+    el.hidden=true; li.removeAttribute('aria-invalid');
+    var biz=g('f-biz'), close=g('f-close'), cell=g('f-cell'), noteVal=g('f-note');
+    var details=['Line: '+line, close?('Closes: '+close):'', cell?('Recording to: '+cell):'', noteVal].filter(Boolean).join('. ');
+    return {
+      type:'automation_assessment',
+      businessName:biz||'',
+      name:biz||'',
+      email:null,
+      phone:line||null,
+      details:(details+(from?' (from '+from+')':'')).trim(),
+      spokeDomain:'arkansasautomated.com',
+      sourcePath:'/missed-call-test',
+      'bot-field':'',
+      extra:{
+        service:'missed-call-test',
+        intent:'Missed-call test. Call the business line after hours and send a short recording.',
+        line:line, closes:close, recordingTo:cell||line, from:from||null
+      }
+    };
+  });
+})();
+</script>
+</body>
+</html>
