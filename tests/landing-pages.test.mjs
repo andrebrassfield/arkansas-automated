@@ -37,11 +37,13 @@ test('/med-spas replaces the October page instead of sitting beside it', async (
   assert.ok(html.includes('$997'), 'new med spa anchor price present');
 });
 
-test('/screens ships the demo loop slot empty without linking a video file', async () => {
+test('/screens ships the Moore demo loop and keeps the placeholder as the fallback', async () => {
   const html = await page('/screens/');
-  assert.equal(/src="loop\.mp4"/.test(html), false, 'loop.mp4 linked');
-  assert.equal(/poster="loop\.jpg"/.test(html), false, 'loop.jpg linked');
-  assert.ok(html.includes('Demo loop slot'), 'marked placeholder remains');
+  assert.ok(/src="loop\.mp4"/.test(html), 'loop.mp4 not linked');
+  assert.equal(/poster="loop\.jpg"/.test(html), false, 'no poster shipped yet');
+  assert.ok(html.includes('Demo loop slot'), 'placeholder markup stays as the failure fallback');
+  const media = await readFile(new URL('../public/screens/loop.mp4', import.meta.url)).catch(() => null);
+  assert.ok(media && media.length > 100000, 'loop.mp4 present in public/screens');
 });
 
 test('ported forms use the shared guarded intake receiver', async () => {
