@@ -561,6 +561,20 @@ img { max-width: 100%; display: block; }
 @media (min-width: 860px) { .row-pkg { grid-template-columns: 13rem 14rem 1fr; } }
 .row-price { font-size: 0.95rem; line-height: 1.35; }
 
+/* Package rows on /services: the whole block is the link. One anchor per
+   row, no nested links, action cue as the last line, visible hover and
+   keyboard focus. Padding is inside the anchor so the full block clicks. */
+.row-link { text-decoration: none; color: inherit; border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), color var(--transition-fast); }
+@media (min-width: 700px) {
+  .rows-pkg-list { margin-inline: -1rem; padding-inline: 1rem; }
+  .row-link { margin-inline: -1rem; padding-inline: 1rem; }
+}
+.row-link:hover { background: var(--accent-soft); }
+.row-link:hover .row-title { color: var(--accent); }
+.row-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; background: var(--accent-soft); }
+.row-link .row-cue { grid-column: 1 / -1; font-weight: 700; color: var(--accent); }
+
 /* FAQ: native disclosure, hairline-separated, no JS. */
 .faq-wrap { max-width: 56rem; }
 .faq-list { margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 12px; }

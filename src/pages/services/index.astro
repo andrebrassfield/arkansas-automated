@@ -13,48 +13,56 @@ const ladder = [
     price: "$129/mo",
     p: "Every missed call gets a text back in under a minute, in your shop's name, with the job details captured and sent to you.",
     href: "/services/missed-call-text-back",
+    cue: "Start texting back",
   },
   {
     name: "After-Hours Answering",
     price: "$299/mo",
     p: "Your phone answered 5 PM to 7 AM and all weekend. Emergencies straight to the on-call tech. $199 one-time setup, first 7 days free.",
     href: "/services/after-hours-answering",
+    cue: "Start after-hours answering",
   },
   {
     name: "Front Desk",
     price: "$499/mo",
     p: "24/7 answering, jobs booked into your calendar or software, estimate follow-up, and review requests. The full front office.",
     href: "/services/ai-front-desk",
+    cue: "Start my front desk",
   },
   {
     name: "Dead Estimate Revival",
     price: "$750 + 15%",
     p: "Your open estimates from the last 90 days, worked until they book. The 15% is on recovered gross only; it books nothing, it costs nothing.",
     href: "/services/estimate-revival",
+    cue: "Revive my estimates",
   },
   {
     name: "Front Desk Audit",
     price: "$750",
     p: "Ninety minutes and a written map: every leak in calls, quotes, and follow-up, costed and ranked. The full fee credits toward any plan or build.",
     href: "/audit",
+    cue: "Book the audit",
   },
   {
     name: "Custom builds",
     price: "From $2,500",
     p: "A scoped build when the fix is not a plan on this page. Priced in writing before work begins.",
     href: "/services/workflow-automation",
+    cue: "Scope my build",
   },
   {
     name: "Advisor retainer",
     price: "From $2,000/mo",
     p: "For operations with 10 or more people. The map stays current and the next fix ships every month.",
     href: "/forward-deployed-ai-engineer",
+    cue: "Apply for the retainer",
   },
   {
     name: "Missed-call test",
     price: "Free",
     p: "We call the line after the office is closed and send a short recording of what a customer hears. Proof before money.",
     href: "/missed-call-test",
+    cue: "Run my free test",
   },
 ];
 
@@ -105,13 +113,14 @@ const schema = {
 
     <section class="section section-tint">
       <div class="container">
-        <div class="rows">
+        <div class="rows rows-pkg-list">
           {ladder.map((s) => (
-            <article class="row row-pkg">
-              <div class="row-n row-price">{s.price}</div>
-              <h3><a class="text-link-plain" href={s.href}>{s.name}</a></h3>
-              <p>{s.p}</p>
-            </article>
+            <a class="row row-pkg row-link" href={s.href}>
+              <span class="row-n row-price">{s.price}</span>
+              <h3 class="row-title">{s.name}</h3>
+              <p class="row-desc">{s.p}</p>
+              <span class="row-cue">{s.cue}</span>
+            </a>
           ))}
         </div>
         <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
