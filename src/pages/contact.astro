@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
+import LeadForm from "../components/LeadForm.astro";
 const title = "Contact Arkansas Automated | Rogers and Fort Smith";
 const description = `Call ${AA_PUBLIC_PHONE_DISPLAY} or email dre@arkansasautomated.com. Arkansas Automated serves Rogers and Fort Smith.`;
 ---
@@ -20,6 +21,17 @@ const description = `Call ${AA_PUBLIC_PHONE_DISPLAY} or email dre@arkansasautoma
     <h2 class="heading-md">Email</h2>
     <p><a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a></p>
     <p class="fine-print">We usually reply within one business day.</p>
+
+    <h2 class="heading-md" id="send-details">Send the details</h2>
+    <p>If you would rather write than call, send the basics here. One business name, one name, one email, and a line about what breaks. We reply within one business day.</p>
+    <div style="max-width:34rem;margin-top:1.25rem">
+      <LeadForm
+        formId="contact-lead"
+        defaultIntent="Contact page question"
+        detailsPlaceholder="Example: calls go to voicemail after 5, estimates never get followed up, booking is all by text."
+        submitLabel="Send my request"
+      />
+    </div>
   </div></section></main>
   <SiteFooter />
 </Base>
