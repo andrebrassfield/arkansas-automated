@@ -75,6 +75,10 @@ const faqs = [
     a: "A consultant leaves you a document. This leaves you working systems, and the training to run them. The operations audit is the closest thing we sell to a consulting deliverable, and even that comes with the build priced and ready if you want it.",
   },
   {
+    q: "Who actually does the work?",
+    a: "Dre does. Arkansas Automated is him. No account manager, no junior engineer learning on your systems, and no subcontractor on the phone. Three seats exist so that stays true: the person who scoped the work is the person who builds it and the person who answers when it breaks.",
+  },
+  {
     q: "How is it different from just buying AI software?",
     a: "Software assumes a business shaped like the average of its customers. Yours is not. The embedded model exists because the last mile, your pricing rules, your service area, your dispatcher's habits, is where off-the-shelf tools stop and the value starts.",
   },
@@ -129,12 +133,28 @@ const schema = {
           <a href="/">Home</a><span>/</span>Forward deployed AI engineer
         </nav>
         <span class="eyebrow">Embedded retainer · {s.price}</span>
+        <p class="measure" style="margin:0 0 1rem;font-weight:600;font-size:1.02rem">
+          3 embedded seats. One engineer. When the seats are full, new applications go to a waitlist.
+        </p>
         <h1 class="heading-xl measure">A forward deployed AI engineer, in your business.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{answer}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Talk about an embedded retainer</a>
+          <a class="btn btn-primary" href="#contact">Apply for a seat</a>
           <a class="btn btn-secondary" href="#plain">What the words mean</a>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="engineer">
+      <div class="container">
+        <h2 class="heading-lg measure">The engineer has a name.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          His name is Andre Brassfield. He founded Arkansas Automated, he built the systems this
+          page describes, and he is the person who shows up at your business. There is no bench
+          behind him and no handoff after the sale: the watching, the building, the training, and
+          the quarterly math review are all Dre, in person. When you take a seat, that is who you
+          are hiring.
+        </p>
       </div>
     </section>
 
@@ -203,6 +223,19 @@ const schema = {
       </div>
     </section>
 
+    <section class="section section-tint" id="seats">
+      <div class="container">
+        <h2 class="heading-lg measure">Why there are only three seats.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          The model only works if the engineer is actually in the business: in the shop, on the
+          calls, next to the people who run the systems. Dre can do that well for three operations
+          at a time. A fourth seat would turn this into the remote template work this page exists
+          to argue against, so there is no fourth seat. When one opens, it goes to the waitlist
+          first.
+        </p>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <h2 class="heading-lg measure">Who this is for, and who it is not.</h2>
@@ -243,6 +276,13 @@ const schema = {
                   send the recording, and the audit fee credits toward a build started within 60 days.
                 </td>
               </tr>
+              <tr>
+                <th scope="row">You want it next week</th>
+                <td>
+                  Seats open when they open. Join the waitlist through the audit and we will tell
+                  you plainly where you stand. Nobody buys their way up the list.
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -274,11 +314,11 @@ const schema = {
     <section class="section" id="contact">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Start with the map.</h2>
+          <h2 class="heading-lg">Apply for a seat.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            Almost every retainer starts with the operations audit, because a roadmap should exist
-            before a monthly fee does. Tell us what the business looks like and we will say
-            plainly whether embedded work is the right shape for it.
+            Three seats. If one is open, the operations audit is the application, and the fee
+            credits toward your first month. If the seats are full, the audit puts you on the
+            waitlist in order, and you hear from Dre when a seat opens.
           </p>
           <p class="fine-print" style="margin-top:2rem">
             Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
@@ -286,7 +326,7 @@ const schema = {
         </div>
         <BookCall
           heading="Book the operations audit call"
-          note="Almost every retainer starts with the operations audit. Fifteen minutes, your business details, and a plain answer on whether embedded work is the right shape for it."
+          note="Fifteen minutes, your business details, and a plain answer on whether embedded work is the right shape for it."
         />
       </div>
     </section>
