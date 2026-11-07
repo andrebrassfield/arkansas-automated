@@ -58,7 +58,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
       <div class="field-row">
         <div class="field">
           <label for={fieldId("phone")}>Phone</label>
-          <input id={fieldId("phone")} name="phone" type="tel" autocomplete="tel" />
+          <input id={fieldId("phone")} name="phone" type="tel" required autocomplete="tel" />
         </div>
           <div class="field">
             <label for={fieldId("industry")}>Industry</label>
@@ -159,15 +159,15 @@ const fieldId = (name: string) => `${formId}-${name}`;
       const contactName = val("contactName");
       const email = val("email");
       let firstInvalid: HTMLInputElement | null = null;
-      for (const name of ["businessName", "contactName", "email"] as const) {
+      for (const name of ["businessName", "contactName", "email", "phone"] as const) {
         const input = form.querySelector<HTMLInputElement>(`[name="${name}"]`);
         if (!input) continue;
         const empty = !val(name);
         input.setAttribute("aria-invalid", empty ? "true" : "false");
         if (empty && !firstInvalid) firstInvalid = input;
       }
-      if (!businessName || !contactName || !email) {
-        show("error", "Business name, your name, and a work email are required.");
+      if (!businessName || !contactName || !email || firstInvalid) {
+        show("error", "Business name, your name, work email, and phone are required.");
         firstInvalid?.focus();
         return;
       }

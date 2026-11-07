@@ -27,9 +27,13 @@ for (const { name, file, formId } of pages) {
 
   test(`${name} lead form keeps the required fields`, async () => {
     const page = await html(file);
-    for (const field of ['businessName', 'contactName', 'email']) {
+    for (const field of ['businessName', 'contactName', 'email', 'phone']) {
       assert.ok(page.includes(`name="${field}"`), `${name} missing field ${field}`);
     }
+    // The hub rejects payloads without a phone (min 7 chars). If the input is not
+    // marked required the visitor gets a 422 and the lead falls back to mailto.
+    const phoneTag = page.match(/<input[^>]*name="phone"[^>]*>/)?.[0] ?? '';
+    assert.ok(/required/.test(phoneTag), `${name} phone input is not marked required`);
   });
 }
 
