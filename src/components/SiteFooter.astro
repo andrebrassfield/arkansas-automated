@@ -4,6 +4,7 @@
  * within one click of every page (no orphans, hub-and-spoke per the
  * site-architecture skill).
  */
+import BrandLockup from "./BrandLockup.astro";
 import { industries } from "../data/industries";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 
@@ -23,7 +24,7 @@ const footerIndustries = industries.filter((i) =>
   <div class="container">
     <div class="footer-grid footer-grid-wide">
       <div>
-        <div class="brand">Arkansas <span class="accent">Automated</span></div>
+        <div class="brand"><BrandLockup /></div>
         <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
           AI setups and automations for Arkansas businesses. Built in Fort Smith, with people in control.
         </p>

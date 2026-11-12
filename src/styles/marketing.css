@@ -1,20 +1,20 @@
 /*
  * /marketing visual system. Loaded only by that page.
- * Near-black, cream, electric lime, orange on the math section.
+ * Diamond A brand on dark: Ink, Bone, Signal Orange (lime retired 2026-11).
  * Nav, footer, and the call dock stay the site components;
- * the dock and the hero wordmark shift to lime while this page is open.
+ * the dock and the hero wordmark shift to Signal while this page is open.
  */
 
 .mkt {
   overflow-x: clip;
-  --mkt-black: #121312;
-  --mkt-ink: #1c1e1b;
-  --mkt-cream: #f9f6ed;
-  --mkt-cream-2: #f3eee4;
-  --mkt-lime: #d9ff3f;
-  --mkt-lime-2: #e8ff7a;
-  --mkt-orange: #e45017;
-  --mkt-orange-ink: #c44010;
+  --mkt-black: #141417;
+  --mkt-ink: var(--ink);
+  --mkt-cream: var(--ink-on);
+  --mkt-cream-2: var(--bg-tertiary);
+  --mkt-lime: var(--signal);
+  --mkt-lime-2: var(--signal-hover);
+  --mkt-orange: var(--signal);
+  --mkt-orange-ink: var(--accent);
   --mkt-on-dark: #d7d1c5;
   --mkt-on-dark-dim: #b7b1a4;
   --mkt-on-light: #3c3a34;
@@ -225,7 +225,7 @@
 .mkt-light .mkt-btn:focus-visible,
 .mkt .mkt-btn-ghost:focus-visible { outline-color: var(--mkt-black); }
 .mkt-math .mkt-btn:not(.mkt-btn-ghost) { background: var(--mkt-orange); border-color: var(--mkt-orange); color: var(--mkt-black); }
-.mkt-math .mkt-btn:not(.mkt-btn-ghost):hover { background: #ff7a3c; border-color: #ff7a3c; color: var(--mkt-black); }
+.mkt-math .mkt-btn:not(.mkt-btn-ghost):hover { background: var(--signal-hover); border-color: var(--signal-hover); color: var(--mkt-black); }
 .mkt-math .mkt-btn:focus-visible { outline-color: var(--mkt-black); }
 
 /* Full creatives only. Native frame is 1075×1344. Never crop, cover, or scale past that. */
@@ -538,11 +538,11 @@
 }
 
 body .call-dock {
-  background: #d9ff3f;
+  background: var(--signal);
   color: #121312;
   border-top-color: rgba(18, 19, 18, 0.18);
 }
-.nav-over-hero:not(.is-solid) .accent { color: #d9ff3f; }
+.nav-over-hero:not(.is-solid) .accent { color: var(--signal); }
 
 @media (max-width: 860px) {
   /* The call dock is fixed. Body padding already clears it on every page;
