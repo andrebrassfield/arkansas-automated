@@ -1,36 +1,44 @@
 /*
  * Arkansas Automated design system.
  *
- * Cool shop paper, white cards, ink type. Quiet teal is reserved for
- * links, row numbers, and small marks. Never for primary buttons.
+ * Diamond A brand (v1, 2026-11). Bone paper, warm cards, ink type.
+ * --signal (Signal Orange) is for the mark, fills, large display type and
+ * buttons with ink text. It is 3.27:1 on Bone, so small orange text uses
+ * --accent (Clay, 4.92:1). Ozark Pine is the one dark accent band.
  * Fonts self-hosted via @fontsource latin CSS (font-display: swap).
- * Latin-only. Outfit 400/600/800. This file is the
+ * Latin-only. Poppins 700 headings, Outfit 400/600/800 body. This file is the
  * whole system; the page adds no ad-hoc colors.
  */
 @import "@fontsource/outfit/latin-400.css";
 @import "@fontsource/outfit/latin-600.css";
 @import "@fontsource/outfit/latin-800.css";
+@import "@fontsource/poppins/latin-700.css";
 
 :root {
-  --bg-primary: #eef1f0;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #e4e9e7;
+  --bg-primary: #f6f1e7;
+  --bg-secondary: #fbf8f2;
+  --bg-tertiary: #ece5d8;
 
-  --ink: #1c2422;
-  --ink-on: #f4f6f5;
+  --ink: #1b1b1f;
+  --ink-on: #f6f1e7;
 
-  --accent: #1f6b6f;
-  --accent-ink: #eef1f0;
-  --accent-soft: rgba(31, 107, 111, 0.08);
-  --accent-line: rgba(31, 107, 111, 0.28);
+  --signal: #e4572e;
+  --signal-hover: #cf4a22;
+  --pine: #2f3b2f;
+  --danger: #8b3d2a;
 
-  --text-primary: #1c2422;
-  --text-secondary: #3f4a47;
-  --text-muted: #5a6562;
+  --accent: #b8401f;
+  --accent-ink: #f6f1e7;
+  --accent-soft: rgba(228, 87, 46, 0.08);
+  --accent-line: rgba(228, 87, 46, 0.32);
 
-  --line: rgba(28, 36, 34, 0.12);
+  --text-primary: #1b1b1f;
+  --text-secondary: #45423c;
+  --text-muted: #5f5a52;
 
-  --font-heading: "Outfit", system-ui, sans-serif;
+  --line: rgba(27, 27, 31, 0.12);
+
+  --font-heading: "Poppins", system-ui, sans-serif;
   --font-body: "Outfit", system-ui, sans-serif;
 
   --spacing-lg: 4rem;
@@ -46,6 +54,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+button, input, select, textarea { font-family: inherit; }
 
 html, body {
   width: 100%;
@@ -62,9 +71,9 @@ html, body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 p { text-wrap: pretty; }
@@ -72,8 +81,7 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-/* Teal on primary ink is 2.16:1 — below the 3:1 UI contrast floor. Cream
-   on ink is 12.3:1. */
+/* Bone on ink is 15.25:1. */
 .btn-primary:focus-visible { outline-color: var(--ink-on); }
 #main-content:focus { outline: none; }
 #main-content { scroll-margin-top: 5.5rem; }
@@ -105,7 +113,7 @@ img { max-width: 100%; display: block; }
 .accent { color: var(--accent); }
 /* Capped so the hero headline holds 2 lines in the 1.15fr column. At 4.1rem it
    wrapped to 3 and pushed the CTAs toward the fold. */
-.heading-xl { font-size: clamp(2.3rem, 4.4vw, 3.35rem); font-weight: 800; letter-spacing: -0.03em; }
+.heading-xl { font-size: clamp(2.3rem, 4.4vw, 3.35rem); font-weight: 700; letter-spacing: -0.03em; }
 .heading-lg { font-size: clamp(1.9rem, 4vw, 3rem); }
 .heading-md { font-size: clamp(1.25rem, 2.2vw, 1.65rem); }
 .body-lg { font-size: clamp(1.05rem, 1.5vw, 1.18rem); color: var(--text-secondary); }
@@ -126,19 +134,23 @@ img { max-width: 100%; display: block; }
 .btn:active { transform: translateY(1px) scale(0.99); }
 /* ink-on on ink = 12.3:1. Primary is calm ink, never loud teal on white. */
 .btn-primary { background: var(--ink); color: var(--ink-on); }
-.btn-primary:hover { transform: translateY(-1px); background: #141a18; color: var(--ink-on); box-shadow: 0 10px 28px rgba(28, 36, 34, 0.16); }
-.btn-secondary { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid rgba(28, 36, 34, 0.18); }
-.btn-secondary:hover { border-color: rgba(28, 36, 34, 0.42); transform: translateY(-1px); }
+.btn-primary:hover { transform: translateY(-1px); background: #2a2a30; color: var(--ink-on); box-shadow: 0 10px 28px rgba(27, 27, 31, 0.16); }
+.btn-secondary { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid rgba(27, 27, 31, 0.18); }
+.btn-secondary:hover { border-color: rgba(27, 27, 31, 0.42); transform: translateY(-1px); }
 
 /* Nav: one line, 72px. */
 .nav { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20;
-  background: rgba(238, 241, 240, 0.9); backdrop-filter: blur(12px); }
+  background: rgba(246, 241, 231, 0.92); backdrop-filter: blur(12px); }
 .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-.brand { font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+.brand { display: inline-flex; align-items: center; color: var(--text-primary); line-height: 0; }
+.brand .brand-lockup svg { height: 38px; width: auto; display: block; }
+.brand .brand-mark svg { height: 36px; width: 36px; display: block; }
+.brand-lockup svg, .brand-mark svg { display: block; }
+@media (max-width: 380px) { .brand .brand-lockup svg { height: 32px; } }
 .nav-links { display: flex; align-items: center; gap: 1.35rem; font-size: 0.94rem; color: var(--text-secondary); }
 .nav-links a:not(.btn):hover { color: var(--text-primary); }
 .nav-links a.btn-primary { color: var(--ink-on); }
-.nav-links a.btn-primary:hover { color: var(--ink-on); background: #141a18; }
+.nav-links a.btn-primary:hover { color: var(--ink-on); background: #2a2a30; }
 .nav-links .btn { padding: 0.62rem 1.25rem; font-size: 0.94rem; }
 .nav-call { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .call-dock { display: none; }
@@ -158,7 +170,7 @@ img { max-width: 100%; display: block; }
     background: none; border: 0; cursor: pointer;
   }
   .nav-toggle span { display: block; width: 100%; height: 2px; background: var(--text-primary); transition: transform 0.2s ease, opacity 0.2s ease; }
-  .nav-over-hero .nav-toggle span { background: #f4f6f5; }
+  .nav-over-hero .nav-toggle span { background: var(--ink-on); }
   .nav-over-hero.is-solid .nav-toggle span { background: var(--text-primary); }
   .nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
@@ -188,13 +200,13 @@ img { max-width: 100%; display: block; }
   border-bottom-color: rgba(244, 246, 245, 0.12);
 }
 .nav-over-hero .brand,
-.nav-over-hero .nav-links { color: #f4f6f5; }
-.nav-over-hero .accent { color: #9ad7d3; }
+.nav-over-hero .nav-links { color: var(--ink-on); }
+.nav-over-hero .accent { color: var(--signal); }
 .nav-over-hero .nav-links a:not(.btn):hover { color: #ffffff; }
-.nav-over-hero .btn-primary { background: #f4f6f5; color: #1c2422; }
-.nav-over-hero .nav-links a.btn-primary { color: #1c2422; }
+.nav-over-hero .btn-primary { background: var(--ink-on); color: var(--ink); }
+.nav-over-hero .nav-links a.btn-primary { color: var(--ink); }
 .nav-over-hero .btn-primary:hover,
-.nav-over-hero .nav-links a.btn-primary:hover { background: #ffffff; color: #1c2422; box-shadow: 0 10px 28px rgba(12, 18, 16, 0.28); }
+.nav-over-hero .nav-links a.btn-primary:hover { background: #ffffff; color: var(--ink); box-shadow: 0 10px 28px rgba(12, 18, 16, 0.28); }
 .nav-over-hero.is-solid {
   background: rgba(238, 241, 240, 0.94);
   border-bottom-color: var(--line);
@@ -206,7 +218,7 @@ img { max-width: 100%; display: block; }
 .nav-over-hero.is-solid .btn-primary { background: var(--ink); color: var(--ink-on); }
 .nav-over-hero.is-solid .nav-links a.btn-primary { color: var(--ink-on); }
 .nav-over-hero.is-solid .btn-primary:hover,
-.nav-over-hero.is-solid .nav-links a.btn-primary:hover { background: #141a18; color: var(--ink-on); }
+.nav-over-hero.is-solid .nav-links a.btn-primary:hover { background: #2a2a30; color: var(--ink-on); }
 
 /* Hero: copy left, answer sheet right. */
 .hero { padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(3.5rem, 6vw, 5.5rem); }
@@ -270,7 +282,7 @@ img { max-width: 100%; display: block; }
 .hero-frame {
   position: relative;
   min-height: 100dvh;
-  background: #101614;
+  background: var(--ink);
   overflow: hidden;
 }
 .hero-stage-media {
@@ -306,7 +318,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: flex-end;
   padding: 7.5rem 0 4.5rem;
-  color: #f4f6f5;
+  color: var(--ink-on);
 }
 .hero-stage-grid {
   display: grid;
@@ -318,7 +330,7 @@ img { max-width: 100%; display: block; }
   .hero-stage-grid { grid-template-columns: 1.05fr 0.95fr; align-items: center; }
 }
 .hero-stage .heading-xl {
-  color: #f4f6f5;
+  color: var(--ink-on);
   font-size: clamp(2.55rem, 5.4vw, 4.35rem);
   max-width: 14ch;
 }
@@ -332,7 +344,7 @@ img { max-width: 100%; display: block; }
   border: 1px solid rgba(244, 246, 245, 0.14);
   border-radius: 20px;
   padding: 1.55rem 1.6rem 1.65rem;
-  color: #f4f6f5;
+  color: var(--ink-on);
   box-shadow: 0 0 0 7px rgba(244, 246, 245, 0.08);
 }
 .audit-ticket .ask-bar { margin-bottom: 0.35rem; }
@@ -358,25 +370,25 @@ img { max-width: 100%; display: block; }
   top: 0.55em;
   width: 0.42rem;
   height: 0.42rem;
-  background: #9ad7d3;
+  background: var(--signal);
   border-radius: 2px;
 }
 .audit-ticket .ticket-link {
   display: inline-block;
   margin-top: 1.25rem;
-  color: #f4f6f5;
+  color: var(--ink-on);
 }
 .hero-stage .body-lg {
   color: rgba(244, 246, 245, 0.86);
   margin: 1.15rem 0 2rem;
   max-width: 36rem;
 }
-.hero-stage .btn-primary { background: #f4f6f5; color: #1c2422; }
-.hero-stage .btn-primary:hover { background: #ffffff; color: #1c2422; }
+.hero-stage .btn-primary { background: var(--ink-on); color: var(--ink); }
+.hero-stage .btn-primary:hover { background: #ffffff; color: var(--ink); }
 .hero-stage .guarantee {
   background: rgba(12, 18, 16, 0.58);
   border-color: rgba(244, 246, 245, 0.2);
-  color: #f4f6f5;
+  color: var(--ink-on);
   backdrop-filter: blur(12px);
 }
 .crumbs-on-dark,
@@ -395,7 +407,7 @@ img { max-width: 100%; display: block; }
 .ask-bar {
   font-size: 0.92rem;
   font-weight: 600;
-  color: #9ad7d3;
+  color: var(--signal);
   margin-bottom: 1.15rem;
 }
 .ask-user,
@@ -408,19 +420,19 @@ img { max-width: 100%; display: block; }
 }
 .ask-user {
   background: rgba(244, 246, 245, 0.1);
-  color: #f4f6f5;
+  color: var(--ink-on);
   margin-bottom: 0.75rem;
 }
 .ask-bot {
-  background: #f4f6f5;
-  color: #1c2422;
+  background: var(--ink-on);
+  color: var(--ink);
 }
 .ask-cursor {
   display: inline-block;
   width: 0.42em;
   height: 1em;
   margin-left: 0.12em;
-  background: #1f6b6f;
+  background: var(--signal);
   vertical-align: -0.12em;
 }
 .ask.is-done .ask-cursor { display: none; }
@@ -431,7 +443,7 @@ img { max-width: 100%; display: block; }
 
 .photo-band {
   margin: 0;
-  background: #101614;
+  background: var(--ink);
 }
 .photo-band img {
   width: 100%;
@@ -595,10 +607,10 @@ img { max-width: 100%; display: block; }
 .field label { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); }
 .field input, .field select, .field textarea {
   font-family: inherit; font-size: 1rem; color: var(--text-primary);
-  background: var(--bg-primary); border: 1px solid rgba(44, 48, 46, 0.16);
+  background: var(--bg-primary); border: 1px solid rgba(27, 27, 31, 0.16);
   border-radius: var(--radius-sm); padding: 0.8rem 0.9rem; width: 100%;
 }
-/* #5a6562 on #eef1f0 stays above AA for placeholder text. */
+/* --text-muted on Bone stays above AA for placeholder text. */
 .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); }
 .field select { appearance: none; background-image:
   linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
@@ -613,7 +625,7 @@ img { max-width: 100%; display: block; }
 .form-legal { color: var(--text-muted); font-size: 0.76rem; margin-top: 0.7rem; }
 .optional { color: var(--text-muted); font-weight: 400; }
 .form-msg { margin-top: 1rem; padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); font-size: 0.96rem; }
-.form-msg[data-kind="error"] { background: rgba(139, 61, 42, 0.08); border: 1px solid rgba(139, 61, 42, 0.28); color: #8b3d2a; }
+.form-msg[data-kind="error"] { background: rgba(139, 61, 42, 0.08); border: 1px solid rgba(139, 61, 42, 0.28); color: var(--danger); }
 .form-msg[data-kind="ok"] { background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--text-primary); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
@@ -638,6 +650,17 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted); font-size: 0.88rem; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 0.7rem 1.25rem; margin-top: 0.65rem; }
 .footer-legal a:hover { color: var(--text-primary); }
+
+/* Dark footer (Diamond A rebrand). Bone on Ink 15.25:1; muted bone at 66% opacity is 7.26:1. */
+.footer { background: var(--ink); color: var(--ink-on); border-top: 0; }
+.footer .brand { color: var(--ink-on); }
+.footer .body-lg { color: rgba(246, 241, 231, 0.78); }
+.footer h2 { color: var(--signal); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; font-weight: 800; }
+.footer-col a, .footer-phone a { color: rgba(246, 241, 231, 0.82); }
+.footer-col a:hover, .footer-phone a:hover, .footer-legal a:hover { color: #ffffff; }
+.footer-bottom { border-top-color: rgba(246, 241, 231, 0.14); color: rgba(246, 241, 231, 0.66); }
+.footer .btn-primary { background: var(--signal); color: var(--ink); }
+.footer .btn-primary:hover { background: var(--signal-hover); color: var(--ink); }
 
 /* pSEO cluster additions (2026-07-29). Same tokens, same shape lock. */
 

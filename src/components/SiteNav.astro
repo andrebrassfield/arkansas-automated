@@ -1,4 +1,5 @@
 ---
+import BrandLockup from "./BrandLockup.astro";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 
 interface Props {
@@ -18,7 +19,7 @@ const links = [
 
 <header class:list={["nav", "site-nav", overHero && "nav-over-hero"]}>
   <div class="container nav-inner">
-    <a class="brand" href="/">Arkansas <span class="accent">Automated</span></a>
+    <a class="brand" href="/" aria-label="Arkansas Automated home"><BrandLockup /></a>
     <nav class="nav-links" aria-label="Main">
       {links.map((l) => <a class="nav-hide" href={l.href}>{l.label}</a>)}
       <a class="nav-call" href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>

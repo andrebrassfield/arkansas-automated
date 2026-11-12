@@ -1,4 +1,5 @@
 ---
+import BrandLockup from "../components/BrandLockup.astro";
 import Base from "../layouts/Base.astro";
 
 const title = "List Your Business | Arkansas Automated";
@@ -31,7 +32,7 @@ const CATEGORIES = [
 <Base title={title} description={description} path="/list-your-business">
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="/">Arkansas <span class="accent">Automated</span></a>
+      <a class="brand" href="/" aria-label="Arkansas Automated home"><BrandLockup /></a>
       <nav class="nav-links" aria-label="Main">
         <a class="nav-hide" href="/#what-we-install">What we install</a>
         <a class="btn btn-primary" href="/#audit">Request a workflow audit</a>
