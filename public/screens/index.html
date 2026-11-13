@@ -180,9 +180,9 @@ section.media-sec{padding:0;background:var(--ink)}
 <main id="main">
 
 <section class="media-sec" data-role="media" data-lever="likelihood">
-  <!-- DEMO LOOP: put the 720p web cut here as loop.mp4 plus loop.jpg (poster). JS starts it, reduced motion keeps it paused. -->
+  <!-- DEMO LOOP: Moore web cut lives at loop.mp4 in this folder. JS starts it, reduced motion keeps it paused. No poster yet: the placeholder stays as the fallback if the file ever fails. -->
   <figure class="media">
-    <video muted loop playsinline preload="none" width="1280" height="720" aria-label="Demo loop: a lobby screen showing services, prices, reviews, and a QR code to book"></video>
+    <video src="loop.mp4" muted loop playsinline preload="metadata" width="1280" height="720" aria-label="Demo loop: a lobby screen showing services, prices, reviews, and a QR code to book"></video>
     <button class="vt" type="button">Pause loop</button>
     <div class="ph"><div><b>Demo loop slot</b>Drop loop.mp4 and loop.jpg into this folder. It plays here.</div></div>
   </figure>
