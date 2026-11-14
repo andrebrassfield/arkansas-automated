@@ -7,7 +7,16 @@ const title = "AI Setups, Automations & Pricing | Arkansas Automated";
 const description =
   "AI setups and business automation in Arkansas. Answering service from $299/mo, missed-call text back from $129/mo, AI front desk from $499/mo, and custom builds from $2,500.";
 
-const ladder = [
+type LadderRow = {
+  name: string;
+  price: string;
+  p: string;
+  href: string;
+  cue: string;
+  anchors?: string;
+};
+
+const ladder: LadderRow[] = [
   {
     name: "Missed-Call Text Back",
     price: "$129/mo",
@@ -24,8 +33,10 @@ const ladder = [
   },
   {
     name: "Front Desk",
-    price: "$499/mo",
-    p: "24/7 answering, jobs booked into your calendar or software, estimate follow-up, and review requests. The full front office.",
+    anchors:
+      "Missed-Call Text Back alone: $129/mo. After-Hours Answering alone: $299/mo. Front Desk is the whole office, 24/7.",
+    price: "$499/mo + $750 setup",
+    p: "24/7 answering, jobs booked into your calendar or software, estimate follow-up, and review requests. The full front office. $750 one-time setup, first 7 days free.",
     href: "/services/ai-front-desk",
     cue: "Start my front desk",
   },
@@ -39,7 +50,7 @@ const ladder = [
   {
     name: "Front Desk Audit",
     price: "$750",
-    p: "Ninety minutes and a written map: every leak in calls, quotes, and follow-up, costed and ranked. The full fee credits toward any plan or build.",
+    p: "Ninety minutes and a written map: every leak in calls, quotes, and follow-up, costed and ranked. A paid diagnostic. The written map is yours either way.",
     href: "/audit",
     cue: "Book the audit",
   },
@@ -116,6 +127,7 @@ const schema = {
         <div class="rows rows-pkg-list">
           {ladder.map((s) => (
             <a class="row row-pkg row-link" href={s.href}>
+              {s.anchors && <span class="row-anchor">{s.anchors}</span>}
               <span class="row-n row-price">{s.price}</span>
               <h3 class="row-title">{s.name}</h3>
               <p class="row-desc">{s.p}</p>

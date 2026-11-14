@@ -572,6 +572,10 @@ img { max-width: 100%; display: block; }
 /* Package rows: price carries the first column instead of a bare number. */
 @media (min-width: 860px) { .row-pkg { grid-template-columns: 13rem 14rem 1fr; } }
 .row-price { font-size: 0.95rem; line-height: 1.35; }
+/* Price-anchor line: sits above the price on a package row, full width so it
+   reads as context for the whole block, not a second price column. */
+.row-anchor { grid-column: 1 / -1; font-size: 0.88rem; color: var(--text-muted);
+  margin-bottom: 0.1rem; max-width: 60ch; }
 
 /* Package rows on /services: the whole block is the link. One anchor per
    row, no nested links, action cue as the last line, visible hover and
