@@ -1,7 +1,7 @@
 # Pricing — Arkansas Automated
 
 All prices public. No sales call required to read the price sheet.
-Last updated: 2026-10-29.
+Last updated: 2026-11-14.
 
 ## The front door
 
@@ -28,7 +28,7 @@ Last updated: 2026-10-29.
 ## AI Front Desk
 
 - Price: $499 a month, flat
-- Setup: $199 one time, done in person. First 7 days of service are free on the real line.
+- Setup: $750 one time, done in person. First 7 days of service are free on the real line.
 - What it is: the full front office. 24/7 answering in the shop's name, jobs booked into the shop's calendar, Jobber, Housecall Pro, or ServiceTitan, missed-call text back, estimate follow-up on a day 2, 5, and 10 rhythm, and a review request after every completed job. Weekly summary of calls answered, jobs booked, and estimates touched.
 - Term: month to month after the free week. No contract. No per-minute or per-call charges.
 - Page: https://arkansasautomated.com/services/ai-front-desk
@@ -43,7 +43,6 @@ Last updated: 2026-10-29.
 
 - Price: $750
 - What it is: ninety minutes in the operation. A written map of how the shop handles calls, quotes, scheduling, and follow-up: every leak costed, ranked by payback, plus a straight list of what not to automate.
-- Credit: the full $750 comes off the setup of any monthly plan or custom build started with us.
 - Page: https://arkansasautomated.com/audit
 - Checkout: not charged on the website.
 
