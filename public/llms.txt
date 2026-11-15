@@ -6,7 +6,7 @@
 
 - [Homepage](https://arkansasautomated.com/): AI setups and business automations built in Fort Smith.
 - [Missed-call test](https://arkansasautomated.com/missed-call-test): call the line after hours, send a short recording. Free.
-- [Front Desk Audit](https://arkansasautomated.com/audit): $750. The full fee can be credited toward a setup. No checkout on the page.
+- [Front Desk Audit](https://arkansasautomated.com/audit): $750. It is a paid diagnostic and the written map is yours either way. No checkout on the page.
 - [Custom workflow automation](https://arkansasautomated.com/services/workflow-automation): scoped builds from $2,500.
 - [Fort Smith](https://arkansasautomated.com/locations/fort-smith)
 - [Northwest Arkansas](https://arkansasautomated.com/locations/rogers)
