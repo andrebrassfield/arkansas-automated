@@ -1,6 +1,6 @@
 # Arkansas Automated
 
-> Arkansas Automated is Brassfield Ventures LLC in Fort Smith. It is not Arkansas Automated Security, LLC of Mayflower. We sell done-for-you AI setups and business automations: missed-call text back from $129/month, after-hours answering from $299/month, AI front desk from $499/month, and scoped custom builds from $2,500. The free missed-call test shows what callers hear before a paid setup. Phone (479) 492-4232.
+> Arkansas Automated is operated by Andre Brassfield in Fort Smith. It is not Arkansas Automated Security, LLC of Mayflower. We sell done-for-you AI setups and business automations: missed-call text back from $129/month, after-hours answering from $299/month, AI front desk from $499/month, and scoped custom builds from $2,500. The free missed-call test shows what callers hear before a paid setup. Phone (479) 492-4232.
 
 ## Start here
 
@@ -42,4 +42,4 @@ Every city below has an AI receptionist page at /ai-receptionist/[city] and a bu
 
 - Book a 15-minute fit assessment: https://book.arkansasautomated.com/book/discovery-call
 - Email: dre@arkansasautomated.com
-- Operated by Brassfield Ventures LLC, Fort Smith, Arkansas. Founder: Andre Brassfield.
+- Operated by Andre Brassfield in Fort Smith, Arkansas.
