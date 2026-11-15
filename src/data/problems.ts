@@ -83,7 +83,7 @@ export const problems: Problem[] = [
       },
       {
         q: "What does it cost?",
-        a: "The AI front desk is $199 to set up plus $499 a month, with call recordings and a monthly tuning session included. Against the missed-call arithmetic above, most Arkansas service businesses cover it with one or two recovered jobs a month.",
+        a: "The AI front desk is $750 to set up plus $499 a month, with call recordings and a monthly tuning session included. Against the missed-call arithmetic above, most Arkansas service businesses cover it with one or two recovered jobs a month.",
       },
     ],
     service: "ai-front-desk",
@@ -187,7 +187,7 @@ export const problems: Problem[] = [
       },
       {
         q: "What does a quote follow-up build cost?",
-        a: "Custom builds are scoped in writing before work begins, from $2,500, plus a monthly managed tier when the build needs one. The $750 Front Desk Audit prices it exactly for your operation first, and the audit fee credits toward setup.",
+        a: "Custom builds are scoped in writing before work begins, from $2,500, plus a monthly managed tier when the build needs one. The $750 Front Desk Audit prices it exactly for your operation first, and the audit is a paid diagnostic: the written map is yours either way.",
       },
     ],
     service: "workflow-automation",

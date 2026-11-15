@@ -130,7 +130,7 @@ export const services: Service[] = [
     tagline:
       "Your phone answered around the clock, jobs booked into your calendar, estimates followed up, and reviews requested. Run for you, by a local operator.",
     answer:
-      "The Front Desk is the full front office for a shop that runs on the owner's phone. Calls answered 24/7 in your shop's name, jobs booked into your calendar or field-service software, missed calls texted back, open estimates followed up on a day 2, 5, and 10 rhythm, and a review request after every finished job. $499 a month flat, no per-minute meter, no contract. One-time $199 setup, done in person.",
+      "The Front Desk is the full front office for a shop that runs on the owner's phone. Calls answered 24/7 in your shop's name, jobs booked into your calendar or field-service software, missed calls texted back, open estimates followed up on a day 2, 5, and 10 rhythm, and a review request after every finished job. $499 a month flat, no per-minute meter, no contract. One-time $750 setup, done in person.",
     includes: [
       "Everything in After-Hours Answering, extended to 24/7",
       "Jobs booked into your calendar, Jobber, Housecall Pro, or ServiceTitan",
@@ -148,7 +148,7 @@ export const services: Service[] = [
       },
       {
         h: "Setup visit",
-        p: "We map how your shop actually takes work: who is on call, what counts as an emergency, where jobs get booked, what an estimate follow-up should say. One-time $199.",
+        p: "We map how your shop actually takes work: who is on call, what counts as an emergency, where jobs get booked, what an estimate follow-up should say. One-time $750.",
       },
       {
         h: "First 7 days free",
@@ -234,14 +234,14 @@ export const services: Service[] = [
     tagline:
       "Ninety minutes in your operation and a written map back: every leak in how your shop handles calls, quotes, and follow-up, costed and ranked.",
     answer:
-      "The Front Desk Audit is a fixed-price, $750 look at how your Arkansas business handles calls, quotes, scheduling, and follow-up. Ninety minutes with the people who touch the phones or the books. You get a written map, every leak costed, ranked by payback, and a straight list of what not to automate. The full fee comes off the setup of any monthly plan or build you start with us.",
+      "The Front Desk Audit is a fixed-price, $750 look at how your Arkansas business handles calls, quotes, scheduling, and follow-up. Ninety minutes with the people who touch the phones or the books. You get a written map, every leak costed, ranked by payback, and a straight list of what not to automate. The fee is for the diagnostic itself. Nothing comes off a plan or a build, and the written map is yours either way.",
     includes: [
       "Ninety minutes in the operation, with the people who touch the phones",
       "Your last month of calls reviewed: answered, missed, after-hours, what each miss likely cost",
       "Open estimate and follow-up process mapped as it actually runs",
       "A written map: every leak costed, ranked by payback",
       "A straight list of what not to automate, and why",
-      "Full $750 credited toward setup of any plan or build",
+      "A paid diagnostic: the written map is yours either way",
     ],
     process: [
       {
@@ -258,7 +258,7 @@ export const services: Service[] = [
       },
       {
         h: "Your call",
-        p: "Build it with us and the $750 comes off the setup. Build it with someone else, or not at all, and the map is still yours.",
+        p: "Build it with us, with someone else, or not at all. The fee paid for the diagnostic, and the written map is yours either way.",
       },
     ],
     faqs: [
@@ -267,8 +267,8 @@ export const services: Service[] = [
         a: "Most shops should start a plan; the test and the free week prove more than a document. The audit is for shops with several people touching the phones, where the leak is not obvious and the wrong fix costs more than $750.",
       },
       {
-        q: "Does the fee really come off the plan?",
-        a: "Yes. Start any monthly plan or a custom build and the full $750 credits against setup. If you do not, you keep the map.",
+        q: "Does the fee come off a plan?",
+        a: "No. The audit is a paid diagnostic. Nothing comes off a plan or a build, and the written map is yours either way.",
       },
       {
         q: "What do I physically receive?",
@@ -294,7 +294,7 @@ export const services: Service[] = [
     process: [
       {
         h: "Scope from the audit",
-        p: "Most builds start from the audit map, so scope and price are agreed before work begins. The audit fee credits toward the build.",
+        p: "Most builds start from the audit map, so scope and price are agreed before work begins. The audit is a paid diagnostic; nothing comes off the build.",
       },
       {
         h: "Build and test",
@@ -323,7 +323,7 @@ export const services: Service[] = [
     tagline:
       "For operations with 10 or more people: the map stays current, the next cut gets built each month, and the systems stay running.",
     answer:
-      "The advisor retainer is a continuous engagement for larger Arkansas operations. The leak map is kept current, the highest-payback fix is built each month, and the running systems are watched and tuned. From $2,000 a month. It starts from a Front Desk Audit, and the audit fee credits toward the first month.",
+      "The advisor retainer is a continuous engagement for larger Arkansas operations. The leak map is kept current, the highest-payback fix is built each month, and the running systems are watched and tuned. From $2,000 a month. It starts from a Front Desk Audit. The audit is a paid diagnostic and nothing comes off the first month.",
     includes: [
       "The leak map reviewed and re-ranked monthly",
       "One scoped build or fix shipped each month from the top of the map",
