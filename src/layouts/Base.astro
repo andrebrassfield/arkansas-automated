@@ -86,7 +86,6 @@ const schema = pageSchema ?? defaultSchema;
     String(node["@type"]).match(/Organization|ProfessionalService/) &&
     !("legalName" in node)
   ) {
-    node.legalName = defaultSchema.legalName;
     node.alternateName = defaultSchema.alternateName;
   }
   Object.values(node).forEach(tagOrgNodes);
