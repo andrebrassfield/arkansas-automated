@@ -3,12 +3,12 @@
  * /fix/[problem] — problem-first pages for owners who are searching the
  * symptom, not the product. Statewide by design (see the note in
  * src/data/problems.ts on why these are not crossed with cities), linking
- * down into the /ai-receptionist city cluster for geo intent.
+ * down into the /locations city pages for geo intent.
  */
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import BookCall from "../../components/BookCall.astro";
+import PhoneTestForm from "../../components/PhoneTestForm.astro";
 import { problems, problemBySlug } from "../../data/problems";
 import { serviceBySlug } from "../../data/services";
 import { cityBySlug } from "../../data/cities";
@@ -21,7 +21,7 @@ const { problem: slug } = Astro.params;
 const p = problemBySlug(slug);
 const s = serviceBySlug(p.service);
 const others = problems.filter((x) => x.slug !== p.slug);
-const topCities = ["fort-smith", "fayetteville", "rogers", "little-rock", "conway", "bentonville"].map(cityBySlug);
+const topCities = ["fort-smith", "van-buren", "fayetteville", "rogers", "bentonville", "springdale"].map(cityBySlug);
 
 const title = `Fix ${p.label.toLowerCase()} | Arkansas Automated`;
 const description = `${p.intent}. See what this leak costs your business and how AI fixes it permanently.`;
@@ -74,7 +74,7 @@ const schema = {
         <h1 class="heading-xl measure">{p.h1}.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{p.answer}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book the free assessment</a>
+          <a class="btn btn-primary" href="#contact">Get my free Phone Test</a>
           <a class="btn btn-secondary" href="#fix">Read the fix first</a>
         </div>
       </div>
@@ -111,7 +111,7 @@ const schema = {
           }
         </div>
         <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
-          This is the {s.name.toLowerCase()}, {s.price}.
+          This is part of the {s.name}, {s.price.toLowerCase()}.
           {" "}<a class="text-link" href={`/services/${s.slug}`}>Full detail and pricing</a>.
         </p>
       </div>
@@ -137,8 +137,8 @@ const schema = {
       <div class="container">
         <h2 class="heading-md">Fix it in your town</h2>
         <div class="link-chips">
-          {topCities.map((c) => <a class="chip" href={`/ai-receptionist/${c.slug}`}>{c.name}</a>)}
-          <a class="chip chip-strong" href="/ai-receptionist">All Arkansas cities</a>
+          {topCities.map((c) => <a class="chip" href={`/locations/${c.slug}`}>{c.name}</a>)}
+          <a class="chip chip-strong" href="/locations">All locations</a>
         </div>
         <h2 class="heading-md" style="margin-top:2.75rem">Other leaks we fix</h2>
         <div class="link-chips">
@@ -150,19 +150,16 @@ const schema = {
     <section class="section" id="contact">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Find out what it is costing you.</h2>
+          <h2 class="heading-lg">Find out if your shop has this leak.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            Fifteen free minutes on your actual numbers. If the fix does not pay for itself in
-            your operation, we will say so on that call rather than sell you something.
+            The free Phone Test times it on your own phone, form and Google listing. If your shop
+            does not have the leak, we will say so rather than sell you a fix.
           </p>
           <p class="fine-print" style="margin-top:2rem">
-            Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+            Last updated November 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <BookCall
-          heading="Pick a time on the live calendar"
-          note="Fifteen free minutes on your actual numbers. If the fix does not pay for itself in your operation, we will say so on that call rather than sell you something."
-        />
+        <PhoneTestForm formId={`problem-${p.slug}-form`} placement={`problem-${p.slug}`} compact />
       </div>
     </section>
   </main>

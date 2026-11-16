@@ -31,12 +31,15 @@ export interface Industry {
   faqs: { q: string; a: string }[];
 }
 
-export const industries: Industry[] = [
+/** Reset 2026-11-16: home service trades only. Other industries redirect to /for. */
+export const HOME_SERVICE_INDUSTRY_SLUGS = ["plumbers", "hvac", "electricians", "roofers", "landscapers"] as const;
+
+const allIndustries: Industry[] = [
   {
     name: "plumbers",
     singular: "plumber",
     slug: "plumbers",
-    intent: "AI answering, booking, and follow-up for plumbing companies",
+    intent: "Missed-call text back, follow-up and Google reviews for plumbing companies",
     angle:
       "Plumbing is an emergency business wearing a scheduling business's clothes. The burst pipe at 9 PM is worth three times the slow drain at noon, and the company that answers the 9 PM call gets both. Most Arkansas plumbing shops still let that call hit voicemail.",
     leaks: [
@@ -59,8 +62,8 @@ export const industries: Industry[] = [
     ],
     automate: [
       {
-        h: "24/7 AI answering and triage",
-        p: "Every call answered, emergencies flagged and escalated to your on-call phone, routine work booked straight onto the calendar.",
+        h: "Ring the right phones, then text back",
+        p: "Office and on-call phones ring together, and any call that still gets missed gets a text back in your shop's name with the job details captured.",
       },
       {
         h: "Quote follow-up sequences",
@@ -86,7 +89,7 @@ export const industries: Industry[] = [
       },
       {
         q: "What does this cost a one-truck shop?",
-        a: "The AI front desk is $750 to set up plus $499 a month, and it typically pays for itself with one or two booked jobs it would have missed. The missed-call test that starts it is free.",
+        a: "The Phone Test is free. The Front Door Setup starts at $1,500 one-time and Front Door Monthly starts at $497 a month with no contract. You only pay to fix what the test found.",
       },
     ],
   },
@@ -94,9 +97,9 @@ export const industries: Industry[] = [
     name: "HVAC companies",
     singular: "HVAC company",
     slug: "hvac",
-    intent: "AI answering and workflow automation for HVAC contractors",
+    intent: "Missed-call text back, follow-up and Google reviews for HVAC contractors",
     angle:
-      "HVAC demand in Arkansas is a cliff, not a curve. The first 100-degree week and the first hard freeze both arrive at once, and the companies that answer every call in that spike book the season. The audit times the unanswered calls and the quotes that go cold, then ranks which one pays back first.",
+      "HVAC demand in Arkansas is a cliff, not a curve. The first 100-degree week and the first hard freeze both arrive at once, and the companies that answer every call in that spike book the season. The Phone Test times the unanswered calls and the quotes that go cold, so you know which leak to fix first.",
     leaks: [
       {
         h: "Seasonal spikes that break the front desk",
@@ -117,8 +120,8 @@ export const industries: Industry[] = [
     ],
     automate: [
       {
-        h: "Spike-proof AI answering",
-        p: "Every call answered on the first ring whether it is a Tuesday in April or the first freeze in November. No overtime, no temp hires.",
+        h: "Spike-proof call handling",
+        p: "When the first freeze hits, every call that rings out gets a text back in under a minute with the details captured, so the rush does not turn into a voicemail pile.",
       },
       {
         h: "Emergency triage rules",
@@ -136,15 +139,15 @@ export const industries: Industry[] = [
     faqs: [
       {
         q: "Can it actually handle the summer call spike?",
-        a: "That is the point of it. An AI front desk answers every call at the same time, qualifies the caller, and books against your calendar. There is no hold queue and no lunch hour. We will show you load numbers before you commit.",
+        a: "Every call that rings out during the spike gets a text back in under a minute with the job details captured, and the follow-up keeps going until the customer books or says no. The Phone Test shows how many you are losing today before you spend anything.",
       },
       {
         q: "Does it work with ServiceTitan or Housecall Pro?",
-        a: "Yes. The front desk books into the calendar and pushes intake into the tools you already pay for. If your stack is a shared Google Calendar and QuickBooks, it works with that too.",
+        a: "Yes. We start with the calendar and job tools you already pay for and only add a tool when yours cannot do the job. If your stack is a shared Google Calendar and QuickBooks, it works with that too.",
       },
       {
-        q: "Can it sell maintenance plans on the call?",
-        a: "You choose. The system can offer the agreement on every qualifying call, mention it only on tune-up bookings, or never mention it. The script is yours and we build it together.",
+        q: "Can it help sell maintenance agreements?",
+        a: "Yes, in writing. A renewal reminder can go out before each agreement lapses, and the review request after a tune-up can mention the plan, or never mention it. You approve every word before anything sends.",
       },
     ],
   },
@@ -152,7 +155,7 @@ export const industries: Industry[] = [
     name: "electricians",
     singular: "electrician",
     slug: "electricians",
-    intent: "AI answering and job booking for electrical contractors",
+    intent: "Missed-call text back, follow-up and Google reviews for electrical contractors",
     angle:
       "Electrical work splits cleanly into two piles: the urgent and the profitable. A dead outlet circuit for a restaurant is tonight. A panel upgrade quote is this month. The shops that answer both, fast, and follow up on the second pile, are the ones adding trucks.",
     leaks: [
@@ -175,8 +178,8 @@ export const industries: Industry[] = [
     ],
     automate: [
       {
-        h: "Answered while you work",
-        p: "The AI front desk picks up while you are in the panel, qualifies urgency, and books or escalates by your rules. You call back the ones that matter.",
+        h: "Caught while you work",
+        p: "While you are in the panel, a missed call gets a text back asking what they need and how urgent it is. You call back the ones that matter, with the details already in hand.",
       },
       {
         h: "Bid intake that starts the clock",
@@ -202,7 +205,7 @@ export const industries: Industry[] = [
       },
       {
         q: "What is the cheapest way to try it?",
-        a: "The free missed-call test. We call your line after you close and send you the recording. If the leak is real, the answering plans start at $129 a month. Or start with the free 15-minute assessment.",
+        a: "The free Phone Test. We call your line during the day and after you close, fill out your form and check your Google listing, then show you the score. If the leak is real, the Front Door Setup starts at $1,500.",
       },
     ],
   },
@@ -210,7 +213,7 @@ export const industries: Industry[] = [
     name: "roofers",
     singular: "roofer",
     slug: "roofers",
-    intent: "AI answering and storm-season intake for roofing companies",
+    intent: "Storm-season call handling, follow-up and Google reviews for roofing companies",
     angle:
       "Roofing in Arkansas lives and dies by storm season. When a hail cell crosses the River Valley or the metro, the phones of thirty roofing companies light up the same evening, and the ones with automated intake work the whole event. The ones relying on callbacks work a fraction of it.",
     leaks: [
@@ -260,7 +263,7 @@ export const industries: Industry[] = [
       },
       {
         q: "How fast can this be running before storm season?",
-        a: "A done-for-you AI front desk is typically live in two to three weeks from the assessment. If the season is close, say so on the call and we will tell you honestly whether the timeline works.",
+        a: "Start with the free Phone Test now. The setup timeline depends on what the test finds; if the season is close, say so on the walkthrough and we will tell you honestly whether it can be ready.",
       },
     ],
   },
@@ -558,7 +561,7 @@ export const industries: Industry[] = [
     name: "landscapers and lawn care",
     singular: "landscaper",
     slug: "landscapers",
-    intent: "AI booking and route-season automation for landscapers",
+    intent: "Missed-call text back, follow-up and Google reviews for landscapers",
     angle:
       "Lawn care is a routing business with a phone problem. The season starts the same week for every company in the county, and the crews that answer the spring rush and follow up on every quote fill the route. The ones returning calls in May get the leftovers.",
     leaks: [
@@ -581,8 +584,8 @@ export const industries: Industry[] = [
     ],
     automate: [
       {
-        h: "Rush-proof answering and booking",
-        p: "Every call answered during the spring flood, service and address captured, quotes scheduled, and simple services booked directly.",
+        h: "Rush-proof call handling",
+        p: "During the spring flood, every missed call gets a text back with the service and address captured, and quote requests get a reply the same hour.",
       },
       {
         h: "Quote follow-up sequences",
@@ -600,7 +603,7 @@ export const industries: Industry[] = [
     faqs: [
       {
         q: "It is just me and two crews. Is this too much system?",
-        a: "No. The whole point is that a two-crew operation can answer like a company with an office. The front desk runs $750 setup plus $499 a month and typically pays for itself with a handful of weekly accounts.",
+        a: "No. The whole point is that a two-crew operation can follow up like a company with an office. The Front Door Setup starts at $1,500 one-time and Front Door Monthly starts at $497 a month with no contract.",
       },
       {
         q: "Can it handle quote requests that need a site visit?",
@@ -613,6 +616,11 @@ export const industries: Industry[] = [
     ],
   },
 ];
+
+export const industries: Industry[] = allIndustries.filter((i) => (HOME_SERVICE_INDUSTRY_SLUGS as readonly string[]).includes(i.slug));
+export const retiredIndustrySlugs: string[] = allIndustries
+  .map((i) => i.slug)
+  .filter((slug) => !(HOME_SERVICE_INDUSTRY_SLUGS as readonly string[]).includes(slug));
 
 export function industryBySlug(slug: string): Industry {
   const i = industries.find((i) => i.slug === slug);

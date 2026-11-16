@@ -1,0 +1,76 @@
+---
+/*
+ * /phone-test/thanks: confirms the request, says exactly what happens next,
+ * and offers the one useful next action (book the 15-minute walkthrough now).
+ * No second offer, no newsletter. noindex.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { BOOK_CALL_URL } from "../../data/services";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../../lib/public-phone";
+
+const title = "Phone Test Requested | Arkansas Automated";
+const description = "Your Phone Test request is in. Here is what happens next.";
+---
+
+<Base title={title} description={description} path="/phone-test/thanks" robots="noindex, follow" hideDock>
+  <SiteNav />
+  <main id="main-content" tabindex="-1">
+    <section class="ty">
+      <div class="container ty-grid">
+        <div>
+          <p class="ty-kicker"><i class="dia" aria-hidden="true"></i>REQUEST RECEIVED</p>
+          <h1 data-ty-title>Your Phone Test is in.</h1>
+          <p class="ty-lede" data-ty-lede>Dre will confirm by text or call within one business day. Nothing else is needed from you.</p>
+          <ol class="ty-timeline">
+            <li><strong>Within 1 business day.</strong> Dre confirms your request <span data-ty-channel>by text or call</span>.</li>
+            <li><strong>Over the next 3 days.</strong> We run the test: day call, after-hours call, web form, text and the Google checks. You don't need to warn your staff or change anything.</li>
+            <li><strong>Day 3 or 4.</strong> A 15-minute walkthrough of your score and your three biggest leaks.</li>
+          </ol>
+        </div>
+        <aside class="ty-card">
+          <span>SAVE A STEP</span>
+          <h2>Pick your walkthrough time now.</h2>
+          <p>15 minutes, by phone. Pick any slot 3 or more days out so the test is done by then.</p>
+          <a class="btn btn-primary" href={BOOK_CALL_URL} data-cta="thanks-book">Book the 15-minute walkthrough</a>
+          <p class="ty-small">Questions before then? <a href={AA_PUBLIC_PHONE_HREF} data-cta="thanks-call">{AA_PUBLIC_PHONE_DISPLAY}</a> or <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
+
+<script>
+  // Personalize from what the form stored. Optional: the page reads fine without it.
+  try {
+    const raw = sessionStorage.getItem("aa:pt");
+    if (raw) {
+      const d = JSON.parse(raw) as { first?: string; business?: string; sms?: boolean };
+      const title = document.querySelector("[data-ty-title]");
+      if (title && d.first) title.textContent = `Thanks, ${d.first}. ${d.business ? `${d.business}'s` : "Your"} Phone Test is in.`;
+      const channel = document.querySelector("[data-ty-channel]");
+      if (channel) channel.textContent = d.sms ? "by text" : "by phone or email";
+    }
+  } catch { /* storage blocked: keep the default copy */ }
+</script>
+
+<style>
+  .ty { padding: clamp(3rem, 7vw, 7rem) 0; }
+  .ty-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .ty-kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+  .ty h1 { font-size: clamp(2.2rem, 4.4vw, 3.8rem); line-height: 1.05; letter-spacing: -0.04em; max-width: 18ch; }
+  .ty-lede { font-size: 1.15rem; color: var(--text-secondary); margin: 1.4rem 0 2rem; max-width: 50ch; }
+  .ty-timeline { padding-left: 1.3rem; display: grid; gap: 1rem; color: var(--text-secondary); max-width: 56ch; }
+  .ty-timeline strong { color: var(--text-primary); }
+  .ty-card { background: var(--ink); color: var(--ink-on); border-radius: var(--radius-lg); padding: clamp(1.6rem, 3vw, 2.6rem); display: grid; gap: 1rem; }
+  .ty-card span { font-size: 0.72rem; letter-spacing: 0.16em; color: var(--signal); font-weight: 800; }
+  .ty-card h2 { font-size: 1.8rem; }
+  .ty-card p { color: rgba(246, 241, 231, 0.82); }
+  .ty-card .btn { justify-content: center; background: var(--signal); color: var(--ink); }
+  .ty-small { font-size: 0.88rem; }
+  .ty-small a { text-decoration: underline; text-underline-offset: 3px; color: var(--ink-on); }
+  .dia { display: inline-block; width: 0.55em; height: 0.55em; background: var(--signal); transform: rotate(45deg); margin-right: 0.7em; vertical-align: 0.08em; }
+  @media (max-width: 900px) { .ty-grid { grid-template-columns: 1fr; } }
+</style>

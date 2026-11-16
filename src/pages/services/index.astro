@@ -2,103 +2,26 @@
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
+import { services, PHONE_TEST_PATH, serviceHref } from "../../data/services";
 
-const title = "AI Setups, Automations & Pricing | Arkansas Automated";
+const title = "Services and Prices | Arkansas Automated";
 const description =
-  "AI setups and business automation in Arkansas. Answering service from $299/mo, missed-call text back from $129/mo, AI front desk from $499/mo, and custom builds from $2,500.";
+  "Free Phone Test, Front Door Setup from $1,500, Front Door Monthly from $497/mo, Ads at $3,000/mo flat and Dead Estimate Revival. Prices on the page for Arkansas home service businesses.";
 
-type LadderRow = {
-  name: string;
-  price: string;
-  p: string;
-  href: string;
-  cue: string;
-  anchors?: string;
-};
-
-const ladder: LadderRow[] = [
-  {
-    name: "Missed-Call Text Back",
-    price: "$129/mo",
-    p: "Every missed call gets a text back in under a minute, in your shop's name, with the job details captured and sent to you.",
-    href: "/services/missed-call-text-back",
-    cue: "Start texting back",
-  },
-  {
-    name: "After-Hours Answering",
-    price: "$299/mo",
-    p: "Your phone answered 5 PM to 7 AM and all weekend. Emergencies straight to the on-call tech. $199 one-time setup, first 7 days free.",
-    href: "/services/after-hours-answering",
-    cue: "Start after-hours answering",
-  },
-  {
-    name: "Front Desk",
-    anchors:
-      "Missed-Call Text Back alone: $129/mo. After-Hours Answering alone: $299/mo. Front Desk is the whole office, 24/7.",
-    price: "$499/mo + $750 setup",
-    p: "24/7 answering, jobs booked into your calendar or software, estimate follow-up, and review requests. The full front office. $750 one-time setup, first 7 days free.",
-    href: "/services/ai-front-desk",
-    cue: "Start my front desk",
-  },
-  {
-    name: "Dead Estimate Revival",
-    price: "$750 + 15%",
-    p: "Your open estimates from the last 90 days, worked until they book. The 15% is on recovered gross only; it books nothing, it costs nothing.",
-    href: "/services/estimate-revival",
-    cue: "Revive my estimates",
-  },
-  {
-    name: "Front Desk Audit",
-    price: "$750",
-    p: "Ninety minutes and a written map: every leak in calls, quotes, and follow-up, costed and ranked. A paid diagnostic. The written map is yours either way.",
-    href: "/audit",
-    cue: "Book the audit",
-  },
-  {
-    name: "Custom builds",
-    price: "From $2,500",
-    p: "A scoped build when the fix is not a plan on this page. Priced in writing before work begins.",
-    href: "/services/workflow-automation",
-    cue: "Scope my build",
-  },
-  {
-    name: "Advisor retainer",
-    price: "From $2,000/mo",
-    p: "For operations with 10 or more people. The map stays current and the next fix ships every month.",
-    href: "/forward-deployed-ai-engineer",
-    cue: "Apply for the retainer",
-  },
-  {
-    name: "Missed-call test",
-    price: "Free",
-    p: "We call the line after the office is closed and send a short recording of what a customer hears. Proof before money.",
-    href: "/missed-call-test",
-    cue: "Run my free test",
-  },
-];
-
+const ladder = services.filter((s) => s.rung > 0).sort((a, b) => a.rung - b.rung);
+const addOns = services.filter((s) => s.rung === 0);
 const site = "https://arkansasautomated.com";
 const schema = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ItemList",
-      name: "Arkansas Automated AI setups, automation services, and prices",
-      itemListElement: ladder.map((s, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        name: `${s.name}, ${s.price}`,
-        url: `${site}${s.href}`,
-      })),
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
-        { "@type": "ListItem", position: 2, name: "Services and pricing", item: `${site}/services` },
-      ],
-    },
-  ],
+  "@type": "OfferCatalog",
+  name: "Arkansas Automated services",
+  url: `${site}/services`,
+  itemListElement: services.map((s) => ({
+    "@type": "Offer",
+    name: s.name,
+    description: s.answer,
+    url: `${site}${serviceHref(s)}`,
+  })),
 };
 ---
 
@@ -107,40 +30,66 @@ const schema = {
   <main id="main-content" tabindex="-1">
     <section class="hero">
       <div class="container">
-        <nav class="crumbs" aria-label="Breadcrumb">
-          <a href="/">Home</a><span>/</span>Services & pricing
-        </nav>
-        <span class="eyebrow">AI setups / business automation</span>
-        <h1 class="heading-xl measure">Systems that do the follow-through.</h1>
-        <p class="body-lg measure" style="margin-top:1.15rem">
-          Start with the work that slips: missed calls, after-hours answering, booking, estimates, or disconnected tools. Choose a listed plan or scope a custom build. Prices and next steps are below.
-        </p>
+        <span class="eyebrow">Services and prices</span>
+        <h1 class="heading-xl measure">Four steps. Take only the next one.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">Every engagement starts with the free Phone Test, so you only pay to fix what the test found. Prices are on the page. The monthly plan has no contract.</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Talk through a setup</a>
-          <a class="btn btn-secondary" href="/services/workflow-automation">Explore custom builds</a>
+          <a class="btn btn-primary" href={PHONE_TEST_PATH} data-cta="services-hero">Get my free Phone Test</a>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container sv-ladder">
+        {ladder.map((s) => (
+          <article class="sv-rung">
+            <div class="sv-rung-head">
+              <span class="sv-step">STEP {s.rung}</span>
+              <strong class="sv-price">{s.price}</strong>
+            </div>
+            <h2><a href={serviceHref(s)}>{s.name}</a></h2>
+            <p class="sv-tag">{s.tagline}</p>
+            <ul>{s.includes.slice(0, 5).map((i) => <li>{i}</li>)}</ul>
+            <a class="text-link" href={serviceHref(s)}>Full details ↗</a>
+          </article>
+        ))}
       </div>
     </section>
 
     <section class="section section-tint">
       <div class="container">
-        <div class="rows rows-pkg-list">
-          {ladder.map((s) => (
-            <a class="row row-pkg row-link" href={s.href}>
-              {s.anchors && <span class="row-anchor">{s.anchors}</span>}
-              <span class="row-n row-price">{s.price}</span>
-              <h3 class="row-title">{s.name}</h3>
-              <p class="row-desc">{s.p}</p>
-              <span class="row-cue">{s.cue}</span>
-            </a>
-          ))}
-        </div>
-        <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
-          Machine-readable pricing for AI agents lives at
-          {" "}<a class="text-link" href="/pricing.md">/pricing.md</a>.
-        </p>
+        <span class="eyebrow">Add-on</span>
+        {addOns.map((s) => (
+          <article class="sv-addon">
+            <h2 class="heading-md"><a href={serviceHref(s)}>{s.name}</a> <span class="sv-price">{s.price}</span></h2>
+            <p class="body-lg measure">{s.tagline}</p>
+          </article>
+        ))}
+        <p class="fine-print" style="margin-top:2rem">We no longer sell answering plans, booking software or custom builds. Existing customers keep their current plans.</p>
       </div>
     </section>
   </main>
   <SiteFooter />
 </Base>
+
+<style>
+  .sv-ladder { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .sv-rung { background: var(--bg-secondary); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .sv-rung:first-child { background: var(--ink); color: var(--ink-on); border-color: var(--ink); }
+  .sv-rung:first-child .sv-tag, .sv-rung:first-child li { color: rgba(246, 241, 231, 0.85); }
+  .sv-rung:first-child .sv-price, .sv-rung:first-child .sv-step { color: var(--signal); }
+  .sv-rung-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .sv-step { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; color: var(--accent); }
+  .sv-price { color: var(--accent); font-weight: 800; }
+  .sv-rung h2 { font-size: 1.7rem; }
+  .sv-rung h2 a:hover { text-decoration: underline; }
+  .sv-tag { color: var(--text-secondary); }
+  .sv-rung ul { list-style: none; border-top: 1px solid var(--line); }
+  .sv-rung:first-child ul { border-color: rgba(246, 241, 231, 0.18); }
+  .sv-rung li { padding: 0.5rem 0; border-bottom: 1px solid var(--line); font-size: 0.93rem; color: var(--text-secondary); }
+  .sv-rung:first-child li { border-color: rgba(246, 241, 231, 0.18); }
+  .sv-rung .text-link { margin-top: auto; }
+  .sv-addon { margin-top: 1rem; }
+  .sv-addon .sv-price { font-size: 1rem; margin-left: 0.6rem; }
+  @media (max-width: 800px) { .sv-ladder { grid-template-columns: 1fr; } }
+</style>

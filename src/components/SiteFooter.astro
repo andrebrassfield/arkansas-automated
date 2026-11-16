@@ -1,23 +1,16 @@
 ---
 /*
- * Shared site footer. The location and industry columns keep every pSEO hub
- * within one click of every page (no orphans, hub-and-spoke per the
- * site-architecture skill).
+ * Shared site footer. Keeps every hub one click from every page (no orphans).
+ * Reset 2026-11-16: the sister-site "Network" column is gone; it confused who
+ * Arkansas Automated is.
  */
 import BrandLockup from "./BrandLockup.astro";
 import { industries } from "../data/industries";
+import { cities } from "../data/cities";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
+import { SITE_DESCRIPTOR } from "../lib/seo";
 
-const properties = [
-  { name: "Fort Smith Directory", url: "https://fortsmithdirectory.com" },
-  { name: "NWA Automated", url: "https://nwaautomated.com" },
-  { name: "Smart Home NWA", url: "https://smarthomenwa.com" },
-  { name: "Good Garage Co.", url: "https://goodgarageco.com" },
-];
-
-const footerIndustries = industries.filter((i) =>
-  ["plumbers", "hvac", "roofers", "dentists", "law-firms"].includes(i.slug),
-);
+const footerCities = cities.filter((c) => ["fort-smith", "van-buren", "fayetteville", "rogers", "bentonville"].includes(c.slug));
 ---
 
 <footer class="footer">
@@ -25,43 +18,37 @@ const footerIndustries = industries.filter((i) =>
     <div class="footer-grid footer-grid-wide">
       <div>
         <div class="brand"><BrandLockup /></div>
-        <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
-          AI setups and automations for Arkansas businesses. Built in Fort Smith, with people in control.
-        </p>
+        <p class="body-lg" style="margin-top:0.9rem;max-width:34ch;font-size:1rem">{SITE_DESCRIPTOR}</p>
         <p class="footer-phone"><a href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a></p>
       </div>
+      <nav class="footer-col" aria-label="Start">
+        <h2>Start</h2>
+        <a href="/phone-test">Free Phone Test</a>
+        <a href="/services">Services and prices</a>
+        <a href="/missed-call-cost-calculator">Missed-call calculator</a>
+        <a href="/answer-check">AI answer check</a>
+        <a href="/fix">Leaks we fix</a>
+      </nav>
+      <nav class="footer-col" aria-label="Trades">
+        <h2>Trades</h2>
+        {industries.map((i) => <a href={`/for/${i.slug}`}>{i.name.charAt(0).toUpperCase() + i.name.slice(1)}</a>)}
+        <a href="/for">All trades</a>
+      </nav>
       <nav class="footer-col" aria-label="Where">
         <h2>Where</h2>
-        <a href="/locations/fort-smith">Fort Smith</a>
-        <a href="/locations/rogers">Rogers</a>
+        {footerCities.map((c) => <a href={`/locations/${c.slug}`}>{c.name}</a>)}
         <a href="/locations">All locations</a>
-        <a href="/missed-call-test">Missed-call test</a>
-        <a href="/audit">Front Desk Audit</a>
-      </nav>
-      <nav class="footer-col" aria-label="Industries">
-        <h2>Industries</h2>
-        {footerIndustries.map((i) => <a href={`/for/${i.slug}`}>{i.name.charAt(0).toUpperCase() + i.name.slice(1)}</a>)}
-        <a href="/for">All industries</a>
       </nav>
       <nav class="footer-col" aria-label="Company">
         <h2>Company</h2>
-        <a href="/missed-call-test">Missed-call test</a>
-        <a href="/audit">Front Desk Audit</a>
-        <a href="/services">Services & pricing</a>
-        <a href="/services/workflow-automation">Custom AI setups</a>
-        <a href="/fix">Problems we fix</a>
-        <a href="/forward-deployed-ai-engineer">Forward deployed AI</a>
-        <a href="/learn">Learn</a>
         <a href="/about">About</a>
+        <a href="/marketing">Ads</a>
+        <a href="/learn">Guides</a>
         <a href="/contact">Contact</a>
-      </nav>
-      <nav class="footer-col" aria-label="Network">
-        <h2>Network</h2>
-        {properties.map((p) => <a href={p.url} target="_blank" rel="noopener">{p.name}</a>)}
       </nav>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} Arkansas Automated. Built and operated in Arkansas.</p>
+      <p>&copy; {new Date().getFullYear()} Arkansas Automated. Built and operated in Fort Smith, Arkansas.</p>
       <nav class="footer-legal" aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/automation-guardrails">Automation guardrails</a></nav>
     </div>
   </div>

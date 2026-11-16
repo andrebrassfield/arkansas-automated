@@ -203,6 +203,10 @@ const fieldId = (name: string) => `${formId}-${name}`;
           failedAttempts,
           formEverVisible,
           referrer: document.referrer || null,
+          ...(() => {
+            const fn = (window as unknown as { aaAttribution?: () => { firstTouch: unknown; lastTouch: unknown } }).aaAttribution;
+            try { return fn ? fn() : {}; } catch { return {}; }
+          })(),
         },
       };
       const mail = {

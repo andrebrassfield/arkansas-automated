@@ -16,7 +16,24 @@ export interface City {
   nearby: string[];
 }
 
-export const cities: City[] = [
+/**
+ * Reset 2026-11-16: Arkansas Automated serves the River Valley and Northwest
+ * Arkansas in person. Only these cities publish a page; the rest redirect to
+ * /locations in vercel.json (see retiredCitySlugs).
+ */
+export const LOCAL_CITY_SLUGS = [
+  "fort-smith",
+  "van-buren",
+  "russellville",
+  "fayetteville",
+  "springdale",
+  "rogers",
+  "bentonville",
+  "bella-vista",
+  "siloam-springs",
+] as const;
+
+const allCities: City[] = [
   {
     name: "Fort Smith",
     slug: "fort-smith",
@@ -79,7 +96,7 @@ export const cities: City[] = [
     economy:
       "Tyson's hometown, with food processing, trucking and logistics, construction, and one of the most active Hispanic small-business communities in Arkansas.",
     angle: [
-      "Springdale businesses often serve customers in two languages, and that is exactly where a phone system falls apart. An AI front desk can greet and qualify callers in English or Spanish and route them the same way every time, day or night.",
+      "Springdale businesses often serve customers in two languages, and that is exactly where a phone system falls apart. Missed-call texts and follow-up that go out in English or Spanish, written and approved by the owner, keep both sets of customers from dialing the next shop.",
       "The contractors and trucking outfits here run lean office staff on purpose. Automating the quote chase and the after-hours calls is usually worth a full hire they were trying to avoid making.",
     ],
     phones: [
@@ -116,11 +133,11 @@ export const cities: City[] = [
       "Walmart's headquarters and its vendor ecosystem, a cycling and hospitality boom, professional services, and a steady stream of new restaurants and boutiques.",
     angle: [
       "Bentonville has two economies. The vendor offices run on enterprise tooling, and the local shops, restaurants, and service businesses run on the owner's cell phone. We work with the second group, and the gap between the two is the opportunity.",
-      "The businesses growing fastest here are the ones that answer like a company twice their size. A 24/7 front desk and automated follow-up is how a four-person shop does that without hiring.",
+      "The businesses growing fastest here are the ones that answer like a company twice their size. Phones that ring the right people, a text back on every missed call and follow-up that never forgets is how a four-person shop does that without hiring.",
     ],
     phones: [
       "Bentonville customers are calibrated by the vendor offices. They deal with companies that answer on the second ring all day, then call a local shop and get a cell phone with a job site in the background. The comparison is unfair and it is happening anyway.",
-      "An AI receptionist is how a four-person Bentonville business sounds like a company with a front desk, because functionally it has one. Consistent greeting, real qualification, a booked slot, and a confirmation text. The customer never files you under the second category.",
+      "A small Bentonville shop sounds like a bigger one when every missed call gets a text back in a minute, every form gets an instant reply and every quote gets a day 1, 3 and 7 follow-up. The customer never files you under the second category.",
     ],
 
     nearby: ["rogers", "springdale", "fayetteville", "siloam-springs"],
@@ -151,7 +168,7 @@ export const cities: City[] = [
     economy:
       "John Brown University, light manufacturing, a revitalized downtown, and trades serving both northwest Arkansas and the Oklahoma border towns.",
     angle: [
-      "Siloam Springs shops work two states. That means calls from a wider area than the office staff ever sees, and a lot of after-hours traffic from across the line. An AI front desk does not care which side of the border the call comes from.",
+      "Siloam Springs shops work two states. That means calls from a wider area than the office staff ever sees, and a lot of after-hours traffic from across the line. A text back in a minute works the same on either side of the line, and it catches the evening calls nobody is there to pick up.",
       "It is also a town where the owner is usually still on the tools. The businesses that grow past the owner are the ones that get the phone answered and the follow-up handled without the owner touching it.",
     ],
     phones: [
@@ -469,7 +486,12 @@ export const cities: City[] = [
   },
 ];
 
-export const regions = [
+export const cities: City[] = allCities.filter((c) => (LOCAL_CITY_SLUGS as readonly string[]).includes(c.slug));
+export const retiredCitySlugs: string[] = allCities
+  .map((c) => c.slug)
+  .filter((slug) => !(LOCAL_CITY_SLUGS as readonly string[]).includes(slug));
+
+const allRegions = [
   { name: "River Valley", slugs: ["fort-smith", "van-buren", "russellville"] },
   {
     name: "Northwest Arkansas",
@@ -495,6 +517,10 @@ export const regions = [
   },
   { name: "South and Southwest Arkansas", slugs: ["texarkana", "el-dorado", "pine-bluff"] },
 ];
+
+export const regions = allRegions
+  .map((r) => ({ ...r, slugs: r.slugs.filter((slug) => (LOCAL_CITY_SLUGS as readonly string[]).includes(slug)) }))
+  .filter((r) => r.slugs.length > 0);
 
 export function cityBySlug(slug: string): City {
   const c = cities.find((c) => c.slug === slug);

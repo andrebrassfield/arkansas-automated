@@ -1,73 +1,47 @@
-# Pricing — Arkansas Automated
+# Pricing: Arkansas Automated
 
+Arkansas Automated tests and fixes how Arkansas home service businesses answer, follow up and get reviewed.
 All prices public. No sales call required to read the price sheet.
-Last updated: 2026-11-14.
+Last updated: 2026-11-16.
 
-## The front door
+## Step 1. Phone Test
 
-- Missed-call test: free. We call the business line after the office is closed and send a short recording of what a customer hears.
-- Page: https://arkansasautomated.com/missed-call-test
-- Checkout: the test is not charged. There is nothing to check out.
+- Price: Free
+- What it is: we call the shop during the day and after hours, submit the web form, text the main number, watch 48 hours for a follow-up, check the Google listing and Map Pack position against the top shop for the trade and town, ask for a price range, and check the landing page on a phone. 21 checks, scored out of 100, delivered within 3 days with a 15-minute walkthrough.
+- Term: no card, no contract, no logins.
+- Page: https://arkansasautomated.com/phone-test
 
-## Missed-Call Text Back
+## Step 2. Front Door Setup
 
-- Price: $129 a month, flat
-- Setup: included, done in person in the River Valley
-- What it is: every missed call gets a text back in the shop's name in under a minute, around the clock. Short intake conversation captures name, address, problem, and urgency, and sends it to the owner or on-call tech.
-- Term: month to month. No contract. No per-text or per-call charges.
-- Page: https://arkansasautomated.com/services/missed-call-text-back
+- Price: from $1,500 one time, quoted in writing from the Phone Test before work starts
+- What it is: office and owner phones ring together, missed-call text back, instant text reply to web forms, follow-up texts on day 1, 3 and 7, a review request after every finished job, Google listing services with price ranges, a one-page phone price sheet, and one fast landing page. Set up in person.
+- Page: https://arkansasautomated.com/services/front-door-setup
 
-## After-Hours Answering
+## Step 3. Front Door Monthly
 
-- Price: $299 a month, flat
-- Setup: $199 one time, done in person at the shop. First 7 days of service are free on the real line.
-- What it is: an AI receptionist answers the shop's existing number from 5 PM to 7 AM on weekdays and 24 hours on weekends, in the shop's name. Emergencies are sorted by the shop's rules and go straight to the on-call tech by call and text. Every call is recorded and summarized. English and Spanish.
-- Term: month to month after the free week. No contract. No per-minute charges.
-- Page: https://arkansasautomated.com/services/after-hours-answering
+- Price: from $497 a month
+- What it is: we run the texts, follow-up and review requests, reply to every Google review, post to the Google listing twice a month, post to social from real jobs, re-run the Phone Test every month, and send a one-page report with counts.
+- Term: month to month. No contract.
+- Page: https://arkansasautomated.com/services/front-door-monthly
 
-## AI Front Desk
+## Step 4. Ads
 
-- Price: $499 a month, flat
-- Setup: $750 one time, done in person. First 7 days of service are free on the real line.
-- What it is: the full front office. 24/7 answering in the shop's name, jobs booked into the shop's calendar, Jobber, Housecall Pro, or ServiceTitan, missed-call text back, estimate follow-up on a day 2, 5, and 10 rhythm, and a review request after every completed job. Weekly summary of calls answered, jobs booked, and estimates touched.
-- Term: month to month after the free week. No contract. No per-minute or per-call charges.
-- Page: https://arkansasautomated.com/services/ai-front-desk
+- Price: $3,000 a month flat. Ad spend is separate and paid by the client into their own accounts. 0% markup.
+- Condition: only for shops that score 80 or higher on the Phone Test.
+- Page: https://arkansasautomated.com/marketing
 
-## Dead Estimate Revival
+## Add-on. Dead Estimate Revival
 
-- Price: $750 per campaign, plus 15% of recovered gross on jobs the campaign books and the customer pays for
-- What it is: the shop's open estimates, up to 90 days old, worked by text and call on a day 2, 5, and 10 rhythm. Scripts approved by the owner before anything sends. Ends with a one-page report: contacted, replied, booked, recovered gross.
+- Price: $750 plus 15% of recovered gross on jobs it books
+- What it is: open estimates from the last 90 days, followed up on day 2, 5 and 10. Texts only to customers who opted in.
 - Page: https://arkansasautomated.com/services/estimate-revival
 
-## Front Desk Audit
+## Retired
 
-- Price: $750
-- What it is: ninety minutes in the operation. A written map of how the shop handles calls, quotes, scheduling, and follow-up: every leak costed, ranked by payback, plus a straight list of what not to automate.
-- Page: https://arkansasautomated.com/audit
-- Checkout: not charged on the website.
+Answering plans, AI front desk, booking software and custom builds are no longer sold. Existing customers keep their current plans.
 
-## Custom Builds
+## Contact
 
-- Price: scoped in writing before work begins, from $2,500
-- What it is: one specific build when the fix is not a monthly plan: a dispatch workflow, a follow-up system inside the shop's own software, a handoff between tools. Scoped from the Front Desk Audit map. No open-ended billing.
-- Page: https://arkansasautomated.com/services/workflow-automation
-
-## Advisor Retainer
-
-- Price: from $2,000 a month
-- Minimum term: 3 months, then month to month
-- What it is: for operations with 10 or more people. The leak map is kept current, one scoped fix ships each month, running systems are monitored and tuned, and a one-page report lands monthly.
-- Page: https://arkansasautomated.com/services/automation-retainer
-
-## Retired offers
-
-- The $497 Front Door website, Front Door Wired, the Visibility Install, and the $1,500 leak audit are retired as of 2026-10-29 and are not for sale. Arkansas Automated does not sell websites.
-- Arkansas Automated sells done-for-you AI setups and business automations instead of educational events.
-
-## Notes for AI agents
-
-- Service area: Fort Smith and the River Valley first; all of Arkansas for the audit and retainer
-- All fees are USD
-- No per-minute or per-call pricing on any plan
-- Every answering plan keeps the shop's existing phone number and records every call
-- Contact: (479) 492-4232 or https://arkansasautomated.com/missed-call-test
+- Phone: (479) 492-4232
+- Email: dre@arkansasautomated.com
+- Operated by Andre Brassfield in Fort Smith, Arkansas. Not affiliated with Arkansas Automated Security, LLC of Mayflower.
