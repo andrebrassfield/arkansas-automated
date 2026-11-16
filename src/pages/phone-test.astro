@@ -1,0 +1,147 @@
+---
+/*
+ * /phone-test: the conversion page. Ads, posts, Google listing links and every
+ * "Phone Test" CTA land here. Form first on phones, rubric second.
+ */
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import PhoneTestForm from "../components/PhoneTestForm.astro";
+import SampleScorecard from "../components/SampleScorecard.astro";
+import { rubric, RUBRIC_CHECK_COUNT, ASK_FOR_ME_SOURCE } from "../data/phone-test";
+import { serviceBySlug } from "../data/services";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
+
+const s = serviceBySlug("phone-test");
+const title = "Free Phone Test: How Your Shop Answers, Follows Up and Shows on Google | Arkansas Automated";
+const description =
+  "Free for Arkansas home service businesses. We call your shop day and night, fill out your form, text your number and check your Google listing. Score out of 100 within 3 days.";
+
+const site = "https://arkansasautomated.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Phone Test",
+      serviceType: "Speed to lead and local search test",
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description: s.answer,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", url: `${site}/phone-test` },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: s.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/phone-test" schema={schema} hideDock>
+  <SiteNav />
+  <main id="main-content" tabindex="-1">
+    <section class="pt-hero">
+      <div class="container pt-hero-grid">
+        <div>
+          <p class="pt-kicker"><i class="dia" aria-hidden="true"></i>FREE PHONE TEST</p>
+          <h1>Find out what your customers hear when they call.</h1>
+          <p class="pt-lede">{s.tagline}</p>
+          <ul class="pt-promises">
+            <li>Free. No card, no contract, no logins.</li>
+            <li>Score out of 100 within 3 days.</li>
+            <li>Run by Dre Brassfield in Fort Smith.</li>
+          </ul>
+          <p class="pt-call">Rather talk first? <a href={AA_PUBLIC_PHONE_HREF} data-cta="pt-hero-call">{AA_PUBLIC_PHONE_DISPLAY}</a></p>
+        </div>
+        <div id="request">
+          <PhoneTestForm formId="phone-test-page" placement="phone-test-hero" heading="Request your Phone Test" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container pt-split">
+        <div>
+          <p class="pt-kicker">WHAT YOU GET</p>
+          <h2 class="heading-lg">One page. Real clock times.</h2>
+          <ul class="pt-list">{s.includes.map((i) => <li>{i}</li>)}</ul>
+        </div>
+        <SampleScorecard />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="pt-kicker">THE RUBRIC</p>
+        <h2 class="heading-lg">{RUBRIC_CHECK_COUNT} checks, scored the same way for every shop.</h2>
+        <div class="pt-rubric">
+          {rubric.map((r) => (
+            <article>
+              <h3><span>{r.key}</span>{r.name} <small>{r.points} pts</small></h3>
+              <p>{r.why}</p>
+              <ol>{r.checks.map((c) => <li>{c}</li>)}</ol>
+            </article>
+          ))}
+        </div>
+        <p class="pt-source">Why we check prices and Map Pack position: Google's AI now calls local contractors for prices and availability, and only calls shops that show up in local search. Source: <a href={ASK_FOR_ME_SOURCE.url} rel="noopener" target="_blank">{ASK_FOR_ME_SOURCE.label}</a>.</p>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container pt-split pt-split-top">
+        <div>
+          <p class="pt-kicker">HOW WE RUN IT</p>
+          <h2 class="heading-lg">Honest test, no tricks.</h2>
+          <ol class="pt-steps">{s.process.map((p) => <li><strong>{p.h}.</strong> {p.p}</li>)}</ol>
+        </div>
+        <div>
+          <p class="pt-kicker">QUESTIONS</p>
+          {s.faqs.map((f) => <details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container pt-closing">
+        <h2 class="heading-lg">Business name, mobile, trade, town. That's it.</h2>
+        <a class="btn btn-primary" href="#request" data-cta="pt-closing">Get my free Phone Test</a>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
+
+<style>
+  .pt-hero { padding: clamp(3rem, 6vw, 6rem) 0; border-bottom: 1px solid var(--line); }
+  .pt-hero-grid, .pt-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .pt-split-top { align-items: start; }
+  .pt-kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+  .pt-hero h1 { font-size: clamp(2.4rem, 4.6vw, 4.2rem); line-height: 1.02; letter-spacing: -0.045em; max-width: 14ch; }
+  .pt-lede { font-size: clamp(1.05rem, 1.6vw, 1.22rem); color: var(--text-secondary); margin: 1.5rem 0; max-width: 52ch; }
+  .pt-promises { list-style: none; display: grid; gap: 0.45rem; }
+  .pt-promises li { font-weight: 600; padding-left: 1.4rem; position: relative; }
+  .pt-promises li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 0.55rem; height: 0.55rem; background: var(--signal); transform: rotate(45deg); }
+  .pt-call { margin-top: 1.4rem; color: var(--text-muted); }
+  .pt-call a { color: var(--text-primary); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .pt-list { list-style: none; margin-top: 1.4rem; border-top: 1px solid var(--line); }
+  .pt-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+  .pt-rubric { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+  .pt-rubric article { background: var(--bg-secondary); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 1.6rem; }
+  .pt-rubric h3 { font-size: 1.25rem; display: flex; align-items: center; gap: 0.7rem; }
+  .pt-rubric h3 span { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--signal); color: var(--ink); font-size: 0.9rem; }
+  .pt-rubric h3 small { margin-left: auto; font-size: 0.8rem; color: var(--accent); font-family: var(--font-body); font-weight: 800; }
+  .pt-rubric p { color: var(--text-secondary); margin: 0.6rem 0 0.8rem; font-size: 0.95rem; }
+  .pt-rubric ol { padding-left: 1.2rem; display: grid; gap: 0.3rem; font-size: 0.92rem; }
+  .pt-source { margin-top: 1.4rem; font-size: 0.85rem; color: var(--text-muted); max-width: 80ch; }
+  .pt-source a { text-decoration: underline; text-underline-offset: 3px; }
+  .pt-steps { padding-left: 1.2rem; display: grid; gap: 0.8rem; margin-top: 1.4rem; color: var(--text-secondary); }
+  .pt-steps strong { color: var(--text-primary); }
+  .pt-closing { text-align: center; display: grid; justify-items: center; gap: 1.5rem; }
+  .pt-closing h2 { max-width: 22ch; }
+  .dia { display: inline-block; width: 0.55em; height: 0.55em; background: var(--signal); transform: rotate(45deg); margin-right: 0.7em; vertical-align: 0.08em; }
+  @media (max-width: 900px) {
+    .pt-hero-grid, .pt-split { grid-template-columns: 1fr; }
+    .pt-rubric { grid-template-columns: 1fr; }
+  }
+</style>

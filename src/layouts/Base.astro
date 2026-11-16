@@ -7,6 +7,8 @@ import {
   OG_LOCALE,
   canonicalUrl,
   absoluteUrl,
+  SITE_DESCRIPTOR,
+  SERVICE_TYPES,
 } from "../lib/seo";
 import { HUB_PV_URL } from "../lib/hub";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
@@ -23,6 +25,8 @@ interface Props {
   robots?: string;
   /** Browser chrome color. Defaults to the site paper. */
   themeColor?: string;
+  /** Hide the mobile action dock (pages that are already a form). */
+  hideDock?: boolean;
 }
 const {
   title,
@@ -33,6 +37,7 @@ const {
   ogType = "website",
   robots,
   themeColor = "#f6f1e7",
+  hideDock = false,
 } = Astro.props;
 const origin = Astro.site?.origin ?? SITE_URL;
 const canonical = canonicalUrl(path, origin);
@@ -49,8 +54,9 @@ const defaultSchema = {
   url: origin,
   telephone: AA_PUBLIC_PHONE_E164,
   description,
+  slogan: SITE_DESCRIPTOR,
   disambiguatingDescription:
-    "AI and business automation company operated by Andre Brassfield, serving Rogers and Fort Smith, Arkansas. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
+    "Arkansas Automated tests and fixes how Arkansas home service businesses answer, follow up and get reviewed. Operated by Andre Brassfield in Fort Smith. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
   founder: {
     "@type": "Person",
     name: "Andre Brassfield",
@@ -63,13 +69,7 @@ const defaultSchema = {
     { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
     { "@type": "State", name: "Arkansas" },
   ],
-  serviceType: [
-    "AI setups and business automation",
-    "Workflow automation",
-    "AI implementation",
-    "CRM integration",
-    "Business process automation",
-  ],
+  serviceType: SERVICE_TYPES,
 };
 const schema = pageSchema ?? defaultSchema;
 // Entity disambiguation on every schema node, not just the default: pages
@@ -125,7 +125,46 @@ const siteHost = new URL(Astro.site?.origin ?? SITE_URL).hostname;
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <slot />
-    <a class="call-dock" href={AA_PUBLIC_PHONE_HREF}>Call {AA_PUBLIC_PHONE_DISPLAY}</a>
+    {!hideDock && (
+      <nav class="call-dock" aria-label="Quick actions">
+        <a class="call-dock-test" href="/phone-test" data-cta="dock-phone-test">Free Phone Test</a>
+        <a class="call-dock-call" href={AA_PUBLIC_PHONE_HREF} data-cta="dock-call">Call {AA_PUBLIC_PHONE_DISPLAY}</a>
+      </nav>
+    )}
+
+    <script is:inline>
+      // Attribution capture. First touch is kept for 90 days in localStorage;
+      // last touch lives for the tab session. Every lead form reads both via
+      // window.aaAttribution(). Storage can throw in private modes, so every
+      // access is guarded and failure only loses attribution, never the page.
+      (function () {
+        var KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid", "msclkid"];
+        var FT = "aa:ft", LT = "aa:lt", TTL = 90 * 864e5;
+        function snapshot() {
+          var p = new URLSearchParams(location.search), out = {};
+          KEYS.forEach(function (k) { var v = p.get(k); if (v) out[k] = v.slice(0, 200); });
+          out.landing = location.pathname;
+          out.referrer = document.referrer && document.referrer.indexOf(location.host) === -1 ? document.referrer.slice(0, 300) : null;
+          out.at = new Date().toISOString();
+          return out;
+        }
+        var now = snapshot();
+        var hasSignal = KEYS.some(function (k) { return now[k]; }) || now.referrer;
+        try {
+          var ft = JSON.parse(localStorage.getItem(FT) || "null");
+          if (!ft || Date.now() - Date.parse(ft.at) > TTL) localStorage.setItem(FT, JSON.stringify(now));
+        } catch (e) {}
+        try {
+          if (hasSignal || !sessionStorage.getItem(LT)) sessionStorage.setItem(LT, JSON.stringify(now));
+        } catch (e) {}
+        window.aaAttribution = function () {
+          var ft = null, lt = null;
+          try { ft = JSON.parse(localStorage.getItem(FT) || "null"); } catch (e) {}
+          try { lt = JSON.parse(sessionStorage.getItem(LT) || "null"); } catch (e) {}
+          return { firstTouch: ft, lastTouch: lt || now };
+        };
+      })();
+    </script>
 
     <script define:vars={{ pageviewEndpoint, siteHost }}>
       // First-party pageview beacon into the hub. APEX host, never www: www

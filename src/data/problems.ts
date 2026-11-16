@@ -35,7 +35,10 @@ export interface Problem {
   service: string;
 }
 
-export const problems: Problem[] = [
+/** Reset 2026-11-16: only problems the Front Door offers fix publish a page. */
+export const LIVE_PROBLEM_SLUGS = ["missed-calls", "after-hours-calls", "quote-follow-up"] as const;
+
+const allProblems: Problem[] = [
   {
     h1: "Calls are going to voicemail and those customers are not calling back",
     label: "Missed calls",
@@ -86,7 +89,7 @@ export const problems: Problem[] = [
         a: "The AI front desk is $750 to set up plus $499 a month, with call recordings and a monthly tuning session included. Against the missed-call arithmetic above, most Arkansas service businesses cover it with one or two recovered jobs a month.",
       },
     ],
-    service: "ai-front-desk",
+    service: "front-door-setup",
   },
   {
     h1: "Nobody answers after five, and that is when the good calls come in",
@@ -138,7 +141,7 @@ export const problems: Problem[] = [
         a: "Forwarding moves the ringing, it does not answer it. If you are asleep, driving, or on another job, the caller still gets voicemail, and now it is your voicemail. The question is whether the call gets handled, not whether it reaches your pocket.",
       },
     ],
-    service: "ai-front-desk",
+    service: "front-door-setup",
   },
   {
     h1: "Quotes go out and then nothing happens",
@@ -190,7 +193,7 @@ export const problems: Problem[] = [
         a: "Custom builds are scoped in writing before work begins, from $2,500, plus a monthly managed tier when the build needs one. The $750 Front Desk Audit prices it exactly for your operation first, and the audit is a paid diagnostic: the written map is yours either way.",
       },
     ],
-    service: "workflow-automation",
+    service: "front-door-setup",
   },
   {
     h1: "Everything gets typed in twice, and once of those times it is wrong",
@@ -242,7 +245,7 @@ export const problems: Problem[] = [
         a: "The monthly managed tier exists for exactly that. Automation that nobody maintains dies quietly and you find out from a customer. We monitor the flows and you have a human to call.",
       },
     ],
-    service: "workflow-automation",
+    service: "front-door-setup",
   },
   {
     h1: "Booked jobs turn into no-shows and nobody knows why",
@@ -294,9 +297,14 @@ export const problems: Problem[] = [
         a: "It applies more. Multi-provider schedules make an empty chair harder to refill on short notice, so reminders and one-tap rescheduling have a bigger effect. The intake questions are different and we write those for your practice.",
       },
     ],
-    service: "ai-front-desk",
+    service: "front-door-setup",
   },
 ];
+
+export const problems: Problem[] = allProblems.filter((p) => (LIVE_PROBLEM_SLUGS as readonly string[]).includes(p.slug));
+export const retiredProblemSlugs: string[] = allProblems
+  .map((p) => p.slug)
+  .filter((slug) => !(LIVE_PROBLEM_SLUGS as readonly string[]).includes(slug));
 
 export function problemBySlug(slug: string): Problem {
   const p = problems.find((p) => p.slug === slug);

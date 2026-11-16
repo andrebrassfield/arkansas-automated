@@ -16,7 +16,24 @@ export interface City {
   nearby: string[];
 }
 
-export const cities: City[] = [
+/**
+ * Reset 2026-11-16: Arkansas Automated serves the River Valley and Northwest
+ * Arkansas in person. Only these cities publish a page; the rest redirect to
+ * /locations in vercel.json (see retiredCitySlugs).
+ */
+export const LOCAL_CITY_SLUGS = [
+  "fort-smith",
+  "van-buren",
+  "russellville",
+  "fayetteville",
+  "springdale",
+  "rogers",
+  "bentonville",
+  "bella-vista",
+  "siloam-springs",
+] as const;
+
+const allCities: City[] = [
   {
     name: "Fort Smith",
     slug: "fort-smith",
@@ -469,7 +486,12 @@ export const cities: City[] = [
   },
 ];
 
-export const regions = [
+export const cities: City[] = allCities.filter((c) => (LOCAL_CITY_SLUGS as readonly string[]).includes(c.slug));
+export const retiredCitySlugs: string[] = allCities
+  .map((c) => c.slug)
+  .filter((slug) => !(LOCAL_CITY_SLUGS as readonly string[]).includes(slug));
+
+const allRegions = [
   { name: "River Valley", slugs: ["fort-smith", "van-buren", "russellville"] },
   {
     name: "Northwest Arkansas",
@@ -495,6 +517,10 @@ export const regions = [
   },
   { name: "South and Southwest Arkansas", slugs: ["texarkana", "el-dorado", "pine-bluff"] },
 ];
+
+export const regions = allRegions
+  .map((r) => ({ ...r, slugs: r.slugs.filter((slug) => (LOCAL_CITY_SLUGS as readonly string[]).includes(slug)) }))
+  .filter((r) => r.slugs.length > 0);
 
 export function cityBySlug(slug: string): City {
   const c = cities.find((c) => c.slug === slug);

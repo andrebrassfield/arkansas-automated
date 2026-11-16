@@ -14,6 +14,27 @@ export const SITE_NAME = "Arkansas Automated";
 export const DEFAULT_OG_IMAGE = "/og-image.png";
 export const OG_LOCALE = "en_US";
 
+/**
+ * The descriptor. Say this exact sentence everywhere the business is
+ * described (homepage, Google profile, LinkedIn, directories, llms.txt) so
+ * search engines and AI assistants repeat it. Changing it here changes the
+ * schema on every page; change the off-site copies by hand.
+ */
+export const SITE_DESCRIPTOR =
+  "Arkansas Automated tests and fixes how Arkansas home service businesses answer, follow up and get reviewed.";
+
+export const SITE_TAGLINE = "Answered. Followed up. Reviewed.";
+
+export const SERVICE_TYPES = [
+  "Speed to lead testing",
+  "Missed-call text back",
+  "Lead follow-up automation",
+  "Review request automation",
+  "Google Business Profile management",
+  "Landing pages for home service businesses",
+  "Meta and Google ads management",
+];
+
 function originOf(site: string): string {
   return site.replace(/\/+$/, "");
 }

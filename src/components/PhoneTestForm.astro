@@ -1,0 +1,226 @@
+---
+/*
+ * Phone Test request form. The one conversion on the site.
+ *
+ * Posts to the hub lead receiver as `automation_assessment` (the only type the
+ * hub accepts for this site) with intent "Phone Test request". The hub saves
+ * the lead and emails the operator. Attribution (first and last touch, set in
+ * Base.astro), timing, and a client submission id for idempotency ride in the
+ * payload. On success the visitor lands on /phone-test/thanks.
+ *
+ * Fields are the minimum the test needs: who, which number, which trade and
+ * town. Email and website are optional. SMS consent is its own unchecked box,
+ * never bundled with anything else (A2P 10DLC and TCPA hygiene).
+ */
+import { AA_PUBLIC_PHONE_DISPLAY } from "../lib/public-phone";
+import { TRADES, TOWNS, SMS_CONSENT_TEXT_CLIENT as SMS_CONSENT_TEXT } from "../lib/phone-test-client";
+
+interface Props {
+  formId?: string;
+  /** Short label of the page the form sits on, sent as the CTA placement. */
+  placement?: string;
+  heading?: string;
+  compact?: boolean;
+}
+
+const { formId = "phone-test", placement = "page", heading, compact = false } = Astro.props;
+const fieldId = (name: string) => `${formId}-${name}`;
+
+---
+
+<div class:list={["form-card", "pt-form-card", compact && "pt-compact"]}>
+  {heading && <h3 class="pt-form-heading">{heading}</h3>}
+  <form id={formId} data-phone-test-form data-placement={placement} novalidate>
+    <div class="field-row">
+      <div class="field">
+        <label for={fieldId("businessName")}>Business name</label>
+        <input id={fieldId("businessName")} name="businessName" type="text" required autocomplete="organization" maxlength="160" />
+      </div>
+      <div class="field">
+        <label for={fieldId("contactName")}>Your name</label>
+        <input id={fieldId("contactName")} name="contactName" type="text" required autocomplete="name" maxlength="120" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for={fieldId("phone")}>Mobile number</label>
+        <input id={fieldId("phone")} name="phone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="40" />
+      </div>
+      <div class="field">
+        <label for={fieldId("email")}>Email <span class="optional">(for the scorecard)</span></label>
+        <input id={fieldId("email")} name="email" type="email" autocomplete="email" maxlength="160" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for={fieldId("trade")}>Trade</label>
+        <select id={fieldId("trade")} name="trade" required>
+          <option value="">Pick one</option>
+          {TRADES.map((t) => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+      <div class="field">
+        <label for={fieldId("town")}>Main town</label>
+        <select id={fieldId("town")} name="town" required>
+          <option value="">Pick one</option>
+          {TOWNS.map((t) => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+    </div>
+    {!compact && (
+      <div class="field">
+        <label for={fieldId("website")}>Website or Google listing <span class="optional">(optional)</span></label>
+        <input id={fieldId("website")} name="website" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="yourshop.com" />
+      </div>
+    )}
+    <label class="pt-consent" for={fieldId("smsConsent")}>
+      <input id={fieldId("smsConsent")} name="smsConsent" type="checkbox" value="yes" />
+      <span>{SMS_CONSENT_TEXT}</span>
+    </label>
+    <div class="hp" aria-hidden="true">
+      <label for={fieldId("bot-field")}>Do not fill this in</label>
+      <input id={fieldId("bot-field")} name="bot-field" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    <button class="btn btn-primary pt-submit" type="submit" data-cta={`form-${placement}`} data-pt-submit>
+      Get my free Phone Test
+    </button>
+    <p class="form-note">Free. No card, no contract, no logins. Score within 3 days. Rather talk? Call {AA_PUBLIC_PHONE_DISPLAY}.</p>
+    <p class="form-legal">By submitting, you agree Arkansas Automated may contact you about this request. See our <a href="/privacy">privacy page</a>.</p>
+    <div class="form-msg" data-pt-message hidden role="status" aria-live="polite"></div>
+  </form>
+</div>
+
+<script>
+  import { HUB_LEADS_URL } from "../lib/hub";
+  import { SMS_CONSENT_TEXT_CLIENT, buildPhoneTestPayload, validatePhoneTest } from "../lib/phone-test-client";
+
+  type Attribution = { firstTouch: unknown; lastTouch: unknown };
+  const attribution = (): Attribution => {
+    const fn = (window as unknown as { aaAttribution?: () => Attribution }).aaAttribution;
+    try { return fn ? fn() : { firstTouch: null, lastTouch: null }; } catch { return { firstTouch: null, lastTouch: null }; }
+  };
+
+  document.querySelectorAll<HTMLFormElement>("[data-phone-test-form]").forEach((form) => {
+    if (form.dataset.ready === "true") return;
+    form.dataset.ready = "true";
+    const msg = form.querySelector<HTMLElement>("[data-pt-message]");
+    const submit = form.querySelector<HTMLButtonElement>("[data-pt-submit]");
+    const loadedAt = Date.now();
+    let firstInputAt: number | null = null;
+    let failedAttempts = 0;
+    let inFlight = false;
+    const submissionId = (crypto as Crypto & { randomUUID?: () => string }).randomUUID?.() ?? `pt-${loadedAt}-${Math.random().toString(36).slice(2)}`;
+
+    form.addEventListener("input", () => { if (firstInputAt === null) firstInputAt = Date.now(); }, { once: true });
+
+    function show(kind: "ok" | "error", text: string, mailto?: string) {
+      if (!msg) return;
+      msg.hidden = false;
+      msg.dataset.kind = kind;
+      msg.setAttribute("role", kind === "error" ? "alert" : "status");
+      msg.textContent = text;
+      if (mailto) {
+        const a = document.createElement("a");
+        a.href = mailto;
+        a.textContent = " Send it as an email instead.";
+        a.style.textDecoration = "underline";
+        msg.appendChild(a);
+      }
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!submit || inFlight) return;
+      const fd = new FormData(form);
+      const get = (k: string) => {
+        const v = fd.get(k);
+        return typeof v === "string" ? v.trim() : "";
+      };
+      const values = {
+        businessName: get("businessName"),
+        contactName: get("contactName"),
+        phone: get("phone"),
+        email: get("email"),
+        trade: get("trade"),
+        town: get("town"),
+        website: get("website"),
+        smsConsent: fd.get("smsConsent") === "yes",
+        botField: get("bot-field"),
+      };
+      const errors = validatePhoneTest(values);
+      form.querySelectorAll<HTMLElement>("input, select").forEach((el) => {
+        const name = el.getAttribute("name") ?? "";
+        el.setAttribute("aria-invalid", errors[name] ? "true" : "false");
+      });
+      const firstBad = Object.keys(errors)[0];
+      if (firstBad) {
+        show("error", errors[firstBad]);
+        form.querySelector<HTMLElement>(`[name="${firstBad}"]`)?.focus();
+        return;
+      }
+
+      inFlight = true;
+      submit.disabled = true;
+      const original = submit.textContent;
+      submit.textContent = "Sending";
+      const payload = buildPhoneTestPayload(values, {
+        submissionId,
+        sourcePath: location.pathname,
+        placement: form.dataset.placement ?? "page",
+        attribution: attribution(),
+        msToSubmit: Date.now() - loadedAt,
+        msToFirstInput: firstInputAt === null ? null : firstInputAt - loadedAt,
+        failedAttempts,
+        smsConsentText: SMS_CONSENT_TEXT_CLIENT,
+        submittedAt: new Date().toISOString(),
+      });
+
+      let ok = false;
+      for (let attempt = 0; attempt < 2 && !ok; attempt++) {
+        try {
+          const res = await fetch(HUB_LEADS_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
+          ok = res.ok;
+          if (!ok && res.status >= 400 && res.status < 500) break; // validation errors will not fix themselves
+        } catch { ok = false; }
+        if (!ok && attempt === 0) await new Promise((r) => setTimeout(r, 800));
+      }
+
+      if (ok) {
+        try {
+          sessionStorage.setItem("aa:pt", JSON.stringify({ first: values.contactName.split(/\s+/)[0], business: values.businessName, sms: values.smsConsent, at: Date.now() }));
+        } catch { /* personalization is optional */ }
+        submit.textContent = "Request received";
+        location.assign("/phone-test/thanks");
+        return;
+      }
+
+      failedAttempts++;
+      inFlight = false;
+      submit.disabled = false;
+      submit.textContent = original;
+      const body = [
+        `Business: ${values.businessName}`, `Name: ${values.contactName}`, `Mobile: ${values.phone}`,
+        `Email: ${values.email}`, `Trade: ${values.trade}`, `Town: ${values.town}`, `Website: ${values.website}`,
+      ].join("\n");
+      show("error", "That did not go through, and we do not want to lose your request.",
+        `mailto:dre@arkansasautomated.com?subject=${encodeURIComponent(`Phone Test request: ${values.businessName}`)}&body=${encodeURIComponent(body)}`);
+    });
+  });
+</script>
+
+<style>
+  .pt-form-card { box-shadow: 0 24px 55px rgba(27, 27, 31, 0.12); }
+  .pt-form-heading { font-size: 1.35rem; margin-bottom: 1.1rem; }
+  .pt-form-card select {
+    width: 100%; font: inherit; color: var(--text-primary);
+    background: var(--bg-primary); border: 1px solid var(--line);
+    border-radius: var(--radius-sm); padding: 0.8rem 0.9rem; min-height: 3rem;
+  }
+  .pt-consent {
+    display: grid; grid-template-columns: auto 1fr; gap: 0.65rem; align-items: start;
+    font-size: 0.86rem; color: var(--text-secondary); line-height: 1.45; margin: 0.4rem 0 1.1rem;
+  }
+  .pt-consent input { width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; accent-color: var(--accent); }
+  .pt-submit { width: 100%; justify-content: center; }
+  [aria-invalid="true"] { border-color: var(--danger) !important; }
+</style>

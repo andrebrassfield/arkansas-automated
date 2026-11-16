@@ -31,7 +31,10 @@ export interface Industry {
   faqs: { q: string; a: string }[];
 }
 
-export const industries: Industry[] = [
+/** Reset 2026-11-16: home service trades only. Other industries redirect to /for. */
+export const HOME_SERVICE_INDUSTRY_SLUGS = ["plumbers", "hvac", "electricians", "roofers", "landscapers"] as const;
+
+const allIndustries: Industry[] = [
   {
     name: "plumbers",
     singular: "plumber",
@@ -613,6 +616,11 @@ export const industries: Industry[] = [
     ],
   },
 ];
+
+export const industries: Industry[] = allIndustries.filter((i) => (HOME_SERVICE_INDUSTRY_SLUGS as readonly string[]).includes(i.slug));
+export const retiredIndustrySlugs: string[] = allIndustries
+  .map((i) => i.slug)
+  .filter((slug) => !(HOME_SERVICE_INDUSTRY_SLUGS as readonly string[]).includes(slug));
 
 export function industryBySlug(slug: string): Industry {
   const i = industries.find((i) => i.slug === slug);

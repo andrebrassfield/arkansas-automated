@@ -2,101 +2,63 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import SetupHome, { homeFaqs } from "../components/SetupHome.astro";
+import PhoneTestHome, { homeFaqs } from "../components/PhoneTestHome.astro";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
-import { serviceBySlug } from "../data/services";
+import { services, serviceHref } from "../data/services";
+import { SITE_DESCRIPTOR, SERVICE_TYPES } from "../lib/seo";
 
-const afterHours = serviceBySlug("after-hours-answering");
-const frontDesk = serviceBySlug("ai-front-desk");
-const textBack = serviceBySlug("missed-call-text-back");
-
-const title = "AI Setups & Business Automations in Arkansas | Arkansas Automated";
+const title = "Free Phone Test for Arkansas Home Service Businesses | Arkansas Automated";
 const description =
-  `AI setups and business automations for Arkansas companies. Answering service, missed-call text back, follow-up, and connected workflows built in Fort Smith. Plans from $129/mo. Call ${AA_PUBLIC_PHONE_DISPLAY}.`;
+  `We call your shop during the day and after hours, fill out your form, text your number and check your Google listing. Free score out of 100 within 3 days. Fort Smith and NWA. ${AA_PUBLIC_PHONE_DISPLAY}.`;
 
-const properties = [
-  {
-    name: "Fort Smith Directory",
-    role: "Local directory and lead pipeline for the River Valley",
-    host: "fortsmithdirectory.com",
-    url: "https://fortsmithdirectory.com",
-  },
-  {
-    name: "NWA Automated",
-    role: "Automation practice for Northwest Arkansas businesses",
-    host: "nwaautomated.com",
-    url: "https://nwaautomated.com",
-  },
-  {
-    name: "Smart Home NWA",
-    role: "Residential automation and installation",
-    host: "smarthomenwa.com",
-    url: "https://smarthomenwa.com",
-  },
-  {
-    name: "Good Garage Co.",
-    role: "Garage cleanout and storage systems",
-    host: "goodgarageco.com",
-    url: "https://goodgarageco.com",
-  },
-];
-
-const offerSchema = (s: { name: string; answer: string }, price: string, url: string) => ({
-  "@type": "Service",
-  name: s.name,
-  provider: { "@id": "https://arkansasautomated.com/#organization" },
-  areaServed: { "@type": "State", name: "Arkansas" },
-  description: s.answer,
-  offers: { "@type": "Offer", price, priceCurrency: "USD", url },
-});
+const site = "https://arkansasautomated.com";
+const priceOf = (p: string) => (p.match(/\$([\d,]+)/)?.[1] ?? "0").replace(/,/g, "");
 
 const homeSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": ["Organization", "ProfessionalService"],
-      "@id": "https://arkansasautomated.com/#organization",
+      "@id": `${site}/#organization`,
       name: "Arkansas Automated",
-      url: "https://arkansasautomated.com",
+      url: site,
       telephone: AA_PUBLIC_PHONE_E164,
-      description,
+      description: SITE_DESCRIPTOR,
+      slogan: "Answered. Followed up. Reviewed.",
       disambiguatingDescription:
-        "AI setups and business automations for Arkansas companies, operated by Andre Brassfield in Fort Smith. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
-      founder: { "@id": "https://arkansasautomated.com/about#andre-brassfield" },
-      sameAs: properties.map((p) => p.url),
+        "Arkansas Automated tests and fixes how Arkansas home service businesses answer, follow up and get reviewed. Operated by Andre Brassfield in Fort Smith. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
+      founder: { "@id": `${site}/about#andre-brassfield` },
       areaServed: [
         { "@type": "City", name: "Fort Smith, Arkansas" },
+        { "@type": "City", name: "Van Buren, Arkansas" },
         { "@type": "City", name: "Rogers, Arkansas" },
         { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
         { "@type": "State", name: "Arkansas" },
       ],
-      serviceType: [
-        "AI receptionist",
-        "After-hours answering service",
-        "Missed-call text back",
-        "AI front desk",
-        "Business automation",
-        "Review request automation",
-        "Custom AI setup",
-      ],
+      serviceType: SERVICE_TYPES,
     },
     {
       "@type": "Person",
-      "@id": "https://arkansasautomated.com/about#andre-brassfield",
+      "@id": `${site}/about#andre-brassfield`,
       name: "Andre Brassfield",
       jobTitle: "Founder",
-      url: "https://arkansasautomated.com/about",
-      worksFor: { "@id": "https://arkansasautomated.com/#organization" },
+      url: `${site}/about`,
+      worksFor: { "@id": `${site}/#organization` },
     },
     {
       "@type": "WebSite",
       name: "Arkansas Automated",
-      url: "https://arkansasautomated.com",
-      publisher: { "@id": "https://arkansasautomated.com/#organization" },
+      url: site,
+      publisher: { "@id": `${site}/#organization` },
     },
-    offerSchema(afterHours, "299", "https://arkansasautomated.com/services/after-hours-answering"),
-    offerSchema(frontDesk, "499", "https://arkansasautomated.com/services/ai-front-desk"),
-    offerSchema(textBack, "129", "https://arkansasautomated.com/services/missed-call-text-back"),
+    ...services.map((s) => ({
+      "@type": "Service",
+      name: s.name,
+      provider: { "@id": `${site}/#organization` },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description: s.answer,
+      offers: { "@type": "Offer", price: priceOf(s.price), priceCurrency: "USD", url: `${site}${serviceHref(s)}` },
+    })),
     {
       "@type": "FAQPage",
       mainEntity: homeFaqs.map((f) => ({
@@ -112,7 +74,7 @@ const homeSchema = {
 <Base title={title} description={description} path="/" schema={homeSchema}>
   <SiteNav />
   <main id="main-content" tabindex="-1">
-    <SetupHome />
+    <PhoneTestHome />
   </main>
   <SiteFooter />
 </Base>
