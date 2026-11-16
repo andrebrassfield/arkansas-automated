@@ -2,8 +2,7 @@
   "framework": "astro",
   "git": {
     "deploymentEnabled": {
-      "feat/ai-setups-redesign": false,
-      "feat/phone-test-reset": false
+      "feat/**": false
     }
   },
   "buildCommand": "npm run build",
