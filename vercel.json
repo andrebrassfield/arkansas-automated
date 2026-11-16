@@ -2,12 +2,12 @@
   "framework": "astro",
   "git": {
     "deploymentEnabled": {
-      "feat/ai-setups-redesign": false
+      "feat/ai-setups-redesign": false,
+      "feat/phone-test-reset": false
     }
   },
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-
   "cleanUrls": true,
   "rewrites": [
     {
@@ -33,7 +33,327 @@
     },
     {
       "source": "/ai-workshops/:city",
-      "destination": "/locations/:city",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/answering-service-fort-smith-ar",
+      "destination": "/locations/fort-smith",
+      "permanent": true
+    },
+    {
+      "source": "/answering-service-fayetteville-ar",
+      "destination": "/locations/fayetteville",
+      "permanent": true
+    },
+    {
+      "source": "/answering-service-rogers-ar",
+      "destination": "/locations/rogers",
+      "permanent": true
+    },
+    {
+      "source": "/answering-service-springdale-ar",
+      "destination": "/locations/springdale",
+      "permanent": true
+    },
+    {
+      "source": "/answering-service-cost-arkansas",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/bilingual-answering-service-arkansas",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/after-hours-answering-service-contractors-nwa",
+      "destination": "/fix/after-hours-calls",
+      "permanent": true
+    },
+    {
+      "source": "/hvac-answering-service-nwa",
+      "destination": "/for/hvac",
+      "permanent": true
+    },
+    {
+      "source": "/roofing-answering-service-nwa",
+      "destination": "/for/roofers",
+      "permanent": true
+    },
+    {
+      "source": "/medical-dental-answering-service-nwa",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/property-management-answering-service-northwest-arkansas",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/ai-receptionist-bentonville-ar",
+      "destination": "/locations/bentonville",
+      "permanent": true
+    },
+    {
+      "source": "/med-spa-front-desk-automation-fayetteville-ar",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/ai-receptionist",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/ai-receptionist/:city",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/ai-consultant",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-consultant/:city",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/forward-deployed-ai-engineer",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/booking-software",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/vendra",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-opportunity-map",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/audit",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/revenue-leak-scorecard",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/missed-call-test",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/med-spas",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/screens",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/missed-call-text-back",
+      "destination": "/services/front-door-setup",
+      "permanent": true
+    },
+    {
+      "source": "/services/after-hours-answering",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-front-desk",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/services/operations-audit",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/services/workflow-automation",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services/automation-retainer",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services/front-door",
+      "destination": "/services/front-door-setup",
+      "permanent": true
+    },
+    {
+      "source": "/services/phone-test",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/locations/conway",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/little-rock",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/north-little-rock",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/jacksonville",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/cabot",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/benton",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/bryant",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/hot-springs",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/searcy",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/batesville",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/jonesboro",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/paragould",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/west-memphis",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/pine-bluff",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/el-dorado",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/texarkana",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/for/dentists",
+      "destination": "/for",
+      "permanent": true
+    },
+    {
+      "source": "/for/law-firms",
+      "destination": "/for",
+      "permanent": true
+    },
+    {
+      "source": "/for/real-estate",
+      "destination": "/for",
+      "permanent": true
+    },
+    {
+      "source": "/for/medical-clinics",
+      "destination": "/for",
+      "permanent": true
+    },
+    {
+      "source": "/for/auto-repair",
+      "destination": "/for",
+      "permanent": true
+    },
+    {
+      "source": "/fix/double-entry",
+      "destination": "/fix",
+      "permanent": true
+    },
+    {
+      "source": "/fix/no-shows",
+      "destination": "/fix",
+      "permanent": true
+    },
+    {
+      "source": "/learn/ai-receptionist-cost",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/learn/ai-receptionist-vs-answering-service",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/learn/what-is-an-ai-receptionist",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/learn/audit-teardown",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/speed-to-lead",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/speed-to-lead/thank-you",
+      "destination": "/phone-test",
+      "permanent": true
+    },
+    {
+      "source": "/missed-call-calculator",
+      "destination": "/missed-call-cost-calculator",
       "permanent": true
     },
     {
@@ -48,43 +368,8 @@
       "permanent": true
     },
     {
-      "source": "/ai-consultant/rogers",
-      "destination": "/ai-consultant/northwest-arkansas",
-      "permanent": true
-    },
-    {
-      "source": "/ai-consultant/fayetteville",
-      "destination": "/ai-consultant/northwest-arkansas",
-      "permanent": true
-    },
-    {
-      "source": "/ai-consultant/bentonville",
-      "destination": "/ai-consultant/northwest-arkansas",
-      "permanent": true
-    },
-    {
-      "source": "/ai-consultant/little-rock",
-      "destination": "/ai-consultant/fort-smith",
-      "permanent": true
-    },
-    {
-      "source": "/ai-consultant/conway",
-      "destination": "/ai-consultant/fort-smith",
-      "permanent": true
-    },
-    {
-      "source": "/ai-consultant/hot-springs",
-      "destination": "/ai-consultant/fort-smith",
-      "permanent": true
-    },
-    {
       "source": "/:path+/",
       "destination": "/:path+",
-      "permanent": true
-    },
-    {
-      "source": "/services/front-door",
-      "destination": "/services",
       "permanent": true
     },
     {

@@ -14,16 +14,16 @@ import SiteFooter from "../components/SiteFooter.astro";
 
 const title = "Get More Google Reviews | Review Request Automation in Northwest Arkansas";
 const description =
-  "Review request automation for Northwest Arkansas businesses. When the job is marked done, the ask goes out. Included in the Front Desk plan at $499 a month, or in a custom build scoped from $2,500. Not a standalone app.";
+  "Review request automation for Northwest Arkansas home service businesses. When the job is marked done, the ask goes out. Part of the Front Door Setup from $1,500 one-time and Front Door Monthly from $497 a month. Not a standalone app.";
 
 const faqs = [
   {
     q: "Is review request automation its own subscription?",
-    a: "No. There is no standalone review app and no per-review SKU. Review requests ride inside the Front Desk plan at $499 a month, or in a custom build: lead capture, quote follow-up sequences, scheduling coordination, invoice chasing, and review requests, built on the tools you already pay for. Custom builds are scoped in writing before work begins, from $2,500.",
+    a: "No. There is no standalone review app and no per-review fee. Review requests are part of the Front Door Setup, from $1,500 one-time, alongside missed-call text back, form replies and follow-up. Front Door Monthly, from $497 a month, keeps them running and replies to every review.",
   },
   {
-    q: "What does it cost, and does the audit fee come off anything?",
-    a: "Custom builds are scoped in writing before work begins, from $2,500. The Front Desk Audit is $750 flat for a paid diagnostic: nothing comes off a plan or a build, and the written map is yours either way. There is no per-minute or per-call pricing on any plan, and no per-review fee.",
+    q: "What does it cost, and where do I start?",
+    a: "Start with the free Phone Test. It counts your reviews in the last 90 days against the top shop for your trade and town, and checks whether you reply to them. The Front Door Setup starts at $1,500 one-time and is quoted in writing before work starts. Front Door Monthly starts at $497 a month with no contract.",
   },
   {
     q: "Do you send incentives, or only ask people who will leave five stars?",
@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "How long does setup take?",
-    a: "We do not publish a day count. Scope sets the clock, and the audit prices that scope before you commit. Nothing sends until you have read the wording and signed off. The first conversation is the free 15-minute assessment.",
+    a: "We do not publish a day count. Scope sets the clock, and the free Phone Test sets the scope before you commit. Nothing sends until you have read the wording and signed off.",
   },
 ];
 
@@ -55,7 +55,7 @@ const schema = {
       author: { "@type": "Person", name: "Andre Brassfield", jobTitle: "Founder, Arkansas Automated" },
       publisher: { "@type": "Organization", name: "Arkansas Automated", url: site },
       datePublished: "2026-09-27",
-      dateModified: "2026-11-04",
+      dateModified: "2026-11-16",
       mainEntityOfPage: pageUrl,
     },
     {
@@ -90,8 +90,8 @@ const schema = {
           The job is marked done. The ask should go out then, not three weeks
           later when someone remembers. Review request automation sends that
           ask with your Google review link from the tools the shop already runs.
-          It is included in the Front Desk plan or a scoped workflow automation
-          build. It is not a standalone app, and it is not priced per review.
+          It is part of the Front Door Setup. It is not a standalone app, and
+          it is not priced per review.
         </p>
         <p class="measure" style="margin-top:1rem">
           This page is for shops in Fayetteville, Bentonville, Rogers,
@@ -99,10 +99,8 @@ const schema = {
           fires, what it refuses to do, and what it costs. The text that
           recovers a missed call is a different layer, on our
           <a class="text-link" href="/missed-call-text-back-northwest-arkansas/">missed call text back page</a>.
-          The calendar the job was booked on is the
-          <a class="text-link" href="/booking-software/">booking software</a>
-          setup. If the problem is the phone itself, start with the
-          <a class="text-link" href="/answering-service-fayetteville-ar/">Fayetteville answering service page</a>.
+          If you are not sure where your shop leaks, start with the
+          <a class="text-link" href="/phone-test">free Phone Test</a>.
         </p>
         <p class="fine-print" style="margin-top:1.5rem">
           Last updated November 2026. Written by Andre Brassfield, founder of Arkansas Automated.
@@ -126,13 +124,9 @@ const schema = {
           record of the ask, not a review we invented.
         </p>
         <p>
-          This is a capability inside a done-for-you build, not a product you
-          subscribe to on its own. Review requests sit with lead capture, quote
-          follow-up sequences, scheduling coordination, and invoice chasing,
-          built on the tools you already pay for. The calendar is one layer.
-          Follow-up after the job is another. Booking lives on the
-          <a class="text-link" href="/booking-software/">booking software</a>
-          page. The ask after the job is this page.
+          This is part of the Front Door Setup, not a product you subscribe to
+          on its own. Review requests sit with missed-call text back, instant
+          form replies and follow-up, built on the tools you already pay for.
         </p>
 
         <h2 class="heading-lg measure">Why good NWA shops have thin review counts</h2>
@@ -176,7 +170,7 @@ const schema = {
           build closes.
         </p>
         <p>
-          Which event counts as done is decided on the assessment call, before
+          Which event counts as done is decided at the setup visit, before
           anything sends. You see the wording. You see the trigger. Nothing
           goes to a customer until you sign off, the same gate we use before
           a text-back build messages anyone.
@@ -242,60 +236,41 @@ const schema = {
           <li>It does not promise a star rating, a review count, or a ranking. We do not publish those figures because we do not have them.</li>
           <li>It does not send incentivized asks, and it does not gate who sees a public review link.</li>
           <li>It does not invent reviews or tell the customer what to write.</li>
-          <li>It does not replace the calendar. That layer is <a class="text-link" href="/booking-software/">booking software</a>.</li>
           <li>It does not replace missed-call recovery. That layer is <a class="text-link" href="/missed-call-text-back-northwest-arkansas/">missed call text back</a>.</li>
-          <li>It does not replace the phone being answered. That setup, for Fayetteville, is the <a class="text-link" href="/answering-service-fayetteville-ar/">answering service page</a>.</li>
+          <li>It does not answer your phone. Nobody's AI answers your phone; your phones ring the right people first.</li>
           <li>It does not give legal advice. Consent and opt-out are decided carefully and stated plainly. Counsel sets a different line if you need one.</li>
           <li>It does not claim features of ServiceTitan, Housecall Pro, or Jobber beyond this: the job-complete event fires the ask.</li>
         </ul>
 
-        <h2 class="heading-lg measure">How it fits the Front Desk and custom builds</h2>
+        <h2 class="heading-lg measure">How it fits the Front Door Setup</h2>
         <p>
-          One price sheet. Review requests are not their own SKU. They are
-          included in the $499-per-month AI Front Desk plan or scoped into a
-          custom workflow build on the tools you already pay for.
+          One price sheet. Review requests are not their own SKU. They are part
+          of the Front Door Setup and kept running by Front Door Monthly.
         </p>
         <ul>
-          <li><strong>Custom build setup:</strong> scoped in writing, from $2,500. The Front Desk setup fee is listed on its service page.</li>
-          <li><strong>Monthly:</strong> AI Front Desk is $499 a month. A managed custom build is priced with its scope. There is no separate per-review fee.</li>
-          <li><strong>Included:</strong> lead capture, quote follow-up sequences, scheduling coordination, invoice chasing, review requests, built on the tools you already pay for</li>
-          <li><strong>Not charged:</strong> no per-minute or per-call pricing on any plan. No per-review fee. No incentivized-ask add-on, because those asks are not sent.</li>
+          <li><strong>Setup:</strong> the Front Door Setup, from $1,500 one-time, quoted in writing from your Phone Test before work starts.</li>
+          <li><strong>Monthly:</strong> Front Door Monthly, from $497 a month, no contract. It replies to every Google review and re-runs the Phone Test every month.</li>
+          <li><strong>Included:</strong> missed-call text back, instant form replies, day 1, 3 and 7 follow-up, review requests, and price ranges on your Google listing.</li>
+          <li><strong>Not charged:</strong> no per-review fee. No incentivized-ask add-on, because those asks are not sent.</li>
         </ul>
         <p>
-          The entry point is the Front Desk Audit, $750 flat. It maps calls,
-          quotes, scheduling, and invoicing, including whether the review ask
-          is one of the gaps. It is a paid diagnostic, and the written map is yours either way.
+          The entry point is the free <a class="text-link" href="/phone-test">Phone Test</a>.
+          It counts your recent reviews against the top shop for your trade and town and checks
+          whether you reply to them. Service detail is on the
+          <a class="text-link" href="/services/front-door-setup">Front Door Setup page</a>.
         </p>
         <p>
-          The AI Front Desk monthly plan is $499 a month and includes SMS
-          follow-up and review requests. It is a phone and text plan, not a
-          standalone review-request subscription. Service detail is on the
-          <a class="text-link" href="/services/ai-front-desk">AI front desk page</a>.
-          What automation is for, in the order that usually pays back, is on
-          the
-          <a class="text-link" href="/learn/what-is-business-process-automation/">business process automation page</a>.
-          If you want to see whether the ask is an open leak before that
-          audit, the
-          <a class="text-link" href="/revenue-leak-scorecard/">revenue leak scorecard</a>
-          asks the question. It does not publish a review count, and neither
-          does this page.
-        </p>
-        <p>
-          <strong>Call to action:</strong> Book the free 15-minute assessment at
-          <a class="text-link" href="https://book.arkansasautomated.com/book/discovery-call">book.arkansasautomated.com</a>
-          or use the <a class="text-link" href="/contact/">contact page</a>.
-          Email <a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>
-          if you would rather write. Scope, trigger, and wording get decided
-          on that call. Nothing is due then.
+          <strong>Call to action:</strong> Get the free Phone Test at
+          <a class="text-link" href="/phone-test">arkansasautomated.com/phone-test</a>
+          or email <a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.
+          Nothing is due until you sign off on a written scope.
         </p>
 
         <h2 class="heading-lg measure">Setup: what we need from you and how long it takes</h2>
         <p>
-          We do not publish a day count for this build. Scope sets the clock.
-          A narrow follow-up and a wider lead-to-invoice pipeline are not the
-          same job, which is why builds are scoped in writing, from $2,500.
-          The audit fixes the number before you commit. Nothing sends
-          until you sign off.
+          We do not publish a day count yet. Scope sets the clock, and the
+          Phone Test fixes the scope before you commit. Nothing sends until
+          you sign off.
         </p>
         <p>What we need before the first ask goes out:</p>
         <ol>
@@ -303,7 +278,7 @@ const schema = {
           <li><strong>Your definition of done.</strong> Tech left, invoice paid, or customer signed off. We use your line, not a default we picked.</li>
           <li><strong>Who may receive it, and who must not.</strong> The customer the job was for, under rules you write. Not a purchased list. Not every number in the phone.</li>
           <li><strong>The wording, including the way to stop.</strong> You read it. You sign off. Incentivized language does not make the cut, and neither does a gate.</li>
-          <li><strong>The assessment, then the audit if you want the map first.</strong> The 15-minute assessment is free. The Front Desk Audit is $750 flat for a paid diagnostic, and the written map is yours either way.</li>
+          <li><strong>The Phone Test first.</strong> It is free, and the score is yours either way.</li>
         </ol>
         <p>
           Questions before that call go through the

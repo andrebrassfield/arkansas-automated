@@ -9,9 +9,9 @@ interface Props {
 const { overHero = false } = Astro.props;
 
 const links = [
-  { href: "/services", label: "Services & pricing" },
-  { href: "/for", label: "Who we help" },
-  { href: "/locations", label: "Locations" },
+  { href: "/phone-test", label: "The Phone Test" },
+  { href: "/services", label: "Prices" },
+  { href: "/for", label: "Trades" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -23,7 +23,7 @@ const links = [
     <nav class="nav-links" aria-label="Main">
       {links.map((l) => <a class="nav-hide" href={l.href}>{l.label}</a>)}
       <a class="nav-call" href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>
-      <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book a call</a>
+      <a class="btn btn-primary" href="/phone-test" data-cta="nav-phone-test">Free Phone Test</a>
     </nav>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -32,7 +32,8 @@ const links = [
   <nav id="mobile-menu" class="mobile-menu" aria-label="Main menu" hidden>
     {links.map((l) => <a href={l.href}>{l.label}</a>)}
     <a href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>
-    <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book a call</a>
+    <a href="https://book.arkansasautomated.com/book/discovery-call">Book a 15-minute call</a>
+    <a class="btn btn-primary" href="/phone-test" data-cta="mobile-menu-phone-test">Free Phone Test</a>
   </nav>
 </header>
 

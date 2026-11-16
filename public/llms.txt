@@ -1,45 +1,48 @@
 # Arkansas Automated
 
-> Arkansas Automated is operated by Andre Brassfield in Fort Smith. It is not Arkansas Automated Security, LLC of Mayflower. We sell done-for-you AI setups and business automations: missed-call text back from $129/month, after-hours answering from $299/month, AI front desk from $499/month, and scoped custom builds from $2,500. The free missed-call test shows what callers hear before a paid setup. Phone (479) 492-4232.
+> Arkansas Automated tests and fixes how Arkansas home service businesses answer, follow up and get reviewed. It is operated by Andre Brassfield in Fort Smith and serves the River Valley and Northwest Arkansas in person. It is not Arkansas Automated Security, LLC of Mayflower. Every engagement starts with a free Phone Test: day and after-hours calls, the web form, a text, a 48-hour follow-up check, and the Google listing and Map Pack against the top shop, scored out of 100. Fixes: Front Door Setup from $1,500 one time, Front Door Monthly from $497 a month with no contract, and Ads at $3,000 a month flat for shops that score 80 or higher. Phone (479) 492-4232.
 
 ## Start here
 
-- [Homepage](https://arkansasautomated.com/): AI setups and business automations built in Fort Smith.
-- [Missed-call test](https://arkansasautomated.com/missed-call-test): call the line after hours, send a short recording. Free.
-- [Front Desk Audit](https://arkansasautomated.com/audit): $750. It is a paid diagnostic and the written map is yours either way. No checkout on the page.
-- [Custom workflow automation](https://arkansasautomated.com/services/workflow-automation): scoped builds from $2,500.
-- [Fort Smith](https://arkansasautomated.com/locations/fort-smith)
-- [Northwest Arkansas](https://arkansasautomated.com/locations/rogers)
-- [AI receptionist by city](https://arkansasautomated.com/ai-receptionist): 25 Arkansas cities, each with the local phone and front-desk detail
-- [Services and pricing](https://arkansasautomated.com/services): all engagement types with public pricing
-- [Vendra](https://arkansasautomated.com/vendra): shopping-center sales reporting for malls and merchants. An Arkansas Automated product. Activation uses a store-specific /join/[token] link issued by the mall team.
-- [Machine-readable pricing](https://arkansasautomated.com/pricing.md): structured price sheet for AI agents
-- [Problems we fix](https://arkansasautomated.com/fix): missed calls, after-hours calls, quote follow-up, double entry, no-shows
-- [Forward deployed AI engineer](https://arkansasautomated.com/forward-deployed-ai-engineer): what embedded AI implementation means for a local business
-- [AI setups by location](https://arkansasautomated.com/locations): 25 Arkansas cities with local context
-- [Automation by industry](https://arkansasautomated.com/for): plumbers, HVAC, electricians, roofers, dentists, law firms, real estate, clinics, auto repair, landscapers
-- [Guides](https://arkansasautomated.com/learn): plain-language answers on AI receptionists, costs, and automation
+- [Free Phone Test](https://arkansasautomated.com/phone-test): what we check, how it is scored, and the request form
+- [Services and prices](https://arkansasautomated.com/services): the four steps and the add-on, with prices
+- [Front Door Setup](https://arkansasautomated.com/services/front-door-setup): from $1,500 one time
+- [Front Door Monthly](https://arkansasautomated.com/services/front-door-monthly): from $497 a month
+- [Ads](https://arkansasautomated.com/marketing): $3,000 a month flat, 0% markup, only after a Phone Test score of 80 or higher
+- [Dead Estimate Revival](https://arkansasautomated.com/services/estimate-revival): $750 plus 15% of recovered gross
+- [Machine-readable pricing](https://arkansasautomated.com/pricing.md)
 
-## Popular guides
+## By trade
 
-- [How an audit teardown is written](https://arkansasautomated.com/learn/audit-teardown): the format. No client story until the owner says yes.
-- [What is an AI receptionist?](https://arkansasautomated.com/learn/what-is-an-ai-receptionist)
-- [AI receptionist vs answering service](https://arkansasautomated.com/learn/ai-receptionist-vs-answering-service)
-- [How much does an AI receptionist cost?](https://arkansasautomated.com/learn/ai-receptionist-cost)
-- [What is business process automation?](https://arkansasautomated.com/learn/what-is-business-process-automation)
+- [Plumbers](https://arkansasautomated.com/for/plumbers)
+- [HVAC](https://arkansasautomated.com/for/hvac)
+- [Electricians](https://arkansasautomated.com/for/electricians)
+- [Roofers](https://arkansasautomated.com/for/roofers)
+- [Landscapers](https://arkansasautomated.com/for/landscapers)
 
-## Key locations
+## By town
 
-Every city below has an AI receptionist page at /ai-receptionist/[city] and a business automation page at /locations/[city].
+- River Valley: [Fort Smith](https://arkansasautomated.com/locations/fort-smith) (home base), [Van Buren](https://arkansasautomated.com/locations/van-buren), [Russellville](https://arkansasautomated.com/locations/russellville)
+- Northwest Arkansas: [Fayetteville](https://arkansasautomated.com/locations/fayetteville), [Springdale](https://arkansasautomated.com/locations/springdale), [Rogers](https://arkansasautomated.com/locations/rogers), [Bentonville](https://arkansasautomated.com/locations/bentonville), [Bella Vista](https://arkansasautomated.com/locations/bella-vista), [Siloam Springs](https://arkansasautomated.com/locations/siloam-springs)
 
-- River Valley: [Fort Smith](https://arkansasautomated.com/ai-receptionist/fort-smith) (home base), Van Buren, Russellville
-- Northwest Arkansas: [Fayetteville](https://arkansasautomated.com/ai-receptionist/fayetteville), Springdale, [Rogers](https://arkansasautomated.com/ai-receptionist/rogers), [Bentonville](https://arkansasautomated.com/ai-receptionist/bentonville), Bella Vista, Siloam Springs
-- Central Arkansas: [Little Rock](https://arkansasautomated.com/ai-receptionist/little-rock), North Little Rock, [Conway](https://arkansasautomated.com/ai-receptionist/conway), Jacksonville, Cabot, Benton, Bryant, Hot Springs, Searcy
-- Northeast Arkansas and the Delta: Jonesboro, Paragould, Batesville, West Memphis
-- South and Southwest Arkansas: Texarkana, El Dorado, Pine Bluff
+## Leaks we fix
+
+- [Missed calls](https://arkansasautomated.com/fix/missed-calls)
+- [After-hours calls](https://arkansasautomated.com/fix/after-hours-calls)
+- [Quote follow-up](https://arkansasautomated.com/fix/quote-follow-up)
+
+## Free tools
+
+- [Missed-call calculator](https://arkansasautomated.com/missed-call-cost-calculator)
+- [AI answer check](https://arkansasautomated.com/answer-check): does Google or ChatGPT name your business
+
+## What we do not sell
+
+AI receptionists, answering services, booking software and custom software builds. We set things up so the shop's own phones ring the right people first, and every missed call or form gets a fast text and a follow-up.
 
 ## Contact
 
-- Book a 15-minute fit assessment: https://book.arkansasautomated.com/book/discovery-call
+- Phone Test: https://arkansasautomated.com/phone-test
+- Book a 15-minute call: https://book.arkansasautomated.com/book/discovery-call
 - Email: dre@arkansasautomated.com
 - Operated by Andre Brassfield in Fort Smith, Arkansas.

@@ -2,13 +2,13 @@
  * Problem data for the /fix/[problem] pages.
  *
  * These are the searches an owner runs before they know what to buy: "missed
- * calls", "after hours answering service", "customers not answering quotes".
+ * calls", "after hours calls", "customers not answering quotes".
  * Problem-first, product-second, one page per leak.
  *
  * Deliberately NOT crossed with cities. A problem page multiplied by 25 towns
  * produces 125 pages that differ by a place name, which is the exact thin
  * content pattern cities.ts was written to avoid. The geo intent is already
- * served by /ai-receptionist/[city]; these pages link into that cluster
+ * served by /locations/[city]; these pages link into that cluster
  * instead of duplicating it.
  *
  * Voice rules: direct, plain, concrete, no hype, no em dashes.
@@ -45,7 +45,7 @@ const allProblems: Problem[] = [
     slug: "missed-calls",
     intent: "Stop missing calls at an Arkansas service business",
     answer:
-      "A missed call at an Arkansas service business is usually a lost job, not a delayed one. Most callers with an urgent problem never leave voicemail; they dial the next company. The fix is a 24/7 AI receptionist that answers in your business's voice, qualifies the caller, and books the job while they are still on the line.",
+      "A missed call at an Arkansas service business is usually a lost job, not a delayed one. Most callers with an urgent problem do not leave voicemail; they dial the next shop. The fix is plumbing, not a robot: ring the office and the owner together, text back every missed call within a minute in your shop's name, and follow up until the job is booked or lost.",
     symptoms: [
       "Voicemail box that fills up with hang-ups rather than messages",
       "Callers who booked somebody else by the time you called back at 6 PM",
@@ -55,38 +55,38 @@ const allProblems: Problem[] = [
     ],
     cost: {
       h: "Run the number before you decide it is small",
-      p: "Take your average booked job value and multiply it by the calls that ring out in a week. Four missed calls a week at a $400 average job is $83,000 a year in work that reached your phone and left. You do not have to close all of it for the arithmetic to change what you do on Monday.",
+      p: "Take your average booked job value and multiply it by the calls that ring out in a week. Four missed calls a week at a $400 average job is $83,200 a year in work that reached your phone and left. You will not win all of it back. Winning back a few of those a month is usually more than the fix costs.",
     },
     fix: [
       {
         h: "Count what you are actually missing",
-        p: "Pull the call log from your carrier or your tracking number for the last 30 days and count unanswered inbound calls, then compare that to booked jobs. Most owners are surprised by the gap, and the number is the whole argument.",
+        p: "Pull the call log from your carrier or your tracking number for the last 30 days and count unanswered inbound calls, then compare that to booked jobs. The free Phone Test does this from the outside: we call, we miss on purpose, and we score what happens.",
       },
       {
-        h: "Answer everything, then sort it",
-        p: "An AI receptionist picks up on the first ring at any hour, in your business's voice. Nothing goes to voicemail. The qualification questions you wrote decide what happens next.",
+        h: "Ring the right phones before the call is missed",
+        p: "The office line and the owner's cell ring together, so the call has two chances to be picked up by a person before anything else happens.",
       },
       {
-        h: "Escalate real emergencies to a human",
-        p: "You set the rules. A burst pipe or a stopped truck rings your on-call phone immediately. A remodel quote gets booked into next week. The system never has to guess, because you told it.",
+        h: "Text back every missed call within a minute",
+        p: "If nobody picks up, the caller gets a text in your shop's name asking what they need and where they are. Most people answer a text faster than they leave a voicemail, and now you have it in writing.",
       },
       {
-        h: "Book on the spot and confirm by text",
-        p: "The call ends with a slot on your real calendar and an SMS confirmation to the customer. That is the difference between a captured lead and a message you will return tomorrow.",
+        h: "Follow up until it is booked or dead",
+        p: "Follow-up texts go out on day 1, day 3 and day 7, written in your voice and approved by you. A reply stops the sequence so nobody gets nagged after they already said yes.",
       },
     ],
     faqs: [
       {
-        q: "Would an answering service fix this just as well?",
-        a: "It fixes the ringing, not the booking. A traditional answering service takes a message and hands it back to you, so the follow-up work still lands on your desk and the customer still waits. An AI receptionist qualifies the caller against your rules and puts the job on your calendar during the call. We wrote a full comparison if you want the detail.",
+        q: "Is this an AI that answers my phone?",
+        a: "No. Your phones ring your people first. When a call is still missed, the system follows up in writing so the customer hears from you in under a minute instead of tomorrow. You or your office still take the job.",
       },
       {
         q: "How fast can this be live?",
-        a: "The free 15-minute assessment happens first, with your business details loaded so you hear it answer as your company. From there a standard AI front desk build takes about two weeks, most of which is you testing it and tuning the script before it takes a real customer call.",
+        a: "The free Phone Test comes first and your score is back within 3 days. The Front Door Setup is scoped from that score and set up in person. Most shops are live within about two weeks, most of which is you approving the texts.",
       },
       {
         q: "What does it cost?",
-        a: "The AI front desk is $750 to set up plus $499 a month, with call recordings and a monthly tuning session included. Against the missed-call arithmetic above, most Arkansas service businesses cover it with one or two recovered jobs a month.",
+        a: "The Phone Test is free. The Front Door Setup is a one-time fee from $1,500, priced in writing from your score. Front Door Monthly, from $497 a month, keeps it running and re-runs the Phone Test every month. Month to month.",
       },
     ],
     service: "front-door-setup",
@@ -95,9 +95,9 @@ const allProblems: Problem[] = [
     h1: "Nobody answers after five, and that is when the good calls come in",
     label: "After-hours calls",
     slug: "after-hours-calls",
-    intent: "After-hours answering for Arkansas businesses",
+    intent: "Handle after-hours calls at an Arkansas service business",
     answer:
-      "After-hours calls are the highest-intent calls an Arkansas service business gets, and most of them hit voicemail. Emergencies and evening commuters both call outside business hours. A 24/7 AI receptionist answers at any hour, triages emergencies to your on-call phone, and books everything else into the next open slot.",
+      "After-hours calls are some of the highest-intent calls an Arkansas service business gets, and most of them hit voicemail. The fix is a written plan, not a night shift: every missed call gets a text back in a minute, the customer can reply with the problem and address, true emergencies ring your on-call phone, and everything else gets booked first thing in the morning.",
     symptoms: [
       "Emergency work going to whichever competitor picks up at 9 PM",
       "A commuter market where customers only call after 6 PM",
@@ -107,38 +107,38 @@ const allProblems: Problem[] = [
     ],
     cost: {
       h: "The after-hours call is worth more than the daytime one",
-      p: "Someone calling at 9 PM has an active problem and a short list. Emergency and after-hours work usually carries a premium rate and closes at a much higher rate than a daytime price-shopping call. Missing those specifically is a more expensive habit than missing an average call.",
+      p: "Someone calling at 9 PM has an active problem and a short list. Emergency and after-hours work usually carries a higher rate and closes more often than a daytime price-shopping call. Missing those specifically is a more expensive leak than the raw call count suggests.",
     },
     fix: [
       {
         h: "Decide what an emergency is, in writing",
-        p: "Burst pipe yes, slow drain no. No heat in January yes, thermostat question no. This list is the single most important thing you will write, and it takes about twenty minutes.",
+        p: "Burst pipe yes, slow drain no. No heat in January yes, thermostat question no. This list is the single most important thing you will write, and it takes about twenty minutes at the setup visit.",
       },
       {
-        h: "Route emergencies to a person immediately",
-        p: "The receptionist takes the details, then rings your on-call phone and texts the summary so whoever picks up already knows the address and the problem.",
+        h: "Text back every after-hours call",
+        p: "A missed call at 9 PM gets a text in a minute saying you got it, asking what happened and where, and saying when you will call back. The customer stops dialing down the list.",
       },
       {
-        h: "Book the non-emergencies instead of banking them",
-        p: "Everything that can wait gets scheduled into tomorrow's route on the call, not returned tomorrow. The customer stops shopping, which is the entire point.",
+        h: "Send real emergencies to a person",
+        p: "When the reply matches your emergency list, your on-call phone gets a text with the caller's number and what they said, so whoever calls back already knows the problem.",
       },
       {
-        h: "Retire the phone-watching shift",
-        p: "Once triage is reliable, nobody sits up waiting for a phone that might ring. The rotation covers real dispatches only, which is usually where the payback shows up for crews.",
+        h: "Book the rest first thing in the morning",
+        p: "Everything that can wait lands on the office's list for the morning with the details already in writing. The follow-up texts keep going until it is booked or lost.",
       },
     ],
     faqs: [
       {
         q: "Will it wake me up for something stupid?",
-        a: "Only if your rules say to. The escalation list is yours, you test it against real scenarios before launch, and you change it in the monthly tuning session when reality disagrees with what you wrote. Most owners tighten it once in the first month and then leave it alone.",
+        a: "Only if your list says to. You write the emergency list, we test it with real scenarios before launch, and Front Door Monthly adjusts it when reality disagrees with what you wrote. Most owners tighten it once in the first month.",
       },
       {
-        q: "What about calls in Spanish at 10 PM?",
-        a: "The receptionist takes the language cue from the caller and runs your qualification script in either English or Spanish, then hands you one job card. It is part of the standard build, not an add-on, and it matters most in Springdale and Rogers.",
+        q: "What about customers who text back in Spanish?",
+        a: "The texts can go out in English and Spanish, written and approved by you. Replies come to you as they were written. It matters most in Springdale and Rogers.",
       },
       {
-        q: "Do I need this if I already have call forwarding to my cell?",
-        a: "Forwarding moves the ringing, it does not answer it. If you are asleep, driving, or on another job, the caller still gets voicemail, and now it is your voicemail. The question is whether the call gets handled, not whether it reaches your pocket.",
+        q: "Do I need this if I already forward calls to my cell?",
+        a: "Forwarding moves the ringing, it does not handle the call. If you are asleep, driving, or on another job, the caller still gets voicemail, and now it is your voicemail. The question is whether the customer hears back before they call someone else.",
       },
     ],
     service: "front-door-setup",
@@ -149,7 +149,7 @@ const allProblems: Problem[] = [
     slug: "quote-follow-up",
     intent: "Automated quote and estimate follow-up for Arkansas businesses",
     answer:
-      "Most estimates that go unanswered are not rejections, they are quotes nobody followed up on. A timed follow-up sequence sends a second and third touch by SMS and email automatically until the quote is won or lost, so closing stops depending on whether anyone remembered to call.",
+      "Most estimates that go unanswered are not rejections, they are quotes nobody followed up on. A timed follow-up sequence sends short texts on day 1, day 3 and day 7 until the quote is won or lost, and stops the moment the customer replies, so closing stops depending on who remembered.",
     symptoms: [
       "A pile of open estimates nobody has looked at in three weeks",
       "No consistent answer to the question of how many touches a quote gets",
@@ -159,7 +159,7 @@ const allProblems: Problem[] = [
     ],
     cost: {
       h: "The second touch is where the money is",
-      p: "The first quote is the cost of doing business. The second and third contacts are where quotes that would have gone cold turn into jobs, and they are exactly the ones a busy shop skips. Count your open estimates from last quarter, multiply by your average job, and ask how many got a single follow-up.",
+      p: "The first quote is the cost of doing business. The second and third contacts are where quotes that would have gone cold turn into jobs, and they are exactly the ones a busy shop skips. Count your open estimates from last quarter, multiply by your average job, and decide how many of those one more text would have saved.",
     },
     fix: [
       {
@@ -167,30 +167,30 @@ const allProblems: Problem[] = [
         p: "The moment a quote goes out, it enters a sequence. Nobody has to remember it, put it on a list, or feel bad about it at 9 PM on Sunday.",
       },
       {
-        h: "Two touches by SMS, one by email, then stop",
-        p: "Short, plain, and easy to reply to. Text gets read; email gets filed. The sequence ends cleanly either way so you are not pestering people into a no.",
+        h: "Day 1, day 3, day 7, then stop",
+        p: "Short, plain, and easy to reply to, written in your voice and approved by you. The sequence ends cleanly either way so you are not pestering people into a no.",
       },
       {
         h: "Let a reply cancel the chase automatically",
         p: "The customer answers and the sequence stops immediately. Nothing is worse than an automated nudge arriving after somebody already said yes.",
       },
       {
-        h: "Report the close rate you never had",
-        p: "Once every quote runs the same path, you can finally see which job types, price bands, and lead sources actually close, and price accordingly.",
+        h: "Count the close rate you never had",
+        p: "Once every quote runs the same path, Front Door Monthly reports how many quotes went out, how many replied and how many booked, so you can see what actually closes.",
       },
     ],
     faqs: [
       {
         q: "Will this annoy customers?",
-        a: "Two texts and an email over ten days, each one short and easy to reply to, is not harassment; it is the job. What annoys people is being ignored after they asked for a price. The sequence stops the moment they reply either way.",
+        a: "Three short texts over a week, each easy to reply to, is not harassment; it is the job. What annoys people is being ignored after they asked for a price. The sequence stops the moment they reply either way.",
       },
       {
         q: "Does this work with the software I already use?",
-        a: "Usually yes. We build on Jobber, Housecall Pro, ServiceTitan, QuickBooks, Follow Up Boss, Google Workspace, and the rest of the normal Arkansas small business stack. If a tool genuinely cannot do it, we say so and show you the math on switching before you spend anything.",
+        a: "Usually yes. We start with the job, phone and calendar tools you already pay for, like Jobber, Housecall Pro, ServiceTitan or Google Workspace, and only add a tool when yours cannot do the job. If it cannot, we say so before you pay.",
       },
       {
-        q: "What does a quote follow-up build cost?",
-        a: "Custom builds are scoped in writing before work begins, from $2,500, plus a monthly managed tier when the build needs one. The $750 Front Desk Audit prices it exactly for your operation first, and the audit is a paid diagnostic: the written map is yours either way.",
+        q: "What does quote follow-up cost?",
+        a: "It is part of the Front Door Setup, one-time from $1,500, priced in writing from your free Phone Test score. Front Door Monthly, from $497 a month, keeps the sequences running and reports the counts.",
       },
     ],
     service: "front-door-setup",

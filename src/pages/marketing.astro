@@ -3,8 +3,8 @@
  * /marketing — Arkansas Automated Marketing.
  * Flat $3,000/mo Meta + Google management for any Arkansas business.
  * Ad spend is the client's, in the client's accounts, 0% markup, never inside the $3,000.
- * Separate from the AI receptionist and Visibility Install.
- * The receptionist is one FAQ link. No invented results.
+ * Step 4 on the offer ladder, gated behind a Phone Test score of 80.
+ * No invented results.
  */
 import "@fontsource/barlow-condensed/latin-700.css";
 import "@fontsource/barlow-condensed/latin-800.css";
@@ -14,7 +14,7 @@ import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 
-const title = "Arkansas Automated Marketing — Flat $3,000/mo, 0% Markup";
+const title = "Arkansas Automated Marketing: Flat $3,000/mo, 0% Markup";
 const description =
   "Meta and Google ads for any Arkansas business. Flat $3,000 a month. Your ad account, your money, 0% markup.";
 
@@ -80,9 +80,9 @@ const faqs = [
     text: "After kickoff and account access, campaigns usually go live in days. Leads start when the ads do. The fit call is where we confirm you can answer them.",
   },
   {
-    q: "Do you do AI receptionist too?",
-    text: "Yes, as a separate Arkansas Automated offer. It is not part of this page or this engagement. The AI receptionist page covers that side of the house.",
-    html: `Yes, as a separate Arkansas Automated offer. It is not part of this page or this engagement. The <a class="text-link" href="/ai-receptionist">AI receptionist page</a> covers that side of the house.`,
+    q: "Will you run ads if my phones are not covered?",
+    text: "No. We only run ads for shops that score 80 or higher on the free Phone Test. If your calls go to voicemail and forms wait a day, the Front Door Setup comes first.",
+    html: `No. We only run ads for shops that score 80 or higher on the free <a class="text-link" href="/phone-test">Phone Test</a>. If your calls go to voicemail and forms wait a day, the <a class="text-link" href="/services/front-door-setup">Front Door Setup</a> comes first.`,
   },
 ];
 
@@ -159,7 +159,7 @@ const schema = {
             <a class="btn mkt-btn mkt-btn-ghost" id="mkt-cta-hero-call" href={phoneHref}>Call {phoneDisplay}</a>
           </div>
           <p class="fine" style="margin-top:1rem">
-            For any Arkansas business. HVAC, roofing, dental, med spa, real estate, law, restaurants, auto, and more.
+            The 80-point rule: we only run ads for shops that score 80 or higher on the free <a href="/phone-test" style="text-decoration:underline">Phone Test</a>. Ads into a phone nobody answers waste the budget.
           </p>
         </div>
         <figure class="mkt-photo">
@@ -181,7 +181,7 @@ const schema = {
 
     <section class="mkt-section mkt-ink" id="follow-up">
       <div class="container mkt-prose">
-        <p class="mkt-kicker">01 — The callback</p>
+        <p class="mkt-kicker">01 / The callback</p>
         <h2><span class="ln">Speed-to-lead</span><span class="ln">is your side.</span></h2>
         <hr class="mkt-rule" />
         <p class="mkt-lede">
@@ -197,7 +197,7 @@ const schema = {
       <div class="container">
         <div class="mkt-split">
           <div>
-            <p class="mkt-kicker">02 — Ownership</p>
+            <p class="mkt-kicker">02 / Ownership</p>
             <h2><span class="ln">Two buckets.</span><span class="ln">Nothing mixed.</span></h2>
             <hr class="mkt-rule" />
             <p class="mkt-lede">
@@ -257,7 +257,7 @@ const schema = {
       <div class="container">
         <div class="mkt-split">
           <div>
-            <p class="mkt-kicker">03 — Intake math</p>
+            <p class="mkt-kicker">03 / Intake math</p>
             <h2><span class="ln">Run the math</span><span class="ln">on a customer.</span></h2>
             <hr class="mkt-rule" />
             <p class="mkt-lede">
@@ -320,12 +320,12 @@ const schema = {
           <div class="calc-out" aria-live="polite">
             <div class="calc-block">
               <p class="calc-kicker" data-out="cpl-kicker">Break-even cost per lead</p>
-              <p class="calc-stat"><span data-out="cpl">—</span></p>
+              <p class="calc-stat"><span data-out="cpl">-</span></p>
               <p data-out="cpl-note">Enter average job or customer value, close rate, and lifetime purchases. This stays blank until those three are filled in.</p>
             </div>
             <div class="calc-block">
               <p class="calc-kicker">Customers to cover the month</p>
-              <p class="calc-stat"><span data-out="jobs">—</span> customers</p>
+              <p class="calc-stat"><span data-out="jobs">-</span> customers</p>
               <p data-out="jobs-note">Add monthly ad spend to see how many booked customers cover the $3,000 fee plus that spend.</p>
             </div>
             <p class="calc-warn" data-out="warn"></p>
@@ -346,7 +346,7 @@ const schema = {
         <p class="mkt-lede">
           You set the offer. These are examples. The same $3,000 is for any Arkansas business: HVAC, roofing, dental, med spa, real estate, law, restaurants, auto, and more. You have to honor the offer on the phone. An offer the office talks people out of is not an offer.
         </p>
-        <p class="mkt-lede">If that offer dies when the phone rings, price the leak with the <a class="text-link" href="/revenue-leak-scorecard/">Revenue Leak Scorecard</a>.</p>
+        <p class="mkt-lede">If that offer dies when the phone rings, find out first with the free <a class="text-link" href="/phone-test">Phone Test</a>.</p>
         <div class="mkt-switch">
           <input type="radio" name="niche" id="niche-hvac" checked />
           <label for="niche-hvac">HVAC</label>
@@ -530,7 +530,7 @@ const schema = {
           cplNote.textContent =
             "On lifetime revenue: customer value × lifetime purchases × close rate. This counts the whole price, not profit or the $3,000 fee. Add gross margin for a tighter figure. Not a forecast.";
         } else {
-          cpl.textContent = "—";
+          cpl.textContent = "-";
           cplNote.textContent =
             "Enter average job or customer value, close rate, and lifetime purchases. This stays blank until those three are filled in.";
         }
@@ -550,7 +550,7 @@ const schema = {
           jobsNote.textContent =
             "Booked customers whose revenue equals the $3,000 fee alone. Add monthly ad spend and the count includes that spend too. Ad spend is never inside the $3,000.";
         } else {
-          jobs.textContent = "—";
+          jobs.textContent = "-";
           jobsNote.textContent =
             "Add average job or customer value and monthly ad spend to see how many booked customers cover the $3,000 fee plus that spend.";
         }

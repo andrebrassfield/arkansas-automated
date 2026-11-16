@@ -8,9 +8,9 @@ import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import { industries } from "../../data/industries";
 
-const title = "AI Automation by Industry | Arkansas Automated";
+const title = "By Trade: Phone Test and Front Door Setup | Arkansas Automated";
 const description =
-  "AI answering, booking, and workflow automation for Arkansas trades and practices, including plumbers, HVAC, roofers, dentists, and law firms.";
+  "How Arkansas plumbers, HVAC, electrical, roofing and landscaping shops lose calls, quotes and reviews, and the free Phone Test that times your own shop.";
 
 const site = "https://arkansasautomated.com";
 const schema = {
@@ -47,9 +47,8 @@ const schema = {
         </nav>
         <h1 class="heading-xl measure">Built for how your trade actually runs.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">
-          An HVAC spike and a dental recall list are not the same problem, and we do not sell them
-          the same system. Pick your trade for the leaks, the automate-first order, and the
-          pricing that apply to you.
+          An HVAC freeze spike and a roofing storm week leak calls in different ways. Pick your trade
+          for the leaks, what to fix first, and what it costs.
         </p>
       </div>
     </section>
@@ -62,15 +61,15 @@ const schema = {
               <a class="city-card" href={`/for/${ind.slug}`}>
                 <span class="prop-name">{ind.name.charAt(0).toUpperCase() + ind.name.slice(1)}</span>
                 <span class="prop-role">{ind.intent}</span>
-                <span class="city-cta">AI for {ind.name}</span>
+                <span class="city-cta">For {ind.name} ↗</span>
               </a>
             ))
           }
         </div>
         <p class="body-lg measure" style="margin-top:2.5rem;font-size:1rem">
-          Your trade is not listed? Start with the
-          <a class="text-link" href="/missed-call-test">missed-call test</a>
-          or the <a class="text-link" href="/audit">$750 audit</a>.
+          Your trade is not listed? The
+          <a class="text-link" href="/phone-test">free Phone Test</a>
+          works for any home service business.
         </p>
       </div>
     </section>

@@ -12,7 +12,7 @@
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import BookCall from "../../components/BookCall.astro";
+import PhoneTestForm from "../../components/PhoneTestForm.astro";
 import { industries, industryBySlug } from "../../data/industries";
 
 export function getStaticPaths() {
@@ -25,17 +25,17 @@ const display = ind.name.charAt(0).toUpperCase() + ind.name.slice(1);
 const seoName =
   ({ landscapers: "Landscapers", "medical-clinics": "Medical Clinics" } as Record<string, string>)[ind.slug] ?? display;
 
-const title = `AI for ${seoName} in Arkansas: what should you automate first?`;
-const description = `${ind.intent}. Done-for-you answering and automation for Arkansas ${ind.name.toLowerCase()}.`;
+const title = `Free Phone Test for Arkansas ${seoName} | Arkansas Automated`;
+const description = `How Arkansas ${ind.name.toLowerCase()} lose calls, quotes and reviews, and a free Phone Test that times your own shop. Score out of 100 within 3 days.`;
 
 const sharedFaqs = [
   {
-    q: "Do you set this up for us?",
-    a: "Yes. Start with a call about your workflow, or the $750 Front Desk Audit if you want a written map of the leaks. The audit is a paid diagnostic, and the written map is yours either way.",
+    q: "Where do I start?",
+    a: "With the free Phone Test. We call your shop during the day and after hours, fill out your form, text your number and check your Google listing. You get a score out of 100 and your three biggest leaks with the clock times.",
   },
   {
-    q: "Can you build and manage it for me?",
-    a: "That is the done-for-you path. The audit prices it. If the map says it pays, we build, launch, and manage the system. Larger operations move to the embedded retainer, from $2,000 a month.",
+    q: "Can you set it up and run it for me?",
+    a: "Yes. The Front Door Setup starts at $1,500 one-time and Front Door Monthly starts at $497 a month with no contract. You only pay to fix what the Phone Test found.",
   },
 ];
 
@@ -85,7 +85,7 @@ const schema = {
         <h1 class="heading-xl measure">What should {ind.name} in Arkansas automate first?</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{ind.angle}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="/audit">Book the audit</a>
+          <a class="btn btn-primary" href="#contact" data-cta={`industry-${ind.slug}-hero`}>Get my free Phone Test</a>
           <a class="btn btn-secondary" href="/services">See prices</a>
         </div>
       </div>
@@ -130,44 +130,20 @@ const schema = {
     <section class="section section-tint">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Learn it, or hand it to us.</h2>
+          <h2 class="heading-lg">Fix it yourself, or hand it to us.</h2>
         </div>
         <div>
           <p class="body-lg">
-            The front door is a free missed-call test, then the $750 Front Desk Audit if the recording shows a real leak.
-            The audit maps the leaks on this page and ranks them by payback. We set up the systems after agreeing on the scope.
-            Custom builds start at $2,500. The advisor retainer starts at $2,000 a month.
+            The free Phone Test times your own shop against the leaks on this page. Fix them yourself from the list,
+            or we set it up from $1,500 one-time and keep it working from $497 a month, no contract.
           </p>
           <p class="body-lg" style="margin-top:1.1rem">
-            <a class="text-link" href="/audit">Book the audit</a>.
-            {" "}<a class="text-link" href="/services">See full services and pricing</a>.
+            <a class="text-link" href="/phone-test">How the Phone Test works</a>.
+            {" "}<a class="text-link" href="/services">See prices</a>.
           </p>
         </div>
       </div>
     </section>
-
-    {(ind.slug === "dentists" || ind.slug === "medical-clinics") && (
-      <section class="section">
-        <div class="container split">
-          <div>
-            <h2 class="heading-lg">What we will not touch from this page.</h2>
-          </div>
-          <div>
-            <p class="body-lg">
-              Scheduling intake is not a clinical record. Public marketing pages do not establish
-              compliance. Before any patient data moves, the practice and its advisers approve the
-              data, the vendors, the access, and the human review.
-            </p>
-            <p class="body-lg" style="margin-top:1.1rem">
-              The audit can time verification, billing follow-up, and missed new-patient calls
-              without taking a chart. Read the
-              {" "}<a class="text-link" href="/automation-guardrails">automation guardrails</a>
-              before you book if patient information is in play.
-            </p>
-          </div>
-        </div>
-      </section>
-    )}
 
     <section class="section">
       <div class="container faq-wrap">
@@ -187,7 +163,7 @@ const schema = {
 
     <section class="section section-tint">
       <div class="container">
-        <h2 class="heading-md">We also build for</h2>
+        <h2 class="heading-md">Other trades</h2>
         <div class="link-chips">
           {otherTrades.map((i) => (
             <a class="chip" href={`/for/${i.slug}`}>{i.name.charAt(0).toUpperCase() + i.name.slice(1)}</a>
@@ -200,19 +176,16 @@ const schema = {
     <section class="section" id="contact">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Start with the free assessment.</h2>
+          <h2 class="heading-lg">Get the free Phone Test.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            Fifteen minutes, your business details, and a straight answer on whether automation
-            pays for itself in your operation. If it does not, we will tell you that too.
+            Business name, your mobile, trade and town. We run the test over about three days and walk you
+            through the score in 15 minutes. If your front door is already tight, we will tell you that too.
           </p>
           <p class="fine-print" style="margin-top:2rem">
-            Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+            Last updated November 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <BookCall
-          heading="Pick your own time"
-          note={`Fifteen minutes on ${ind.name} operations: missed calls while on jobs, quote follow-up for your ${ind.singular}, and whether automation pays for itself. If it does not, we will say so.`}
-        />
+        <PhoneTestForm formId={`industry-${ind.slug}-form`} placement={`industry-${ind.slug}`} compact />
       </div>
     </section>
   </main>

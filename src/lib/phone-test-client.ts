@@ -32,6 +32,9 @@ export const TOWNS = [
   "Bentonville",
   "Fayetteville",
   "Springdale",
+  "Bella Vista",
+  "Siloam Springs",
+  "Russellville",
   "Somewhere else in Arkansas",
 ] as const;
 

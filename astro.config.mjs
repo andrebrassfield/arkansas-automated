@@ -22,7 +22,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter(page) {
-        return !page.includes("/speed-to-lead/thank-you");
+        // Confirmation pages are noindex and never belong in the sitemap.
+        return !page.includes("/phone-test/thanks");
       },
       serialize(item) {
         const url = new URL(item.url);
@@ -30,27 +31,9 @@ export default defineConfig({
           url.pathname = url.pathname.replace(/\/+$/, "");
           item.url = url.href;
         }
-        const path = url.pathname;
-        if (
-          path === "/" ||
-          path === "/audit" ||
-          path.startsWith("/ai-consultant") ||
-          path === "/learn/audit-teardown"
-        ) {
-          item.lastmod = new Date("2026-10-22");
-          return item;
-        }
-        const refreshed =
-          path === "/" ||
-          path === "/for" ||
-          path.startsWith("/for/") ||
-          path === "/learn" ||
-          path.startsWith("/learn/") ||
-          path === "/services" ||
-          path.startsWith("/services/") ||
-          path.startsWith("/ai-workshops/");
-
-        if (refreshed) item.lastmod = new Date("2026-08-25");
+        // Reset 2026-11-16: every page was rewritten around the Phone Test.
+        // Bump this date when a page's substance changes, not on every build.
+        item.lastmod = new Date("2026-11-16");
         return item;
       },
     }),
