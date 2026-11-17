@@ -101,8 +101,8 @@ test('every retired URL redirects to a page that exists, in one hop', () => {
 
 test('feature branches do not trigger Vercel deployments before a named GO', () => {
   const config = JSON.parse(read('vercel.json'));
-  assert.equal(config.git.deploymentEnabled['feat/ai-setups-redesign'], false);
-  assert.equal(config.git.deploymentEnabled['feat/phone-test-reset'], false);
+  assert.equal(config.git.deploymentEnabled['feat/**'], false);
+  assert.notEqual(config.git.deploymentEnabled.main, false);
 });
 
 test('retired workshop routes still redirect and stay out of the sitemap', () => {
