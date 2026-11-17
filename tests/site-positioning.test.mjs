@@ -113,3 +113,10 @@ test('retired workshop routes still redirect and stay out of the sitemap', () =>
   const sitemap = read('dist/sitemap-0.xml');
   assert.doesNotMatch(sitemap, /ai-workshops|\/workshop(?:<|\/)|ai-receptionist|answering-service|ai-consultant|phone-test\/thanks/);
 });
+
+test('review asks never steer review content (Google Maps policy, Apr 2026)', () => {
+  for (const file of htmlFiles('dist/')) {
+    const t = text(read(file));
+    assert.doesNotMatch(t, /(ask|asking|prompt|prompting)[^.]{0,40}(to )?(mention|include|name)[^.]{0,30}(town|city|service|staff|keyword)/i, file);
+  }
+});

@@ -39,7 +39,7 @@ export const TOWNS = [
 ] as const;
 
 export const SMS_CONSENT_TEXT_CLIENT =
-  "Text me about my Phone Test at this number. Message and data rates may apply. Reply STOP to opt out.";
+  "Text me about my Phone Test at this number. Msg frequency varies. Msg and data rates may apply. Reply STOP to opt out, HELP for help. Consent is not required to get a Phone Test.";
 
 export interface PhoneTestValues {
   businessName: string;

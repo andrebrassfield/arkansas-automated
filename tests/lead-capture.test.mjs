@@ -93,3 +93,20 @@ test('every page records first and last touch attribution', async () => {
   assert.ok(page.includes('window.aaAttribution'), 'attribution capture present');
   for (const key of ['utm_source', 'gclid', 'fbclid']) assert.ok(page.includes(key), key);
 });
+
+test('privacy and terms carry the SMS language A2P 10DLC campaign review checks', async () => {
+  const privacy = await html('../dist/privacy/index.html');
+  const terms = await html('../dist/terms/index.html');
+  assert.match(privacy, /id="sms"/);
+  assert.match(privacy, /not shared with, sold to or rented to third parties/);
+  assert.match(terms, /id="sms"/);
+  for (const word of ['STOP', 'HELP', 'Message frequency varies', 'Message and data rates may apply', 'not a condition of any purchase']) {
+    assert.ok(terms.includes(word), `terms missing: ${word}`);
+  }
+  const { SMS_CONSENT_TEXT_CLIENT } = await loadClient();
+  assert.match(SMS_CONSENT_TEXT_CLIENT, /STOP/);
+  assert.match(SMS_CONSENT_TEXT_CLIENT, /HELP/);
+  assert.match(SMS_CONSENT_TEXT_CLIENT, /frequency varies/i);
+  const form = await html('../dist/phone-test/index.html');
+  assert.match(form, /href="\/terms#sms"/);
+});
