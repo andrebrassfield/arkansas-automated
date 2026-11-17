@@ -79,7 +79,7 @@ export const services: Service[] = [
       "Missed-call text back in your shop's name",
       "Instant text reply to every web form",
       "Follow-up texts on day 1, day 3 and day 7, written in your voice and approved by you",
-      "Review request after every finished job, asking customers to mention the town and the service",
+      "A review request after every finished job, sent the same way to every customer, never telling them what to write",
       "Google listing services filled in with price ranges",
       "A one-page phone price sheet so whoever answers can give a range",
       "One fast landing page with tap to call, a short form and a stated reply time",

@@ -63,7 +63,7 @@ export const rubric: RubricSection[] = [
     checks: [
       "Recent Facebook or Instagram posts",
       "Real job photos",
-      "Reviews that name the town and the service",
+      "Reviews that describe real jobs",
     ],
   },
 ];
