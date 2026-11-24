@@ -26,7 +26,7 @@ No app secrets. Optional public URL overrides: `cp .env.example .env` (names onl
 
 ## Production (Vercel Git)
 
-1. Open a PR against `ArkansasAutomated/arkansas-automated` `main`.
+1. Open a PR against `andrebrassfield/arkansas-automated` `main`.
 2. Vercel builds the PR head with `npm run build` and reports the GitHub check named `Vercel`. PRs also get `Vercel Preview Comments`.
 3. Merge to `main`. Vercel builds `main` the same way and deploys **Production**.
 
