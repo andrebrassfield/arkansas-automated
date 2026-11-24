@@ -1,0 +1,309 @@
+---
+/*
+ * /how-to-grow-hvac-business-nwa: TOFU page for intent pattern #22
+ * (how to grow an HVAC business, NWA) in docs/NWA-SEO-ANGLES-2026-09-23.md.
+ * Feeder for the audit, the Visibility Install, and the HVAC answering page.
+ * Not a service duplicate. Not leads, ads, or coaching.
+ * No statistics, no rankings promise, no phone number
+ * while the GBP NAP decision is pending.
+ */
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const title = "How to Grow an HVAC Business in NWA — The Local Growth Playbook";
+const description =
+  "How a small HVAC business in Northwest Arkansas grows: answered calls, fast follow-up, and local proof a homeowner can check. Arkansas Automated sells an audit, a website-facts install, and an answering service. Not leads, not ads, not coaching. No rankings promise.";
+
+const faqs = [
+  {
+    q: "Is this a coaching offer or a marketing plan?",
+    a: "No. This page names what grows a small HVAC shop. Arkansas Automated sells an AI operations audit, a Visibility Install, and an AI Front Desk. It does not sell leads, ads management, or business coaching. It is not marketing strategy consulting.",
+  },
+  {
+    q: "Will this get the shop to the top of Google?",
+    a: "We do not promise rankings, call volume, or revenue. We do not promise a map-pack position. You get published work and an answered phone when that is the install you bought. Live means published. It does not mean a ranking we cannot control.",
+  },
+  {
+    q: "What does the $999 audit include, and does the fee credit?",
+    a: "The AI operations audit is $999 flat. It maps calls, quotes, scheduling, and invoicing, and it hands you a prioritized plan. The full fee credits toward any build started within 60 days. Build with us and the fee credits, build with someone else, or build nothing. The plan is yours either way.",
+  },
+  {
+    q: "What is the difference between the Visibility Install and the AI Front Desk?",
+    a: "Same price, different job. Both are $2,500 setup plus $497 a month. The Visibility Install publishes five fixes on the site you already have. It does not answer the phone. The AI Front Desk answers every call around the clock, books onto the calendar, and sends SMS follow-up. It does not publish the five fixes.",
+  },
+  {
+    q: "When does the 14-day clock start, and what if the fixes are late?",
+    a: "The clock starts when website, Google Business Profile, and Search Console access are in. It does not start at payment, and it pauses while copy approval is pending. Nothing publishes until you say yes in writing. If the five items are not live in 14 days, we keep working at no extra setup cost until they are, or we refund the $2,500. Live means published. It does not mean a ranking we cannot control.",
+  },
+  {
+    q: "Do review requests come with the install or the front desk?",
+    a: "No. Review request automation is included in Workflow Automation builds. It is a different job. This page does not restate that pricing. We do not write reviews, buy reviews, or post one in a customer's name. We do not promise a review count.",
+  },
+];
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/how-to-grow-hvac-business-nwa`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: "How to Grow an HVAC Business in Northwest Arkansas",
+      description,
+      author: { "@type": "Person", name: "Andre Brassfield", jobTitle: "Founder, Arkansas Automated" },
+      publisher: { "@type": "Organization", name: "Arkansas Automated", url: site },
+      datePublished: "2026-09-27",
+      dateModified: "2026-09-27",
+      mainEntityOfPage: pageUrl,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "How to Grow an HVAC Business in NWA", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/how-to-grow-hvac-business-nwa" schema={schema} ogType="article">
+  <SiteNav />
+  <main id="main-content" tabindex="-1">
+    <article class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>How to Grow an HVAC Business in NWA
+        </nav>
+        <h1 class="heading-xl measure">How to grow an HVAC business in Northwest Arkansas</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          Demand is already here. A small HVAC shop grows by answering the
+          calls it gets, responding while the caller is still deciding,
+          following up until there is an answer, and leaving proof a homeowner
+          can check. Arkansas Automated does not sell that as coaching. The
+          role is an audit, then a website-facts install or an answering
+          layer. Not leads. Not ads management. Not marketing strategy
+          consulting.
+        </p>
+        <p class="measure" style="margin-top:1rem">
+          This page is for shops in Fayetteville, Bentonville, Rogers, and
+          Springdale. It names the levers. It does not promise rankings, call
+          volume, or revenue. It carries no growth figures. The pages that
+          publish numbers are linked where the ceiling comes up. Those figures
+          are not copied here.
+        </p>
+        <p class="fine-print" style="margin-top:1.5rem">
+          Last updated September 27, 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+        </p>
+      </div>
+    </article>
+
+    <section class="section section-tint">
+      <div class="container article-body">
+        <h2 class="heading-lg measure">What growth actually requires in Northwest Arkansas</h2>
+        <p>
+          The corridor keeps adding households, and the systems in those
+          houses fail on a heat week and an ice week. The work exists. A shop
+          does not grow by inventing demand. It grows by having the capacity
+          to do the work, and by answering the calls that ask for it.
+        </p>
+        <p>
+          Capacity is trucks, techs, and the hours the board can actually
+          hold. The other half is how many calls actually get answered. A
+          tech on a roof cannot also be the front desk. An office of one
+          cannot write a quote and pick up the second line. The call that
+          rings out does not become a job, a review, or a referral.
+        </p>
+        <p>
+          The same constraint shows up in adjacent home-service shops. This
+          page stays on HVAC. It does not publish a metro growth table, a
+          call-volume study, or a share of shops that miss the phone. We have
+          not measured one for this page, and we will not invent one.
+        </p>
+
+        <h2 class="heading-lg measure">The four growth levers that move revenue</h2>
+        <p>
+          Four levers move the work a shop already has a right to quote. They
+          are operating habits. They are not a campaign, and they are not a
+          revenue guarantee.
+        </p>
+        <ol>
+          <li><strong>Answer every call.</strong> The missed call never enters the shop. The phone has to be answered while the tech is on a job, after the office closes, and on a surge week.</li>
+          <li><strong>Respond fast.</strong> The caller who reached you is still deciding. A slow reply loses to the shop that picked up.</li>
+          <li><strong>Follow up until an answer.</strong> A quote in a sent folder is not a job. Follow-up runs until the caller says yes, no, or stop.</li>
+          <li><strong>Earn reviews after the job.</strong> The next homeowner checks the record. A finished job that nobody asks about does not become proof.</li>
+        </ol>
+        <p>
+          None of these is a rankings tactic. We do not promise rankings, call
+          volume, or revenue. We do not promise a map-pack position.
+        </p>
+
+        <h2 class="heading-lg measure">The missed-call ceiling</h2>
+        <p>
+          You cannot grow past the calls you never hear. That ceiling is the
+          missed call. Buying more attention does not raise it if the phone
+          still rings out.
+        </p>
+        <p>
+          This page carries no missed-call figures. The
+          <a class="text-link" href="/missed-call-cost-calculator/">missed call cost calculator</a>
+          uses only the numbers you enter. It does not print a result we
+          invented. A published source breakdown lives on the
+          <a class="text-link" href="/learn/missed-call-statistics-2026/">missed call statistics page</a>.
+          Read the figures there. They are not copied here.
+        </p>
+        <p>
+          If you want the leaks scored from your own inputs, the
+          <a class="text-link" href="/revenue-leak-scorecard/">revenue leak scorecard</a>
+          is a separate page. This one does not run that math.
+        </p>
+
+        <h2 class="heading-lg measure">Local proof: how NWA homeowners verify you</h2>
+        <p>
+          Before a homeowner in Fayetteville, Bentonville, Rogers, or
+          Springdale hires the truck, they check whether the shop is real.
+          They look for the same business name, the same hours, and a real
+          license, on the site and on the Google Business Profile. If those
+          facts disagree, the shop looks unfinished.
+        </p>
+        <p>
+          Consistent facts are the proof. A slogan is not. Publishing the
+          license you already hold is a facts task. It is not legal advice,
+          and it is not a reading of how a profile gets ordered.
+        </p>
+        <p>
+          What a healthy profile requires, and what that work refuses to do,
+          is on the
+          <a class="text-link" href="/google-business-profile-optimization-nwa/">Google Business Profile optimization page</a>.
+          This page does not restate those fixes.
+        </p>
+
+        <h2 class="heading-lg measure">What does NOT grow an HVAC business</h2>
+        <p>
+          Some offers look like growth and are not. None of them are sold on
+          this page.
+        </p>
+        <ul>
+          <li><strong>Bought leads.</strong> The lead is rented. Stop paying and the calls stop. The caller was shopping more than one shop, so bought leads churn. We do not sell leads.</li>
+          <li><strong>Fake reviews.</strong> A review you wrote, bought, or posted in a customer's name is not proof. We do not write reviews, buy reviews, or post one in a customer's name.</li>
+          <li><strong>Shared phone numbers.</strong> A number that also answers for other shops, or a number that does not match the truck, the site, and the profile, makes the shop harder to verify. We do not set that up.</li>
+          <li><strong>Rankings promises.</strong> A promise of a position is not a plan. We do not promise rankings, call volume, or revenue. We do not promise a map-pack position. No rankings promise is part of the offer.</li>
+        </ul>
+        <p>
+          Arkansas Automated does not sell ads management or business
+          coaching. This page is not marketing strategy consulting. The
+          products are an audit, a website-facts install, and an answering
+          service.
+        </p>
+
+        <h2 class="heading-lg measure">The audit-first path: the $999 AI operations audit and its 60-day credit</h2>
+        <p>
+          If you want the map before you buy a build, start with the AI
+          operations audit. It is $999 flat. It maps calls, quotes,
+          scheduling, and invoicing, prices the leaks, and hands you a
+          prioritized plan. It is not a coaching retainer, and it is not a
+          rankings audit.
+        </p>
+        <p>
+          The full fee credits toward any build started within 60 days. Build
+          with us and the fee credits, build with someone else, or build
+          nothing. The plan is yours either way.
+        </p>
+        <p>
+          The audit page is
+          <a class="text-link" href="/services/operations-audit">the AI operations audit</a>.
+          Questions before that go through the
+          <a class="text-link" href="/contact/">contact page</a>.
+          Nothing is due on that note.
+        </p>
+
+        <h2 class="heading-lg measure">The Visibility Install: five fixes, the 14-day clock, and the refund rule</h2>
+        <p>
+          When the constraint is proof, not the phone, the build is the
+          Visibility Install. Five published fixes go on the website you
+          already have. It does not answer the phone. We do not promise
+          rankings, call volume, or revenue.
+        </p>
+        <ul>
+          <li><strong>Setup:</strong> $2,500</li>
+          <li><strong>Monthly:</strong> $497/mo</li>
+          <li><strong>Term:</strong> 90-day initial term, then month to month. Cancel anytime after day 90. The work stays on your site. We do not take it down.</li>
+          <li><strong>Work:</strong> five published fixes, live inside 14 days of access. The list itself is on the service page. This page does not copy it.</li>
+          <li><strong>Clock:</strong> the 14-day clock starts when website, Google Business Profile, and Search Console access are in. It does not start at payment, and it pauses while copy approval is pending.</li>
+          <li><strong>Refund:</strong> if the five items are not live in 14 days, we keep working at no extra setup cost until they are, or we refund the $2,500. Live means published. It does not mean a ranking we cannot control.</li>
+          <li><strong>Not included:</strong> answering the phone. No rankings promise. No call-volume promise. No revenue promise.</li>
+        </ul>
+        <p>
+          Service detail is on the
+          <a class="text-link" href="/services/visibility-install/">Visibility Install</a>
+          page. Profile health inside that work is on the
+          <a class="text-link" href="/google-business-profile-optimization-nwa/">Google Business Profile optimization page</a>.
+        </p>
+        <p>
+          A shop that needs a site first can start with Front Door, the $497 entry website.
+        </p>
+
+        <h2 class="heading-lg measure">When the phone itself is the constraint</h2>
+        <p>
+          Sometimes the facts are fine and the phone is the constraint. That
+          is a different install. Same price, different job.
+        </p>
+        <p>
+          The AI Front Desk is $2,500 setup plus $497 a month. It answers
+          every call around the clock, books onto the calendar, and sends SMS
+          follow-up. The Visibility Install does not answer calls, send SMS,
+          or book jobs. The AI Front Desk does not publish the five fixes.
+        </p>
+        <p>
+          Service detail is on the
+          <a class="text-link" href="/services/ai-front-desk">AI Front Desk</a>
+          page. The trade page for HVAC shops on this corridor is the
+          <a class="text-link" href="/hvac-answering-service-nwa/">HVAC answering service page</a>.
+          This page does not restate those dispatch rules.
+        </p>
+        <p>
+          <strong>Call to action:</strong> use the
+          <a class="text-link" href="/contact/">contact page</a>.
+          Scope gets decided there. Nothing is due then.
+        </p>
+
+        <h2 class="heading-lg measure">Repeat and referral: the cheapest growth</h2>
+        <p>
+          The cheapest growth is the customer who already hired you, and the
+          neighbor they send. That does not happen because the shop hoped. It
+          happens because someone asked after the job, and because the record
+          the neighbor checks matches the shop.
+        </p>
+        <p>
+          Review request automation is included in Workflow Automation builds.
+          The ask goes out when the job is marked done. It is not part of the
+          Visibility Install, and it is not part of the AI Front Desk.
+        </p>
+        <p>
+          What the ask refuses to do is on the
+          <a class="text-link" href="/review-request-automation-nwa/">review request automation page</a>.
+          This page does not restate that pricing. We do not promise a review
+          count. We do not have one to publish.
+        </p>
+
+        <h2 class="heading-lg measure">FAQs</h2>
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3 class="heading-md">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
