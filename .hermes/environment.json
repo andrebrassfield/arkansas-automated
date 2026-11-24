@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "recipe": {
+    "name": "Astro",
+    "kind": "astro",
+    "bootstrap": [
+      "npm install"
+    ],
+    "build": [
+      "npm run build"
+    ],
+    "test": [],
+    "start": "npx astro dev --host 127.0.0.1",
+    "port": 4321,
+    "readinessPath": "/",
+    "evidence": [
+      "Detected package.json",
+      "Package manager: npm",
+      "Scripts: dev, build, preview, astro"
+    ]
+  },
+  "updatedAt": "2026-09-22T23:09:08.455214+00:00"
+}
