@@ -2,7 +2,7 @@
 
 Static marketing site for [arkansasautomated.com](https://arkansasautomated.com).
 
-Repo: [ArkansasAutomated/arkansas-automated](https://github.com/ArkansasAutomated/arkansas-automated). GitHub homepage is the apex URL.
+Repo: [andrebrassfield/arkansas-automated](https://github.com/andrebrassfield/arkansas-automated). GitHub homepage is the apex URL.
 
 ## Stack
 
