@@ -1,0 +1,180 @@
+---
+/*
+ * /ai-consulting/northwest-arkansas and /ai-consulting/river-valley.
+ * See src/data/ai-consulting.ts for why these pages exist. Prices come from
+ * src/data/services.ts so they cannot drift from the price sheet.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import PhoneTestForm from "../../components/PhoneTestForm.astro";
+import { aiRegions, aiFaqs, type AiRegion } from "../../data/ai-consulting";
+import { cities } from "../../data/cities";
+import { services } from "../../data/services";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../../lib/public-phone";
+
+export function getStaticPaths() {
+  return aiRegions.map((r) => ({ params: { region: r.slug }, props: { r } }));
+}
+const { r } = Astro.props as { r: AiRegion };
+const site = "https://arkansasautomated.com";
+const path = `/ai-consulting/${r.slug}`;
+const pageUrl = `${site}${path}`;
+const towns = r.citySlugs.map((s) => cities.find((c) => c.slug === s)).filter(Boolean) as typeof cities;
+const other = aiRegions.find((x) => x.slug !== r.slug)!;
+const faqs = aiFaqs(r);
+const ladder = services.filter((s) => s.rung > 0).sort((a, b) => a.rung - b.rung);
+const hrefFor = (slug: string) => (slug === "phone-test" ? "/phone-test" : slug === "ads" ? "/marketing" : `/services/${slug}`);
+
+const title = `AI Consulting for ${r.short} Small Businesses, Prices Published | Arkansas Automated`;
+const description = `AI consulting for ${r.name} home service businesses that starts with a measurement, not a sales call. Free Phone Test scored out of 100, then setup from $1,500 and monthly from $497.`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: `AI consulting for ${r.name} home service businesses`,
+      serviceType: "AI automation consulting for home service businesses",
+      description,
+      url: pageUrl,
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      areaServed: [
+        { "@type": "AdministrativeArea", name: `${r.name}, Arkansas` },
+        ...towns.map((c) => ({ "@type": "City", name: `${c.name}, Arkansas` })),
+      ],
+      offers: [
+        { "@type": "Offer", name: "Phone Test", price: "0", priceCurrency: "USD" },
+        { "@type": "Offer", name: "Front Door Setup", priceSpecification: { "@type": "PriceSpecification", minPrice: 1500, priceCurrency: "USD" } },
+        { "@type": "Offer", name: "Front Door Monthly", priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 497, priceCurrency: "USD", unitText: "MONTH" } },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: `AI consulting, ${r.name}`, item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <SiteNav />
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>AI consulting, {r.name}</nav>
+        <span class="eyebrow">{r.drive}</span>
+        <h1 class="heading-xl measure">AI consulting for {r.name} small businesses, with the prices on the page.</h1>
+        <p class="body-lg measure" style="margin-top:1.2rem">
+          Arkansas Automated is AI and automation help for {r.name} home service businesses. We do not start with a
+          sales call. We start by calling your shop, day and after hours, filling out your web form, texting your
+          number and checking your Google listing. You get a score out of 100 within 3 days, free. Then you decide
+          what, if anything, is worth fixing.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#start" data-cta={`ai-${r.slug}-hero`}>Get my free Phone Test</a>
+          <a class="btn btn-secondary" href={AA_PUBLIC_PHONE_HREF} data-cta={`ai-${r.slug}-call`}>Call {AA_PUBLIC_PHONE_DISPLAY}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container article-body">
+        <h2 class="heading-lg measure">A free call gives you a pitch. The Phone Test gives you a number.</h2>
+        <p>{r.local}</p>
+        <ul>
+          <li>The clock time of every call, form reply and text, day and after hours</li>
+          <li>Your three biggest leaks and what they cost at your numbers</li>
+          <li>Your Google listing against the shop at the top of the map for your trade and town</li>
+          <li>Whether Google and ChatGPT name your business when someone asks for your trade</li>
+        </ul>
+        <p>No logins, no card, no contract. The score is yours whether you hire us or not.</p>
+
+        <h2 class="heading-lg measure">What AI is actually good for in a home service shop</h2>
+        <p>
+          Most of the money is in the follow-up nobody has time for. These are the pieces we set up, using the phone,
+          calendar and job software you already pay for wherever it can do the job:
+        </p>
+        <ul>
+          <li>Office and owner cell ring together before a call is missed</li>
+          <li>A text back in your shop's name on every missed call</li>
+          <li>An instant reply to every web form, with a stated reply time</li>
+          <li>Follow-up texts on day 1, 3 and 7, written in your voice and approved by you</li>
+          <li>A review request after every finished job</li>
+          <li>Price ranges on your Google listing, so the person answering, or Google's AI, can give a range</li>
+        </ul>
+        <p>
+          And what we will tell you not to buy yet: an AI voice answering your customers, a chatbot on a site nobody
+          visits, or ad spend pointed at a phone that rings out. We do not run ads for a shop until its Phone Test
+          score is 80 or higher.
+        </p>
+
+        <h2 class="heading-lg measure">What it costs</h2>
+        <p>One price sheet, the same in every town we serve.</p>
+        <ul class="ai-ladder">
+          {ladder.map((s) => (
+            <li><a class="text-link" href={hrefFor(s.slug)}><strong>{s.name}</strong></a> <span>{s.price}</span><p>{s.tagline}</p></li>
+          ))}
+        </ul>
+        <p>Full detail is on <a class="text-link" href="/services">services and prices</a>.</p>
+
+        <h2 class="heading-lg measure">Getting found when someone asks ChatGPT for a contractor</h2>
+        <p>
+          AI assistants recommend businesses they can read. Most of them do not run a website's JavaScript, so a site
+          that only builds its pages in the browser looks like one blank page to them. You can check ours: every page
+          on arkansasautomated.com has its own title, a missing page returns a real 404, our
+          <a class="text-link" href="/robots.txt">robots.txt</a> names GPTBot, OAI-SearchBot, ClaudeBot and
+          PerplexityBot, and <a class="text-link" href="/llms.txt">llms.txt</a> lists every service with its price.
+          We check the same things on your site in the Phone Test.
+        </p>
+        <p>
+          Want to see where you stand first? The <a class="text-link" href="/answer-check">free AI answer check</a>
+          shows whether Google or ChatGPT names your business for your trade and town.
+        </p>
+
+        <h2 class="heading-lg measure">Who this is for, and who it is not</h2>
+        <p>
+          Owner-run plumbing, HVAC, electrical, roofing and landscaping shops in {r.name}. Not franchise locations with
+          a corporate marketing team, and not schools, churches, nonprofits or office staff training. Those buyers
+          are better served by people who specialize in them.
+        </p>
+
+        <h2 class="heading-lg measure">Towns we serve in person</h2>
+        <div class="city-grid">
+          {towns.map((c) => <a class="city-card" href={`/locations/${c.slug}`}><span class="prop-name">{c.name}</span><span class="city-cta">Phone Test in {c.name} ↗</span></a>)}
+        </div>
+        <p style="margin-top:1rem">Also serving <a class="text-link" href={`/ai-consulting/${other.slug}`}>{other.name}</a>.</p>
+
+        <h2 class="heading-lg measure">Questions owners ask</h2>
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3 class="heading-md">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+        <p class="fine-print" style="margin-top:1.5rem">Last updated November 2026. Written by Andre Brassfield, founder of Arkansas Automated, Fort Smith.</p>
+      </div>
+    </section>
+
+    <section class="section" id="start">
+      <div class="container" style="max-width:640px">
+        <PhoneTestForm formId={`ai-${r.slug}-form`} placement={`ai-consulting-${r.slug}`} heading={`Phone Test for your ${r.short} shop`} compact />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
+
+<style>
+  .ai-ladder { list-style: none; padding: 0; margin: 1.2rem 0; border-top: 1px solid var(--line); }
+  .ai-ladder li { padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+  .ai-ladder span { color: var(--accent); font-weight: 800; font-size: 0.9rem; margin-left: 0.4rem; }
+  .ai-ladder p { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.2rem; }
+</style>

@@ -13,6 +13,7 @@ export function getStaticPaths() {
 const { c } = Astro.props;
 const site = "https://arkansasautomated.com";
 const isHome = c.slug === "fort-smith";
+const aiHref = c.region === "River Valley" ? "/ai-consulting/river-valley" : "/ai-consulting/northwest-arkansas";
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -68,6 +69,7 @@ const description = `We call your ${c.name} shop day and night, fill out your fo
           <h2 class="heading-lg">{isHome ? "Built in Fort Smith, tested on Fort Smith phones." : "Same test, your town's Map Pack."}</h2>
           <ul class="loc-rubric">{rubric.map((r) => <li><strong>{r.name}</strong> <span>{r.points} pts</span><p>{r.why}</p></li>)}</ul>
           <p><a class="text-link" href="/phone-test">See all checks ↗</a></p>
+          <p style="margin-top:0.6rem">Looking for AI consulting in {c.name}? <a class="text-link" href={aiHref}>See what we set up and what it costs ↗</a></p>
         </div>
         <div id="start"><PhoneTestForm formId={`city-${c.slug}-form`} placement={`city-${c.slug}`} heading={`Phone Test for your ${c.name} shop`} compact /></div>
       </div>

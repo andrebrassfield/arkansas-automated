@@ -120,3 +120,21 @@ test('review asks never steer review content (Google Maps policy, Apr 2026)', ()
     assert.doesNotMatch(t, /(ask|asking|prompt|prompting)[^.]{0,40}(to )?(mention|include|name)[^.]{0,30}(town|city|service|staff|keyword)/i, file);
   }
 });
+
+test('regional AI consulting pages answer the local query and end at the Phone Test', () => {
+  for (const [slug, region] of [['northwest-arkansas', 'Northwest Arkansas'], ['river-valley', 'Fort Smith and the River Valley']]) {
+    const html = page(`ai-consulting/${slug}`);
+    const t = text(html);
+    assert.match(html, /<title>AI Consulting for [^<]+ Small Businesses, Prices Published/);
+    assert.ok(t.includes(`AI consulting for ${region} small businesses`), `${slug} h1`);
+    assert.ok(html.includes('data-phone-test-form'), `${slug} carries the Phone Test form`);
+    for (const price of ['From $1,500 one-time', 'From $497/mo']) assert.ok(t.includes(price), `${slug} ${price}`);
+    assert.ok(html.includes('"FAQPage"') && html.includes('"Service"'), `${slug} schema`);
+  }
+  const vercel = JSON.parse(read('vercel.json'));
+  const old = vercel.redirects.find((r) => r.source === '/ai-consultant');
+  assert.equal(old.destination, '/ai-consulting/northwest-arkansas');
+  assert.ok(read('public/llms.txt').includes('/ai-consulting/northwest-arkansas'));
+  assert.ok(page('locations/springdale').includes('href="/ai-consulting/northwest-arkansas"'));
+  assert.ok(page('locations/fort-smith').includes('href="/ai-consulting/river-valley"'));
+});
