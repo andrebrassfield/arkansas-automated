@@ -29,9 +29,9 @@ export interface Service {
 }
 
 export const PHONE_TEST_PATH = "/phone-test";
-// AA Book (book.arkansasautomated.com) is down as of 2026-11-25 (Railway 404).
-// Point back at "https://book.arkansasautomated.com/book/discovery-call" once it is live again.
-export const BOOK_CALL_URL = "/contact#send-details";
+// Free Google Calendar booking page (15-minute call), set up 2026-11-25 while AA Book
+// (book.arkansasautomated.com/book/discovery-call) is down on Railway.
+export const BOOK_CALL_URL = "https://calendar.app.google/UfScKjeDytLGsmV67";
 
 export const services: Service[] = [
   {
