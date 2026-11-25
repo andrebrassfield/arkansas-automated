@@ -138,3 +138,25 @@ test('regional AI consulting pages answer the local query and end at the Phone T
   assert.ok(page('locations/springdale').includes('href="/ai-consulting/northwest-arkansas"'));
   assert.ok(page('locations/fort-smith').includes('href="/ai-consulting/river-valley"'));
 });
+
+test('NWA online scores page publishes method, scores only, and says it is not the Phone Test', () => {
+  const html = page('scores/nwa');
+  const t = text(html);
+  assert.match(t, /scored out of 100/);
+  assert.match(t, /This is not the Phone Test\. Nobody was called, texted or sent a form\./);
+  assert.match(t, /top two results not marked Sponsored/);
+  const rows = (html.match(/<tbody[^>]*>[\s\S]*?<\/tbody>/) || [''])[0].match(/<tr/g) || [];
+  assert.equal(rows.length, 30);
+  assert.match(t, /Two shops were left out because Arkansas Automated has a business conversation open with them\./);
+  assert.ok(html.includes('"Dataset"'));
+  assert.ok(read('public/llms.txt').includes('/scores/nwa'));
+});
+
+test('NWA scores: median is the true median and the price rule matches the code', async () => {
+  const t = text(page('scores/nwa'));
+  const scores = [...page('scores/nwa').matchAll(/<td[^>]*><strong[^>]*>(\d+)<\/strong><\/td>/g)].map((m) => +m[1]).sort((a, b) => a - b);
+  const mid = Math.floor(scores.length / 2);
+  const median = scores.length % 2 ? scores[mid] : (scores[mid - 1] + scores[mid]) / 2;
+  assert.ok(t.includes(`The median score is ${median}.`), `median ${median}`);
+  assert.match(t, /A financing line like \$0 down does not count\./);
+});
