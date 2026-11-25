@@ -18,7 +18,9 @@ const groupMax = (g: string) => checks.filter((c) => c.group === g).reduce((n, c
 const sub = (s: (typeof shops)[number], g: string) => checks.filter((c) => c.group === g).reduce((n, c) => n + s.marks[c.key], 0);
 const G = "Google listing";
 const W = "Website as a crawler sees it";
-const median = [...shops].map((s) => s.score).sort((a, b) => a - b)[Math.floor(shops.length / 2)];
+const sorted = [...shops].map((s) => s.score).sort((a, b) => a - b);
+const mid = Math.floor(sorted.length / 2);
+const median = sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 const priced = shops.filter((s) => s.price).length;
 
 const schema = {
@@ -88,7 +90,7 @@ const schema = {
             </tbody>
           </table>
         </div>
-        <p class="fine-print" style="margin-top:0.9rem">Ties are ordered by review count. Town is the Maps search the shop came from, not necessarily where it is based.</p>
+        <p class="fine-print" style="margin-top:0.9rem">Star ratings and review counts were read directly from each shop's Google Maps listing on {CHECKED_ON}. Ties are ordered by review count. Town is the Maps search the shop came from, not necessarily where it is based.</p>
       </div>
     </section>
 

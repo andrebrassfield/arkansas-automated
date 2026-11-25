@@ -105,7 +105,7 @@ export const checks: Check[] = [
     label: "A price on the page",
     max: 10,
     group: "Website as a crawler sees it",
-    how: "Any dollar amount on the page: a price, a range, a special. Google's AI asks shops for a price.",
+    how: "A dollar amount of $10 or more on the page: a price, a range, a special. A financing line like $0 down does not count. Google's AI asks shops for a price.",
     points: (s) => (s.price ? 10 : 0),
   },
   {

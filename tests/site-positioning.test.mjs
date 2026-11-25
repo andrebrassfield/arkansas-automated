@@ -151,3 +151,12 @@ test('NWA online scores page publishes method, scores only, and says it is not t
   assert.ok(html.includes('"Dataset"'));
   assert.ok(read('public/llms.txt').includes('/scores/nwa'));
 });
+
+test('NWA scores: median is the true median and the price rule matches the code', async () => {
+  const t = text(page('scores/nwa'));
+  const scores = [...page('scores/nwa').matchAll(/<td[^>]*><strong[^>]*>(\d+)<\/strong><\/td>/g)].map((m) => +m[1]).sort((a, b) => a - b);
+  const mid = Math.floor(scores.length / 2);
+  const median = scores.length % 2 ? scores[mid] : (scores[mid - 1] + scores[mid]) / 2;
+  assert.ok(t.includes(`The median score is ${median}.`), `median ${median}`);
+  assert.match(t, /A financing line like \$0 down does not count\./);
+});
