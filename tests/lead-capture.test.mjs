@@ -56,7 +56,8 @@ test('contact page keeps a written path, phone and email', async () => {
 
 test('homepage keeps a booking path', async () => {
   const page = await html('../dist/index.html');
-  assert.ok(page.includes('Book a 15-minute call'), 'booking link');
+  assert.ok(page.includes('Ask for a 15-minute call'), 'booking link');
+  assert.ok(page.includes('href="/contact#send-details"'), 'booking link points at a live page');
 });
 
 test('validation requires business, name, 10-digit mobile, trade and town; email optional', async () => {
