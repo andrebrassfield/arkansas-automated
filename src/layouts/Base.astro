@@ -64,8 +64,10 @@ const defaultSchema = {
     url: "https://arkansasautomated.com/about",
   },
   areaServed: [
-    { "@type": "City", name: "Rogers, Arkansas" },
-    { "@type": "City", name: "Fort Smith, Arkansas" },
+    ...["Fort Smith", "Van Buren", "Russellville", "Fayetteville", "Springdale", "Rogers", "Bentonville", "Bella Vista", "Siloam Springs"].map(
+      (name) => ({ "@type": "City", name: `${name}, Arkansas` }),
+    ),
+    { "@type": "AdministrativeArea", name: "River Valley, Arkansas" },
     { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
     { "@type": "State", name: "Arkansas" },
   ],

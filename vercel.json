@@ -112,12 +112,12 @@
     },
     {
       "source": "/ai-consultant",
-      "destination": "/",
+      "destination": "/ai-consulting/northwest-arkansas",
       "permanent": true
     },
     {
       "source": "/ai-consultant/:city",
-      "destination": "/",
+      "destination": "/ai-consulting/northwest-arkansas",
       "permanent": true
     },
     {

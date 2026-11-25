@@ -25,6 +25,11 @@
 - River Valley: [Fort Smith](https://arkansasautomated.com/locations/fort-smith) (home base), [Van Buren](https://arkansasautomated.com/locations/van-buren), [Russellville](https://arkansasautomated.com/locations/russellville)
 - Northwest Arkansas: [Fayetteville](https://arkansasautomated.com/locations/fayetteville), [Springdale](https://arkansasautomated.com/locations/springdale), [Rogers](https://arkansasautomated.com/locations/rogers), [Bentonville](https://arkansasautomated.com/locations/bentonville), [Bella Vista](https://arkansasautomated.com/locations/bella-vista), [Siloam Springs](https://arkansasautomated.com/locations/siloam-springs)
 
+## AI consulting, by region
+
+- [AI consulting for Northwest Arkansas small businesses](https://arkansasautomated.com/ai-consulting/northwest-arkansas): AI and automation for home service shops in Fayetteville, Springdale, Rogers, Bentonville, Bella Vista and Siloam Springs, starting with the free Phone Test, prices published
+- [AI consulting for Fort Smith and the River Valley](https://arkansasautomated.com/ai-consulting/river-valley): the same offer for Fort Smith, Van Buren and Russellville
+
 ## Leaks we fix
 
 - [Missed calls](https://arkansasautomated.com/fix/missed-calls)

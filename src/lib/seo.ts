@@ -26,6 +26,7 @@ export const SITE_DESCRIPTOR =
 export const SITE_TAGLINE = "Answered. Followed up. Reviewed.";
 
 export const SERVICE_TYPES = [
+  "AI automation consulting for home service businesses",
   "Speed to lead testing",
   "Missed-call text back",
   "Lead follow-up automation",
