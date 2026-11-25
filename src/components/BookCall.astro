@@ -1,4 +1,5 @@
 ---
+import { BOOK_CALL_URL } from "../data/services";
 /**
  * Direct booking CTA for the AA Book discovery call.
  *
@@ -20,7 +21,7 @@ const {
   note = "Fifteen minutes, your business details, and a straight answer on whether automation pays for itself. If it does not, we will tell you that too.",
 } = Astro.props;
 
-const BOOKING_URL = "https://book.arkansasautomated.com/book/discovery-call";
+const BOOKING_URL = BOOK_CALL_URL;
 ---
 
 <aside class="form-card book-call" data-book-discovery-call>
@@ -35,7 +36,7 @@ const BOOKING_URL = "https://book.arkansasautomated.com/book/discovery-call";
     Prefer to write first? Email <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.
   </p>
   <p class="form-legal">
-    Booking runs on book.arkansasautomated.com. See our <a href="/privacy">privacy and data handling page</a>.
+    See our <a href="/privacy">privacy and data handling page</a>.
   </p>
 </aside>
 

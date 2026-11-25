@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import { BOOK_CALL_URL } from "../data/services";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 const title = "Automation Guardrails | Arkansas Automated";
@@ -21,7 +22,7 @@ const description = "The practical boundaries Arkansas Automated uses when desig
     <p>No automated system is error-free. A useful implementation includes a fallback when a tool is unavailable, a way for a caller or employee to reach a person, and a process for reviewing and correcting errors.</p>
     <h2 class="heading-md">Medical, legal, and financial workflows</h2>
     <p>These workflows can involve sensitive information and professional duties. Public marketing pages do not establish compliance. The business and its qualified advisers must approve the specific data, vendors, disclosures, access controls, and human review process before launch.</p>
-    <div class="next-step"><a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Discuss your workflow</a></div>
+    <div class="next-step"><a class="btn btn-primary" href={BOOK_CALL_URL}>Discuss your workflow</a></div>
   </div></section></main>
   <SiteFooter />
 </Base>

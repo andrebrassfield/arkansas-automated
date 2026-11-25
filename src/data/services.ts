@@ -29,7 +29,9 @@ export interface Service {
 }
 
 export const PHONE_TEST_PATH = "/phone-test";
-export const BOOK_CALL_URL = "https://book.arkansasautomated.com/book/discovery-call";
+// AA Book (book.arkansasautomated.com) is down as of 2026-11-25 (Railway 404).
+// Point back at "https://book.arkansasautomated.com/book/discovery-call" once it is live again.
+export const BOOK_CALL_URL = "/contact#send-details";
 
 export const services: Service[] = [
   {

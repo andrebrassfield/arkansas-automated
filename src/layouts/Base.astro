@@ -115,9 +115,11 @@ const siteHost = new URL(Astro.site?.origin ?? SITE_URL).hostname;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={og} />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- ?v=2: Diamond A icons. Bump when the icons change so browsers drop the cached old mark. -->
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico?v=2" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    <link rel="manifest" href="/site.webmanifest?v=2" />
     <meta name="theme-color" content={themeColor} />
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
