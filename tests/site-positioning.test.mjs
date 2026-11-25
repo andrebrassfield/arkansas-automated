@@ -146,7 +146,8 @@ test('NWA online scores page publishes method, scores only, and says it is not t
   assert.match(t, /This is not the Phone Test\. Nobody was called, texted or sent a form\./);
   assert.match(t, /top two results not marked Sponsored/);
   const rows = (html.match(/<tbody[^>]*>[\s\S]*?<\/tbody>/) || [''])[0].match(/<tr/g) || [];
-  assert.equal(rows.length, 32);
+  assert.equal(rows.length, 30);
+  assert.match(t, /Two shops were left out because Arkansas Automated has a business conversation open with them\./);
   assert.ok(html.includes('"Dataset"'));
   assert.ok(read('public/llms.txt').includes('/scores/nwa'));
 });

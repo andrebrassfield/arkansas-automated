@@ -9,7 +9,9 @@
  * How the shops were picked: Google Maps searches "<trade> <town> ar" for HVAC,
  * plumber, roofing and electrician in Rogers, Springdale, Fayetteville and
  * Bentonville, read on 2026-11-25. The top two results that were not marked
- * Sponsored, skipping a shop already picked. No shop was added or removed by hand.
+ * Sponsored, skipping a shop already picked. No shop was added by hand. Two picks
+ * (Springdale plumber #2, Springdale roofing #1) were left out on 2026-11-25 because
+ * AA had a live pitch open with them; the page says so without naming them.
  *
  * Copy rules: scores only, no owner names, no commentary on any shop.
  */
